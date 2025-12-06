@@ -18,14 +18,14 @@ let allFieldsets;
 // SVG:
 let SVGinDiv;
 let WovenMotifSVG;
-        let svgHeight;
-        let svgWidth; 
-        let viewBox;
+        let svgHeight = 0;
+        let svgWidth = 0; 
+        //let viewBox;
 let numberOfColors = "2";
 
 let motifPicker;
 let pickedMotif;
-let selectedMotif = 'motifA';
+let selectedMotif = 'motifD';
 
 let motifA;
 let motifB;
@@ -35,7 +35,7 @@ let motifA_innerHTML;
 let motifB_innerHTML;
 let motifC_innerHTML;
 let motifD_innerHTML;
-let selectedMotif_innerHTML = motifA_innerHTML;
+let selectedMotif_innerHTML = motifD_innerHTML;
 
 // choosing colors:
 let MC1pickerBtn;
@@ -49,7 +49,7 @@ let pickedMC1;
 let pickedMC2;
 let pickedCC1;
 let pickedCC2;
-//let pickedBackground = '#ffffff';
+let pickedBackground = '#ffffff';
 let  MC2_swatch;
 let CC2_swatch; 
 
@@ -85,6 +85,7 @@ function getDOMelements () {
     accArray = document.getElementsByClassName('accordion');
     console.log(accArray); 
     motifPicker = document.querySelector('#motifPickerDropDown');
+    SVGinDiv = document.querySelector("#SVGinDiv");
     addEventListeners ();
     chooseMotifColors ();
     accordions (); 
@@ -176,7 +177,8 @@ function chooseMotifColors () {
     CC1pickerBtn.value = pickedCC1;
     CC2pickerBtn.value = pickedCC2;
     console.log(`function chooseMotifColors executed: pickedMC 1: ${pickedMC1} / pickedMC 2: ${pickedMC2} / pickedCC 1: ${pickedCC1} / pickedCC 2: ${pickedCC2}`);
-    pickSVG()
+    updateSVG_innerHTML ();
+    pickSVG();
 }
 
 function changeMC1 () {
@@ -220,7 +222,7 @@ function updatePickedColors (pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedB
     CC1pickerBtn.value = pickedCC1;
     CC2pickerBtn.value = pickedCC2;
     //pickedBackground =  backgroundPickerBtn.value;
-    console.log(`function chooseMotifColors executed = pickedMC 1: ${pickedMC1} / pickedMC 2: ${pickedMC2} / pickedCC 1: ${pickedCC1} / pickedCC 2: ${pickedCC2} / pickedBackground: ${pickedBackground}`);
+    console.log(`function chooseMotifColors executed = pickedMC 1: ${pickedMC1} / pickedMC 2: ${pickedMC2} / pickedCC 1: ${pickedCC1} / pickedCC 2: ${pickedCC2}`);
     updateSVG_innerHTML();
     pickSVG ();
 }
@@ -232,34 +234,34 @@ function pickSVG () {
     case "motifA":
         svgHeight = 600;
         svgWidth = 1000;
-        viewBox = "0 0 100 100"
+        //viewBox = "0 0 100 100"
         numberOfColors = "2";
         selectedMotif_innerHTML = motifA_innerHTML;
         break;
     case "motifB":
         svgHeight = 100;
         svgWidth = 100;
-        viewBox = "0 0 100 100"
+        //viewBox = "0 0 100 100"
         numberOfColors = "2";
         selectedMotif_innerHTML = motifB_innerHTML;
         break;
     case "motifC":
         svgHeight = 150;
         svgWidth = 500;
-        viewBox = "0 0 100 100"
+        //viewBox = "0 0 100 100"
         numberOfColors = "4";
         selectedMotif_innerHTML = motifC_innerHTML;
         break;
     case "motifD":
         svgHeight = 600;
         svgWidth = 1000;
-        viewBox = "0 0 1000 600"
+        //viewBox = "0 0 1000 600"
         numberOfColors = "4";
         selectedMotif_innerHTML = motifD_innerHTML;
         break;
     default:  
-        svgHeight = 1000;
-        svgWidth = 1000;
+        svgHeight = 600;
+        svgWidth = 600;
     }
 
     if (numberOfColors == "2") { // 2 color motifs:
@@ -278,11 +280,11 @@ function pickSVG () {
 function drawSVG (selectedMotif) {
     console.log('function drawSVG executed')
     updateSVG_innerHTML();
-    WovenMotifSVG.innerHTML = ''
-    SVGinDiv = document.createElement('div');
-    SVGinDiv.innerHTML = ''
-    SVGinDiv.classList.add('chartDiv');
-    SVGinDiv.innerHTML = '';
+    //WovenMotifSVG.innerHTML = ''
+    //SVGinDiv = document.createElement('div');
+    //SVGinDiv.innerHTML = ''
+    //SVGinDiv.classList.add('chartDiv');
+    //SVGinDiv.innerHTML = '';
     SVGinDiv.innerHTML = 
     `<svg id= "${selectedMotif}" width="${svgWidth}" height="${svgHeight}" 
     style="border:1px solid var(--color4); background-color:#ffffff"> 
@@ -417,7 +419,8 @@ function updateSVG_innerHTML () {
         /13  /13 <polygon points="249,41 191,99 151,59 209,1"  fill="${pickedMC1}" stroke="none" /> /13  <line x1="150" y1="60" x2="210" y2="0" stroke="black" /> /13  <line x1="190" y1="100" x2="250" y2="40" stroke="black" /> /13 <polygon points="191,1 249,59 209,99 151,41"  fill=“${pickedCC1}” stroke="none" /> /13  <line x1="190" y1="0" x2="250" y2="60" stroke="black" /> /13  <line x1="150" y1="40" x2="210" y2="100" stroke="black" /> /13 <polygon points="150,0  150,40 151,41 191, 1  190,0 "  fill=“${pickedCC1}” stroke="none" /> /13 <polygon points="250,0 250,40 249,41 209,1 210,0 "  fill="${pickedMC1}" stroke="none" />
         /13  /13 <polygon points="91,1 149,59 109,99 51,41"  fill=“${pickedCC1}” stroke="none" /> /13  <line x1="90" y1="0" x2="150" y2="60" stroke="black" /> /13  <line x1="50" y1="40" x2="110" y2="100" stroke="black" /> /13 <polygon points="149,41 91,99 51,59 109,1"  fill="${pickedCC1}" stroke="none" /> /13  <line x1="50" y1="60" x2="110" y2="0" stroke="black" /> /13  <line x1="90" y1="100" x2="150" y2="40" stroke="black" /> /13 <polygon points="50,0  50,40 51,41 91, 1  90,0 "  fill=“${pickedCC1}” stroke="none" /> /13 <polygon points="150,0 150,40 149,41 109,1 110,0 "  fill="${pickedCC1}" stroke="none" />
         <polygon points="0,10 10,0 50,0 50,40 40,50 0,50"  fill="${pickedCC1}" stroke="none" /> /13  <line x1="0" y1="10" x2="10" y2="0" stroke="black" />  /13  <line x1="40" y1="50" x2="50" y2="40" stroke="black" /> /13 <polygon points="0,50 0,10 1,9 41,49 40,50"  fill="${pickedCC1}" stroke="none" /> /13 <polygon points="0,50 0,90 1,91 41,51 40,50"  fill=“${pickedMC1}” stroke="none" /> /13 
-        `;
+        Sorry, your browser does not support inline SVG.`
+;
 
     motifB_innerHTML = `
         <circle cx="50" cy="50" r="40" stroke="${pickedMC1}" stroke-width="4" fill="${pickedCC1}" />`;
@@ -551,7 +554,7 @@ function updateSVG_innerHTML () {
         /13  /13 <polygon points="249,41 191,99 151,59 209,1"  fill="${pickedMC1}" stroke="none" /> /13  <line x1="150" y1="60" x2="210" y2="0" stroke="black" /> /13  <line x1="190" y1="100" x2="250" y2="40" stroke="black" /> /13 <polygon points="191,1 249,59 209,99 151,41"  fill="${pickedCC2}" stroke="none" /> /13  <line x1="190" y1="0" x2="250" y2="60" stroke="black" /> /13  <line x1="150" y1="40" x2="210" y2="100" stroke="black" /> /13 <polygon points="150,0  150,40 151,41 191, 1  190,0 "  fill="${pickedCC2}" stroke="none" /> /13 <polygon points="250,0 250,40 249,41 209,1 210,0 "  fill="${pickedMC1}" stroke="none" />
         /13  /13 <polygon points="91,1 149,59 109,99 51,41"  fill="${pickedCC2}" stroke="none" /> /13  <line x1="90" y1="0" x2="150" y2="60" stroke="black" /> /13  <line x1="50" y1="40" x2="110" y2="100" stroke="black" /> /13 <polygon points="149,41 91,99 51,59 109,1"  fill="${pickedCC1}" stroke="none" /> /13  <line x1="50" y1="60" x2="110" y2="0" stroke="black" /> /13  <line x1="90" y1="100" x2="150" y2="40" stroke="black" /> /13 <polygon points="50,0  50,40 51,41 91, 1  90,0 "  fill="${pickedCC2}" stroke="none" /> /13 <polygon points="150,0 150,40 149,41 109,1 110,0 "  fill="${pickedCC1}" stroke="none" />
         <polygon points="0,10 10,0 50,0 50,40 40,50 0,50"  fill="${pickedCC1}" stroke="none" /> /13  <line x1="0" y1="10" x2="10" y2="0" stroke="black" />  /13  <line x1="40" y1="50" x2="50" y2="40" stroke="black" /> /13 <polygon points="0,50 0,10 1,9 41,49 40,50"  fill="${pickedCC1}" stroke="none" /> /13 <polygon points="0,50 0,90 1,91 41,51 40,50"  fill="${pickedMC2}" stroke="none" /> /13 
-        `
+        Sorry, your browser does not support inline SVG.`
 
 
 }
