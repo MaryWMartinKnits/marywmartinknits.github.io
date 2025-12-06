@@ -23,13 +23,13 @@
     <meta property="og:image:alt" content="MaryWMartin's logo">
     <meta property="og:locale" content="en_US">
     
-    <title>Woven Placemats</title>
+    <title>Woven Motifs</title>
 </head>
 <body>
     <main>
         <div id="begOfPage">
             <div id="pageTitle">
-                <h1>Design Your Own Woven Placemat</h1>
+                <h1>Pick Colors for the Woven Motifs</h1>
             </div>
             <div class="logo">
                 <!-- <a href="https://www.marywmartinknits.com" target="_blank"><img id="logo" src="VectorColor3.svg" alt="Mary W Martin knits logo"></a> -->
@@ -45,44 +45,12 @@
             
         </div>
 
-        <!-- <section id="specials" class="text">
-            <h2 style="display: none;">Specials available through June 30th.
-            </h2>
-            <button class="accordion">Specials available through June 30th.
-            </button>
-            <div class="panel">
-                <p>Offers available through June 30th.</p>
-                <p>Download the Woven Placemat A pattern for free with code <strong>"FreeWeave"</strong> .</p>
-                <p>Use code <strong>"Woven"</strong> for 20% off Design Your Own Woven Placemat, Woven Placemat Collection, Woven Placemat B, C, D. </p>
-
-                <p>Ravelry: 
-                    <a href="https://www.ravelry.com/patterns/sources/design-your-own--woven-placemats-a-e" target="_blank">Design Your Own Woven Placemat</a>, 
-                    <a href="https://www.ravelry.com/patterns/sources/woven-placemat-collection/patterns" target="_blank">Woven Placemat Collection</a>,
-                    Woven Placemat 
-                    <a href="https://www.ravelry.com/patterns/library/woven-placemat-a" target="_blank">A</a>, 
-                    <a href="https://www.ravelry.com/patterns/library/woven-placemat-b" target="_blank">B</a>,  
-                    <a href="https://www.ravelry.com/patterns/library/woven-placemat-c" target="_blank">C</a>, 
-                    <a href="https://www.ravelry.com/patterns/library/woven-placemat-d" target="_blank">D</a>.
-                </p>
-                <p>Payhip: <a href="https://payhip.com/b/uFUGZ" target="_blank">Woven Placemat Collection</a>, 
-                    Woven Placemat <a href="https://payhip.com/b/x7tlX" target="_blank">A</a>, 
-                    <a href="https://payhip.com/b/rqth4" target="_blank">B</a>,  
-                    <a href="https://payhip.com/b/AwVXO" target="_blank">C</a>, 
-                    <a href="https://payhip.com/b/tzPZC" target="_blank">D</a>. 
-                </p>
-                    
-            </div>
-        </section> -->
-
         <section id="introduction" class="text">
             <h2 style="display: none;">About This Program</h2>
             <button class="accordion">About This Program</button>
             <div class="panel">
                     <img class="placematPicture" id="fourPlacemats" src="https://reversibleknits.files.wordpress.com/2024/04/4placemats-1.jpg" alt="four placemats">
-                    <p>This program helps you visualize your placemat design.  To knit your design, use this program  in conjunction with the Woven Placemats Collection pattern.</p>
-                    <p>These placemats use an innovative knitting technique that replicates woven fabric.  There are fifty-six cables on this design; each starts at the bottom and travels up the mat.  If the cable reaches the side, it changes horizontal direction and continues moving upwards. </p>
-                    <p>Different designs are created by changing the colour of the cables.  There are lots of different colour combinations possible (2 to the power of 56 to be exact) and each will create a different woven motif.</p>
-                    <p>There are many beautiful designs.  I hope you enjoy creating your own.</p>
+                    <p>Write "About This Program" section</p>
             </div>
         </section>
 
@@ -91,105 +59,95 @@
             <button class="accordion">Instructions</button>
             <div class="panel">
                     <img class="placematPicture" id="threePlacemats" src="https://reversibleknits.files.wordpress.com/2024/04/3placemats.jpg" alt="three placemats">
-                    <p>This placemat is worked in 2 colours.  The main colour (MC) is used on the edges and the woven motif.  The contrast colour (CC) is used only in the woven motif.</p>
-                    <p>The fifty-six cables are arranged in twenty-eight pairs.  Pair 1 refers to the cables that start at the right end of the placemat; pair 28 refers to the cables that start at the left end. </p>
-                    <p>Toggle between MC or CC to choose the colour of each cable.  Press Draw Placemat to see your design.  Press Continue Editing to make changes to your design. When you are happy with your design, press Create Pattern. </p>
-                    <p>The Create Pattern feature is password-protected.  The password is found in your Ravelry download of the Design Your Own Placemat purchase.  You will also be asked for your email; please enter the email used to purchase the pattern.</p>
-                    <p>Consider taking screenshots of your placemat drawing and pattern to access them in the future.  Refer to the Design Your Own Placemat document for instructions on using the pattern.</p>
-                    <p>I would love to see your designs!  Please share the pictures but do NOT share the associated pattern.</p>
-                    <h3>Optional: </h3>
-                    <p>Choose the colour used to represent MC or CC in the drawing by pressing the Pick MC/CC button.  </p>
-                    <p>Press Pick Background to choose the background colour of drawing.  Choose a colour that gives good definition to your MC/CC choices; this is for viewing purposes only -- your placemat will NOT have this background colour.</p>
+                    <p>Write instructions.</p>
             </div>
         </section>
         <hr>
-
-        <section>
-            <div id="userInputDiv"> </div>
-        </section>
     
         <div class="text note0">
-            <p>Choose the colours used in drawing the placemat to represent MC or CC and the background that gives you a good definition with your MC and CC choices.</p>
+            <p>Write text!!! Example: Choose the colours used in drawing the placemat to represent MC or CC and the background that gives you a good definition with your MC and CC choices.</p>
         </div>
+
+        <hr>
+
+        <div class="swatch">
+            <div id="motifPickerDiv">
+                <label for="motifPickerDropDown">Choose a motif:</label>
+                <select id="motifPickerDropDown" name="chosenMotif">
+
+                    <optgroup label="2 colours">
+                        <option value="motifA">Motif A</option>
+                        <option value="motifB">Motif B</option>
+                    </optgroup>
+
+                    <optgroup label="4 colours">
+                        <option value="motifC">Motif C</option>
+                        <option value="motifD">Motif D</option>
+                    </optgroup>
+
+                </select>
+            </div>
+        </div>
+        
+        <hr>
 
         <div id="colorPickerDiv">
 
             <div id="colorSwatches">
-                <div class="swatch">
-                    <label for="colorPickerMC">
-                        <input type="color" id="colorPickerMC" title="Pick the main color (MC)" value="#5F5FA5"> 
-                    </label>
-                    <div class="swatchInfo">
-                        <h3>Pick MC</h3>
-                    </div>
-                    
-                </div>
-                <div class="swatch">
-                    <label for="colorPickerCC"> 
-                        <input type="color" id="colorPickerCC" title="Pick the contrasting color (CC)" value="#ffa500">  
-                    </label>
-                    <div class="swatchInfo">
-                        <h3>Pick CC</h3>
+
+                <div id="MC1_swatch">
+                    <div class="swatch" >
+                        <label for="colorPickerMC1">
+                            <input type="color" id="colorPickerMC1" title="Pick the main color (MC)" value="#5F5FA5"> 
+                        </label>
+                        <div class="swatchInfo">
+                            <h3>Pick MC 1</h3>
+                        </div>
                     </div>
                 </div>
-                <div class="swatch">
-                    <label for="colorPickerbackground">
-                        <input type="color" id="backgroundPickerBtn" title="Pick the background color" value="#ffffff"> 
-                    </label>
-                    <div class="swatchInfo">
-                        <h3>Pick Background</h3>
+
+                <div id="MC2_swatch">
+                    <div class="swatch" >
+                        <label for="colorPickerMC2">
+                            <input type="color" id="colorPickerMC2" title="Pick the main color (MC)" value="#5F5FA5"> 
+                        </label>
+                        <div class="swatchInfo">
+                            <h3>Pick MC 2</h3>
+                        </div>
                     </div>
-                    
                 </div>
+
+                <div id="CC1_swatch">
+                    <div class="swatch" >
+                        <label for="colorPickerCC1"> 
+                            <input type="color" id="colorPickerCC1" title="Pick the contrasting color (CC)" value="#ffa500">  
+                        </label>
+                        <div class="swatchInfo">
+                            <h3>Pick CC 1</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="CC2_swatch">
+                    <div class="swatch" >
+                        <label for="colorPickerCC2"> 
+                            <input type="color" id="colorPickerCC2" title="Pick the contrasting color (CC)" value="#ffa500">  
+                        </label>
+                        <div class="swatchInfo">
+                            <h3>Pick CC 2</h3>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div> 
 
-        <div class="text note0">
-            <p>Press Draw Placemat to see how your placemat will look with your selections.</p>
-        </div>
-
-        <div class="outsideBtnsDiv">
-            <section class="buttonsDiv">
-                <button id="createChartBtn" title="Draw placemat">Draw Placemat</button>
-                <button id="continueEditingBtn" title="Continue editing">Continue editing</button>
-                <button id="createSetUpRowsBtn" title="Create Setup Rows">Create Pattern</button>
-            </section>
-        </div>
-
-        <div id="note1" class="hidden text note0" >
-            <p>To make changes to your inputs, press Continue Editing.</p>
-            <p>When you are happy with your placemat, press Create Pattern. <strong> Changes cannot be made to the inputs after creating the pattern</strong>.</p>
-            <p>Please enter the <strong> email </strong> that you used when purchasing this pattern.  Enter <strong> password </strong> found in <a href="https://www.ravelry.com/patterns/sources/design-your-own--woven-placemats-a-e" target="_blank">Design Your Own Woven Placemat pattern</a>.</p>
-            <p class="biggerFont"> <strong> Please  screenshot inputs, drawing & pattern.  This information will not be saved. </strong></p>
-        </div>
-
 
         <div id="svgChartDiv" tabindex="0">
-            <div id="updateSVG" class="hidden text">
-                <p>Press Draw Placemat to update</p>
-            </div>
-            <div id="svgPlacemat"></div>
-            <div id="chartNumbersDiv"></div>
+            <div id="WovenMotifSVG"></div>
         </div>
 
-        <div id="setUpRows" tabindex="0">
 
-        </div>
-
-        <div id="note2" class="hidden text">
-            <p>Note: The drawings do not show the over/under crossing of the cables; so the colour dominance of the combined colour blocks is not accurate. Please use it as a guide to where different colour blocks form.</p>
-            <p>Consider taking screenshots of any information you would like to access in the future. </p>
-            <p>I would love to see your designs. Please share the pictures but do NOT share the associated pattern</p>
-        </div>
-
-        <hr>
-        <div class="allPlacemats">
-            <img alt="placemat A" id="placematA" class="individualPlacemats" src="https://reversibleknits.files.wordpress.com/2024/04/placemat-a-landscape-1.jpg">
-            <img alt="placemat B" id="placematB" class="individualPlacemats" src="https://reversibleknits.files.wordpress.com/2024/04/placemat-b-landscape-1.jpg">
-            <img alt="placemat C" id="placematC" class="individualPlacemats" src="https://reversibleknits.files.wordpress.com/2024/04/placemat-c-landscape-1.jpg">
-            <img alt="placemat D" id="placematD" class="individualPlacemats" src="https://reversibleknits.files.wordpress.com/2024/04/placemat-d-landscape-1.jpg">
-            <p id="allPlacematsText">These four placemats patterns are included in the Design Your Own Placemat pattern.</p>
-        </div>
         <hr>
     </main>
 
@@ -254,10 +212,10 @@
                 <svg class="social-icons" viewbox="0 0 512 512" preserveAspectRatio="xMidYMid meet" width="50px" height="50px">
                     <path d="M101.3 141.6v228.9h0.3 308.4 0.8V141.6H101.3zM375.7 167.8l-119.7 91.5 -119.6-91.5H375.7zM127.6 194.1l64.1 49.1 -64.1 64.1V194.1zM127.8 344.2l84.9-84.9 43.2 33.1 43-32.9 84.7 84.7L127.8 344.2 127.8 344.2zM384.4 307.8l-64.4-64.4 64.4-49.3V307.8z"></path>
                 </svg>
-                <p> <a class="link_noUnderline" href="https://mailchi.mp/2d98d9f588fe/marywmartinknits" target="_blank" aria-label="Subscribe to Mary W Martin Knits Newsletter"><span>Subscribe to my newsletter</span> </a> </p>
+                <p> <a class="link_noUnderline" href="https://marywmartinknits.myflodesk.com/" target="_blank" aria-label="Subscribe to Mary W Martin Knits Newsletter"><span>Subscribe to my newsletter</span> </a> </p>
             </div>
         </div>
     </footer> 
-    <script src="wovenPlacemats.js"></script>
+    <script src="wovenMotifs.js"></script>
 </body>
 </html>
