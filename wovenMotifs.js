@@ -12,23 +12,7 @@ let allSwitches;
 let allLabels;
 let allFieldsets;
 
-let svgDivTotalWidth;
-let svgDivTotalWidth90;
-let restarWidth;
-let sumarWidth;
-let svgNewWidth;
-let svgNewHeight;
 
-let topBox;
-let bottomBox;
-let leftBox;
-let rightBox;
-let leftBoxWidth;
-let rightBoxWidth;
-let leftBoxHeight;
-let rightBoxHeight;
-let bottomBoxWidth;
-let topBoxWidth;
 // SVG:
 let SVGinDiv;
 let WovenMotifSVG;
@@ -51,8 +35,27 @@ let motifDiamondQuartetMitts_M_innerHTML;
 
 let selectedMotif_innerHTML = motifDiamondQuartetMitts_SandL_innerHTML;
 
+
 // choosing colors:
-let MC1pickerBtn;
+let MC1pickerBtn;let svgDivTotalWidth;
+let svgDivTotalWidth90;
+let restarWidth;
+let sumarWidth;
+let svgNewWidth;
+let svgNewHeight;
+
+let topBox;
+let bottomBox;
+let leftBox;
+let rightBox;
+let leftBoxWidth;
+let rightBoxWidth;
+let leftBoxHeight;
+let rightBoxHeight;
+let bottomBoxWidth;
+let topBoxWidth;
+
+//colors
 let MC2pickerBtn;
 let CC1pickerBtn;
 let CC2pickerBtn;
@@ -364,7 +367,9 @@ function drawSVG (selectedMotif) {
     style="border:1px solid var(--color4); background-color:#ffffff"> 
     ${selectedMotif_innerHTML}
     </svg>`;
+    WovenMotifSVG.appendChild(leftBox);
     WovenMotifSVG.appendChild(SVGinDiv);
+    WovenMotifSVG.appendChild(rightBox);
     document.getElementById("svgChartDiv").focus();
 }
 
