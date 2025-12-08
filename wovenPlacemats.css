@@ -1004,3 +1004,8 @@ input[type=number], #numOftotalDE {
         max-height: 50vh;
     }
 } 
+
+.svg3columnDisplay {
+    display: flex;
+    flex-direction: column;
+}

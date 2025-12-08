@@ -1,36 +1,47 @@
 "use strict";
 
 // declaring variables:
-let windowWidth;
+let viewportWidth;
 let begOfPage;
 let userInputTitle;
 let divToCreateSpace;
 let optimalHeight;
-
-
 
 let allSwitches;
 
 let allLabels;
 let allFieldsets;
 
+let svgDivTotalWidth;
+let restarWidth;
+let svgNewWidth;
+let svgNewHeight;
 
+let topBox;
+let bottomBox;
+let leftBox;
+let rightBox;
+let leftBoxWidth;
+let rightBoxWidth;
+let leftBoxHeight;
+let rightBoxHeight;
+let bottomBoxWidth;
+let topBoxWidth;
 // SVG:
 let SVGinDiv;
 let WovenMotifSVG;
         let svgHeight = 0;
         let svgWidth = 0; 
-        //let viewBox;
+        let viewBox;
 let numberOfColors = "2";
 
 let motifPicker;
 let pickedMotif;
-let selectedMotif = 'motifD';
+let selectedMotif = 'motifDiamondQuartetMitts_SandL';
 
 let motifD;
 let motifDiamondQuartetMitts_SandL
 let motifDiamondQuartetMitts_M
-
 
 let motifD_innerHTML;
 let motifDiamondQuartetMitts_SandL_innerHTML;
@@ -51,7 +62,7 @@ let pickedMC2;
 let pickedCC1;
 let pickedCC2;
 let pickedBackground = '#ffffff';
-let  MC2_swatch;
+let MC2_swatch;
 let CC2_swatch; 
 
 let note1;
@@ -71,7 +82,8 @@ function init() {
 function getDOMelements () {
     console.log('function getDOMelements executed');
     begOfPage = document.querySelector('#begOfPage')
-    windowWidth = document.querySelector('#window-width');
+    //windowWidth = document.querySelector('#window-width');
+    //console.log(`windowWidth: ${windowWidth}`);
     divToCreateSpace = document.querySelector('.space');
     WovenMotifSVG = document.querySelector('#WovenMotifSVG');
     MC1pickerBtn = document.querySelector('#colorPickerMC1');
@@ -87,6 +99,10 @@ function getDOMelements () {
     console.log(accArray); 
     motifPicker = document.querySelector('#motifPickerDropDown');
     SVGinDiv = document.querySelector("#SVGinDiv");
+    topBox = document.querySelector("#topBox");
+    bottomBox = document.querySelector("#bottomBox");
+    leftBox = document.querySelector("#leftBox");
+    rightBox = document.querySelector("#rightBox");
     addEventListeners ();
     chooseMotifColors ();
     accordions (); 
@@ -231,11 +247,32 @@ function updatePickedColors (pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedB
 function pickSVG () {
     console.log('FUNCTION pickSVG executed');
     selectedMotif = motifPickerDropDown.value;
-    switch (selectedMotif) {
+    determinarSVGcharacteristics (selectedMotif);
+    viewBox = `0 0 ${svgWidth} ${svgHeight}`
+    calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth);
+
+    if (numberOfColors == "2") { // 2 color motifs:
+        hideBtn (MC2_swatch);
+        hideBtn (CC2_swatch);
+        console.log(`selected motif: ${selectedMotif} with ${numberOfColors} colors -> hide MC2 & CC2 swatches`);
+    } else if (numberOfColors == "4") {  // 4 color motifs: 
+        enableBtn (MC2_swatch);
+        enableBtn (CC2_swatch);
+        console.log(`selected motif: ${selectedMotif} with ${numberOfColors} colors -> enable MC2 & CC2 swatches`);
+    }
+
+    updateSVG_innerHTML();
+    drawSVG (selectedMotif);
+}
+
+function determinarSVGcharacteristics () {
+switch (selectedMotif) {
     case "motifDiamondQuartetMitts_SandL":
+        leftBoxWidth = 0;
+        rightBoxWidth = 0; 
         svgHeight = 600; //I'll make this one dependant on the svgWidth
         svgWidth = 1000; //I'll make the svgWidth dependant on the width of the screen
-        numberOfColors = "2";
+        numberOfColors = "4";
         selectedMotif_innerHTML = motifDiamondQuartetMitts_SandL_innerHTML;
         break;
     case "motifDiamondQuartetMitts_M":
@@ -247,33 +284,53 @@ function pickSVG () {
     case "motifD":
         svgHeight = 600;
         svgWidth = 1000;
-        //viewBox = "0 0 1000 600"
-        numberOfColors = "4";
+        numberOfColors = "2";
         selectedMotif_innerHTML = motifD_innerHTML;
         break;
     default:  
         svgHeight = 600;
         svgWidth = 600;
+        numberOfColors = "4";
+        selectedMotif_innerHTML = motifDiamondQuartetMitts_SandL_innerHTML;
     }
 
-    if (numberOfColors == "2") { // 2 color motifs:
-        hideBtn (MC2_swatch);
-        hideBtn (CC2_swatch);
-        console.log(`selected motif: ${selectedMotif} with ${numberOfColors} colors -> hide MC2 & CC2 swatches`);
-    } else if (numberOfColors == "4") {  // 4 color motifs: 
-        enableBtn (MC2_swatch);
-        enableBtn (CC2_swatch);
-        console.log(`selected motif: ${selectedMotif} with ${numberOfColors} colors -> enable MC2 & CC2 swatches`);
+}
+
+function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
+    viewportWidth = window.innerWidth;
+    console.log(`function calculateTotalWidth executed: leftBoxWidth = ${leftBoxWidth}, rightBoxWidth = ${rightBoxWidth}, svgWidth = ${svgWidth}, viewportWidth = ${viewportWidth}`);
+    viewBox = `0 0 ${svgWidth} ${svgHeight}`
+    svgDivTotalWidth = leftBoxWidth + svgWidth + rightBoxWidth;
+    if (svgDivTotalWidth < viewportWidth) {
+        console.log("svgDivTotalWidth < viewportWidth")
+        svgNewWidth = svgWidth;
+        svgNewHeight = svgHeight;
+    } else if (svgDivTotalWidth > viewportWidth) {
+        console.log("svgDivTotalWidth > viewportWidth")
+        restarWidth = svgDivTotalWidth - viewportWidth;
+        restarWidth = svgWidth - viewportWidth;
+        //svgNewWidth = svgDivTotalWidth - restarWidth - leftBoxWidth - rightBoxWidth;
+        svgNewWidth = svgDivTotalWidth - restarWidth;
+        svgNewWidth = svgNewWidth * 0.99;
+        svgNewHeight = svgHeight - restarWidth;
+        svgNewHeight = svgNewHeight * 0.99;
+        console.log (`restarWidth = (svgDivTotalWidth - viewportWidth): (${svgDivTotalWidth} - ${viewportWidth}) = ${restarWidth} / svgWidth: ${svgWidth} -> svg(new)Width: ${svgNewWidth} / svgHeight: ${svgHeight} -> svgNewHeight: ${svgNewHeight}`) 
     }
-    updateSVG_innerHTML();
-    drawSVG (selectedMotif);
+        leftBoxHeight = svgNewHeight;
+        rightBoxHeight = svgNewHeight; 
+        bottomBoxWidth = svgNewWidth;
+        topBoxWidth = svgNewWidth;
+    
 }
 
 function drawSVG (selectedMotif) {
     console.log('function drawSVG executed')
+    console.log(`svgWidth: ${svgWidth} / svgNewWidth: ${svgNewWidth}`);
+    console.log(`svgHeigth: ${svgHeight} / svgNewHeight: ${svgNewHeight}`);
+    console.log(`viewportWidth: ${viewportWidth} / viewBox: ${viewBox}`);
     updateSVG_innerHTML();
     SVGinDiv.innerHTML = 
-    `<svg id= "${selectedMotif}" width="${svgWidth}" height="${svgHeight}" 
+    `<svg id= "${selectedMotif}" width="${svgNewWidth}" height="${svgNewHeight}" viewbox="${viewBox}"
     style="border:1px solid var(--color4); background-color:#ffffff"> 
     ${selectedMotif_innerHTML}
     </svg>`;

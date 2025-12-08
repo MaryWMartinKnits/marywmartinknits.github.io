@@ -89,9 +89,12 @@
                         <option value="motifDiamondQuartetMitts_SandL">Size S & L</option>
                         <option value="motifDiamondQuartetMitts_M">Size M</option>
                     </optgroup>
-
-                    <optgroup label="4 colours">
-                        <option value="motifD" selected>Motif D</option>
+                    <optgroup label="Diamond Quartet Hat & Cowl">
+                        <option value="motifDiamondQuartetMitts_M">Hat</option>
+                        <option value="motifDiamondQuartetMitts_M">Cowl</option>
+                    </optgroup>
+                    <optgroup label="2 colours">
+                        <option value="motifD">motif D</option>
                     </optgroup>
 
                 </select>
@@ -153,10 +156,21 @@
 
 
         <div id="svgChartDiv" tabindex="0">
-            <div id="WovenMotifSVG">
-                <div class="chartDiv" id="SVGinDiv">
-                    
+            <div id = boxesANDsvg>
+
+                <div id="topBox"></div>
+
+                <div id="WovenMotifSVG" class="svg3columnDisplay">
+                    <div id="leftBox"></div>
+
+                    <div class="chartDiv" id="SVGinDiv">
+                    </div>
+
+                    <div id="rightBox"></div>
                 </div>
+
+                <div id="bottomBox"></div>
+
             </div>
         </div>
 
