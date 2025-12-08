@@ -29,7 +29,7 @@
     <main>
         <div id="begOfPage">
             <div id="pageTitle">
-                <h1>Pick Colors for the Woven Motifs</h1>
+                <h1>Pick Colors for the Diamond Quartet pattern</h1>
             </div>
             <div class="logo">
                 <!-- <a href="https://www.marywmartinknits.com" target="_blank"><img id="logo" src="VectorColor3.svg" alt="Mary W Martin knits logo"></a> -->
@@ -49,8 +49,8 @@
             <h2 style="display: none;">About This Program</h2>
             <button class="accordion">About This Program</button>
             <div class="panel">
-                    <img class="placematPicture" id="fourPlacemats" src="https://reversibleknits.files.wordpress.com/2024/04/4placemats-1.jpg" alt="four placemats">
-                    <p>Write "About This Program" section</p>
+                    <img class="placematPicture" id="fourPlacemats" src="https://reversibleknits.wordpress.com/wp-content/uploads/2025/12/img_1434-1.jpg" alt="">
+                    <p>FOR TESTING.  See how the Diamond Quartet motif looks with your yarn colours.</p>
             </div>
         </section>
 
@@ -58,8 +58,18 @@
             <h2 style="display: none;">Instructions</h2>
             <button class="accordion">Instructions</button>
             <div class="panel">
-                    <img class="placematPicture" id="threePlacemats" src="https://reversibleknits.files.wordpress.com/2024/04/3placemats.jpg" alt="three placemats">
-                    <p>Write instructions.</p>
+                    <img class="placematPicture" id="threePlacemats" src="https://reversibleknits.wordpress.com/wp-content/uploads/2025/12/img_1435-1.jpg" alt="">
+                    <p>Click on the coloured squares below to change the colour of MC1/MC2/CC1/CC2.  <br>
+                        <br>
+                        You can change the colour in 3 ways: <br>
+                        <br>
+                        - Select "Grid" or "Spectrum" and tap on the colour to use <br>
+                        - Select "Sliders" to adjust a colour or enter a Hex Colour Code #. <br>
+                        <br>
+                        If I have a colour accurate picture of my yarn, I prefer to enter the Hex Colour Code.  There are many free online tools that allow you to upload a picture to find the Hex colour code.  I use <a href="https://imagecolorpicker.com/" target=”_blank”>https://imagecolorpicker.com/</a>.  Copy the colour code into the sRBG Hex Color # box. <br>
+                        <br>
+                        Feel free to take a screenshot of your work to save it. <br>
+                    </p>
             </div>
         </section>
         <hr>
@@ -75,14 +85,16 @@
                 <label for="motifPickerDropDown">Choose a motif:</label>
                 <select id="motifPickerDropDown" name="chosenMotif">
 
-                    <optgroup label="2 colours">
-                        <option value="motifA">Motif A</option>
-                        <option value="motifB">Motif B</option>
+                    <optgroup label="Diamond Quartet Mitts">
+                        <option value="motifDiamondQuartetMitts_SandL">Size S & L</option>
+                        <option value="motifDiamondQuartetMitts_M">Size M</option>
                     </optgroup>
-
-                    <optgroup label="4 colours">
-                        <option value="motifC">Motif C</option>
-                        <option value="motifD" selected>Motif D</option>
+                    <optgroup label="Diamond Quartet Hat & Cowl">
+                        <option value="motifDiamondQuartetMitts_M">Hat</option>
+                        <option value="motifDiamondQuartetMitts_M">Cowl</option>
+                    </optgroup>
+                    <optgroup label="2 colours">
+                        <option value="motifD">motif D</option>
                     </optgroup>
 
                 </select>
@@ -98,9 +110,9 @@
                 <div id="MC1_swatch">
                     <div class="swatch" >
                         <label for="colorPickerMC1">
-                            <input type="color" id="colorPickerMC1" title="Pick the main color (MC)" value="#5F5FA5"> 
+                            <input type="color" id="colorPickerMC1" title="Pick the main color (MC)" value="#9370db"> 
                         </label>
-                        <div class="swatchInfo">
+                        <div class="swatchInfo" id="MC1_swatchTitle">
                             <h3>Pick MC 1</h3>
                         </div>
                     </div>
@@ -109,7 +121,7 @@
                 <div id="MC2_swatch">
                     <div class="swatch" >
                         <label for="colorPickerMC2">
-                            <input type="color" id="colorPickerMC2" title="Pick the main color (MC)" value="#5F5FA5"> 
+                            <input type="color" id="colorPickerMC2" title="Pick the main color (MC)" value="#c71585"> 
                         </label>
                         <div class="swatchInfo">
                             <h3>Pick MC 2</h3>
@@ -122,7 +134,7 @@
                         <label for="colorPickerCC1"> 
                             <input type="color" id="colorPickerCC1" title="Pick the contrasting color (CC)" value="#ffa500">  
                         </label>
-                        <div class="swatchInfo">
+                        <div class="swatchInfo" id="CC1_swatchTitle">
                             <h3>Pick CC 1</h3>
                         </div>
                     </div>
@@ -131,7 +143,7 @@
                 <div id="CC2_swatch">
                     <div class="swatch" >
                         <label for="colorPickerCC2"> 
-                            <input type="color" id="colorPickerCC2" title="Pick the contrasting color (CC)" value="#ffa500">  
+                            <input type="color" id="colorPickerCC2" title="Pick the contrasting color (CC)" value="#8b4513">  
                         </label>
                         <div class="swatchInfo">
                             <h3>Pick CC 2</h3>
@@ -144,10 +156,21 @@
 
 
         <div id="svgChartDiv" tabindex="0">
-            <div id="WovenMotifSVG">
-                <div class="chartDiv" id="SVGinDiv">
-                    
+            <div id = boxesANDsvg>
+
+                <div id="topBox"></div>
+
+                <div id="WovenMotifSVG" class="svg3columnDisplay">
+                    <div id="leftBox"></div>
+
+                    <div class="chartDiv" id="SVGinDiv">
+                    </div>
+
+                    <div id="rightBox"></div>
                 </div>
+
+                <div id="bottomBox"></div>
+
             </div>
         </div>
 
