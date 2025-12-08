@@ -13,7 +13,9 @@ let allLabels;
 let allFieldsets;
 
 let svgDivTotalWidth;
+let svgDivTotalWidth90;
 let restarWidth;
+let sumarWidth;
 let svgNewWidth;
 let svgNewHeight;
 
@@ -321,6 +323,14 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
         console.log("svgDivTotalWidth < viewportWidth")
         svgNewWidth = svgWidth;
         svgNewHeight = svgHeight;
+        svgDivTotalWidth90 = svgDivTotalWidth * 0.9;
+        if (svgDivTotalWidth90 < viewportWidth) {
+            console.log("svgDivTotalWidth90 < viewportWidth")
+            sumarWidth = viewportWidth - svgDivTotalWidth90;
+            svgNewWidth = svgDivTotalWidth90 + sumarWidth;
+            svgNewHeight = svgHeight * svgNewWidth / svgWidth;
+            console.log (`sumarWidth = (viewportWidth - vgDivTotalWidth90): (${viewportWidth} - ${svgDivTotalWidth90}) = ${sumarWidth} / svgWidth: ${svgWidth} -> svgNewWidth: ${svgNewWidth} / svgHeight: ${svgHeight} -> svgNewHeight: ${svgNewHeight}`);
+        }
     } else if (svgDivTotalWidth > viewportWidth) {
         console.log("svgDivTotalWidth > viewportWidth")
         restarWidth = svgDivTotalWidth - viewportWidth;
@@ -328,9 +338,9 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
         //svgNewWidth = svgDivTotalWidth - restarWidth - leftBoxWidth - rightBoxWidth;
         svgNewWidth = svgDivTotalWidth - restarWidth;
         svgNewWidth = svgNewWidth * 0.99;
-        svgNewHeight = svgHeight - restarWidth;
-        svgNewHeight = svgNewHeight * 0.99;
-        console.log (`restarWidth = (svgDivTotalWidth - viewportWidth): (${svgDivTotalWidth} - ${viewportWidth}) = ${restarWidth} / svgWidth: ${svgWidth} -> svg(new)Width: ${svgNewWidth} / svgHeight: ${svgHeight} -> svgNewHeight: ${svgNewHeight}`) 
+        svgNewHeight = svgHeight * svgNewWidth / svgWidth;
+        
+        console.log (`restarWidth = (svgDivTotalWidth - viewportWidth): (${svgDivTotalWidth} - ${viewportWidth}) = ${restarWidth} / svgWidth: ${svgWidth} -> svg(new)Width: ${svgNewWidth} / svgHeight: ${svgHeight} -> svgNewHeight: ${svgNewHeight}`);
     }
         leftBoxHeight = svgNewHeight;
         rightBoxHeight = svgNewHeight; 
