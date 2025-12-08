@@ -239,8 +239,8 @@ function pickSVG () {
         selectedMotif_innerHTML = motifDiamondQuartetMitts_SandL_innerHTML;
         break;
     case "motifDiamondQuartetMitts_M":
-        svgHeight = 150;
-        svgWidth = 500;
+        svgHeight = 600;
+        svgWidth = 800;
         numberOfColors = "4";
         selectedMotif_innerHTML = motifDiamondQuartetMitts_M_innerHTML;
         break;
