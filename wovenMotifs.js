@@ -62,6 +62,8 @@ let pickedMC2;
 let pickedCC1;
 let pickedCC2;
 let pickedBackground = '#ffffff';
+let MC1_swatchTitle;
+let CC1_swatchTitle;
 let MC2_swatch;
 let CC2_swatch; 
 
@@ -91,6 +93,8 @@ function getDOMelements () {
     CC1pickerBtn = document.querySelector('#colorPickerCC1');
     CC2pickerBtn = document.querySelector('#colorPickerCC2');
     //backgroundPickerBtn = document.querySelector('#backgroundPickerBtn')
+    MC1_swatchTitle = document.querySelector('#MC1_swatchTitle');
+    CC1_swatchTitle = document.querySelector('#CC1_swatchTitle');
     MC2_swatch = document.querySelector('#MC2_swatch');
     CC2_swatch = document.querySelector('#CC2_swatch');
     note1 = document.querySelector('#note1');
@@ -255,14 +259,26 @@ function pickSVG () {
         hideBtn (MC2_swatch);
         hideBtn (CC2_swatch);
         console.log(`selected motif: ${selectedMotif} with ${numberOfColors} colors -> hide MC2 & CC2 swatches`);
+        changeMC1andCC1toMCandCC ();
     } else if (numberOfColors == "4") {  // 4 color motifs: 
         enableBtn (MC2_swatch);
         enableBtn (CC2_swatch);
         console.log(`selected motif: ${selectedMotif} with ${numberOfColors} colors -> enable MC2 & CC2 swatches`);
+        changeMCandCCtoMC1andCC1 ();
     }
 
     updateSVG_innerHTML();
     drawSVG (selectedMotif);
+}
+
+function changeMC1andCC1toMCandCC () {
+MC1_swatchTitle.innerHTML = `<h3>Pick MC</h3>`;
+CC1_swatchTitle.innerHTML = `<h3>Pick CC</h3>`;
+}
+
+function changeMCandCCtoMC1andCC1 () {
+MC1_swatchTitle.innerHTML = `<h3>Pick MC 1</h3>`;
+CC1_swatchTitle.innerHTML = `<h3>Pick CC 1</h3>`;
 }
 
 function determinarSVGcharacteristics () {
