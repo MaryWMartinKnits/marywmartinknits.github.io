@@ -12,23 +12,7 @@ let allSwitches;
 let allLabels;
 let allFieldsets;
 
-let svgDivTotalWidth;
-let svgDivTotalWidth90;
-let restarWidth;
-let sumarWidth;
-let svgNewWidth;
-let svgNewHeight;
 
-let topBox;
-let bottomBox;
-let leftBox;
-let rightBox;
-let leftBoxWidth;
-let rightBoxWidth;
-let leftBoxHeight;
-let rightBoxHeight;
-let bottomBoxWidth;
-let topBoxWidth;
 // SVG:
 let SVGinDiv;
 let WovenMotifSVG;
@@ -51,8 +35,27 @@ let motifDiamondQuartetMitts_M_innerHTML;
 
 let selectedMotif_innerHTML = motifDiamondQuartetMitts_SandL_innerHTML;
 
+
 // choosing colors:
-let MC1pickerBtn;
+let MC1pickerBtn;let svgDivTotalWidth;
+let svgDivTotalWidth90;
+let restarWidth;
+let sumarWidth;
+let svgNewWidth;
+let svgNewHeight;
+
+let topBox;
+let bottomBox;
+let leftBox;
+let rightBox;
+let leftBoxWidth;
+let rightBoxWidth;
+let leftBoxHeight;
+let rightBoxHeight;
+let bottomBoxWidth;
+let topBoxWidth;
+
+//colors
 let MC2pickerBtn;
 let CC1pickerBtn;
 let CC2pickerBtn;
@@ -323,21 +326,25 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
         console.log("svgDivTotalWidth < viewportWidth")
         svgNewWidth = svgWidth;
         svgNewHeight = svgHeight;
-        svgDivTotalWidth90 = svgDivTotalWidth * 0.9;
+        //svgDivTotalWidth90 = svgDivTotalWidth * 0.9;
         if (svgDivTotalWidth90 < viewportWidth) {
             console.log("svgDivTotalWidth90 < viewportWidth")
-            sumarWidth = viewportWidth - svgDivTotalWidth90;
-            svgNewWidth = svgDivTotalWidth90 + sumarWidth;
+            sumarWidth = viewportWidth - svgDivTotalWidth;
+            //svgNewWidth = svgDivTotalWidth90 + sumarWidth;
+            svgNewWidth = (svgDivTotalWidth + sumarWidth) * 0.9;
             svgNewHeight = svgHeight * svgNewWidth / svgWidth;
+
             console.log (`sumarWidth = (viewportWidth - vgDivTotalWidth90): (${viewportWidth} - ${svgDivTotalWidth90}) = ${sumarWidth} / svgWidth: ${svgWidth} -> svgNewWidth: ${svgNewWidth} / svgHeight: ${svgHeight} -> svgNewHeight: ${svgNewHeight}`);
         }
     } else if (svgDivTotalWidth > viewportWidth) {
         console.log("svgDivTotalWidth > viewportWidth")
+        //svgDivTotalWidth90 = svgDivTotalWidth * 0.9;
         restarWidth = svgDivTotalWidth - viewportWidth;
-        restarWidth = svgWidth - viewportWidth;
+        //restarWidth = svgWidth - viewportWidth;
+        
         //svgNewWidth = svgDivTotalWidth - restarWidth - leftBoxWidth - rightBoxWidth;
         svgNewWidth = svgDivTotalWidth - restarWidth;
-        svgNewWidth = svgNewWidth * 0.99;
+        svgNewWidth = svgNewWidth * 0.90;
         svgNewHeight = svgHeight * svgNewWidth / svgWidth;
         
         console.log (`restarWidth = (svgDivTotalWidth - viewportWidth): (${svgDivTotalWidth} - ${viewportWidth}) = ${restarWidth} / svgWidth: ${svgWidth} -> svg(new)Width: ${svgNewWidth} / svgHeight: ${svgHeight} -> svgNewHeight: ${svgNewHeight}`);
@@ -360,7 +367,9 @@ function drawSVG (selectedMotif) {
     style="border:1px solid var(--color4); background-color:#ffffff"> 
     ${selectedMotif_innerHTML}
     </svg>`;
+    WovenMotifSVG.appendChild(leftBox);
     WovenMotifSVG.appendChild(SVGinDiv);
+    WovenMotifSVG.appendChild(rightBox);
     document.getElementById("svgChartDiv").focus();
 }
 
