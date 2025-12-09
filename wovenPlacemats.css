@@ -448,6 +448,10 @@ fieldset {
     margin: 0.5rem 0;
 }
 
+.groupedSwatches {
+    display: flex;
+}
+
 .swatch{
     border: 2px solid var(--color6);
     border-radius: 0.5rem;
