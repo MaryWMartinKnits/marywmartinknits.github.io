@@ -29,7 +29,7 @@
     <main>
         <div id="begOfPage">
             <div id="pageTitle">
-                <h1>Pick Colors for the Diamond Quartet pattern</h1>
+                <h1>Select Colors for the Diamond Quartet Collection</h1>
             </div>
             <div class="logo">
                 <!-- <a href="https://www.marywmartinknits.com" target="_blank"><img id="logo" src="VectorColor3.svg" alt="Mary W Martin knits logo"></a> -->
@@ -74,11 +74,10 @@
         </section>
         <hr>
     
-        <div class="text note0">
-            <p>Write text!!! Example: Choose the colours used in drawing the placemat to represent MC or CC and the background that gives you a good definition with your MC and CC choices.</p>
+        <div class="text note0 hidden">
+            <p></p>
         </div>
 
-        <hr>
 
         <div class="swatch">
             <div id="motifPickerDiv">
@@ -99,60 +98,69 @@
         
         <hr>
 
-        <div id="colorPickerDiv">
+        <div>
+            <div><h2>Choose your colours</h2></div>
+            <div id="colorPickerDiv">
+                
+                
+                <div id="colorSwatches">
 
-            <div id="colorSwatches">
-
-                <div class="groupedSwatches">
-                    <div id="MC1_swatch">
-                        <div class="swatch" >
-                            <label for="colorPickerMC1">
-                                <input type="color" id="colorPickerMC1" title="Pick the main color (MC)" value="#9370db"> 
-                            </label>
-                            <div class="swatchInfo" id="MC1_swatchTitle">
-                                <h3>Pick MC 1</h3>
+                    <div class="groupedSwatches">
+                        <div id="MC1_swatch">
+                            <div class="swatch" >
+                                <label for="colorPickerMC1">
+                                    <input type="color" id="colorPickerMC1" title="Pick the main color (MC)" value="#9370db"> 
+                                </label>
+                                <div class="swatchInfo" id="MC1_swatchTitle">
+                                    <h3>MC 1</h3>
+                                    <p id="MC1hexCode" class="hexCodes"></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                <div id="MC2_swatch">
-                    <div class="swatch" >
-                        <label for="colorPickerMC2">
-                            <input type="color" id="colorPickerMC2" title="Pick the main color (MC)" value="#c71585"> 
-                        </label>
-                        <div class="swatchInfo">
-                            <h3>Pick MC 2</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-                <div class="groupedSwatches">
-                    <div id="CC1_swatch">
+                    <div id="MC2_swatch">
                         <div class="swatch" >
-                            <label for="colorPickerCC1"> 
-                                <input type="color" id="colorPickerCC1" title="Pick the contrasting color (CC)" value="#ffa500">  
-                            </label>
-                            <div class="swatchInfo" id="CC1_swatchTitle">
-                                <h3>Pick CC 1</h3>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="CC2_swatch">
-                        <div class="swatch" >
-                            <label for="colorPickerCC2"> 
-                                <input type="color" id="colorPickerCC2" title="Pick the contrasting color (CC)" value="#8b4513">  
+                            <label for="colorPickerMC2">
+                                <input type="color" id="colorPickerMC2" title="Pick the main color (MC)" value="#c71585"> 
                             </label>
                             <div class="swatchInfo">
-                                <h3>Pick CC 2</h3>
+                                <h3>MC 2</h3>
+                                <p id="MC2hexCode" class="hexCodes"></p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-            </div>
-        </div> 
+                    <div class="groupedSwatches">
+                        <div id="CC1_swatch">
+                            <div class="swatch" >
+                                <label for="colorPickerCC1"> 
+                                    <input type="color" id="colorPickerCC1" title="Pick the contrasting color (CC)" value="#ffa500">  
+                                </label>
+                                <div class="swatchInfo" id="CC1_swatchTitle">
+                                    <h3>CC 1</h3>
+                                    <p id="CC1hexCode" class="hexCodes"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="CC2_swatch">
+                            <div class="swatch" >
+                                <label for="colorPickerCC2"> 
+                                    <input type="color" id="colorPickerCC2" title="Pick the contrasting color (CC)" value="#8b4513">  
+                                </label>
+                                <div class="swatchInfo">
+                                    <h3>CC 2</h3>
+                                    <p id="CC2hexCode" class="hexCodes"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div> 
+        </div>
+        
 
 
         <div id="svgChartDiv" tabindex="0">
