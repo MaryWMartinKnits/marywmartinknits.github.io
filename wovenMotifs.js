@@ -43,6 +43,10 @@ let restarWidth;
 let sumarWidth;
 let svgNewWidth;
 let svgNewHeight;
+let MC1hexDisplay;
+let MC2hexDisplay;
+let CC1hexDisplay;
+let CC2hexDisplay;
 
 let topBox;
 let bottomBox;
@@ -87,7 +91,7 @@ function init() {
 }
 
 function getDOMelements () {
-    console.log('function getDOMelements executed');
+    //console.log('function getDOMelements executed');
     begOfPage = document.querySelector('#begOfPage')
     //windowWidth = document.querySelector('#window-width');
     //console.log(`windowWidth: ${windowWidth}`);
@@ -102,6 +106,10 @@ function getDOMelements () {
     CC1_swatchTitle = document.querySelector('#CC1_swatchTitle');
     MC2_swatch = document.querySelector('#MC2_swatch');
     CC2_swatch = document.querySelector('#CC2_swatch');
+    MC1hexDisplay = document.querySelector('#MC1hexCode');
+    MC2hexDisplay = document.querySelector('#MC2hexCode');
+    CC1hexDisplay = document.querySelector('#CC1hexCode');
+    CC2hexDisplay = document.querySelector('#CC2hexCode');
     note1 = document.querySelector('#note1');
     note2 = document.querySelector('#note2');
     accArray = document.getElementsByClassName('accordion');
@@ -130,7 +138,7 @@ function enableBtn (button) {
 }
 
 function addEventListeners () {
-    console.log('function addEventListeners executed');
+    //console.log('function addEventListeners executed');
     MC1pickerBtn.addEventListener('change', changeMC1);
     MC2pickerBtn.addEventListener('change', changeMC2);
     CC1pickerBtn.addEventListener('change', changeCC1);
@@ -203,8 +211,16 @@ function chooseMotifColors () {
     CC1pickerBtn.value = pickedCC1;
     CC2pickerBtn.value = pickedCC2;
     console.log(`function chooseMotifColors executed: pickedMC 1: ${pickedMC1} / pickedMC 2: ${pickedMC2} / pickedCC 1: ${pickedCC1} / pickedCC 2: ${pickedCC2}`);
+    updateHEXcodeDisplay (pickedMC1, pickedMC2, pickedCC1, pickedCC2);
     updateSVG_innerHTML ();
     pickSVG();
+}
+
+function updateHEXcodeDisplay (pickedMC1, pickedMC2, pickedCC1, pickedCC2) {
+    MC1hexDisplay.innerHTML = `HEX: ${pickedMC1}`;
+    MC2hexDisplay.innerHTML = `HEX: ${pickedMC2}`;
+    CC1hexDisplay.innerHTML = `HEX: ${pickedCC1}`;
+    CC2hexDisplay.innerHTML = `HEX: ${pickedCC2}`;
 }
 
 function changeMC1 () {
@@ -248,13 +264,14 @@ function updatePickedColors (pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedB
     CC1pickerBtn.value = pickedCC1;
     CC2pickerBtn.value = pickedCC2;
     //pickedBackground =  backgroundPickerBtn.value;
-    console.log(`function chooseMotifColors executed = pickedMC 1: ${pickedMC1} / pickedMC 2: ${pickedMC2} / pickedCC 1: ${pickedCC1} / pickedCC 2: ${pickedCC2}`);
+    //console.log(`function chooseMotifColors executed = pickedMC 1: ${pickedMC1} / pickedMC 2: ${pickedMC2} / pickedCC 1: ${pickedCC1} / pickedCC 2: ${pickedCC2}`);
+    updateHEXcodeDisplay(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
     updateSVG_innerHTML();
     pickSVG ();
 }
 
 function pickSVG () {
-    console.log('FUNCTION pickSVG executed');
+    //console.log('FUNCTION pickSVG executed');
     selectedMotif = motifPickerDropDown.value;
     determinarSVGcharacteristics (selectedMotif);
     viewBox = `0 0 ${svgWidth} ${svgHeight}`
@@ -263,12 +280,12 @@ function pickSVG () {
     if (numberOfColors == "2") { // 2 color motifs:
         hideBtn (MC2_swatch);
         hideBtn (CC2_swatch);
-        console.log(`selected motif: ${selectedMotif} with ${numberOfColors} colors -> hide MC2 & CC2 swatches`);
+        //console.log(`selected motif: ${selectedMotif} with ${numberOfColors} colors -> hide MC2 & CC2 swatches`);
         changeMC1andCC1toMCandCC ();
     } else if (numberOfColors == "4") {  // 4 color motifs: 
         enableBtn (MC2_swatch);
         enableBtn (CC2_swatch);
-        console.log(`selected motif: ${selectedMotif} with ${numberOfColors} colors -> enable MC2 & CC2 swatches`);
+        //console.log(`selected motif: ${selectedMotif} with ${numberOfColors} colors -> enable MC2 & CC2 swatches`);
         changeMCandCCtoMC1andCC1 ();
     }
 
@@ -277,13 +294,19 @@ function pickSVG () {
 }
 
 function changeMC1andCC1toMCandCC () {
-MC1_swatchTitle.innerHTML = `<h3>Pick MC</h3>`;
-CC1_swatchTitle.innerHTML = `<h3>Pick CC</h3>`;
+MC1_swatchTitle.innerHTML = `<h3>MC</h3> 
+<p id="MC1hexCode" class="hexCodes">HEX: ${pickedMC1}</p>`;
+CC1_swatchTitle.innerHTML = `<h3>CC</h3> 
+<p id="CC1hexCode" class="hexCodes">HEX: ${pickedCC1}</p>`;
+updateHEXcodeDisplay(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
 }
 
 function changeMCandCCtoMC1andCC1 () {
-MC1_swatchTitle.innerHTML = `<h3>Pick MC 1</h3>`;
-CC1_swatchTitle.innerHTML = `<h3>Pick CC 1</h3>`;
+MC1_swatchTitle.innerHTML = `<h3>MC 1</h3> 
+<p id="MC1hexCode" class="hexCodes">HEX: ${pickedMC1}</p>`;
+CC1_swatchTitle.innerHTML = `<h3>CC 1</h3> 
+<p id="CC1hexCode" class="hexCodes">HEX: ${pickedCC1}</p>`;
+updateHEXcodeDisplay(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
 }
 
 function determinarSVGcharacteristics () {
@@ -319,35 +342,28 @@ switch (selectedMotif) {
 
 function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
     viewportWidth = window.innerWidth;
-    console.log(`function calculateTotalWidth executed: leftBoxWidth = ${leftBoxWidth}, rightBoxWidth = ${rightBoxWidth}, svgWidth = ${svgWidth}, viewportWidth = ${viewportWidth}`);
+    //console.log(`function calculateTotalWidth executed: leftBoxWidth = ${leftBoxWidth}, rightBoxWidth = ${rightBoxWidth}, svgWidth = ${svgWidth}, viewportWidth = ${viewportWidth}`);
     viewBox = `0 0 ${svgWidth} ${svgHeight}`
     svgDivTotalWidth = leftBoxWidth + svgWidth + rightBoxWidth;
     if (svgDivTotalWidth < viewportWidth) {
-        console.log("svgDivTotalWidth < viewportWidth")
+        //console.log("svgDivTotalWidth < viewportWidth")
         svgNewWidth = svgWidth;
         svgNewHeight = svgHeight;
-        //svgDivTotalWidth90 = svgDivTotalWidth * 0.9;
         if (svgDivTotalWidth90 < viewportWidth) {
-            console.log("svgDivTotalWidth90 < viewportWidth")
+            //console.log("svgDivTotalWidth90 < viewportWidth")
             sumarWidth = viewportWidth - svgDivTotalWidth;
-            //svgNewWidth = svgDivTotalWidth90 + sumarWidth;
             svgNewWidth = (svgDivTotalWidth + sumarWidth) * 0.9;
             svgNewHeight = svgHeight * svgNewWidth / svgWidth;
 
-            console.log (`sumarWidth = (viewportWidth - vgDivTotalWidth90): (${viewportWidth} - ${svgDivTotalWidth90}) = ${sumarWidth} / svgWidth: ${svgWidth} -> svgNewWidth: ${svgNewWidth} / svgHeight: ${svgHeight} -> svgNewHeight: ${svgNewHeight}`);
+            //console.log (`sumarWidth = (viewportWidth - vgDivTotalWidth90): (${viewportWidth} - ${svgDivTotalWidth90}) = ${sumarWidth} / svgWidth: ${svgWidth} -> svgNewWidth: ${svgNewWidth} / svgHeight: ${svgHeight} -> svgNewHeight: ${svgNewHeight}`);
         }
     } else if (svgDivTotalWidth > viewportWidth) {
-        console.log("svgDivTotalWidth > viewportWidth")
-        //svgDivTotalWidth90 = svgDivTotalWidth * 0.9;
+        //console.log("svgDivTotalWidth > viewportWidth")
         restarWidth = svgDivTotalWidth - viewportWidth;
-        //restarWidth = svgWidth - viewportWidth;
-        
-        //svgNewWidth = svgDivTotalWidth - restarWidth - leftBoxWidth - rightBoxWidth;
         svgNewWidth = svgDivTotalWidth - restarWidth;
         svgNewWidth = svgNewWidth * 0.90;
         svgNewHeight = svgHeight * svgNewWidth / svgWidth;
-        
-        console.log (`restarWidth = (svgDivTotalWidth - viewportWidth): (${svgDivTotalWidth} - ${viewportWidth}) = ${restarWidth} / svgWidth: ${svgWidth} -> svg(new)Width: ${svgNewWidth} / svgHeight: ${svgHeight} -> svgNewHeight: ${svgNewHeight}`);
+        //console.log (`restarWidth = (svgDivTotalWidth - viewportWidth): (${svgDivTotalWidth} - ${viewportWidth}) = ${restarWidth} / svgWidth: ${svgWidth} -> svg(new)Width: ${svgNewWidth} / svgHeight: ${svgHeight} -> svgNewHeight: ${svgNewHeight}`);
     }
         leftBoxHeight = svgNewHeight;
         rightBoxHeight = svgNewHeight; 
@@ -357,10 +373,10 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
 }
 
 function drawSVG (selectedMotif) {
-    console.log('function drawSVG executed')
-    console.log(`svgWidth: ${svgWidth} / svgNewWidth: ${svgNewWidth}`);
-    console.log(`svgHeigth: ${svgHeight} / svgNewHeight: ${svgNewHeight}`);
-    console.log(`viewportWidth: ${viewportWidth} / viewBox: ${viewBox}`);
+    //console.log('function drawSVG executed')
+    //console.log(`svgWidth: ${svgWidth} / svgNewWidth: ${svgNewWidth}`);
+    //console.log(`svgHeigth: ${svgHeight} / svgNewHeight: ${svgNewHeight}`);
+    //console.log(`viewportWidth: ${viewportWidth} / viewBox: ${viewBox}`);
     updateSVG_innerHTML();
     SVGinDiv.innerHTML = 
     `<svg id= "${selectedMotif}" width="${svgNewWidth}" height="${svgNewHeight}" viewbox="${viewBox}"

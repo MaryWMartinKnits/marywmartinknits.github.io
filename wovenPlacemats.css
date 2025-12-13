@@ -105,6 +105,8 @@ h1 {
 h2, h3 {
     font-size: 1.2rem;
     color: var(--color4);
+    text-align: center;
+    margin: 1rem 0.5rem;
 }
 
 button {
@@ -1008,4 +1010,7 @@ input[type=number], #numOftotalDE {
 .svg3columnDisplay {
     display: flex;
     flex-direction: column;
+}
+.hexCodes {
+    color: var(--color4);
 }
