@@ -162,7 +162,12 @@ function resetColours () {
     pickedMC2 = '#c71585'; // mediumvioletred
     pickedCC1 = '#ffa500'; // orange
     pickedCC2 = '#8b4513'; // saddlebrown
+    localStorage.MC1 = pickedMC1;
+    localStorage.MC2 = pickedMC2;
+    localStorage.CC1 = pickedCC1;
+    localStorage.CC2 = pickedCC2;
     updatePickedColors (pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedBackground);
+    
 }
 
 function resizeScreen () {
