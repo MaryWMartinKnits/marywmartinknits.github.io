@@ -1013,4 +1013,11 @@ input[type=number], #numOftotalDE {
 }
 .hexCodes {
     color: var(--color4);
+    margin: 0.5rem;
+}
+
+.centerContent {
+    display: flex;
+    text-align: center;
+    justify-content: center;
 }
