@@ -37,7 +37,8 @@ let selectedMotif_innerHTML = motifDiamondQuartetMitts_SandL_innerHTML;
 
 
 // choosing colors:
-let MC1pickerBtn;let svgDivTotalWidth;
+let MC1pickerBtn;
+let svgDivTotalWidth;
 let svgDivTotalWidth90;
 let restarWidth;
 let sumarWidth;
@@ -76,6 +77,12 @@ let CC1_swatchTitle;
 let MC2_swatch;
 let CC2_swatch; 
 
+let resetColorsBtn;
+
+//let color;
+//let colorID;
+//let color_value;
+
 let note1;
 let note2;
 
@@ -101,6 +108,7 @@ function getDOMelements () {
     MC2pickerBtn = document.querySelector('#colorPickerMC2');
     CC1pickerBtn = document.querySelector('#colorPickerCC1');
     CC2pickerBtn = document.querySelector('#colorPickerCC2');
+    resetColorsBtn = document.querySelector('#resetColorsBtn');
     //backgroundPickerBtn = document.querySelector('#backgroundPickerBtn')
     MC1_swatchTitle = document.querySelector('#MC1_swatchTitle');
     CC1_swatchTitle = document.querySelector('#CC1_swatchTitle');
@@ -145,6 +153,16 @@ function addEventListeners () {
     CC2pickerBtn.addEventListener('change', changeCC2);
     //backgroundPickerBtn.addEventListener('change', changeBackground);
     motifPicker.addEventListener('change', pickSVG)
+    resetColorsBtn.addEventListener('click', resetColours);
+}
+
+function resetColours () {
+    console.log('function resetColours executed');
+    pickedMC1 = '#9370db'; // mediumpurple
+    pickedMC2 = '#c71585'; // mediumvioletred
+    pickedCC1 = '#ffa500'; // orange
+    pickedCC2 = '#8b4513'; // saddlebrown
+    updatePickedColors (pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedBackground);
 }
 
 function resizeScreen () {
@@ -202,25 +220,51 @@ function toggleAccordions () {
 // picking MC and CC:
 function chooseMotifColors () {
     //console.log('function chooseMotifColors executed');
-    pickedMC1 = '#9370db'; // mediumpurple
-    pickedMC2 = '#c71585'; // mediumvioletred
-    pickedCC1 = '#ffa500'; // orange
-    pickedCC2 = '#8b4513'; // saddlebrown
-    MC1pickerBtn.value = pickedMC1;
-    MC2pickerBtn.value = pickedMC2;
-    CC1pickerBtn.value = pickedCC1;
-    CC2pickerBtn.value = pickedCC2;
+    if (localStorage.MC1) {
+        console.log(`Stored MC1: ${localStorage.MC1}`);
+        pickedMC1 = localStorage.MC1;
+    } else {
+        pickedMC1 = '#9370db'; // mediumpurple
+    }
+
+    if (localStorage.MC2) {
+        console.log(`Stored MC2: ${localStorage.MC2}`);
+        pickedMC2 = localStorage.MC2;
+    } else {
+        pickedMC2 = '#c71585'; // mediumvioletred
+    }
+
+    if (localStorage.CC1) {
+        console.log(`Stored CC1: ${localStorage.CC1}`);
+        pickedCC1 = localStorage.CC1;
+    } else {
+        pickedCC1 = '#ffa500'; // orange
+    }
+
+    if (localStorage.CC2) {
+        console.log(`Stored CC2: ${localStorage.CC2}`);
+        pickedCC2 = localStorage.CC2;
+    } else {
+        pickedCC2 = '#8b4513'; // saddlebrown
+    }
+
+    //MC1pickerBtn.value = pickedMC1;
+    //MC2pickerBtn.value = pickedMC2;
+    //CC1pickerBtn.value = pickedCC1;
+    //CC2pickerBtn.value = pickedCC2;
     console.log(`function chooseMotifColors executed: pickedMC 1: ${pickedMC1} / pickedMC 2: ${pickedMC2} / pickedCC 1: ${pickedCC1} / pickedCC 2: ${pickedCC2}`);
     updateHEXcodeDisplay (pickedMC1, pickedMC2, pickedCC1, pickedCC2);
     updateSVG_innerHTML ();
     pickSVG();
+    
+    //localStorage (MC1pickerBtn);
 }
 
 function updateHEXcodeDisplay (pickedMC1, pickedMC2, pickedCC1, pickedCC2) {
-    MC1hexDisplay.innerHTML = `HEX: ${pickedMC1}`;
-    MC2hexDisplay.innerHTML = `HEX: ${pickedMC2}`;
-    CC1hexDisplay.innerHTML = `HEX: ${pickedCC1}`;
-    CC2hexDisplay.innerHTML = `HEX: ${pickedCC2}`;
+    MC1hexDisplay.innerHTML = `hex: ${pickedMC1}`;
+    MC2hexDisplay.innerHTML = `hex: ${pickedMC2}`;
+    CC1hexDisplay.innerHTML = `hex: ${pickedCC1}`;
+    CC2hexDisplay.innerHTML = `hex: ${pickedCC2}`;
 }
 
 function changeMC1 () {
@@ -228,6 +272,8 @@ function changeMC1 () {
     pickedMC1 = MC1pickerBtn.value;
     console.log(`pickedMC1 = ${pickedMC1}`);
     updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedBackground);
+    localStorage_MC1 ();
+
 }
 
 function changeMC2 () {
@@ -235,6 +281,7 @@ function changeMC2 () {
     pickedMC2 = MC2pickerBtn.value;
     console.log(`pickedMC2 = ${pickedMC2}`);
     updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedBackground);
+    localStorage_MC2 ();
 }
 
 function changeCC1 () {
@@ -242,6 +289,7 @@ function changeCC1 () {
     pickedCC1 = CC1pickerBtn.value;
     console.log(`pickedCC1 = ${pickedCC1}`);
     updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedBackground);
+    localStorage_CC1 ();
 }
 
 function changeCC2 () {
@@ -249,6 +297,7 @@ function changeCC2 () {
     pickedCC2 = CC2pickerBtn.value;
     console.log(`pickedCC2 = ${pickedCC2}`);
     updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedBackground);
+    localStorage_CC2 ();
 }
 
 /*function changeBackground () {
@@ -295,17 +344,17 @@ function pickSVG () {
 
 function changeMC1andCC1toMCandCC () {
 MC1_swatchTitle.innerHTML = `<h3>MC</h3> 
-<p id="MC1hexCode" class="hexCodes">HEX: ${pickedMC1}</p>`;
+<p id="MC1hexCode" class="hexCodes">hex: ${pickedMC1}</p>`;
 CC1_swatchTitle.innerHTML = `<h3>CC</h3> 
-<p id="CC1hexCode" class="hexCodes">HEX: ${pickedCC1}</p>`;
+<p id="CC1hexCode" class="hexCodes">hex: ${pickedCC1}</p>`;
 updateHEXcodeDisplay(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
 }
 
 function changeMCandCCtoMC1andCC1 () {
 MC1_swatchTitle.innerHTML = `<h3>MC 1</h3> 
-<p id="MC1hexCode" class="hexCodes">HEX: ${pickedMC1}</p>`;
+<p id="MC1hexCode" class="hexCodes">hex: ${pickedMC1}</p>`;
 CC1_swatchTitle.innerHTML = `<h3>CC 1</h3> 
-<p id="CC1hexCode" class="hexCodes">HEX: ${pickedCC1}</p>`;
+<p id="CC1hexCode" class="hexCodes">hex: ${pickedCC1}</p>`;
 updateHEXcodeDisplay(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
 }
 
@@ -739,6 +788,42 @@ function updateSVG_innerHTML () {
         /13  /13 <polygon points="91,1 149,59 109,99 51,41"  fill="${pickedCC2}" stroke="none" /> /13  <line x1="90" y1="0" x2="150" y2="60" stroke="black" /> /13  <line x1="50" y1="40" x2="110" y2="100" stroke="black" /> /13 <polygon points="149,41 91,99 51,59 109,1"  fill="${pickedCC1}" stroke="none" /> /13  <line x1="50" y1="60" x2="110" y2="0" stroke="black" /> /13  <line x1="90" y1="100" x2="150" y2="40" stroke="black" /> /13 <polygon points="50,0  50,40 51,41 91, 1  90,0 "  fill="${pickedCC2}" stroke="none" /> /13 <polygon points="150,0 150,40 149,41 109,1 110,0 "  fill="${pickedCC1}" stroke="none" />
         <polygon points="0,10 10,0 50,0 50,40 40,50 0,50"  fill="${pickedCC1}" stroke="none" /> /13  <line x1="0" y1="10" x2="10" y2="0" stroke="black" />  /13  <line x1="40" y1="50" x2="50" y2="40" stroke="black" /> /13 <polygon points="0,50 0,10 1,9 41,49 40,50"  fill="${pickedCC1}" stroke="none" /> /13 <polygon points="0,50 0,90 1,91 41,51 40,50"  fill="${pickedMC2}" stroke="none" /> /13 
         Sorry, your browser does not support inline SVG.`
+}
 
+/*
+function localStorage (color) {
+    colorID = color.id;
+    color_value = color.value;
+    console.log(`local Storage function executed for ${color} / color.id: ${colorID} / color.value: ${color_value}`);
+    if (localStorage.colorID) {
+        console.log(`Stored ${color}: ${localStorage.colorID}`);
+    } else {
+        const color = document.getElementById(`${colorID}`).value;
+        localStorage.colorID = color_value;
+        console.log(`Stored ${colorID}: ${localStorage.colorID} `);
+    }
+}*/
 
+function localStorage_MC1 () {
+        console.log(`Stored MC1: ${localStorage.MC1}`);
+        localStorage.MC1 = MC1pickerBtn.value;
+        console.log(`Stored (new) MC1: ${localStorage.MC1} `);  
+}
+
+function localStorage_MC2 () {
+        console.log(`Stored MC2: ${localStorage.MC2}`);
+        localStorage.MC2 = MC2pickerBtn.value;
+        console.log(`Stored (new) MC2: ${localStorage.MC2} `);  
+}
+
+function localStorage_CC1 () {
+        console.log(`Stored CC1: ${localStorage.CC1}`);
+        localStorage.CC1 = CC1pickerBtn.value;
+        console.log(`Stored (new) CC1: ${localStorage.CC1} `);  
+}
+
+function localStorage_CC2 () {
+        console.log(`Stored CC2: ${localStorage.CC2}`);
+        localStorage.CC2 = CC2pickerBtn.value;
+        console.log(`Stored (new) CC2: ${localStorage.CC2} `);  
 }
