@@ -19,7 +19,7 @@ let WovenMotifSVG;
         let svgHeight = 0;
         let svgWidth = 0; 
         let viewBox;
-let numberOfColors = "2";
+let numberOfColors = "4";
 
 let motifPicker;
 let pickedMotif;
@@ -320,7 +320,7 @@ function pickSVG () {
     viewBox = `0 0 ${svgWidth} ${svgHeight}`
     calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth);
 
-    if (numberOfColors == "2") { // 2 color motifs:
+    /* if (numberOfColors == "2") { // 2 color motifs:
         hideBtn (MC2_swatch);
         hideBtn (CC2_swatch);
         //console.log(`selected motif: ${selectedMotif} with ${numberOfColors} colors -> hide MC2 & CC2 swatches`);
@@ -330,7 +330,7 @@ function pickSVG () {
         enableBtn (CC2_swatch);
         //console.log(`selected motif: ${selectedMotif} with ${numberOfColors} colors -> enable MC2 & CC2 swatches`);
        // changeMCandCCtoMC1andCC1 ();
-    }
+    } */
 
     updateSVG_innerHTML();
     drawSVG (selectedMotif);
