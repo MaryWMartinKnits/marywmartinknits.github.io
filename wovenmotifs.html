@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="wovenPlacemats.css" type="text/css">
+    <link rel="stylesheet" href="MaryWMartinKnits.css" type="text/css">
     <!-- Google fonts: Raleway -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +13,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <!-- Color picker with https://www.jscolorpicker.com/ -->
+    <link rel="stylesheet" href="color picker/dist/colorpicker.min.css" />
     <meta property="og:type" content="website">
     <meta property="og:title" content="Knit Woven Motifs by MaryWMartinKnits">
     <meta property="og:url" content="https://marywmartinknits.github.io/">
@@ -27,80 +29,15 @@
 </head>
 <body>
     <main>
-        <div id="begOfPage">
-            <div id="pageTitle">
-                <h1>Pick Colors for the Diamond Quartet pattern</h1>
-            </div>
-            <div class="logo">
-                <!-- <a href="https://www.marywmartinknits.com" target="_blank"><img id="logo" src="VectorColor3.svg" alt="Mary W Martin knits logo"></a> -->
-                <a href="https://www.marywmartinknits.com" target="_blank"></a>                    
-                <svg xmlns="https://www.w3.org/2000/svg" viewBox="207 0 265 170" id="logo">
-                    <a href="https://www.marywmartinknits.com" target="_blank"></a>                    
-                    <path
-                        class="cls-1"
-                        d="m 385.66,171.4 a 5.59,5.59 0 0 1 -4,-1.64 l -41.61,-41.61 -41.61,41.61 a 5.61,5.61 0 0 1 -7.93,0 L 210.45,89.67 a 5.59,5.59 0 0 1 0,-7.93 l 80.09,-80.1 a 5.61,5.61 0 0 1 7.93,0 l 41.61,41.61 41.61,-41.61 a 5.62,5.62 0 0 1 7.94,0 l 80.09,80.1 a 5.61,5.61 0 0 1 0,7.93 l -80.09,80.09 a 5.58,5.58 0 0 1 -3.97,1.64 z M 348,120.22 385.64,157.86 457.82,85.7 385.66,13.54 348,51.19 374.44,77.63 c 1.56,-1.55 3.49,-3.35 5.7,-5.15 8.23,-6.73 16,-10.14 23.21,-10.14 A 23.39,23.39 0 0 1 426.73,85.7 H 415.51 A 12.15,12.15 0 0 0 403.37,73.56 c -7.34,0 -16,7 -21.14,12.14 5.13,5.13 13.8,12.14 21.14,12.14 A 12.15,12.15 0 0 0 415.51,85.7 h 11.22 a 23.39,23.39 0 0 1 -23.36,23.36 c -7.17,0 -15,-3.41 -23.21,-10.14 -2.21,-1.8 -4.14,-3.6 -5.7,-5.14 z M 222.35,85.7 l 72.16,72.16 37.64,-37.64 -26.44,-26.44 c -1.56,1.54 -3.49,3.34 -5.7,5.14 -8.24,6.73 -16.05,10.14 -23.21,10.14 a 23.36,23.36 0 1 1 0,-46.72 c 7.16,0 15,3.41 23.21,10.14 2.21,1.8 4.14,3.6 5.7,5.15 L 332.15,51.19 294.51,13.54 Z m 91.15,0 26.58,26.58 26.59,-26.58 -26.59,-26.58 z m -48.85,0 a 12.15,12.15 0 0 0 12.15,12.14 c 7.34,0 16,-7 21.14,-12.14 C 292.8,80.58 284.14,73.56 276.8,73.56 A 12.16,12.16 0 0 0 264.65,85.7 Z"
-                        id="logo" />
-                </svg>
-            </div>
-            
-        </div>
+        <script type="module">
+            import ColorPicker from '/color picker/dist/colorpicker.js'
+            new ColorPicker('#btnMC1');
+            new ColorPicker('#btnCC1');
+            new ColorPicker('#btnCC2');
+        </script>
 
-        <section id="introduction" class="text">
-            <h2 style="display: none;">About This Program</h2>
-            <button class="accordion">About This Program</button>
-            <div class="panel">
-                    <img class="placematPicture" id="fourPlacemats" src="https://reversibleknits.wordpress.com/wp-content/uploads/2025/12/img_1434-1.jpg" alt="">
-                    <p>FOR TESTING.  See how the Diamond Quartet motif looks with your yarn colours.</p>
-            </div>
-        </section>
 
-        <section id="instructions" class="text">
-            <h2 style="display: none;">Instructions</h2>
-            <button class="accordion">Instructions</button>
-            <div class="panel">
-                    <img class="placematPicture" id="threePlacemats" src="https://reversibleknits.wordpress.com/wp-content/uploads/2025/12/img_1435-1.jpg" alt="">
-                    <p>Click on the coloured squares below to change the colour of MC1/MC2/CC1/CC2.  <br>
-                        <br>
-                        You can change the colour in 3 ways: <br>
-                        <br>
-                        - Select "Grid" or "Spectrum" and tap on the colour to use <br>
-                        - Select "Sliders" to adjust a colour or enter a Hex Colour Code #. <br>
-                        <br>
-                        If I have a colour accurate picture of my yarn, I prefer to enter the Hex Colour Code.  There are many free online tools that allow you to upload a picture to find the Hex colour code.  I use <a href="https://imagecolorpicker.com/" target=”_blank”>https://imagecolorpicker.com/</a>.  Copy the colour code into the sRBG Hex Color # box. <br>
-                        <br>
-                        Feel free to take a screenshot of your work to save it. <br>
-                    </p>
-            </div>
-        </section>
-        <hr>
-    
-        <div class="text note0">
-            <p>Write text!!! Example: Choose the colours used in drawing the placemat to represent MC or CC and the background that gives you a good definition with your MC and CC choices.</p>
-        </div>
-
-        <hr>
-
-        <div class="swatch">
-            <div id="motifPickerDiv">
-                <label for="motifPickerDropDown">Choose a motif:</label>
-                <select id="motifPickerDropDown" name="chosenMotif">
-
-                    <optgroup label="Diamond Quartet Mitts">
-                        <option value="motifDiamondQuartetMitts_SandL">Size S & L</option>
-                        <option value="motifDiamondQuartetMitts_M">Size M</option>
-                    </optgroup>
-                    <optgroup label="Diamond Quartet Hat & Cowl">
-                        <option value="motifDiamondQuartetMitts_M">Hat</option>
-                        <option value="motifDiamondQuartetMitts_M">Cowl</option>
-                    </optgroup>
-                    <optgroup label="2 colours">
-                        <option value="motifD">motif D</option>
-                    </optgroup>
-
-                </select>
-            </div>
-        </div>
-        
+                
         <hr>
 
         <div id="colorPickerDiv">
@@ -108,19 +45,9 @@
             <div id="colorSwatches">
 
                 <div class="groupedSwatches">
-                    <div id="MC1_swatch">
-                        <div class="swatch" >
-                            <label for="colorPickerMC1">
-                                <input type="color" id="colorPickerMC1" title="Pick the main color (MC)" value="#9370db"> 
-                            </label>
-                            <div class="swatchInfo" id="MC1_swatchTitle">
-                                <h3>Pick MC 1</h3>
-                            </div>
-                        </div>
-                    </div>
 
                     <div id="MC2_swatch">
-                        <div class="swatch" >
+                        <div class="bigSwatch" >
                             <label for="colorPickerMC2">
                                 <input type="color" id="colorPickerMC2" title="Pick the main color (MC)" value="#c71585"> 
                             </label>
@@ -131,29 +58,46 @@
                     </div>
                 </div>
 
-                <div class="groupedSwatches">
-                    <div id="CC1_swatch">
-                        <div class="swatch" >
-                            <label for="colorPickerCC1"> 
-                                <input type="color" id="colorPickerCC1" title="Pick the contrasting color (CC)" value="#ffa500">  
-                            </label>
-                            <div class="swatchInfo" id="CC1_swatchTitle">
-                                <h3>Pick CC 1</h3>
+
+                  <div class="groupedSwatches">
+                    <div id="MC1_swatch">
+                            <div class="bigSwatch" >
+                                <div style="margin:1em">
+                                    <button id="btnMC1" data-color="orange" class="smallSwatch"></button>
+                                    <!-- <br> -->
+                                    <!-- <small>Tap to pick color</small> -->
+                                </div>
+                            <div class="swatchInfo" id="MC1_swatchTitle">
+                                <h3>Pick MC</h3>
                             </div>
                         </div>
                     </div>
-
-                    <div id="CC2_swatch">
-                        <div class="swatch" >
-                            <label for="colorPickerCC2"> 
-                                <input type="color" id="colorPickerCC2" title="Pick the contrasting color (CC)" value="#8b4513">  
-                            </label>
-                            <div class="swatchInfo">
-                                <h3>Pick CC 2</h3>
+                    <div id="CC1_swatch">
+                            <div class="bigSwatch" >
+                                <div style="margin:1em">
+                                    <button id="btnCC1" data-color="orange" class="smallSwatch"></button>
+                                    <!-- <br> -->
+                                    <!-- <small>Tap to pick color</small> -->
+                                </div>
+                            <div class="swatchInfo" id="CC1_swatchTitle">
+                                <h3>Pick CC</h3>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div id="CC2_swatch">
+                            <div class="bigSwatch" >
+                                <div style="margin:1em">
+                                    <button id="btnCC2" data-color="orange" class="smallSwatch"></button>
+                                    <!-- <br> -->
+                                    <!-- <small>Tap to pick color</small> -->
+                                </div>
+                            <div class="swatchInfo" id="CC2_swatchTitle">
+                                <h3>Pick CC 2</h3>
+                            </div>
+                        </div>
+                    </div>
 
             </div>
         </div> 
@@ -178,75 +122,9 @@
             </div>
         </div>
 
-
         <hr>
+ 
     </main>
-
-    <footer id="footer">
-        <button class="accordion">Learn more about MaryWMartinKnits designs</button>
-        <div class="panel" id="socials" tabindex="0">
-            <!-- website and social icons -->
-            <div class="social-icons-div">
-                <p> <a class="link_noUnderline" href="https://www.marywmartinknits.com" target="_blank" aria-label="Go to Mary W Matin Knits website">Website: <span>www.marywmartinknits.com</span> </a> </p>
-            </div>
-
-            <div class="social-icons-div">
-                <svg class="social-icons" viewbox="0 0 100 100" preserveAspectRatio="xMidYMid meet" width="40px" height="40px"> 
-                    <g id="g2" transform="matrix(0.81841432,0,0,0.81841432,10,10)">
-                        <path d="M 48.875,0 C 21.883,0 0,21.883 0,48.875 0,75.867 21.883,97.75 48.875,97.75 75.867,97.75 97.75,75.867 97.75,48.875 97.75,21.883 75.867,0 48.875,0 Z m 23.684,32.96 c -1.754,-1.142 -3.287,-2.124 -4.806,-3.129 -8.511,-5.622 -16.633,-4.374 -21.456,4.617 -2.665,4.976 -3.868,11.151 -4.196,16.87 -0.633,11.119 -0.186,22.3 -0.186,33.73 -5.048,0 -9.39,0 -13.931,0 0,-23.595 0,-46.8 0,-70.376 4.599,0 8.946,0 14.129,0 0,4.522 0,8.758 0,13.991 13.38,-17.398 21.632,-21.504 37.653,-7.689 -2.28,3.791 -4.625,7.691 -7.207,11.986 z" id="path1" />
-                    </g>               
-                </svg>
-                <p> <a class="link_noUnderline" href="https://www.ravelry.com/designers/mary-w-martin" target="_blank" aria-label="Ravelry pattern store"> Ravelry: <span>MaryWMartin</span> </a> </p>
-            </div>
-
-            <div class="social-icons-div">
-                <svg class="social-icons" viewbox="0 0 512 512" preserveAspectRatio="xMidYMid meet" width="50px" height="50px">
-                    <path d="M256 109.3c47.8 0 53.4 0.2 72.3 1 17.4 0.8 26.9 3.7 33.2 6.2 8.4 3.2 14.3 7.1 20.6 13.4 6.3 6.3 10.1 12.2 13.4 20.6 2.5 6.3 5.4 15.8 6.2 33.2 0.9 18.9 1 24.5 1 72.3s-0.2 53.4-1 72.3c-0.8 17.4-3.7 26.9-6.2 33.2 -3.2 8.4-7.1 14.3-13.4 20.6 -6.3 6.3-12.2 10.1-20.6 13.4 -6.3 2.5-15.8 5.4-33.2 6.2 -18.9 0.9-24.5 1-72.3 1s-53.4-0.2-72.3-1c-17.4-0.8-26.9-3.7-33.2-6.2 -8.4-3.2-14.3-7.1-20.6-13.4 -6.3-6.3-10.1-12.2-13.4-20.6 -2.5-6.3-5.4-15.8-6.2-33.2 -0.9-18.9-1-24.5-1-72.3s0.2-53.4 1-72.3c0.8-17.4 3.7-26.9 6.2-33.2 3.2-8.4 7.1-14.3 13.4-20.6 6.3-6.3 12.2-10.1 20.6-13.4 6.3-2.5 15.8-5.4 33.2-6.2C202.6 109.5 208.2 109.3 256 109.3M256 77.1c-48.6 0-54.7 0.2-73.8 1.1 -19 0.9-32.1 3.9-43.4 8.3 -11.8 4.6-21.7 10.7-31.7 20.6 -9.9 9.9-16.1 19.9-20.6 31.7 -4.4 11.4-7.4 24.4-8.3 43.4 -0.9 19.1-1.1 25.2-1.1 73.8 0 48.6 0.2 54.7 1.1 73.8 0.9 19 3.9 32.1 8.3 43.4 4.6 11.8 10.7 21.7 20.6 31.7 9.9 9.9 19.9 16.1 31.7 20.6 11.4 4.4 24.4 7.4 43.4 8.3 19.1 0.9 25.2 1.1 73.8 1.1s54.7-0.2 73.8-1.1c19-0.9 32.1-3.9 43.4-8.3 11.8-4.6 21.7-10.7 31.7-20.6 9.9-9.9 16.1-19.9 20.6-31.7 4.4-11.4 7.4-24.4 8.3-43.4 0.9-19.1 1.1-25.2 1.1-73.8s-0.2-54.7-1.1-73.8c-0.9-19-3.9-32.1-8.3-43.4 -4.6-11.8-10.7-21.7-20.6-31.7 -9.9-9.9-19.9-16.1-31.7-20.6 -11.4-4.4-24.4-7.4-43.4-8.3C310.7 77.3 304.6 77.1 256 77.1L256 77.1z"></path>
-                    <path d="M256 164.1c-50.7 0-91.9 41.1-91.9 91.9s41.1 91.9 91.9 91.9 91.9-41.1 91.9-91.9S306.7 164.1 256 164.1zM256 315.6c-32.9 0-59.6-26.7-59.6-59.6s26.7-59.6 59.6-59.6 59.6 26.7 59.6 59.6S288.9 315.6 256 315.6z"></path>
-                    <circle cx="351.5" cy="160.5" r="21.5"></circle>
-                </svg>
-                <p> <a class="link_noUnderline" href="https://www.instagram.com/marywmartinknits/" target="_blank" aria-label="Mary W Martin Knits instagram account"> Instagram: <span>MaryWMartinKnits</span> </a> </p>
-            </div>
-        
-            <div class="social-icons-div">
-                <svg class="social-icons" viewbox="0 0 512 512" preserveAspectRatio="xMidYMid meet" width="50px" height="50px">
-                    <path d="M422.6 193.6c-5.3-45.3-23.3-51.6-59-54 -50.8-3.5-164.3-3.5-215.1 0 -35.7 2.4-53.7 8.7-59 54 -4 33.6-4 91.1 0 124.8 5.3 45.3 23.3 51.6 59 54 50.9 3.5 164.3 3.5 215.1 0 35.7-2.4 53.7-8.7 59-54C426.6 284.8 426.6 227.3 422.6 193.6zM222.2 303.4v-94.6l90.7 47.3L222.2 303.4z"></path>
-                </svg>
-                <p> <a class="link_noUnderline" href="https://www.youtube.com/channel/UC2O1A3BJ_iIHuT5LEHMNIdg" target="_blank" aria-label="Mary W Martin Knits' YouTube channel"> YouTube: <span>Mary W Martin Knits</span></a> </p>
-            </div>
-
-            <div class="social-icons-div"> 
-                <svg class="social-icons" viewbox="0 0 702 609" preserveAspectRatio="xMidYMid meet" width="40px" height="40px">
-                    <defs>
-                        <linearGradient id="linear-gradient" y1="300px" x2="600px" y2="300px" gradientUnits="userSpaceOnUse">
-                            <stop offset="0" stop-color="#13203d"/>
-                            <stop offset="1" stop-color="#5F5FA5"/>
-                        </linearGradient>
-                    </defs>
-
-                    <path class="cls-1" d="M 211.62317,25.138481 H 571.61783 V 401.35154 A 179.99733,188.10652 0 0 1 391.6205,589.45806 H 166.62383 A 134.998,141.0799 0 0 1 31.625832,448.37816 V 213.24501 A 179.99733,188.10652 0 0 1 211.62317,25.138481 Z"
-                        id="path2"
-                        style="fill:url(#linear-gradient);stroke-width:0.920037" />
-                    <g class="cls-2" id="g3" transform="matrix(0.89998668,0,0,0.94053262,31.625832,25.138481)">
-                        <path class="cls-3" d="m 486.91,314.79 a 105,105 0 0 0 0,-148.49 v 0 a 105,105 0 0 0 -148.49,0 L 319.19,185.53 467.68,334 Z"
-                        id="path3" />
-                    </g>
-                    <g id="Layer_3" data-name="Layer 3" transform="matrix(0.89998668,0,0,0.94053262,31.625832,25.138481)">
-                        <path class="cls-3" d="M 319.19,185.52 300,166.3 a 105,105 0 0 0 -148.49,0 v 0 a 105,105 0 0 0 0,148.49 L 170.69,334 319.19,482.51 467.68,334 Z M 255,258.5 a 12,12 0 0 1 -12,12 h -47 a 12,12 0 0 1 -12,-12 v -48 a 12,12 0 0 1 12,-12 h 47 a 12,12 0 0 1 12,12 z"
-                        id="path4" />
-                    </g>
-                </svg>
-                <p> <a class="link_noUnderline" href="https://payhip.com/MaryWMartinKnits" target="_blank" aria-label="PayHip pattern store"> Payhip: <span>MaryWMartinKnits</span></a> </p>
-            </div>
-
-            <div class="social-icons-div">
-                <svg class="social-icons" viewbox="0 0 512 512" preserveAspectRatio="xMidYMid meet" width="50px" height="50px">
-                    <path d="M101.3 141.6v228.9h0.3 308.4 0.8V141.6H101.3zM375.7 167.8l-119.7 91.5 -119.6-91.5H375.7zM127.6 194.1l64.1 49.1 -64.1 64.1V194.1zM127.8 344.2l84.9-84.9 43.2 33.1 43-32.9 84.7 84.7L127.8 344.2 127.8 344.2zM384.4 307.8l-64.4-64.4 64.4-49.3V307.8z"></path>
-                </svg>
-                <p> <a class="link_noUnderline" href="https://marywmartinknits.myflodesk.com/" target="_blank" aria-label="Subscribe to Mary W Martin Knits Newsletter"><span>Subscribe to my newsletter</span> </a> </p>
-            </div>
-        </div>
-    </footer> 
-    <script src="wovenMotifs.js"></script>
-</body>
+    <script src="diamondQuartet.js"></script>
+    </body>
 </html>

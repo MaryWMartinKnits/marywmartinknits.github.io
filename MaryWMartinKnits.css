@@ -454,7 +454,7 @@ fieldset {
     display: flex;
 }
 
-.swatch{
+.bigSwatch{
     border: 2px solid var(--color6);
     border-radius: 0.5rem;
     box-shadow: 1em 1em 1em rgba(0, 0, 0, .1);
@@ -1021,3 +1021,13 @@ input[type=number], #numOftotalDE {
     text-align: center;
     justify-content: center;
 }
+
+/* custom color picker: */
+.colorisInput {
+    width: 8em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0.5rem 0;
+}
+                

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="wovenPlacemats.css" type="text/css">
+    <link rel="stylesheet" href="MaryWMartinKnits.css" type="text/css">
     <!-- Google fonts: Raleway -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,6 +22,10 @@
     <meta property="og:image:height" content="2298">
     <meta property="og:image:alt" content="MaryWMartin's logo">
     <meta property="og:locale" content="en_US">
+    <!-- coloris -->
+    <link rel="stylesheet" href="Coloris-0.25.0/dist/coloris.css"/>
+    <script src="Coloris-0.25.0/dist/coloris.js"></script>
+
     
     <title> Choosing Colours for the Diamond Quartet Collection</title>
 </head>
@@ -107,55 +111,53 @@
 
                     <div class="groupedSwatches">
                         <div id="MC1_swatch">
-                            <div class="swatch" >
-                                <label for="colorPickerMC1">
-                                    <input type="color" id="colorPickerMC1" title="Pick the main color (MC)" value="#9370db"> 
-                                </label>
+                            <div class="bigSwatch" >
                                 <div class="swatchInfo" id="MC1_swatchTitle">
                                     <h3>MC 1</h3>
-                                    <p id="MC1hexCode" class="hexCodes"></p>
                                 </div>
+                                <label for="colorPickerMC1">
+                                    <input type="text" data-coloris class="colorisInput" id="colorPickerMC1" title="Pick the main color (MC 1)"> 
+                                </label>
                             </div>
                         </div>
 
-                    <div id="MC2_swatch">
-                        <div class="swatch" >
-                            <label for="colorPickerMC2">
-                                <input type="color" id="colorPickerMC2" title="Pick the main color (MC)" value="#c71585"> 
-                            </label>
-                            <div class="swatchInfo">
-                                <h3>MC 2</h3>
-                                <p id="MC2hexCode" class="hexCodes"></p>
+                        <div id="MC2_swatch">
+                            <div class="bigSwatch" >
+                                <div class="swatchInfo" id="MC2_swatchTitle">
+                                    <h3>MC 2</h3>
+                                </div>
+                                <label for="colorPickerMC2">
+                                    <input type="text" data-coloris class="colorisInput" id="colorPickerMC2" title="Pick the main color (MC 2)"> 
+                                </label>
                             </div>
                         </div>
                     </div>
-                </div>
 
                     <div class="groupedSwatches">
                         <div id="CC1_swatch">
-                            <div class="swatch" >
-                                <label for="colorPickerCC1"> 
-                                    <input type="color" id="colorPickerCC1" title="Pick the contrasting color (CC)" value="#ffa500">  
-                                </label>
+                            <div class="bigSwatch" >
                                 <div class="swatchInfo" id="CC1_swatchTitle">
                                     <h3>CC 1</h3>
-                                    <p id="CC1hexCode" class="hexCodes"></p>
                                 </div>
+                                <label for="colorPickerCC1">
+                                    <input type="text" data-coloris class="colorisInput" id="colorPickerCC1" title="Pick the contrasting color (CC 1)"> 
+                                </label>
                             </div>
                         </div>
 
                         <div id="CC2_swatch">
-                            <div class="swatch" >
-                                <label for="colorPickerCC2"> 
-                                    <input type="color" id="colorPickerCC2" title="Pick the contrasting color (CC)" value="#8b4513">  
-                                </label>
-                                <div class="swatchInfo">
+                            <div class="bigSwatch" >
+                                <div class="swatchInfo" id="CC2_swatchTitle">
                                     <h3>CC 2</h3>
-                                    <p id="CC2hexCode" class="hexCodes"></p>
                                 </div>
+                                <label for="colorPickerCC2">
+                                    <input type="text" data-coloris class="colorisInput" id="colorPickerCC2" title="Pick the contrasting color (CC 2)"> 
+                                </label>
                             </div>
                         </div>
                     </div>
+                        
+                </div>
 
                 </div>
             </div> 
@@ -255,5 +257,6 @@
         </div>
     </footer> 
 <script src="diamondQuartet.js"></script>
+
 </body>
 </html>
