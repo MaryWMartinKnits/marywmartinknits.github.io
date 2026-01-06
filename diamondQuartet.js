@@ -781,6 +781,7 @@ const picker = new ColorPicker(input, {
   // dialogPlacement: 'bottom',
   // dialogOffset: 8
 })
+input.classList.add('individualColorSwatch');
 
 // Bind events
  picker
