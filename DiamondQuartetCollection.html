@@ -22,9 +22,9 @@
     <meta property="og:image:height" content="2298">
     <meta property="og:image:alt" content="MaryWMartin's logo">
     <meta property="og:locale" content="en_US">
-    <!-- coloris -->
-    <link rel="stylesheet" href="Coloris-0.25.0/dist/coloris.css"/>
-    <script src="Coloris-0.25.0/dist/coloris.js"></script>
+    <!-- jscolorpicker -->
+    <link rel="stylesheet" href="jscolorpicker/colorpicker.css" />
+    <!-- jscolorpicker -->
 
     
     <title> Choosing Colours for the Diamond Quartet Collection</title>
@@ -109,7 +109,68 @@
                 
                 <div id="colorSwatches">
 
+                    <!-- jscolorpicker -->
                     <div class="groupedSwatches">
+                        <div id="MC1_swatch">
+                            <div class="bigSwatch" >
+                                <div class="swatchInfo" id="MC1_swatchTitle">
+                                    <h3>MC 1</h3>
+                                </div>
+                                
+                                <label for="colorPickerMC1">
+                                    <button class="individualColorSwatch" id="colorPickerMC1" title="Pick the main color (MC 1) data-color:'orange'"> 
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="MC2_swatch">
+                            <div class="bigSwatch" >
+                                <div class="swatchInfo" id="MC2_swatchTitle">
+                                    <h3>MC 2</h3>
+                                </div>
+                                <label for="colorPickerMC2">
+                                    <input type="text" class="individualColorSwatch" id="colorPickerMC2" title="Pick the main color (MC 2)"> 
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="groupedSwatches">
+                        <div id="CC1_swatch">
+                            <div class="bigSwatch" >
+                                <div class="swatchInfo" id="CC1_swatchTitle">
+                                    <h3>CC 1</h3>
+                                </div>
+                                <label for="colorPickerCC1">
+                                    <input type="text" class="individualColorSwatch" id="colorPickerCC1" title="Pick the contrasting color (CC 1)"> 
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="CC2_swatch">
+                            <div class="bigSwatch" >
+                                <div class="swatchInfo" id="CC2_swatchTitle">
+                                    <h3>CC 2</h3>
+                                </div>
+                                <label for="colorPickerCC2">
+                                    <input type="text" class="individualColorSwatch" id="colorPickerCC2" title="Pick the contrasting color (CC 2)"> 
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- jscolorpicker -->
+                        <script type="module">
+                            import ColorPicker from '/jscolorpicker/colorpicker.min.js'
+                            new ColorPicker('#colorPickerMC1')
+                            new ColorPicker('#colorPickerMC2')
+                            new ColorPicker('#colorPickerCC1')
+                            new ColorPicker('#colorPickerCC2')
+                        </script>
+                    <!-- jscolorpicker -->
+
+                    <!-- coloris -->
+                    <!-- <div class="groupedSwatches">
                         <div id="MC1_swatch">
                             <div class="bigSwatch" >
                                 <div class="swatchInfo" id="MC1_swatchTitle">
@@ -155,13 +216,15 @@
                                 </label>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
+                   <!--  coloris -->
                         
                 </div>
 
                 </div>
             </div> 
         </div>
+        
         
 
 
