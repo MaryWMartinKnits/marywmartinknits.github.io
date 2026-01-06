@@ -84,6 +84,7 @@
   pointer-events: none;
   margin: 0;
   border: 0;
+  width: 5em;
 }
 
 .cp_wide .cp_input {
