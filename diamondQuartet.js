@@ -220,28 +220,25 @@ function toggleAccordions () {
 function chooseMotifColors () {
     //console.log('function chooseMotifColors executed');
     if (localStorage.MC1) {
-        console.log(`Stored MC1: ${localStorage.MC1}`);
+        //console.log(`Stored MC1: ${localStorage.MC1}`);
         pickedMC1 = localStorage.MC1;
     } else {
         pickedMC1 = '#9370db'; // mediumpurple
     }
-
     if (localStorage.MC2) {
-        console.log(`Stored MC2: ${localStorage.MC2}`);
+        //console.log(`Stored MC2: ${localStorage.MC2}`);
         pickedMC2 = localStorage.MC2;
     } else {
         pickedMC2 = '#c71585'; // mediumvioletred
     }
-
     if (localStorage.CC1) {
-        console.log(`Stored CC1: ${localStorage.CC1}`);
+        //console.log(`Stored CC1: ${localStorage.CC1}`);
         pickedCC1 = localStorage.CC1;
     } else {
         pickedCC1 = '#ffa500'; // orange
     }
-
     if (localStorage.CC2) {
-        console.log(`Stored CC2: ${localStorage.CC2}`);
+        //console.log(`Stored CC2: ${localStorage.CC2}`);
         pickedCC2 = localStorage.CC2;
     } else {
         pickedCC2 = '#8b4513'; // saddlebrown
@@ -264,7 +261,7 @@ function updateHEXcodeDisplay (pickedMC1, pickedMC2, pickedCC1, pickedCC2) {
 function changeMC1 () {
     console.log('function changeMC1 executed');
     pickedMC1 = MC1pickerBtn.value;
-    console.log(`pickedMC1 = ${pickedMC1}`);
+    //console.log(`pickedMC1 = ${pickedMC1}`);
     updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedBackground);
     localStorage_MC1 ();
 
@@ -273,7 +270,7 @@ function changeMC1 () {
 function changeMC2 () {
     console.log('function changeMC2 executed');
     pickedMC2 = MC2pickerBtn.value;
-    console.log(`pickedMC2 = ${pickedMC2}`);
+    //console.log(`pickedMC2 = ${pickedMC2}`);
     updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedBackground);
     localStorage_MC2 ();
 }
@@ -281,7 +278,7 @@ function changeMC2 () {
 function changeCC1 () {
     console.log('function changeCC1 executed');
     pickedCC1 = CC1pickerBtn.value;
-    console.log(`pickedCC1 = ${pickedCC1}`);
+    //console.log(`pickedCC1 = ${pickedCC1}`);
     updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedBackground);
     localStorage_CC1 ();
 }
@@ -289,7 +286,7 @@ function changeCC1 () {
 function changeCC2 () {
     console.log('function changeCC2 executed');
     pickedCC2 = CC2pickerBtn.value;
-    console.log(`pickedCC2 = ${pickedCC2}`);
+    //console.log(`pickedCC2 = ${pickedCC2}`);
     updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedBackground);
     localStorage_CC2 ();
 }
@@ -302,7 +299,7 @@ function updatePickedColors (pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedB
     MC2pickerBtn.value = pickedMC2;
     CC1pickerBtn.value = pickedCC1;
     CC2pickerBtn.value = pickedCC2;
-    console.log(`function updatePickedColors executed = pickedMC 1: ${pickedMC1} / pickedMC 2: ${pickedMC2} / pickedCC 1: ${pickedCC1} / pickedCC 2: ${pickedCC2}`);
+    //console.log(`function updatePickedColors executed = pickedMC 1: ${pickedMC1} / pickedMC 2: ${pickedMC2} / pickedCC 1: ${pickedCC1} / pickedCC 2: ${pickedCC2}`);
     //updateHEXcodeDisplay(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
     updateSVG_innerHTML();
     pickSVG ();
@@ -690,6 +687,16 @@ document.getElementById("start-button").addEventListener("click", () => {
     swatchesOnly: true,
     swatches: ['#d95d5d', '#db8525', '#e8c43c', '#bed649', '#9ecbdb', '#6399a5', '#c771a1'],
     enableEyedropper: true,
+    showClearButton: true,
+     /**
+   * Determines how the chosen color is applied:
+   * - 'instant': applies immediately as the user picks a color
+   * - 'confirm': requires user confirmation (via a submit button)
+   * Default: 'confirm'
+   * submitMode: 'instant' | 'confirm',
+   */
+    submitMode: 'instant'
+  
 })
 
 // Bind events
@@ -722,8 +729,6 @@ function giveColorValueToSwatches() {
     } else {
         MC1pickerBtn.value = pickedMC1;
     }
-    console.log('MC1pickerBtn:');
-    console.log(MC1pickerBtn);
     if (localStorage_MC2 !== null) {
         pickedMC2 = localStorage.MC2;
         MC2pickerBtn.value = pickedMC2;
