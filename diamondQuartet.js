@@ -662,8 +662,9 @@ function localStorage_CC2 () {
 
 // Turn a <button> element into a ColorPicker
 const picker = new ColorPicker('#button', {
-  swatchesOnly: true,
-  swatches: ['#d95d5d', '#db8525', '#e8c43c', '#bed649', '#9ecbdb', '#6399a5', '#c771a1'],
+    swatchesOnly: true,
+    swatches: ['#d95d5d', '#db8525', '#e8c43c', '#bed649', '#9ecbdb', '#6399a5', '#c771a1'],
+    enableEyedropper: true,
 })
 
 // Bind events
