@@ -658,10 +658,35 @@ function localStorage_CC2 () {
 
 // custom color picker:
 
+/* Eyedropper */
+document.getElementById("start-button").addEventListener("click", () => {
+  const resultElement = document.getElementById("result");
+
+  if (!window.EyeDropper) {
+    resultElement.textContent =
+      "Your browser does not support the EyeDropper API";
+      console.log('Your browser does not support the EyeDropper API');
+    return;
+  }
+
+  const eyeDropper = new EyeDropper();
+
+  eyeDropper
+    .open()
+    .then((result) => {
+      resultElement.textContent = result.sRGBHex;
+      resultElement.style.backgroundColor = result.sRGBHex;
+    })
+    .catch((e) => {
+      resultElement.textContent = e;
+    });
+});
+/* eyedropper  */
+
 /* jscolorpicker: */
 
 // Turn a <button> element into a ColorPicker
-const picker = new ColorPicker('#button', {
+ const picker = new ColorPicker('#button', {
     swatchesOnly: true,
     swatches: ['#d95d5d', '#db8525', '#e8c43c', '#bed649', '#9ecbdb', '#6399a5', '#c771a1'],
     enableEyedropper: true,
@@ -686,7 +711,7 @@ picker
 	  color.string('hsl')
   )
 })
-
+ 
 /* jscolorpicker */
 
 function giveColorValueToSwatches() {
@@ -720,3 +745,5 @@ function giveColorValueToSwatches() {
         CC2pickerBtn.value = pickedCC2;
     }
 }
+
+
