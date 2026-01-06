@@ -78,6 +78,8 @@ let resetColorsBtn;
 let note1;
 let note2;
 
+let pickerID; //for createColorPicker function
+
 // accordions:
 
 let accArray;
@@ -123,6 +125,10 @@ function getDOMelements () {
     chooseMotifColors ();
     giveColorValueToSwatches();
     accordions (); 
+    createColorPicker (colorPickerMC1);
+    createColorPicker (colorPickerMC2);
+    createColorPicker (colorPickerCC1);
+    createColorPicker (colorPickerCC2);
 }
 
 function hideBtn (button) {
@@ -244,7 +250,7 @@ function chooseMotifColors () {
         pickedCC2 = '#8b4513'; // saddlebrown
     }
 
-    console.log(`function chooseMotifColors executed: pickedMC 1: ${pickedMC1} / pickedMC 2: ${pickedMC2} / pickedCC 1: ${pickedCC1} / pickedCC 2: ${pickedCC2}`);
+    //console.log(`function chooseMotifColors executed: pickedMC 1: ${pickedMC1} / pickedMC 2: ${pickedMC2} / pickedCC 1: ${pickedCC1} / pickedCC 2: ${pickedCC2}`);
     //updateHEXcodeDisplay (pickedMC1, pickedMC2, pickedCC1, pickedCC2);
     updateSVG_innerHTML ();
     pickSVG();
@@ -259,7 +265,7 @@ function updateHEXcodeDisplay (pickedMC1, pickedMC2, pickedCC1, pickedCC2) {
 }
 
 function changeMC1 () {
-    console.log('function changeMC1 executed');
+    //console.log('function changeMC1 executed');
     pickedMC1 = MC1pickerBtn.value;
     //console.log(`pickedMC1 = ${pickedMC1}`);
     updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedBackground);
@@ -268,7 +274,7 @@ function changeMC1 () {
 }
 
 function changeMC2 () {
-    console.log('function changeMC2 executed');
+    //console.log('function changeMC2 executed');
     pickedMC2 = MC2pickerBtn.value;
     //console.log(`pickedMC2 = ${pickedMC2}`);
     updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedBackground);
@@ -276,7 +282,7 @@ function changeMC2 () {
 }
 
 function changeCC1 () {
-    console.log('function changeCC1 executed');
+    //console.log('function changeCC1 executed');
     pickedCC1 = CC1pickerBtn.value;
     //console.log(`pickedCC1 = ${pickedCC1}`);
     updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedBackground);
@@ -284,7 +290,7 @@ function changeCC1 () {
 }
 
 function changeCC2 () {
-    console.log('function changeCC2 executed');
+    //console.log('function changeCC2 executed');
     pickedCC2 = CC2pickerBtn.value;
     //console.log(`pickedCC2 = ${pickedCC2}`);
     updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedBackground);
@@ -294,7 +300,7 @@ function changeCC2 () {
 
 
 function updatePickedColors (pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedBackground) {
-    console.log('function updatePickedColors executed');
+    //console.log('function updatePickedColors executed');
     MC1pickerBtn.value = pickedMC1;
     MC2pickerBtn.value = pickedMC2;
     CC1pickerBtn.value = pickedCC1;
@@ -630,30 +636,61 @@ function updateSVG_innerHTML () {
 }
 
 function localStorage_MC1 () {
-        console.log(`Stored MC1: ${localStorage.MC1}`);
+        //console.log(`Stored MC1: ${localStorage.MC1}`);
         localStorage.MC1 = MC1pickerBtn.value;
-        console.log(`Stored (new) MC1: ${localStorage.MC1} `);  
+        //console.log(`Stored (new) MC1: ${localStorage.MC1} `);  
 }
 
 function localStorage_MC2 () {
-        console.log(`Stored MC2: ${localStorage.MC2}`);
+        //console.log(`Stored MC2: ${localStorage.MC2}`);
         localStorage.MC2 = MC2pickerBtn.value;
-        console.log(`Stored (new) MC2: ${localStorage.MC2} `);  
+        //console.log(`Stored (new) MC2: ${localStorage.MC2} `);  
 }
 
 function localStorage_CC1 () {
-        console.log(`Stored CC1: ${localStorage.CC1}`);
+        //console.log(`Stored CC1: ${localStorage.CC1}`);
         localStorage.CC1 = CC1pickerBtn.value;
-        console.log(`Stored (new) CC1: ${localStorage.CC1} `);  
+        //console.log(`Stored (new) CC1: ${localStorage.CC1} `);  
 }
 
 function localStorage_CC2 () {
-        console.log(`Stored CC2: ${localStorage.CC2}`);
+        //console.log(`Stored CC2: ${localStorage.CC2}`);
         localStorage.CC2 = CC2pickerBtn.value;
-        console.log(`Stored (new) CC2: ${localStorage.CC2} `);  
+        //console.log(`Stored (new) CC2: ${localStorage.CC2} `);  
 }
 
 // custom color picker:
+
+
+function giveColorValueToSwatches() {
+    //console.log('function giveColorValueToSwatches executed');
+    if (localStorage_MC1 !== null) {
+        pickedMC1 = localStorage.MC1;
+        MC1pickerBtn.value = pickedMC1;
+    } else {
+        MC1pickerBtn.value = pickedMC1;
+    }
+    if (localStorage_MC2 !== null) {
+        pickedMC2 = localStorage.MC2;
+        MC2pickerBtn.value = pickedMC2;
+    } else {
+        MC2pickerBtn.value = pickedMC2;
+    }
+
+    if (localStorage_CC1 !== null) {
+        pickedCC1 = localStorage.CC1;
+        CC1pickerBtn.value = pickedCC1;
+    } else {
+        CC1pickerBtn.value = pickedCC1;
+    }
+
+    if (localStorage_CC2 !== null) {
+        pickedCC2 = localStorage.CC2;
+        CC2pickerBtn.value = pickedCC2;
+    } else {
+        CC2pickerBtn.value = pickedCC2;
+    }
+}
 
 /* Eyedropper */
 document.getElementById("start-button").addEventListener("click", () => {
@@ -683,31 +720,34 @@ document.getElementById("start-button").addEventListener("click", () => {
 /* jscolorpicker: */
 
 // Turn a <button> element into a ColorPicker
- const picker = new ColorPicker('#button', {
-    swatchesOnly: true,
-    swatches: ['#d95d5d', '#db8525', '#e8c43c', '#bed649', '#9ecbdb', '#6399a5', '#c771a1'],
-    enableEyedropper: true,
-    showClearButton: true,
-     /**
-   * Determines how the chosen color is applied:
-   * - 'instant': applies immediately as the user picks a color
-   * - 'confirm': requires user confirmation (via a submit button)
-   * Default: 'confirm'
-   * submitMode: 'instant' | 'confirm',
-   */
-    submitMode: 'instant'
-  
+/*const inputMC1 = document.querySelector('#colorPickerMC1')
+const pickerMC1 = new ColorPicker(inputMC1, {
+  toggleStyle: 'input',
+  // headless: false,
+  // container: null,
+  swatches: ['#d95d5d', '#db8525', '#e8c43c', '#bed649', '#9ecbdb', '#6399a5', '#c771a1'],
+  // enableAlpha: true,
+  enableEyedropper: true,
+  // formats: ['hex', 'rgb', 'hsv', 'hsl'],
+  // color: 'red', // Color is set via value attribute
+  defaultFormat: 'hex',
+  submitMode: 'confirm', // 'instant' | 'confirm'
+  showClearButton: true,
+  dismissOnOutsideClick: false,
+  dismissOnEscape: true,
+  // dialogPlacement: 'bottom',
+  // dialogOffset: 8
 })
 
 // Bind events
-picker
-.on('open', () => { console.log('open') })
-.on('opened', () => { console.log('opened') })
-.on('close', () => { console.log('close') })
-.on('closed', () => { console.log('closed') })
+ pickerMC1
+.on('open', () => { console.log('open pickerMC1') })
+.on('opened', () => { console.log('opened pickerMC1') })
+.on('close', () => { console.log('close pickerMC1') })
+.on('closed', () => { console.log('closed pickerMC1') })
 .on('pick', (color) => {
   if (!color) { 
-    return console.log('Color cleared') 
+    return console.log('Color cleared pickerMC1') 
   }
   console.log(
     'Color picked', 
@@ -717,38 +757,53 @@ picker
 	  color.string('hsv'), 
 	  color.string('hsl')
   )
+})  */
+
+function createColorPicker (pickerID) {
+    /* console.log(pickerID)
+    console.log(pickerID.id) */
+    // Turn a <button> element into a ColorPicker
+let input = document.querySelector(`#${pickerID.id}`)
+const picker = new ColorPicker(input, {
+  toggleStyle: 'input',
+  // headless: false,
+  // container: null,
+  swatches: ['#d95d5d', '#db8525', '#e8c43c', '#bed649', '#9ecbdb', '#6399a5', '#c771a1'],
+  // enableAlpha: true,
+  enableEyedropper: true,
+  // formats: ['hex', 'rgb', 'hsv', 'hsl'],
+  // color: 'red', // Color is set via value attribute
+  defaultFormat: 'hex',
+  submitMode: 'confirm', // 'instant' | 'confirm'
+  showClearButton: true,
+  dismissOnOutsideClick: false,
+  dismissOnEscape: true,
+  // dialogPlacement: 'bottom',
+  // dialogOffset: 8
 })
- 
+
+// Bind events
+ picker
+.on('open', () => { console.log(`open ${pickerID}`) })
+.on('opened', () => { console.log(`opened ${pickerID}`) })
+.on('close', () => { console.log(`close ${pickerID}`) })
+.on('closed', () => { console.log(`closed ${pickerID}`) })
+.on('pick', (color) => {
+  if (!color) { 
+    return console.log(`Color cleared ${pickerID}`) 
+  }
+  console.log(
+    'Color picked', 
+	  color.toString(), 
+	  color.string('hex'), 
+	  color.string('rgb'), 
+	  color.string('hsv'), 
+	  color.string('hsl')
+  )
+}) 
+}
+
 /* jscolorpicker */
 
-function giveColorValueToSwatches() {
-    console.log('function giveColorValueToSwatches executed');
-    if (localStorage_MC1 !== null) {
-        pickedMC1 = localStorage.MC1;
-        MC1pickerBtn.value = pickedMC1;
-    } else {
-        MC1pickerBtn.value = pickedMC1;
-    }
-    if (localStorage_MC2 !== null) {
-        pickedMC2 = localStorage.MC2;
-        MC2pickerBtn.value = pickedMC2;
-    } else {
-        MC2pickerBtn.value = pickedMC2;
-    }
-
-    if (localStorage_CC1 !== null) {
-        pickedCC1 = localStorage.CC1;
-        CC1pickerBtn.value = pickedCC1;
-    } else {
-        CC1pickerBtn.value = pickedCC1;
-    }
-
-    if (localStorage_CC2 !== null) {
-        pickedCC2 = localStorage.CC2;
-        CC2pickerBtn.value = pickedCC2;
-    } else {
-        CC2pickerBtn.value = pickedCC2;
-    }
-}
 
 

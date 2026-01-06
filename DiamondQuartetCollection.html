@@ -24,6 +24,7 @@
     <meta property="og:locale" content="en_US">
     <!-- jscolorpicker https://www.jscolorpicker.com/ -->
     <link rel="stylesheet" href="jscolorpicker/colorpicker.css" />
+    <script src="jscolorpicker/colorpicker.iife.min.js"></script>
     <!-- jscolorpicker -->
 
     
@@ -118,7 +119,8 @@
                                 </div>
                                 
                                 <label for="colorPickerMC1">
-                                    <input type="text" class="individualColorSwatch" id="colorPickerMC1" title="Pick the main color (MC 1) data-color:'orange'"> 
+                                    <!-- <input type="text" class="individualColorSwatch" id="colorPickerMC1" title="Pick the main color (MC 1)"> --> 
+                                     <div id="colorPickerMC1"> </div>
                                 </label>
                             </div>
                         </div>
@@ -129,7 +131,8 @@
                                     <h3>MC 2</h3>
                                 </div>
                                 <label for="colorPickerMC2">
-                                    <input type="text" class="individualColorSwatch" id="colorPickerMC2" title="Pick the main color (MC 2)"> 
+<!--                                     <input type="text" class="individualColorSwatch" id="colorPickerMC2" title="Pick the main color (MC 2)"> 
+ -->                            <div id="colorPickerMC2"></div>
                                 </label>
                             </div>
                         </div>
@@ -142,7 +145,8 @@
                                     <h3>CC 1</h3>
                                 </div>
                                 <label for="colorPickerCC1">
-                                    <input type="text" class="individualColorSwatch" id="colorPickerCC1" title="Pick the contrasting color (CC 1)"> 
+<!--                                     <input type="text" class="individualColorSwatch" id="colorPickerCC1" title="Pick the contrasting color (CC 1)"> 
+ -->                                    <div id="colorPickerCC1"></div>
                                 </label>
                             </div>
                         </div>
@@ -153,19 +157,20 @@
                                     <h3>CC 2</h3>
                                 </div>
                                 <label for="colorPickerCC2">
-                                    <input type="text" class="individualColorSwatch" id="colorPickerCC2" title="Pick the contrasting color (CC 2)"> 
+<!--                                     <input type="text" class="individualColorSwatch" id="colorPickerCC2" title="Pick the contrasting color (CC 2)"> 
+ -->                                    <div id="colorPickerCC2"></div>
                                 </label>
                             </div>
                         </div>
                     </div>
 
-                        <script type="module">
+                      <!--   <script type="module">
                             import ColorPicker from '/jscolorpicker/colorpicker.min.js'
                             new ColorPicker('#colorPickerMC1')
                             new ColorPicker('#colorPickerMC2')
                             new ColorPicker('#colorPickerCC1')
                             new ColorPicker('#colorPickerCC2')
-                        </script>
+                        </script> -->
                     <!-- jscolorpicker -->
 
                     <!-- eyedropper -->
