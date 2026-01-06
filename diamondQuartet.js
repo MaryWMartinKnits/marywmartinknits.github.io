@@ -122,7 +122,7 @@ function getDOMelements () {
     addEventListeners ();
     chooseMotifColors ();
     giveColorValueToSwatches();
-    //accordions (); 
+    accordions (); 
 }
 
 function hideBtn (button) {
