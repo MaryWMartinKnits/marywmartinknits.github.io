@@ -145,7 +145,7 @@ function addEventListeners () {
     CC2pickerBtn.addEventListener('change', changeCC2);
     motifPicker.addEventListener('change', pickSVG)
     resetColorsBtn.addEventListener('click', resetColours);
-    giveColorValueToSwatches ();
+    //giveColorValueToSwatches ();
 }
 
 function resetColours () {
@@ -658,68 +658,8 @@ function localStorage_CC2 () {
 
 // custom color picker:
 
-/* coloris */
-
-/*Coloris({
-  theme: 'polaroid',
-  themeMode: 'auto',
-  alpha: false,
-  swatches: [
-    'DarkSlateGray',
-    '#2a9d8f',
-    '#e9c46a',
-    'coral',
-    'rgb(231, 111, 81)',
-    'Crimson',
-    '#023e8a',
-    '#0077b6',
-    'hsl(194, 100%, 39%)',
-    '#00b4d8',
-    '#48cae4'
-  ], 
-  onChange: (color, inputEl) => {
-    console.log(`The new color is ${color}`);
-    console.log(`inputEl: ${inputEl}`);
-    console.log(inputEl);
-    inputEl.value = color;
-  }
-});
-
-
- function giveColorValueToSwatches () {
-    console.log('function giveColorValueToSwatches executed');
-    if (localStorage_MC1 !== null) {
-        pickedMC1 = localStorage.MC1;
-        MC1pickerBtn.value = pickedMC1;
-    } else {
-        MC1pickerBtn.value = pickedMC1;
-    }
-    console.log('MC1pickerBtn:');
-    console.log(MC1pickerBtn);
-    if (localStorage_MC2 !== null) {
-        pickedMC2 = localStorage.MC2;
-        MC2pickerBtn.value = pickedMC2;
-    } else {
-        MC2pickerBtn.value = pickedMC2;
-    }
-    
-    if (localStorage_CC1 !== null) {
-        pickedCC1 = localStorage.CC1;
-        CC1pickerBtn.value = pickedCC1;
-    } else {
-        CC1pickerBtn.value = pickedCC1;
-    }
-
-    if (localStorage_CC2 !== null) {
-        pickedCC2 = localStorage.CC2;
-        CC2pickerBtn.value = pickedCC2;
-    } else {
-        CC2pickerBtn.value = pickedCC2;
-    }
-} */
-/* coloris */
-
 /* jscolorpicker: */
+
 // Turn a <button> element into a ColorPicker
 const picker = new ColorPicker('#button', {
   swatchesOnly: true,
@@ -746,21 +686,36 @@ picker
   )
 })
 
-// Set color via setColor method
-document.querySelector('#setColorBtn').onclick = e => {
-  picker.setColor('#9ecbdb') 
-}
-
-document.querySelector('#openBtn').onclick = e => {
-  picker.open()
-}
-
-document.querySelector('#closeBtn').onclick = e => {
-  picker.close()
-}
-
-document.querySelector('#toggleBtn').onclick = e => {
-  picker.toggle()
-}
-
 /* jscolorpicker */
+
+function giveColorValueToSwatches() {
+    console.log('function giveColorValueToSwatches executed');
+    if (localStorage_MC1 !== null) {
+        pickedMC1 = localStorage.MC1;
+        MC1pickerBtn.value = pickedMC1;
+    } else {
+        MC1pickerBtn.value = pickedMC1;
+    }
+    console.log('MC1pickerBtn:');
+    console.log(MC1pickerBtn);
+    if (localStorage_MC2 !== null) {
+        pickedMC2 = localStorage.MC2;
+        MC2pickerBtn.value = pickedMC2;
+    } else {
+        MC2pickerBtn.value = pickedMC2;
+    }
+
+    if (localStorage_CC1 !== null) {
+        pickedCC1 = localStorage.CC1;
+        CC1pickerBtn.value = pickedCC1;
+    } else {
+        CC1pickerBtn.value = pickedCC1;
+    }
+
+    if (localStorage_CC2 !== null) {
+        pickedCC2 = localStorage.CC2;
+        CC2pickerBtn.value = pickedCC2;
+    } else {
+        CC2pickerBtn.value = pickedCC2;
+    }
+}
