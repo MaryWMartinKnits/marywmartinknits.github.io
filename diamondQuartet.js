@@ -719,45 +719,11 @@ document.getElementById("start-button").addEventListener("click", () => {
 
 /* jscolorpicker: */
 
-// Turn a <button> element into a ColorPicker
-/*const inputMC1 = document.querySelector('#colorPickerMC1')
-const pickerMC1 = new ColorPicker(inputMC1, {
-  toggleStyle: 'input',
-  // headless: false,
-  // container: null,
-  swatches: ['#d95d5d', '#db8525', '#e8c43c', '#bed649', '#9ecbdb', '#6399a5', '#c771a1'],
-  // enableAlpha: true,
-  enableEyedropper: true,
-  // formats: ['hex', 'rgb', 'hsv', 'hsl'],
-  // color: 'red', // Color is set via value attribute
-  defaultFormat: 'hex',
-  submitMode: 'confirm', // 'instant' | 'confirm'
-  showClearButton: true,
-  dismissOnOutsideClick: false,
-  dismissOnEscape: true,
-  // dialogPlacement: 'bottom',
-  // dialogOffset: 8
-})
-
-// Bind events
- pickerMC1
-.on('open', () => { console.log('open pickerMC1') })
-.on('opened', () => { console.log('opened pickerMC1') })
-.on('close', () => { console.log('close pickerMC1') })
-.on('closed', () => { console.log('closed pickerMC1') })
-.on('pick', (color) => {
-  if (!color) { 
-    return console.log('Color cleared pickerMC1') 
-  }
-  console.log(
-    'Color picked', 
-	  color.toString(), 
-	  color.string('hex'), 
-	  color.string('rgb'), 
-	  color.string('hsv'), 
-	  color.string('hsl')
-  )
-})  */
+if (window.EyeDropper == undefined) {
+    console.error('EyeDropper API is NOT supported on this platform');
+} else {
+    console.log('EyeDropper API is supported on this platform')
+}
 
 function createColorPicker (pickerID) {
     /* console.log(pickerID)
