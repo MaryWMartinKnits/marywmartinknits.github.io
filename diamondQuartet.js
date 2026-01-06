@@ -61,7 +61,6 @@ let topBoxWidth;
 let MC2pickerBtn;
 let CC1pickerBtn;
 let CC2pickerBtn;
-//let backgroundPickerBtn;
 let allMClines;
 let allCClines;
 let pickedMC1 = '#9370db'; // mediumpurple
@@ -75,10 +74,6 @@ let MC2_swatch;
 let CC2_swatch; 
 
 let resetColorsBtn;
-
-//let color;
-//let colorID;
-//let color_value;
 
 let note1;
 let note2;
@@ -637,20 +632,6 @@ function updateSVG_innerHTML () {
         <polygon points="0,10 10,0 50,0 50,40 40,50 0,50"  fill="${pickedMC1}" stroke="none" /> /13  <line x1="0" y1="10" x2="10" y2="0" stroke="black" />  /13  <line x1="40" y1="50" x2="50" y2="40" stroke="black" /> /13 <polygon points="0,50 0,10 1,9 41,49 40,50"  fill="${pickedMC1}" stroke="none" /> /13 <polygon points="0,50 0,90 1,91 41,51 40,50"  fill="${pickedCC2}" stroke="none" />`
 }
 
-/*
-function localStorage (color) {
-    colorID = color.id;
-    color_value = color.value;
-    console.log(`local Storage function executed for ${color} / color.id: ${colorID} / color.value: ${color_value}`);
-    if (localStorage.colorID) {
-        console.log(`Stored ${color}: ${localStorage.colorID}`);
-    } else {
-        const color = document.getElementById(`${colorID}`).value;
-        localStorage.colorID = color_value;
-        console.log(`Stored ${colorID}: ${localStorage.colorID} `);
-    }
-}*/
-
 function localStorage_MC1 () {
         console.log(`Stored MC1: ${localStorage.MC1}`);
         localStorage.MC1 = MC1pickerBtn.value;
@@ -677,11 +658,13 @@ function localStorage_CC2 () {
 
 // custom color picker:
 
-Coloris({
+/* coloris */
+
+/*Coloris({
   theme: 'polaroid',
   themeMode: 'auto',
   alpha: false,
- /*  swatches: [
+  swatches: [
     'DarkSlateGray',
     '#2a9d8f',
     '#e9c46a',
@@ -693,17 +676,17 @@ Coloris({
     'hsl(194, 100%, 39%)',
     '#00b4d8',
     '#48cae4'
-  ], */
+  ], 
   onChange: (color, inputEl) => {
     console.log(`The new color is ${color}`);
-    // inputEl.value = `${color}`;
     console.log(`inputEl: ${inputEl}`);
     console.log(inputEl);
     inputEl.value = color;
   }
 });
 
-function giveColorValueToSwatches () {
+
+ function giveColorValueToSwatches () {
     console.log('function giveColorValueToSwatches executed');
     if (localStorage_MC1 !== null) {
         pickedMC1 = localStorage.MC1;
@@ -733,4 +716,51 @@ function giveColorValueToSwatches () {
     } else {
         CC2pickerBtn.value = pickedCC2;
     }
+} */
+/* coloris */
+
+/* jscolorpicker: */
+// Turn a <button> element into a ColorPicker
+const picker = new ColorPicker('#button', {
+  swatchesOnly: true,
+  swatches: ['#d95d5d', '#db8525', '#e8c43c', '#bed649', '#9ecbdb', '#6399a5', '#c771a1'],
+})
+
+// Bind events
+picker
+.on('open', () => { console.log('open') })
+.on('opened', () => { console.log('opened') })
+.on('close', () => { console.log('close') })
+.on('closed', () => { console.log('closed') })
+.on('pick', (color) => {
+  if (!color) { 
+    return console.log('Color cleared') 
+  }
+  console.log(
+    'Color picked', 
+	  color.toString(), 
+	  color.string('hex'), 
+	  color.string('rgb'), 
+	  color.string('hsv'), 
+	  color.string('hsl')
+  )
+})
+
+// Set color via setColor method
+document.querySelector('#setColorBtn').onclick = e => {
+  picker.setColor('#9ecbdb') 
 }
+
+document.querySelector('#openBtn').onclick = e => {
+  picker.open()
+}
+
+document.querySelector('#closeBtn').onclick = e => {
+  picker.close()
+}
+
+document.querySelector('#toggleBtn').onclick = e => {
+  picker.toggle()
+}
+
+/* jscolorpicker */

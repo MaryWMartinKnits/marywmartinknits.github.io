@@ -1023,11 +1023,10 @@ input[type=number], #numOftotalDE {
 }
 
 /* custom color picker: */
-.colorisInput {
-    width: 8em;
-    display: flex;
-    flex-wrap: wrap;
+
+.individualColorSwatch {
     justify-content: center;
-    margin: 0.5rem 0;
 }
+
+
                 
