@@ -471,6 +471,7 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
                     svgHeight: ${svgHeight}
                     svgNewHeight: ${svgNewHeight}`)
             }
+            
         } else if (svgDivTotalWidth >= viewportWidth) {
             console.log(`if -> svgDivTotalWidth ${svgDivTotalWidth} > viewportWidth ${viewportWidth}`)
             restarWidth = svgDivTotalWidth - viewportWidth;
