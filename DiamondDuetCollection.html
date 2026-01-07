@@ -92,8 +92,6 @@
                 </select>
             </div>
         </div>
-        
-        <hr>
 
         <div>
             <div><h2>Choose your colours</h2></div>
@@ -105,13 +103,14 @@
                     <div class="groupedSwatches">
                         <div id="MC1_swatch">
                             <div class="bigSwatch" >
+                                <div class="swatchInfo" id="MC1_swatchTitle">
+                                    <h3>MC</h3>
+                                </div>
                                 <label for="colorPickerMC1">
                                     <input type="color" id="colorPickerMC1" title="Pick the main color (MC)" value="#9a5452"> 
                                 </label>
-                                <div class="swatchInfo" id="MC1_swatchTitle">
-                                    <h3>MC</h3>
-                                    <p id="MC1hexCode" class="hexCodes"></p>
-                                </div>
+                                <p id="MC1hexCode" class="hexCodes"></p>
+
                             </div>
                         </div>
                 </div>
@@ -119,11 +118,12 @@
                     <div class="groupedSwatches">
                         <div id="CC1_swatch">
                             <div class="bigSwatch" >
+                                <h3>CC</h3>
                                 <label for="colorPickerCC1"> 
                                     <input type="color" id="colorPickerCC1" title="Pick the contrasting color (CC)" value="#e7ac9d">  
                                 </label>
                                 <div class="swatchInfo" id="CC1_swatchTitle">
-                                    <h3>CC</h3>
+   
                                     <p id="CC1hexCode" class="hexCodes"></p>
                                 </div>
                             </div>
@@ -155,9 +155,10 @@
 
             </div>
         </div>
-        <hr>
+
         <div class="centerContent">
             <button id="resetColorsBtn" class="swatch">Reset colours</button>
+            <button id="createBoxesBtn" class="swatch">create Boxes</button>
         </div>
 
         <hr>

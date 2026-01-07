@@ -1007,10 +1007,6 @@ input[type=number], #numOftotalDE {
     }
 } 
 
-.svg3columnDisplay {
-    display: flex;
-    flex-direction: column;
-}
 .hexCodes {
     color: var(--color4);
     margin: 0.5rem;
@@ -1022,12 +1018,49 @@ input[type=number], #numOftotalDE {
     justify-content: center;
 }
 
-/* custom color picker: */
-
-.individualColorSwatch {
-    justify-content: center;
-    width: 100%;
+#motifPickerDropDown {
+    color: var(--color5);
+    background-color: var(--color4);
+    font-size: large;
 }
+
+#motifPickerDropDown:hover {
+    color: var(--color4);
+    background-color: var(--color5);
+}
+
+#motifPickerDiv {
+    display: flex;
+    justify-content: center;
+}
+
+/* svg boxes placement: */
+
+#boxesADNDsvg {
+    display: flex;
+}
+
+.svg3columnDisplay {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#leftBox_svg {
+    width: auto;
+    aspect-ratio: 11/100; 
+}
+
+#rightBox_svg {
+    width: auto;
+    aspect-ratio: 11/100; 
+}
+
+.lateralBoxes {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
 
 
                 

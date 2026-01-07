@@ -2,6 +2,7 @@
 
 // declaring variables:
 let viewportWidth;
+let viewportHeight;
 let begOfPage;
 let userInputTitle;
 let divToCreateSpace;
@@ -93,6 +94,8 @@ function init() {
 
 function getDOMelements () {
     //console.log('function getDOMelements executed');
+    viewportWidth = window.innerWidth;
+    viewportHeight = window.innerHeight;
     begOfPage = document.querySelector('#begOfPage')
     //windowWidth = document.querySelector('#window-width');
     //console.log(`windowWidth: ${windowWidth}`);
@@ -114,7 +117,7 @@ function getDOMelements () {
     note1 = document.querySelector('#note1');
     note2 = document.querySelector('#note2');
     accArray = document.getElementsByClassName('accordion');
-    console.log(accArray); 
+    //console.log(accArray); 
     motifPicker = document.querySelector('#motifPickerDropDown');
     SVGinDiv = document.querySelector("#SVGinDiv");
     topBox = document.querySelector("#topBox");
@@ -122,13 +125,9 @@ function getDOMelements () {
     leftBox = document.querySelector("#leftBox");
     rightBox = document.querySelector("#rightBox");
     addEventListeners ();
-    chooseMotifColors ();
-    giveColorValueToSwatches();
-    accordions (); 
-    createColorPicker (colorPickerMC1);
-    createColorPicker (colorPickerMC2);
-    createColorPicker (colorPickerCC1);
-    createColorPicker (colorPickerCC2);
+    chooseMotifColors (); 
+    giveColorValueToSwatches(); 
+    accordions ();  
 }
 
 function hideBtn (button) {
@@ -144,7 +143,7 @@ function enableBtn (button) {
 }
 
 function addEventListeners () {
-    //console.log('function addEventListeners executed');
+    console.log('function addEventListeners executed');
     MC1pickerBtn.addEventListener('change', changeMC1);
     MC2pickerBtn.addEventListener('change', changeMC2);
     CC1pickerBtn.addEventListener('change', changeCC1);
@@ -224,7 +223,7 @@ function toggleAccordions () {
 
 // picking MC and CC:
 function chooseMotifColors () {
-    //console.log('function chooseMotifColors executed');
+    console.log('function chooseMotifColors executed');
     if (localStorage.MC1) {
         //console.log(`Stored MC1: ${localStorage.MC1}`);
         pickedMC1 = localStorage.MC1;
@@ -251,7 +250,7 @@ function chooseMotifColors () {
     }
 
     //console.log(`function chooseMotifColors executed: pickedMC 1: ${pickedMC1} / pickedMC 2: ${pickedMC2} / pickedCC 1: ${pickedCC1} / pickedCC 2: ${pickedCC2}`);
-    //updateHEXcodeDisplay (pickedMC1, pickedMC2, pickedCC1, pickedCC2);
+    updateHEXcodeDisplay (pickedMC1, pickedMC2, pickedCC1, pickedCC2);
     updateSVG_innerHTML ();
     pickSVG();
 
@@ -306,7 +305,7 @@ function updatePickedColors (pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedB
     CC1pickerBtn.value = pickedCC1;
     CC2pickerBtn.value = pickedCC2;
     //console.log(`function updatePickedColors executed = pickedMC 1: ${pickedMC1} / pickedMC 2: ${pickedMC2} / pickedCC 1: ${pickedCC1} / pickedCC 2: ${pickedCC2}`);
-    //updateHEXcodeDisplay(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
+    updateHEXcodeDisplay(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
     updateSVG_innerHTML();
     pickSVG ();
 }
@@ -364,18 +363,12 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
     //console.log(`function calculateTotalWidth executed: leftBoxWidth = ${leftBoxWidth}, rightBoxWidth = ${rightBoxWidth}, svgWidth = ${svgWidth}, viewportWidth = ${viewportWidth}`);
     viewBox = `0 0 ${svgWidth} ${svgHeight}`
     svgDivTotalWidth = leftBoxWidth + svgWidth + rightBoxWidth;
-    if (svgDivTotalWidth < viewportWidth) {
-        //console.log("svgDivTotalWidth < viewportWidth")
+    if (svgDivTotalWidth < viewportWidth || svgHeight > viewportHeight) {
+        console.log(`svgDivTotalWidth < viewportWidth || svgHeight > viewportHeight
+                ${svgDivTotalWidth} < ${viewportWidth} || ${svgHeight} > ${viewportHeight}`);
         svgNewWidth = svgWidth;
         svgNewHeight = svgHeight;
-        if (svgDivTotalWidth90 < viewportWidth) {
-            //console.log("svgDivTotalWidth90 < viewportWidth")
-            sumarWidth = viewportWidth - svgDivTotalWidth;
-            svgNewWidth = (svgDivTotalWidth + sumarWidth) * 0.9;
-            svgNewHeight = svgHeight * svgNewWidth / svgWidth;
 
-            //console.log (`sumarWidth = (viewportWidth - vgDivTotalWidth90): (${viewportWidth} - ${svgDivTotalWidth90}) = ${sumarWidth} / svgWidth: ${svgWidth} -> svgNewWidth: ${svgNewWidth} / svgHeight: ${svgHeight} -> svgNewHeight: ${svgNewHeight}`);
-        }
     } else if (svgDivTotalWidth > viewportWidth) {
         //console.log("svgDivTotalWidth > viewportWidth")
         restarWidth = svgDivTotalWidth - viewportWidth;
@@ -663,7 +656,7 @@ function localStorage_CC2 () {
 
 
 function giveColorValueToSwatches() {
-    //console.log('function giveColorValueToSwatches executed');
+    console.log('function giveColorValueToSwatches executed');
     if (localStorage_MC1 !== null) {
         pickedMC1 = localStorage.MC1;
         MC1pickerBtn.value = pickedMC1;
@@ -691,86 +684,6 @@ function giveColorValueToSwatches() {
         CC2pickerBtn.value = pickedCC2;
     }
 }
-
-/* Eyedropper */
-document.getElementById("start-button").addEventListener("click", () => {
-  const resultElement = document.getElementById("result");
-
-  if (!window.EyeDropper) {
-    resultElement.textContent =
-      "Your browser does not support the EyeDropper API";
-      console.log('Your browser does not support the EyeDropper API');
-    return;
-  }
-
-  const eyeDropper = new EyeDropper();
-
-  eyeDropper
-    .open()
-    .then((result) => {
-      resultElement.textContent = result.sRGBHex;
-      resultElement.style.backgroundColor = result.sRGBHex;
-    })
-    .catch((e) => {
-      resultElement.textContent = e;
-    });
-});
-/* eyedropper  */
-
-/* jscolorpicker: */
-
-if (window.EyeDropper == undefined) {
-    console.error('EyeDropper API is NOT supported on this platform');
-} else {
-    console.log('EyeDropper API is supported on this platform')
-}
-
-function createColorPicker (pickerID) {
-    /* console.log(pickerID)
-    console.log(pickerID.id) */
-    // Turn a <button> element into a ColorPicker
-let input = document.querySelector(`#${pickerID.id}`)
-const picker = new ColorPicker(input, {
-  toggleStyle: 'input',
-  // headless: false,
-  // container: null,
-  swatches: ['#d95d5d', '#db8525', '#e8c43c', '#bed649', '#9ecbdb', '#6399a5', '#c771a1'],
-  // enableAlpha: true,
-  enableEyedropper: true,
-  // formats: ['hex', 'rgb', 'hsv', 'hsl'],
-  // color: 'red', // Color is set via value attribute
-  defaultFormat: 'hex',
-  submitMode: 'confirm', // 'instant' | 'confirm'
-  showClearButton: true,
-  dismissOnOutsideClick: false,
-  dismissOnEscape: true,
-  // dialogPlacement: 'bottom',
-  // dialogOffset: 8
-})
-input.classList.add('individualColorSwatch');
-
-// Bind events
- picker
-.on('open', () => { console.log(`open ${pickerID}`) })
-.on('opened', () => { console.log(`opened ${pickerID}`) })
-.on('close', () => { console.log(`close ${pickerID}`) })
-.on('closed', () => { console.log(`closed ${pickerID}`) })
-.on('pick', (color) => {
-  if (!color) { 
-    return console.log(`Color cleared ${pickerID}`) 
-  }
-  console.log(
-    'Color picked', 
-	  color.toString(), 
-	  color.string('hex'), 
-	  color.string('rgb'), 
-	  color.string('hsv'), 
-	  color.string('hsl')
-  )
-}) 
-}
-
-/* jscolorpicker */
 
 
 
