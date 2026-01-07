@@ -98,16 +98,10 @@ function getDOMelements () {
     //console.log(`windowWidth: ${windowWidth}`);
     divToCreateSpace = document.querySelector('.space');
     WovenMotifSVG = document.querySelector('#WovenMotifSVG');
-    /* createColorPicker (colorPickerMC1);
-    createColorPicker (colorPickerMC2);
-    createColorPicker (colorPickerCC1);
-    createColorPicker (colorPickerCC2); */
     MC1pickerBtn = document.querySelector('#colorPickerMC1');
     MC2pickerBtn = document.querySelector('#colorPickerMC2');
     CC1pickerBtn = document.querySelector('#colorPickerCC1');
     CC2pickerBtn = document.querySelector('#colorPickerCC2');
-        console.log(`variables are given values for pickerBtns:`);
-        console.log(MC1pickerBtn);
     resetColorsBtn = document.querySelector('#resetColorsBtn');
     MC1_swatchTitle = document.querySelector('#MC1_swatchTitle');
     CC1_swatchTitle = document.querySelector('#CC1_swatchTitle');
@@ -130,17 +124,7 @@ function getDOMelements () {
     addEventListeners ();
     chooseMotifColors (); 
     giveColorValueToSwatches(); 
-    accordions (); 
-    createColorPicker (colorPickerMC1);
-    createColorPicker (colorPickerMC2);
-    createColorPicker (colorPickerCC1);
-    createColorPicker (colorPickerCC2); 
-    MC1pickerBtn = document.querySelector('#colorPickerMC1');
-    MC2pickerBtn = document.querySelector('#colorPickerMC2');
-    CC1pickerBtn = document.querySelector('#colorPickerCC1');
-    CC2pickerBtn = document.querySelector('#colorPickerCC2');
-
-    
+    accordions ();  
 }
 
 function hideBtn (button) {
