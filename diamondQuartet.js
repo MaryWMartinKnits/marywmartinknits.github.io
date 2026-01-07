@@ -263,7 +263,7 @@ function chooseMotifColors () {
     }
 
     //console.log(`function chooseMotifColors executed: pickedMC 1: ${pickedMC1} / pickedMC 2: ${pickedMC2} / pickedCC 1: ${pickedCC1} / pickedCC 2: ${pickedCC2}`);
-    //updateHEXcodeDisplay (pickedMC1, pickedMC2, pickedCC1, pickedCC2);
+    updateHEXcodeDisplay (pickedMC1, pickedMC2, pickedCC1, pickedCC2);
     updateSVG_innerHTML ();
     pickSVG();
 
@@ -318,7 +318,7 @@ function updatePickedColors (pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedB
     CC1pickerBtn.value = pickedCC1;
     CC2pickerBtn.value = pickedCC2;
     //console.log(`function updatePickedColors executed = pickedMC 1: ${pickedMC1} / pickedMC 2: ${pickedMC2} / pickedCC 1: ${pickedCC1} / pickedCC 2: ${pickedCC2}`);
-    //updateHEXcodeDisplay(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
+    updateHEXcodeDisplay(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
     updateSVG_innerHTML();
     pickSVG ();
 }
