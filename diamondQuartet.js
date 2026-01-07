@@ -98,10 +98,16 @@ function getDOMelements () {
     //console.log(`windowWidth: ${windowWidth}`);
     divToCreateSpace = document.querySelector('.space');
     WovenMotifSVG = document.querySelector('#WovenMotifSVG');
+    /* createColorPicker (colorPickerMC1);
+    createColorPicker (colorPickerMC2);
+    createColorPicker (colorPickerCC1);
+    createColorPicker (colorPickerCC2); */
     MC1pickerBtn = document.querySelector('#colorPickerMC1');
     MC2pickerBtn = document.querySelector('#colorPickerMC2');
     CC1pickerBtn = document.querySelector('#colorPickerCC1');
     CC2pickerBtn = document.querySelector('#colorPickerCC2');
+        console.log(`variables are given values for pickerBtns:`);
+        console.log(MC1pickerBtn);
     resetColorsBtn = document.querySelector('#resetColorsBtn');
     MC1_swatchTitle = document.querySelector('#MC1_swatchTitle');
     CC1_swatchTitle = document.querySelector('#CC1_swatchTitle');
@@ -114,7 +120,7 @@ function getDOMelements () {
     note1 = document.querySelector('#note1');
     note2 = document.querySelector('#note2');
     accArray = document.getElementsByClassName('accordion');
-    console.log(accArray); 
+    //console.log(accArray); 
     motifPicker = document.querySelector('#motifPickerDropDown');
     SVGinDiv = document.querySelector("#SVGinDiv");
     topBox = document.querySelector("#topBox");
@@ -122,13 +128,19 @@ function getDOMelements () {
     leftBox = document.querySelector("#leftBox");
     rightBox = document.querySelector("#rightBox");
     addEventListeners ();
-    chooseMotifColors ();
-    giveColorValueToSwatches();
+    chooseMotifColors (); 
+    giveColorValueToSwatches(); 
     accordions (); 
     createColorPicker (colorPickerMC1);
     createColorPicker (colorPickerMC2);
     createColorPicker (colorPickerCC1);
-    createColorPicker (colorPickerCC2);
+    createColorPicker (colorPickerCC2); 
+    MC1pickerBtn = document.querySelector('#colorPickerMC1');
+    MC2pickerBtn = document.querySelector('#colorPickerMC2');
+    CC1pickerBtn = document.querySelector('#colorPickerCC1');
+    CC2pickerBtn = document.querySelector('#colorPickerCC2');
+
+    
 }
 
 function hideBtn (button) {
@@ -144,7 +156,7 @@ function enableBtn (button) {
 }
 
 function addEventListeners () {
-    //console.log('function addEventListeners executed');
+    console.log('function addEventListeners executed');
     MC1pickerBtn.addEventListener('change', changeMC1);
     MC2pickerBtn.addEventListener('change', changeMC2);
     CC1pickerBtn.addEventListener('change', changeCC1);
@@ -224,7 +236,7 @@ function toggleAccordions () {
 
 // picking MC and CC:
 function chooseMotifColors () {
-    //console.log('function chooseMotifColors executed');
+    console.log('function chooseMotifColors executed');
     if (localStorage.MC1) {
         //console.log(`Stored MC1: ${localStorage.MC1}`);
         pickedMC1 = localStorage.MC1;
@@ -663,7 +675,7 @@ function localStorage_CC2 () {
 
 
 function giveColorValueToSwatches() {
-    //console.log('function giveColorValueToSwatches executed');
+    console.log('function giveColorValueToSwatches executed');
     if (localStorage_MC1 !== null) {
         pickedMC1 = localStorage.MC1;
         MC1pickerBtn.value = pickedMC1;
@@ -691,86 +703,6 @@ function giveColorValueToSwatches() {
         CC2pickerBtn.value = pickedCC2;
     }
 }
-
-/* Eyedropper */
-document.getElementById("start-button").addEventListener("click", () => {
-  const resultElement = document.getElementById("result");
-
-  if (!window.EyeDropper) {
-    resultElement.textContent =
-      "Your browser does not support the EyeDropper API";
-      console.log('Your browser does not support the EyeDropper API');
-    return;
-  }
-
-  const eyeDropper = new EyeDropper();
-
-  eyeDropper
-    .open()
-    .then((result) => {
-      resultElement.textContent = result.sRGBHex;
-      resultElement.style.backgroundColor = result.sRGBHex;
-    })
-    .catch((e) => {
-      resultElement.textContent = e;
-    });
-});
-/* eyedropper  */
-
-/* jscolorpicker: */
-
-if (window.EyeDropper == undefined) {
-    console.error('EyeDropper API is NOT supported on this platform');
-} else {
-    console.log('EyeDropper API is supported on this platform')
-}
-
-function createColorPicker (pickerID) {
-    /* console.log(pickerID)
-    console.log(pickerID.id) */
-    // Turn a <button> element into a ColorPicker
-let input = document.querySelector(`#${pickerID.id}`)
-const picker = new ColorPicker(input, {
-  toggleStyle: 'input',
-  // headless: false,
-  // container: null,
-  swatches: ['#d95d5d', '#db8525', '#e8c43c', '#bed649', '#9ecbdb', '#6399a5', '#c771a1'],
-  // enableAlpha: true,
-  enableEyedropper: true,
-  // formats: ['hex', 'rgb', 'hsv', 'hsl'],
-  // color: 'red', // Color is set via value attribute
-  defaultFormat: 'hex',
-  submitMode: 'confirm', // 'instant' | 'confirm'
-  showClearButton: true,
-  dismissOnOutsideClick: false,
-  dismissOnEscape: true,
-  // dialogPlacement: 'bottom',
-  // dialogOffset: 8
-})
-input.classList.add('individualColorSwatch');
-
-// Bind events
- picker
-.on('open', () => { console.log(`open ${pickerID}`) })
-.on('opened', () => { console.log(`opened ${pickerID}`) })
-.on('close', () => { console.log(`close ${pickerID}`) })
-.on('closed', () => { console.log(`closed ${pickerID}`) })
-.on('pick', (color) => {
-  if (!color) { 
-    return console.log(`Color cleared ${pickerID}`) 
-  }
-  console.log(
-    'Color picked', 
-	  color.toString(), 
-	  color.string('hex'), 
-	  color.string('rgb'), 
-	  color.string('hsv'), 
-	  color.string('hsl')
-  )
-}) 
-}
-
-/* jscolorpicker */
 
 
 

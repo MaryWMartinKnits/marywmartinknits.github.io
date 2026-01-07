@@ -1007,10 +1007,6 @@ input[type=number], #numOftotalDE {
     }
 } 
 
-.svg3columnDisplay {
-    display: flex;
-    flex-direction: column;
-}
 .hexCodes {
     color: var(--color4);
     margin: 0.5rem;
@@ -1022,12 +1018,23 @@ input[type=number], #numOftotalDE {
     justify-content: center;
 }
 
-/* custom color picker: */
+/* svg boxes placement: */
 
-.individualColorSwatch {
-    justify-content: center;
-    width: 100%;
+#boxesADNDsvg {
+    display: flex;
 }
+
+.svg3columnDisplay {
+    display: flex;
+    flex-direction: row;
+}
+
+#leftBox_svg {
+    width: auto;
+    aspect-ratio: 11/100;
+    
+}
+
 
 
                 
