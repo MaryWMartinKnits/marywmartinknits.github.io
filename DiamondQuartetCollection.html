@@ -22,11 +22,6 @@
     <meta property="og:image:height" content="2298">
     <meta property="og:image:alt" content="MaryWMartin's logo">
     <meta property="og:locale" content="en_US">
-    <!-- jscolorpicker https://www.jscolorpicker.com/ -->
-    <link rel="stylesheet" href="jscolorpicker/colorpicker.css" />
-    <script src="jscolorpicker/colorpicker.iife.min.js"></script>
-    <!-- jscolorpicker -->
-
     
     <title> Choosing Colours for the Diamond Quartet Collection</title>
 </head>
@@ -108,7 +103,6 @@
             <div><h2>Choose your colours</h2></div>
             <div id="colorPickerDiv">
                 <div id="colorSwatches">
-                    <!-- jscolorpicker -->
                     <div class="groupedSwatches">
                         <div id="MC1_swatch">
                             <div class="bigSwatch" >
@@ -116,7 +110,7 @@
                                     <h3>MC 1</h3>
                                 </div>
                                 <label for="colorPickerMC1">
-                                    <div id="colorPickerMC1"> </div>
+                                    <input type="color" id="colorPickerMC1" title="Pick the main color (MC 1)" value="#9370db"> 
                                 </label>
                             </div>
                         </div>
@@ -126,8 +120,8 @@
                                 <div class="swatchInfo" id="MC2_swatchTitle">
                                     <h3>MC 2</h3>
                                 </div>
-                                <label for="colorPickerMC2">
-                                    <div id="colorPickerMC2"></div>
+                                 <label for="colorPickerMC2"> 
+                                    <input type="color" id="colorPickerMC2" title="Pick the main color (MC 2)" value="#c71585">  
                                 </label>
                             </div>
                         </div>
@@ -139,8 +133,8 @@
                                 <div class="swatchInfo" id="CC1_swatchTitle">
                                     <h3>CC 1</h3>
                                 </div>
-                                <label for="colorPickerCC1">
-                                    <div id="colorPickerCC1"></div>
+                                <label for="colorPickerCC1"> 
+                                    <input type="color" id="colorPickerCC1" title="Pick the contrasting color (CC 2)" value="#ffa500">  
                                 </label>
                             </div>
                         </div>
@@ -150,16 +144,12 @@
                                 <div class="swatchInfo" id="CC2_swatchTitle">
                                     <h3>CC 2</h3>
                                 </div>
-                                <label for="colorPickerCC2">
-                                    <div id="colorPickerCC2"></div>
+                                 <label for="colorPickerCC2"> 
+                                    <input type="color" id="colorPickerCC2" title="Pick the contrasting color (CC 2)" value="#8b4513">  
                                 </label>
                             </div>
                         </div>
                     </div>
-                      
-                    <!-- eyedropper -->
-                     <button id="start-button">Open the eyedropper</button> <span id="result"></span>
-                    <!-- eyedropper -->
                         
                 </div>
 
