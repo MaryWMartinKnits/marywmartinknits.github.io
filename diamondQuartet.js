@@ -2,6 +2,7 @@
 
 // declaring variables:
 let viewportWidth;
+let viewportHeight;
 let begOfPage;
 let userInputTitle;
 let divToCreateSpace;
@@ -93,6 +94,8 @@ function init() {
 
 function getDOMelements () {
     //console.log('function getDOMelements executed');
+    viewportWidth = window.innerWidth;
+    viewportHeight = window.innerHeight;
     begOfPage = document.querySelector('#begOfPage')
     //windowWidth = document.querySelector('#window-width');
     //console.log(`windowWidth: ${windowWidth}`);
@@ -360,18 +363,12 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
     //console.log(`function calculateTotalWidth executed: leftBoxWidth = ${leftBoxWidth}, rightBoxWidth = ${rightBoxWidth}, svgWidth = ${svgWidth}, viewportWidth = ${viewportWidth}`);
     viewBox = `0 0 ${svgWidth} ${svgHeight}`
     svgDivTotalWidth = leftBoxWidth + svgWidth + rightBoxWidth;
-    if (svgDivTotalWidth < viewportWidth) {
-        //console.log("svgDivTotalWidth < viewportWidth")
+    if (svgDivTotalWidth < viewportWidth || svgHeight > viewportHeight) {
+        console.log(`svgDivTotalWidth < viewportWidth || svgHeight > viewportHeight
+                ${svgDivTotalWidth} < ${viewportWidth} || ${svgHeight} > ${viewportHeight}`);
         svgNewWidth = svgWidth;
         svgNewHeight = svgHeight;
-        if (svgDivTotalWidth90 < viewportWidth) {
-            //console.log("svgDivTotalWidth90 < viewportWidth")
-            sumarWidth = viewportWidth - svgDivTotalWidth;
-            svgNewWidth = (svgDivTotalWidth + sumarWidth) * 0.9;
-            svgNewHeight = svgHeight * svgNewWidth / svgWidth;
 
-            //console.log (`sumarWidth = (viewportWidth - vgDivTotalWidth90): (${viewportWidth} - ${svgDivTotalWidth90}) = ${sumarWidth} / svgWidth: ${svgWidth} -> svgNewWidth: ${svgNewWidth} / svgHeight: ${svgHeight} -> svgNewHeight: ${svgNewHeight}`);
-        }
     } else if (svgDivTotalWidth > viewportWidth) {
         //console.log("svgDivTotalWidth > viewportWidth")
         restarWidth = svgDivTotalWidth - viewportWidth;

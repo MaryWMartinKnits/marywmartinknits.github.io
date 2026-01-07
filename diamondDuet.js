@@ -2,6 +2,7 @@
 
 // declaring variables:
 let viewportWidth;
+let viewportHeight;
 let begOfPage;
 let userInputTitle;
 let divToCreateSpace;
@@ -107,6 +108,8 @@ function init() {
 
 function getDOMelements () {
     //console.log('function getDOMelements executed');
+    viewportWidth = window.innerWidth;
+    viewportHeight = window.innerHeight;
     begOfPage = document.querySelector('#begOfPage')
     //windowWidth = document.querySelector('#window-width');
     //console.log(`windowWidth: ${windowWidth}`);
@@ -375,14 +378,23 @@ function calculateSVGWidth (svgWidth) {
     console.log (`svgDivTotalWidth = ${svgDivTotalWidth}`);
     console.log(`=> svgDivTotalWidth = ${svgDivTotalWidth} and viewportWidth = ${viewportWidth} => ?`)
 
-    if (svgDivTotalWidth <= viewportWidth) {
-        console.log(`if => svgDivTotalWidth ${svgDivTotalWidth} <= viewportWidth ${viewportWidth}`)
-        svgNewWidth = svgWidth;
-        svgNewHeight = svgHeight;
+    if (svgDivTotalWidth <= viewportWidth || svgHeight > viewportHeight) {
+        console.log(`if => svgDivTotalWidth < viewportWidth || svgHeight > viewportHeight
+                ${svgDivTotalWidth} < ${viewportWidth} || ${svgHeight} > ${viewportHeight}`);
+            svgNewWidth = svgWidth;
+            svgNewHeight = svgHeight;
             sumarWidth = viewportWidth - svgDivTotalWidth;
             /* svgNewWidth = (svgDivTotalWidth + sumarWidth) * 0.9; */
             svgNewWidth = Math.round((svgDivTotalWidth + sumarWidth) * 0.9)
             svgNewHeight = svgHeight * svgNewWidth / svgWidth;
+            if (svgHeight > viewportHeight) {
+                console.log(`=> if svgHeight > viewportHeight`);
+                svgNewHeight = viewportHeight - (svgHeight - viewportHeight);
+                svgNewWidth = svgNewWidth * svgNewHeight / svgHeight;
+                console.log(`viewportHeight: ${viewportHeight}
+                    svgHeight: ${svgHeight}
+                    svgNewHeight: ${svgNewHeight}`)
+            }
 
 
         } else if (svgDivTotalWidth > viewportWidth) {
@@ -447,19 +459,18 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
     svgDivTotalWidth = svgDivTotalWidth90;
     //console.log (`svgDivTotalWidth90 = ${svgDivTotalWidth90}`);
 
-    if (svgDivTotalWidth < viewportWidth) {
+    if (svgDivTotalWidth <= viewportWidth || svgHeight > viewportHeight) {
         console.log(`if -> svgDivTotalWidth < viewportWidth ${viewportWidth}`)
         svgNewWidth = svgWidth;
         svgNewHeight = svgHeight;
-        if (svgDivTotalWidth90 < viewportWidth) {
-            console.log(`if -> svgDivTotalWidth90 < viewportWidth ${viewportWidth}`)
-            sumarWidth = viewportWidth - svgDivTotalWidth;
-            /* svgNewWidth = (svgDivTotalWidth + sumarWidth) * 0.9; */
-            svgNewWidth = Math.round((svgDivTotalWidth + sumarWidth) * 0.9) - leftBoxWidth - rightBoxWidth;
-            svgNewHeight = svgHeight * svgNewWidth / svgWidth;
-
-            console.log (`sumarWidth = (viewportWidth - vgDivTotalWidth90): (${viewportWidth} - ${svgDivTotalWidth90}) = ${sumarWidth} / svgWidth: ${svgWidth} -> svgNewWidth: ${svgNewWidth} / svgHeight: ${svgHeight} -> svgNewHeight: ${svgNewHeight}`);
-        }
+        if (svgHeight > viewportHeight) {
+                console.log(`=> if svgHeight > viewportHeight`);
+                svgNewHeight = viewportHeight - (svgHeight - viewportHeight);
+                svgNewWidth = svgNewWidth * svgNewHeight / svgHeight;
+                console.log(`viewportHeight: ${viewportHeight}
+                    svgHeight: ${svgHeight}
+                    svgNewHeight: ${svgNewHeight}`)
+            }
         } else if (svgDivTotalWidth >= viewportWidth) {
             console.log(`if -> svgDivTotalWidth ${svgDivTotalWidth} > viewportWidth ${viewportWidth}`)
             restarWidth = svgDivTotalWidth - viewportWidth;
