@@ -52,8 +52,10 @@ let topBoxWidth;
 let leftViewBox;
 let rightViewBox;
 
+let topBox_innerHTML;
 let leftBox_innerHTML;
 let rightBox_innerHTML;
+let bottomBox_innerHTML;
 
 // Diamond Duet Collection:
 let motifDiamondDuetCowlHat
@@ -65,10 +67,10 @@ let motifDiamondDuetMitts_B_innerHTML;
 let selectedMotif = 'motifDiamondDuetCowlHat';
 let selectedMotif_innerHTML = motifDiamondDuetMitts_A_innerHTML;
 
-let motifDiamondDuetMitts_CowlHat_topBox_innerHTML;
-let motifDiamondDuetMitts_CowlHat_leftBox_innerHTML;
-let motifDiamondDuetMitts_CowlHat_rightBox_innerHTML;
-let motifDiamondDuetMitts_CowlHat_bottomBox_innerHTML;
+let motifDiamondDuet_CowlHat_topBox_innerHTML;
+let motifDiamondDuet_CowlHat_leftBox_innerHTML;
+let motifDiamondDuet_CowlHat_rightBox_innerHTML;
+let motifDiamondDuet_CowlHat_bottomBox_innerHTML;
 
 let motifDiamondDuetMitts_A_topBox_innerHTML;
 let motifDiamondDuetMitts_A_leftBox_innerHTML;
@@ -298,8 +300,10 @@ function pickSVG () {
 
 function determinarSVGcharacteristics () {
     console.log(`function determinarSVGcharacteristics executed`);
+    topBox_innerHTML = "";
     leftBox_innerHTML = "";
     rightBox_innerHTML = "";
+    bottomBox_innerHTML = "";
     switch (selectedMotif) {
         case "motifDiamondDuetCowlHat":
             /* SVG: */
@@ -307,13 +311,15 @@ function determinarSVGcharacteristics () {
             svgWidth = 800;
             numberOfColors = "2";
             selectedMotif_innerHTML = motifDiamondDuetMitts_A_innerHTML;
+            /* TOP: */
+            topBox_innerHTML = motifDiamondDuet_CowlHat_topBox_innerHTML;
             /* LEFT: */
-            leftBox_innerHTML = motifDiamondDuetMitts_CowlHat_leftBox_innerHTML;
+            leftBox_innerHTML = motifDiamondDuet_CowlHat_leftBox_innerHTML;
             leftBoxWidth = 0;
             leftBoxHeight = 0;
             leftViewBox = `0 0 ${leftBoxWidth} ${leftBoxHeight}`
             /* RIGHT:  */
-            rightBox_innerHTML = motifDiamondDuetMitts_CowlHat_rightBox_innerHTML;
+            rightBox_innerHTML = motifDiamondDuet_CowlHat_rightBox_innerHTML;
             rightBoxWidth = 110;
             //console.log(`rightBoxWidth = ${rightBoxWidth} px`);
             rightBoxHeight = svgHeight;
@@ -326,6 +332,8 @@ function determinarSVGcharacteristics () {
             svgWidth = 800;
             //numberOfColors = "2";
             selectedMotif_innerHTML = motifDiamondDuetMitts_A_innerHTML;
+            /* TOP: */
+            topBox_innerHTML = motifDiamondDuetMitts_A_topBox_innerHTML;
             /* LEFT: */
             leftBox_innerHTML = motifDiamondDuetMitts_A_leftBox_innerHTML;
             leftBoxWidth = svgWidth*10/100;
@@ -347,6 +355,8 @@ function determinarSVGcharacteristics () {
             svgWidth = 800;
             //numberOfColors = "2";
             selectedMotif_innerHTML = motifDiamondDuetMitts_B_innerHTML;
+            /* TOP: */
+            topBox_innerHTML = motifDiamondDuetMitts_B_topBox_innerHTML;
             /* LEFT: */
             leftBox_innerHTML = motifDiamondDuetMitts_B_leftBox_innerHTML;
             leftBoxWidth = svgWidth*10/100;
@@ -550,9 +560,19 @@ function drawSVG (selectedMotif) {
 function drawSVGwithBoxes () {
     selectedMotif = motifPickerDropDown.value;
     console.log('function drawSVGwithBoxes executed / selectedMotif: ' + selectedMotif )
+    
+    topBox.innerHTML = 
+    `<p id= "${topBox.id}_p"> ${topBox_innerHTML}  </p>`;
+    topBox.style.width = `${topBoxWidth}px`;
+/*     topBox.style.margin = `0 ${rightBoxWidth}px 0 ${leftBoxWidth}px`;
+ */    topBox.style.padding = `0`;
+
+
     leftBox.innerHTML = `<svg id= "${leftBox.id}_svg" class="lateralBoxes" width="${leftBoxWidth}" height="${leftBoxHeight}" viewbox="${leftViewBox}"
     style="border:1px solid var(--color4); background-color:#C4C4E1"> 
     ${leftBox_innerHTML}`
+
+
 
      SVGinDiv.innerHTML = 
     `<svg id= "${selectedMotif}_svg" width="${svgNewWidth}" height="${svgNewHeight}" viewbox="${viewBox}"
@@ -816,9 +836,10 @@ function createBoxes () {
 
 function give_innerHTMLtoBoxes () {
     /* Cowl / Hat */
-    motifDiamondDuetMitts_CowlHat_topBox_innerHTML = ``;
-    motifDiamondDuetMitts_CowlHat_leftBox_innerHTML = "";
-    motifDiamondDuetMitts_CowlHat_rightBox_innerHTML = `
+    motifDiamondDuet_CowlHat_topBox_innerHTML = `The cables cross over the end of round to
+continue travelling in their established direction.`;
+    motifDiamondDuet_CowlHat_leftBox_innerHTML = "";
+    motifDiamondDuet_CowlHat_rightBox_innerHTML = `
     <svg
     width="99.134766"
     height="601.61188"
@@ -862,11 +883,11 @@ function give_innerHTMLtoBoxes () {
     </g>
     </svg>
     `;
-    motifDiamondDuetMitts_CowlHat_bottomBox_innerHTML = ``;
+    motifDiamondDuet_CowlHat_bottomBox_innerHTML = ``;
 
     /* mitten A */
 
-    motifDiamondDuetMitts_A_topBox_innerHTML = ``;
+    motifDiamondDuetMitts_A_topBox_innerHTML = `For the initial Thumb Gusset section, the cables change colours at the edge of the motif when they change direction. This keeps all ables travellling to the right MC and all cables travelling to the left CC; Woven Motif A in the pattern. For the upper hand, the cables travel continuously around the mittien do not change colour; woven Motif B in the pattern. <br> Diagram shows three vertical repeats of the Woven Motif. Refer to the pattern for the number of repeats required.`;
     motifDiamondDuetMitts_A_leftBox_innerHTML = `
     <svg
    width="70.949379"
@@ -955,7 +976,7 @@ function give_innerHTMLtoBoxes () {
 
     /* mitten B */
     
-    motifDiamondDuetMitts_B_topBox_innerHTML = ``;
+    motifDiamondDuetMitts_B_topBox_innerHTML = `For the initial Thumb Gusset section, the cables change colours at the edge of the motif when they change direction. This heeps all ables travelling to the right CC and all cables travelling to the left MC; Woven Motif C in the pattern. For the upper hand, the cables travel continuously around the mitten do not change colour; Woven Motif D in the pattern. <br> Diagram shows three vertical repeats of the Woven Motif. Refer to the pattern for the number of repeats required.`;
     motifDiamondDuetMitts_B_leftBox_innerHTML = `
     <svg
    width="70.949379"

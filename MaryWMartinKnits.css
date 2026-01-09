@@ -1063,12 +1063,29 @@ input[type=number], #numOftotalDE {
 
 #boxesADNDsvg {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .svg3columnDisplay {
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+#topBox {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#topBox_p {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #leftBox_svg {
