@@ -439,11 +439,11 @@ fieldset {
 #colorPickerDiv {
     width: 100%;
     display: flex;
-    justify-content:space-around;    
+    justify-content:space-evenly    
 }
 
 #colorSwatches {
-    width: 95%;
+    width: max-content;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -460,8 +460,8 @@ fieldset {
     box-shadow: 1em 1em 1em rgba(0, 0, 0, .1);
     display: flex;
     flex-direction: column;
-    margin: 0.25rem 1rem;
-    padding: 1rem;
+    margin: 0 0.25rem;
+    padding: 0;
     text-align: center;
   }
   
@@ -469,8 +469,8 @@ fieldset {
     padding: 0.1em;
   }
   
-  .swatch h3{
-    margin: 0;
+  .bigSwatch h3{
+    margin: 0.5rem 0;
     columns: var(--color2);
   }
   
@@ -1018,6 +1018,11 @@ input[type=number], #numOftotalDE {
     justify-content: center;
 }
 
+.verticallyCenterContent {
+    display: flex;
+    flex-direction: column;
+}
+
 #motifPickerDropDown {
     color: var(--color5);
     background-color: var(--color4);
@@ -1032,6 +1037,10 @@ input[type=number], #numOftotalDE {
 #motifPickerDiv {
     display: flex;
     justify-content: center;
+}
+
+#resetColorsBtn {
+    height: min-content;
 }
 
 /* svg boxes placement: */
@@ -1060,7 +1069,6 @@ input[type=number], #numOftotalDE {
     margin-left: 0.5em;
     margin-right: 0.5em;
 }
-
 
 
                 
