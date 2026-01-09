@@ -149,6 +149,7 @@ button:hover {
 
 .hidden {
     display: none;
+    border: none;
 }
 
 .betweenMarkers {
@@ -1129,19 +1130,21 @@ input[type=number], #numOftotalDE {
 
 }
 
-#bottomBox {
+#bottomBoxA {
     justify-content: center;
     display: flex;
     flex-wrap: nowrap;
     margin: auto;
+    height: 2em;
 }
 
-#bottomBox_middleDiv {
+#bottomBoxA_middleDiv {
     border-left: 1px solid var(--color2);
     border-right: 1px solid var(--color2);
+    height: 2em;
 }
 
-#bottomBox_firstDiv, #bottomBox_lastDiv  {
+#bottomBoxA_firstDiv, #bottomBoxA_lastDiv  {
     height: auto;
      background-color: var(--color5); 
 }

@@ -40,6 +40,7 @@ let CC1hexDisplay;
 
 let topBox;
 let bottomBox;
+let bottomBoxB;
 let leftBox;
 let rightBox;
 
@@ -147,13 +148,15 @@ function getDOMelements () {
     motifPicker = document.querySelector('#motifPickerDropDown');
     SVGinDiv = document.querySelector("#SVGinDiv");
     topBox = document.querySelector("#topBox");
-    bottomBox = document.querySelector("#bottomBox");
+    bottomBox = document.querySelector("#bottomBoxA");
+    bottomBoxB = document.querySelector("#bottomBoxB");
     leftBox = document.querySelector("#leftBox");
     rightBox = document.querySelector("#rightBox");
     Title_chooseColors = document.querySelector('#Title_chooseColors')
-    first_bottomBoxDiv = document.querySelector('#bottomBox_firstDiv');
-    middle_bottomBoxDiv = document.querySelector('#bottomBox_middleDiv');
-    last_bottomBoxDiv = document.querySelector('#bottomBox_lastDiv');
+    first_bottomBoxDiv = document.querySelector('#bottomBoxA_firstDiv');
+    middle_bottomBoxDiv = document.querySelector('#bottomBoxA_middleDiv');
+    last_bottomBoxDiv = document.querySelector('#bottomBoxA_lastDiv');
+    bottomBox.classList.add('hidden');
     
     addEventListeners ();
     chooseMotifColors ();
@@ -196,29 +199,6 @@ function resetColours () {
     updatePickedColors (pickedMC1, pickedCC1, pickedBackground);
     
 }
-
-/* function resizeScreen () {
-    for (let i = 0; i < accArray.length; i++) {
-        let panel = accArray[i].nextElementSibling;
-        if (panel.style.maxHeight && panel.style.maxHeight !== '0px') {
-            panel.style.maxHeight = `0px`;
-            if (panel.id == 'socials') {
-                panel.style.padding = '0px'; 
-            }
-        } else {
-            panel.style.maxHeight = `${panel.scrollHeight}px`; 
-            if (panel.class == 'intro') {
-                panel.style.maxHeight = `${panel.scrollHeight + 300}px`; 
-            }
-            if (panel.id == 'socials') {
-                panel.style.padding = '16px';
-                panel.style.maxHeight = `${panel.scrollHeight + 16}px`; 
-                document.getElementById('socials').focus();
-            }
-        }
-    }
-    
-} */
 
 // accordions:
 
@@ -574,7 +554,11 @@ function drawSVG (selectedMotif) {
 function drawSVGwithBoxes () {
     selectedMotif = motifPickerDropDown.value;
     console.log('function drawSVGwithBoxes executed / selectedMotif: ' + selectedMotif )
-    
+    createTopBox ();
+    createLeftBox ();
+    createSVG ();
+    createRightBox ();
+    createBottomBox (selectedMotif);
     WovenMotifSVG.appendChild(leftBox);
     WovenMotifSVG.appendChild(SVGinDiv);
     WovenMotifSVG.appendChild(rightBox);
@@ -585,6 +569,7 @@ function drawSVGwithBoxes () {
     console.log(SVGinDiv);
     console.log(rightBox);
     console.log(bottomBox);
+    enableBtn (bottomBox)
 }
 
 function createSVG () {
@@ -645,6 +630,7 @@ function createRightBox () {
 
 function createBottomBox (selectedMotif) {
     console.log('function createBottomBox executed');
+    bottomBox.classList.remove('hidden');
     switch (selectedMotif) {
         case "motifDiamondDuetCowlHat":
             /* BOTTOM: */
@@ -674,9 +660,14 @@ function createBottomBox (selectedMotif) {
     middle_bottomBoxDivWidth = bottomBox_sectionWidth * middle_bottomBoxDiv_numberofSections;
     last_bottomBoxDivWidth = bottomBox_sectionWidth * last_bottomBoxDiv_numberofSections;
 
-    middle_bottomBoxDiv.innerHTML = `
-                        <p id= "${bottomBox.id}_p" class="boxes_p"> ${bottomBox_innerHTML}  </p>
-                        `;
+   /*  middle_bottomBoxDiv.innerHTML = `
+                        <p id= "${bottomBox.id}_p" class="boxes_p" style="width: ${middle_bottomBoxDivWidth}> </p>
+                        `;  */
+    middle_bottomBoxDiv.style.width = `${middle_bottomBoxDivWidth}px`;
+    bottomBoxB.innerHTML = `
+    <p id= "${bottomBox.id}_p" class="boxes_p"> ${bottomBox_innerHTML}  </p> <hr>
+    `;
+
     console.log(`bottomBoxWidth: ${bottomBoxWidth}
         ${first_bottomBoxDivWidth} / ${middle_bottomBoxDivWidth} / ${last_bottomBoxDivWidth} = ${first_bottomBoxDivWidth + middle_bottomBoxDivWidth + last_bottomBoxDivWidth}`)
 
@@ -932,11 +923,7 @@ function createBoxes () {
     //viewBox = `0 0 ${svgWidth} ${svgHeight}`
     calculateSVGWidth(svgWidth);
     calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth);
-    createTopBox ();
-    createLeftBox ();
-    createSVG ();
-    createRightBox ();
-    createBottomBox (selectedMotif);
+    
 
     drawSVGwithBoxes ();
     hideBtn (resetColorsBtn);
