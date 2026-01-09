@@ -1043,6 +1043,10 @@ input[type=number], #numOftotalDE {
     height: min-content;
 }
 
+#bottomDiv {
+    justify-content: space-evenly;
+}
+
 /* svg boxes placement: */
 
 #boxesADNDsvg {
