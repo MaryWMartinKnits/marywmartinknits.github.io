@@ -163,9 +163,9 @@ function addEventListeners () {
     //console.log('function addEventListeners executed');
     MC1pickerBtn.addEventListener('change', changeMC1);
     CC1pickerBtn.addEventListener('change', changeCC1);
-    motifPicker.addEventListener('click', pickSVG)
+    motifPicker.addEventListener('change', pickSVG)
     resetColorsBtn.addEventListener('click', resetColours);
-    //createBoxesBtn.addEventListener('click', createBoxes);
+    createBoxesBtn.addEventListener('click', createBoxes);
 }
 
 function resetColours () {
@@ -252,7 +252,7 @@ function chooseMotifColors () {
     updateHEXcodeDisplay (pickedMC1, pickedCC1);
     updateSVG_innerHTML ();
     pickSVG();
-    //localStorage (MC1pickerBtn);
+
 }
 
 function updateHEXcodeDisplay (pickedMC1, pickedCC1) {
@@ -293,7 +293,7 @@ function pickSVG () {
     calculateSVGWidth (svgWidth);
     updateSVG_innerHTML();
     drawSVG (selectedMotif);
-    createBoxes ();
+    //createBoxes ();
 }
 
 function determinarSVGcharacteristics () {
@@ -527,7 +527,7 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
 }
 
 function drawSVG (selectedMotif) {
-    //console.log('function drawSVG executed')
+    console.log('function drawSVG executed')
     //console.log(`svgWidth: ${svgWidth} / svgNewWidth: ${svgNewWidth}`);
     //console.log(`svgHeigth: ${svgHeight} / svgNewHeight: ${svgNewHeight}`);
     //console.log(`viewportWidth: ${viewportWidth} / viewBox: ${viewBox}`);
@@ -804,9 +804,9 @@ function createBoxes () {
     calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth);
     drawSVGwithBoxes ();
     hideBtn (resetColorsBtn);
-    hideBtn (createBoxesBtn);
-    let motifPickerDiv = document.querySelector('#motifPickerDiv');
-    hideBtn (motifPickerDiv);
+    //hideBtn (createBoxesBtn);
+    //let motifPickerDiv = document.querySelector('#motifPickerDiv');
+    //hideBtn (motifPickerDiv);
     disableBtn (MC1pickerBtn);
     disableBtn (CC1pickerBtn);
     hideBtn (Title_chooseColors);
