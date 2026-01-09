@@ -333,8 +333,10 @@ function determinarSVGcharacteristics () {
            
             /* LEFT: */
             leftBox_innerHTML = motifDiamondDuet_CowlHat_leftBox_innerHTML;
-            leftBoxWidth = 0;
-            leftBoxHeight = 0;
+            /* leftBoxWidth = 0;
+            leftBoxHeight = 0; */
+            leftBoxWidth = 110;
+            leftBoxHeight = svgHeight;
             leftViewBox = `0 0 ${leftBoxWidth} ${leftBoxHeight}`
             /* RIGHT:  */
             rightBox_innerHTML = motifDiamondDuet_CowlHat_rightBox_innerHTML;
@@ -441,7 +443,7 @@ function calculateSVGWidth (svgWidth) {
             svgNewWidth = svgDivTotalWidth - restarWidth; 
             svgNewWidth = Math.round(svgNewWidth * 0.90);
             console.log(`svgNewWidth: ${svgNewWidth}`);
-            if (viewportWidth < 600) {
+            if (viewportWidth < 800) {
                 console.log(`if => small viewportWidth (<600): ${viewportWidth}`)
                 svgNewWidth = Math.round(svgNewWidth * 0.99);
                 console.log(`svgNewWidth: ${svgNewWidth}`);
@@ -451,18 +453,6 @@ function calculateSVGWidth (svgWidth) {
         }
 
         svgWidth = svgNewWidth;
-
-        //svgHeight = svgNewHeight;
-        /* console.log (`svgDivTotalWidth = ${svgDivTotalWidth},
-        selectedMotif: ${selectedMotif}
-        SVG only:
-        viewBox: ${viewBox}
-        svgHeight = ${svgHeight},
-        svgWidth = ${svgWidth} / svgNewWidht: ${svgNewWidth}, `) 
-        console.log (`viewportWidth: ${viewportWidth}   
-            svgWidth: ${svgWidth}
-            svgHeight: ${svgHeight}
-            viewBox: ${viewBox}`);  */
 }
 
 function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
@@ -573,7 +563,9 @@ function drawSVG (selectedMotif) {
     ${selectedMotif_innerHTML}
     </svg>`;
 
+    WovenMotifSVG.appendChild(leftBox);
     WovenMotifSVG.appendChild(SVGinDiv);
+    WovenMotifSVG.appendChild(rightBox);
     document.getElementById("svgChartDiv").focus();
     console.log(SVGinDiv);
 
@@ -582,30 +574,19 @@ function drawSVG (selectedMotif) {
 function drawSVGwithBoxes () {
     selectedMotif = motifPickerDropDown.value;
     console.log('function drawSVGwithBoxes executed / selectedMotif: ' + selectedMotif )
-
-    topBox.innerHTML = 
-    `<p id= "${topBox.id}_p"> ${topBox_innerHTML}  </p>`;
-    topBox.style.width = `${topBoxWidth}px`;
-    topBox.style.padding = `0`;
-
-    createLeftBox ();
-    createSVG ();
-    createRightBox ();
-    createBottomBox (selectedMotif);
     
     WovenMotifSVG.appendChild(leftBox);
     WovenMotifSVG.appendChild(SVGinDiv);
     WovenMotifSVG.appendChild(rightBox);
     document.getElementById("svgChartDiv").focus();
+
+    console.log(topBox);
     console.log(leftBox);
     console.log(SVGinDiv);
     console.log(rightBox);
+    console.log(bottomBox);
 }
-function createLeftBox () {
-    leftBox.innerHTML = `<svg id= "${leftBox.id}_svg" width="${leftBoxWidth}" height="${leftBoxHeight}" viewbox="${leftViewBox}"
-    style="border:1px solid var(--color4); background-color:#C4C4E1"> 
-    ${leftBox_innerHTML}`
-}
+
 function createSVG () {
     SVGinDiv.innerHTML = 
     `<svg id= "${selectedMotif}_svg" width="${svgNewWidth}" height="${svgNewHeight}" viewbox="${viewBox}"
@@ -613,12 +594,30 @@ function createSVG () {
     ${selectedMotif_innerHTML}
     </svg>`;
 }
+function createTopBox() { 
+    topBox.innerHTML = 
+    `<p id= "${topBox.id}_p" class="boxes_p"> ${topBox_innerHTML}  </p>`;
+    topBox.style.width = `${topBoxWidth}px`;
+    topBox.style.padding = `0`;
+}
+
+function createLeftBox () {
+    /* leftBox.innerHTML = `<svg id= "${leftBox.id}_svg" width="${leftBoxWidth}" height="${leftBoxHeight}" viewbox="${leftViewBox}"
+    style="border:1px solid var(--color4); background-color:#C4C4E1"> 
+    ${leftBox_innerHTML}` */
+    leftBox.style.width = `${leftBoxWidth}px`; //
+    leftBox.style.height = `${leftBoxHeight}px`; //
+
+    leftBox.innerHTML = `<p id="${leftBox.id}_p" class="rotate-paragraph boxes_p" style="width: ${leftBoxHeight}px" > 
+        ${leftBox_innerHTML} 
+    </p>`
+}
 
 function createRightBox () { 
-    console.log(`function createRightBox executed
+    /* console.log(`function createRightBox executed
         rightBoxWidth: ${rightBoxWidth}
         rightBoxHeight: ${rightBoxHeight}
-        `)
+        `) */
      /* rightBox.innerHTML = `<svg id= "${rightBox.id}_svg" width="${rightBoxWidth}" height="${rightBoxHeight}" viewbox="${rightViewBox}"
     style="border:1px solid var(--color4); background-color:#C4C4E1"> 
     ${rightBox_innerHTML}` */
@@ -629,10 +628,10 @@ function createRightBox () {
     rightBox.style.width = `${rightBoxWidth}px`; //
     rightBox.style.height = `${rightBoxHeight}px`; //
 
-    rightBox.innerHTML = `<p id="${rightBox.id}_p" class="rotate-paragraph" style="width: ${rightBoxHeight}px" > 
+    rightBox.innerHTML = `<p id="${rightBox.id}_p" class="rotate-paragraph boxes_p" style="width: ${rightBoxHeight}px" > 
         ${rightBox_innerHTML} 
     </p>`
-    console.log(`end of function:
+    /* console.log(`end of function:
         rightBoxWidth: ${rightBoxWidth}
         rightBoxHeight: ${rightBoxHeight}
 
@@ -640,7 +639,7 @@ function createRightBox () {
         
         
     </p>'
-        `)
+        `) */
 
  }
 
@@ -652,19 +651,21 @@ function createBottomBox (selectedMotif) {
             bottomBox_numberOfSections = 8
             bottomBox_sectionWidth = bottomBoxWidth / bottomBox_numberOfSections
             first_bottomBoxDiv_numberofSections = 4;
-            first_bottomBoxDivWidth = bottomBox_sectionWidth * first_bottomBoxDiv_numberofSections;
             middle_bottomBoxDiv_numberofSections = 2; 
-            middle_bottomBoxDivWidth = bottomBox_sectionWidth * middle_bottomBoxDiv_numberofSections;
             last_bottomBoxDiv_numberofSections = 2;
-            last_bottomBoxDivWidth = bottomBox_sectionWidth * last_bottomBoxDiv_numberofSections;
             console.log(`bottomBox_numberOfSections: ${bottomBox_numberOfSections}
             bottomBox_sectionWidth: ${bottomBox_sectionWidth}    `);
             break;
         case "motifDiamondDuetMitts_A":
-            /* BOTTOM: */
-            break;
         case "motifDiamondDuetMitts_B":
             /* BOTTOM: */
+             bottomBox_numberOfSections = 8
+            bottomBox_sectionWidth = bottomBoxWidth / bottomBox_numberOfSections
+            first_bottomBoxDiv_numberofSections = 3;
+            middle_bottomBoxDiv_numberofSections = 2; 
+            last_bottomBoxDiv_numberofSections = 3;
+            console.log(`bottomBox_numberOfSections: ${bottomBox_numberOfSections}
+            bottomBox_sectionWidth: ${bottomBox_sectionWidth}    `);
             break;
         default:  
             break;
@@ -674,7 +675,7 @@ function createBottomBox (selectedMotif) {
     last_bottomBoxDivWidth = bottomBox_sectionWidth * last_bottomBoxDiv_numberofSections;
 
     middle_bottomBoxDiv.innerHTML = `
-                        <p id= "${bottomBox.id}_p"> ${bottomBox_innerHTML}  </p>
+                        <p id= "${bottomBox.id}_p" class="boxes_p"> ${bottomBox_innerHTML}  </p>
                         `;
     console.log(`bottomBoxWidth: ${bottomBoxWidth}
         ${first_bottomBoxDivWidth} / ${middle_bottomBoxDivWidth} / ${last_bottomBoxDivWidth} = ${first_bottomBoxDivWidth + middle_bottomBoxDivWidth + last_bottomBoxDivWidth}`)
@@ -684,6 +685,15 @@ function createBottomBox (selectedMotif) {
     first_bottomBoxDiv.style.width = `${first_bottomBoxDivWidth}px`;
     middle_bottomBoxDiv.style.width = `${middle_bottomBoxDivWidth}px`;
     last_bottomBoxDiv.style.width = `${last_bottomBoxDivWidth}px`;
+
+    if (leftBoxWidth == 0 ) {
+        console.log(`left box width == 0 -> ${leftBoxWidth}`);
+        bottomBox.style.margin = `0 0 0 22px`;
+    } else {
+        console.log(`left box width !== 0 -> ${leftBoxWidth}
+            rightBoxWidth: ${rightBoxWidth}`);
+        bottomBox.style.margin = `auto`;
+    }
 
     //middle_bottomBoxDiv.style.margin = `0 ${leftBoxWidth}px 0 ${rightBoxWidth}px`;
     first_bottomBoxDiv.style.padding = `0 0 0 ${leftBoxWidth}px`;
@@ -922,6 +932,12 @@ function createBoxes () {
     //viewBox = `0 0 ${svgWidth} ${svgHeight}`
     calculateSVGWidth(svgWidth);
     calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth);
+    createTopBox ();
+    createLeftBox ();
+    createSVG ();
+    createRightBox ();
+    createBottomBox (selectedMotif);
+
     drawSVGwithBoxes ();
     hideBtn (resetColorsBtn);
     //hideBtn (createBoxesBtn);
@@ -982,13 +998,14 @@ continue travelling in their established direction.`;
     </g>
     </svg>
     ` */;
-    motifDiamondDuet_CowlHat_bottomBox_innerHTML = `additional repeats of this section lengthen the circumference of the cowl/hat `;
+    motifDiamondDuet_CowlHat_bottomBox_innerHTML = `  additional repeats of this section lengthen the circumference of the cowl/hat `;
 
     /* mitten A */
 
     motifDiamondDuetMitts_A_topBox_innerHTML = `For the initial Thumb Gusset section, the cables change colours at the edge of the motif when they change direction. This keeps all ables travellling to the right MC and all cables travelling to the left CC; Woven Motif A in the pattern. For the upper hand, the cables travel continuously around the mittien do not change colour; woven Motif B in the pattern. <br> Diagram shows three vertical repeats of the Woven Motif. Refer to the pattern for the number of repeats required.`;
-    motifDiamondDuetMitts_A_leftBox_innerHTML = `
-    <svg
+    motifDiamondDuetMitts_A_leftBox_innerHTML = 
+    `For Woven Motif A, cables change colour to MC at this edge`
+    /* `    <svg
    width="70.949379"
    height="601.61188"
    viewBox="0 0 18.772023 159.17648"
@@ -1026,10 +1043,10 @@ continue travelling in their established direction.`;
            id="tspan4">colour to MC at this edge</tspan></text>
     </g>
   </g>
-</svg>
-`;
-    motifDiamondDuetMitts_A_rightBox_innerHTML = `
-    <svg
+</svg>` */
+;
+    motifDiamondDuetMitts_A_rightBox_innerHTML = `For Woven Motif A, cables change colour to CC at this edge`
+    /* `    <svg
    width="70.949387"
    height="601.61188"
    viewBox="0 0 18.772025 159.17648"
@@ -1069,15 +1086,14 @@ continue travelling in their established direction.`;
            id="tspan4-4">colour to CC at this edge</tspan></text>
     </g>
   </g>
-</svg>
-    `;
-    motifDiamondDuetMitts_A_bottomBox_innerHTML = ``;
+</svg>    ` */;
+    motifDiamondDuetMitts_A_bottomBox_innerHTML = `Sizes S, M, L work a different number of repeats of this section`;
 
     /* mitten B */
     
     motifDiamondDuetMitts_B_topBox_innerHTML = `For the initial Thumb Gusset section, the cables change colours at the edge of the motif when they change direction. This heeps all ables travelling to the right CC and all cables travelling to the left MC; Woven Motif C in the pattern. For the upper hand, the cables travel continuously around the mitten do not change colour; Woven Motif D in the pattern. <br> Diagram shows three vertical repeats of the Woven Motif. Refer to the pattern for the number of repeats required.`;
-    motifDiamondDuetMitts_B_leftBox_innerHTML = `
-    <svg
+    motifDiamondDuetMitts_B_leftBox_innerHTML = `For Woven Motif C, cables change colour to CC at this edge`
+    /* `    <svg
    width="70.949379"
    height="601.61188"
    viewBox="0 0 18.772023 159.17648"
@@ -1156,8 +1172,8 @@ continue travelling in their established direction.`;
            id="tspan4">colour to MC at this edge</tspan></text>
     </g>
   </g>
-</svg>`;
-    motifDiamondDuetMitts_B_bottomBox_innerHTML = ``;
+</svg>` */;
+    motifDiamondDuetMitts_B_bottomBox_innerHTML = `Sizes S, M, L work a different number of repeats of this section`;
 }
 
 

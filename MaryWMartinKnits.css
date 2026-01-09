@@ -794,6 +794,10 @@ input[type=number], #numOftotalDE {
         flex-wrap: nowrap;
         /* flex-direction: column; */
     }
+    .boxes_p {
+        font-size: 1em;
+        overflow: visible;
+    }
 }
 
 @media screen and (min-width: 501px) and (max-width: 775px) { /* small Tablet */
@@ -828,6 +832,10 @@ input[type=number], #numOftotalDE {
 
     #SVGnumbers text {
         font-size: 0.85rem;
+    }
+        .boxes_p {
+        font-size: small;
+        overflow: visible;
     }
 }
 
@@ -1055,7 +1063,6 @@ input[type=number], #numOftotalDE {
 }
 
 #designDiv {
-    /* background-color: white; */
     padding: 1em 0;
     border-radius: 10px;
 }
@@ -1092,7 +1099,7 @@ input[type=number], #numOftotalDE {
     aspect-ratio: 11/100; 
 }
 
-#rightBox_p {
+#leftBox_p, #rightBox_p {
     height: 100%;
     padding: 0;
     margin: 0;
@@ -1102,11 +1109,7 @@ input[type=number], #numOftotalDE {
     width: 100%;
     height: auto;
     display: inline-block;
-    background-color: var(--color6);
-    /* padding-top: 1em;
-    padding-right: 10px;
-    padding-bottom: 5px;
-    padding-bottom: 2em; */
+     background-color: var(--color6); 
     padding: 5px;
     
 }
@@ -1140,7 +1143,7 @@ input[type=number], #numOftotalDE {
 
 #bottomBox_firstDiv, #bottomBox_lastDiv  {
     height: auto;
-    background-color: var(--color5);
+     background-color: var(--color5); 
 }
 
 .rotate-paragraph {
