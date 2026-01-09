@@ -457,7 +457,7 @@ fieldset {
 }
 
 .bigSwatch{
-    border: 2px solid var(--color6);
+    border: 2px solid var(--color5);
     border-radius: 0.5rem;
     box-shadow: 1em 1em 1em rgba(0, 0, 0, .1);
     display: flex;
@@ -1054,7 +1054,7 @@ input[type=number], #numOftotalDE {
 }
 
 #designDiv {
-    background-color: white;
+    /* background-color: white; */
     padding: 1em 0;
     border-radius: 10px;
 }
@@ -1101,6 +1101,10 @@ input[type=number], #numOftotalDE {
 .lateralBoxes {
     margin-left: 0.5em;
     margin-right: 0.5em;
+}
+
+.whiteBackground {
+    background-color: white;
 }
 
 
