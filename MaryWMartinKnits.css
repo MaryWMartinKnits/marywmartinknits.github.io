@@ -81,6 +81,7 @@ main {
 p, label {
     font-family: 'Raleway', Verdana, Geneva, Tahoma, sans-serif;
     font-size: 17px;
+    padding-right: 0.25em;
 }
 
 h1, h2, h3, h4, button {
@@ -439,7 +440,8 @@ fieldset {
 #colorPickerDiv {
     width: 100%;
     display: flex;
-    justify-content:space-evenly    
+    justify-content:space-evenly;
+    flex-wrap: wrap; 
 }
 
 #colorSwatches {
@@ -1037,6 +1039,7 @@ input[type=number], #numOftotalDE {
 #motifPickerDiv {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 #resetColorsBtn {
@@ -1045,6 +1048,8 @@ input[type=number], #numOftotalDE {
 
 #bottomDiv {
     justify-content: space-evenly;
+    width: 90%;
+    flex-wrap: wrap;
 }
 
 /* svg boxes placement: */

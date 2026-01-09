@@ -393,10 +393,12 @@ function calculateSVGWidth (svgWidth) {
             if (svgHeight > viewportHeight) {
                 console.log(`=> if svgHeight > viewportHeight`);
                 svgNewHeight = viewportHeight - (svgHeight - viewportHeight);
-                svgNewWidth = svgNewWidth * svgNewHeight / svgHeight;
-                console.log(`viewportHeight: ${viewportHeight}
-                    svgHeight: ${svgHeight}
-                    svgNewHeight: ${svgNewHeight}`)
+                svgNewWidth = svgWidth * svgNewHeight / svgHeight;
+                console.log(`svgHeight ${svgHeight} > viewportHeight ${viewportHeight}
+                    viewportHeight: ${viewportHeight} / viewportWidth ${viewportWidth}
+                    svgHeight: ${svgHeight} -> svgNewHeight: ${svgNewHeight}
+                    svgWidth: ${svgWidth} -> svgNewWidth: ${svgNewWidth}
+                    viewBox: ${viewBox}`);
             }
 
 
