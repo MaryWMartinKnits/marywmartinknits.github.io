@@ -1048,6 +1048,7 @@ input[type=number], #numOftotalDE {
 }
 
 #bottomDiv {
+    display: flex;
     justify-content: space-evenly;
     width: 90%;
     flex-wrap: wrap;
@@ -1060,12 +1061,6 @@ input[type=number], #numOftotalDE {
 }
 
 /* svg boxes placement: */
-
-#boxesADNDsvg {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
 
 .svg3columnDisplay {
     display: flex;
@@ -1084,8 +1079,7 @@ input[type=number], #numOftotalDE {
 #topBox_p {
     display: flex;
     justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
+
 }
 
 #leftBox_svg {
@@ -1098,13 +1092,59 @@ input[type=number], #numOftotalDE {
     aspect-ratio: 11/100; 
 }
 
-.lateralBoxes {
-    margin-left: 0.5em;
-    margin-right: 0.5em;
+#rightBox_p {
+    height: 100%;
+    padding: 0;
+    margin: 0;
 }
+
+.lateralBoxes {
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    background-color: var(--color6);
+    /* padding-top: 1em;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-bottom: 2em; */
+    padding: 5px;
+    
+}
+
+
 
 .whiteBackground {
     background-color: white;
+}
+
+#boxesADNDsvg {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: auto;
+
+}
+
+#bottomBox {
+    justify-content: center;
+    display: flex;
+    flex-wrap: nowrap;
+    margin: auto;
+}
+
+#bottomBox_middleDiv {
+    border-left: 1px solid var(--color2);
+    border-right: 1px solid var(--color2);
+}
+
+#bottomBox_firstDiv, #bottomBox_lastDiv  {
+    height: auto;
+    background-color: var(--color5);
+}
+
+.rotate-paragraph {
+    transform: rotate(270deg);
 }
 
 
