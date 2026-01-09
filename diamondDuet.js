@@ -62,7 +62,7 @@ let motifDiamondDuetMitts_A
 let motifDiamondDuetMitts_A_innerHTML;
 let motifDiamondDuetMitts_B
 let motifDiamondDuetMitts_B_innerHTML;
-let selectedMotif = 'motifDiamondDuetMitts_A';
+let selectedMotif = 'motifDiamondDuetCowlHat';
 let selectedMotif_innerHTML = motifDiamondDuetMitts_A_innerHTML;
 
 let motifDiamondDuetMitts_CowlHat_topBox_innerHTML;
