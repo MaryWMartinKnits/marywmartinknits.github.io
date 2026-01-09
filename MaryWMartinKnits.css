@@ -149,6 +149,7 @@ button:hover {
 
 .hidden {
     display: none;
+    border: none;
 }
 
 .betweenMarkers {
@@ -794,6 +795,10 @@ input[type=number], #numOftotalDE {
         flex-wrap: nowrap;
         /* flex-direction: column; */
     }
+    .boxes_p {
+        font-size: 1em;
+        overflow: visible;
+    }
 }
 
 @media screen and (min-width: 501px) and (max-width: 775px) { /* small Tablet */
@@ -828,6 +833,10 @@ input[type=number], #numOftotalDE {
 
     #SVGnumbers text {
         font-size: 0.85rem;
+    }
+        .boxes_p {
+        font-size: small;
+        overflow: visible;
     }
 }
 
@@ -1048,24 +1057,18 @@ input[type=number], #numOftotalDE {
 }
 
 #bottomDiv {
+    display: flex;
     justify-content: space-evenly;
     width: 90%;
     flex-wrap: wrap;
 }
 
 #designDiv {
-    /* background-color: white; */
     padding: 1em 0;
     border-radius: 10px;
 }
 
 /* svg boxes placement: */
-
-#boxesADNDsvg {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
 
 .svg3columnDisplay {
     display: flex;
@@ -1084,8 +1087,7 @@ input[type=number], #numOftotalDE {
 #topBox_p {
     display: flex;
     justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
+
 }
 
 #leftBox_svg {
@@ -1098,13 +1100,57 @@ input[type=number], #numOftotalDE {
     aspect-ratio: 11/100; 
 }
 
-.lateralBoxes {
-    margin-left: 0.5em;
-    margin-right: 0.5em;
+#leftBox_p, #rightBox_p {
+    height: 100%;
+    padding: 0;
+    margin: 0;
 }
+
+.lateralBoxes {
+    width: 100%;
+    height: auto;
+    display: inline-block;
+     background-color: var(--color6); 
+    padding: 5px;
+    
+}
+
+
 
 .whiteBackground {
     background-color: white;
+}
+
+#boxesADNDsvg {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: auto;
+
+}
+
+#bottomBoxA {
+    justify-content: center;
+    display: flex;
+    flex-wrap: nowrap;
+    margin: auto;
+    height: 2em;
+}
+
+#bottomBoxA_middleDiv {
+    border-left: 1px solid var(--color2);
+    border-right: 1px solid var(--color2);
+    height: 2em;
+}
+
+#bottomBoxA_firstDiv, #bottomBoxA_lastDiv  {
+    height: auto;
+     background-color: var(--color5); 
+}
+
+.rotate-paragraph {
+    transform: rotate(270deg);
 }
 
 
