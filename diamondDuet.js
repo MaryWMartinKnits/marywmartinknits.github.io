@@ -27,6 +27,7 @@ let pickedMotif;
 
 // choosing colors:
 let MC1pickerBtn;
+let CC1pickerBtn;
 let svgDivTotalWidth;
 let svgDivTotalWidth90;
 let restarWidth;
@@ -83,9 +84,9 @@ let motifDiamondDuetMitts_B_bottomBox_innerHTML;
 
 
 //colors
-let CC1pickerBtn;
-let allMClines;
-let allCClines;
+
+//let allMClines;
+//let allCClines;
 let pickedMC1;
 let pickedCC1;
 let pickedBackground = '#ffffff';
@@ -95,6 +96,7 @@ let resetColorsBtn;
 let createBoxesBtn;
 let note1;
 let note2;
+let Title_chooseColors;
 
 // accordions:
 let accArray;
@@ -133,6 +135,7 @@ function getDOMelements () {
     bottomBox = document.querySelector("#bottomBox");
     leftBox = document.querySelector("#leftBox");
     rightBox = document.querySelector("#rightBox");
+    Title_chooseColors = document.querySelector('#Title_chooseColors')
     addEventListeners ();
     chooseMotifColors ();
     accordions (); 
@@ -160,9 +163,9 @@ function addEventListeners () {
     //console.log('function addEventListeners executed');
     MC1pickerBtn.addEventListener('change', changeMC1);
     CC1pickerBtn.addEventListener('change', changeCC1);
-    motifPicker.addEventListener('change', pickSVG)
+    motifPicker.addEventListener('click', pickSVG)
     resetColorsBtn.addEventListener('click', resetColours);
-    createBoxesBtn.addEventListener('click', createBoxes);
+    //createBoxesBtn.addEventListener('click', createBoxes);
 }
 
 function resetColours () {
@@ -245,7 +248,7 @@ function chooseMotifColors () {
         pickedCC1 = '#e7ac9d'; 
     }
 
-    console.log(`function chooseMotifColors executed: pickedMC 1: ${pickedMC1} / pickedCC 1: ${pickedCC1}`);
+    //console.log(`function chooseMotifColors executed: pickedMC 1: ${pickedMC1} / pickedCC 1: ${pickedCC1}`);
     updateHEXcodeDisplay (pickedMC1, pickedCC1);
     updateSVG_innerHTML ();
     pickSVG();
@@ -270,15 +273,14 @@ function changeCC1 () {
     console.log('function changeCC1 executed');
     pickedCC1 = CC1pickerBtn.value;
     console.log(`pickedCC1 = ${pickedCC1}`);
-    updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedBackground);
+    updatePickedColors(pickedMC1, pickedCC1, pickedBackground);
     localStorage_CC1 ();
 }
 
-function updatePickedColors (pickedMC1, pickedCC1) {
-    //console.log('function chooseMotifColors executed');
+function updatePickedColors (pickedMC1, pickedCC1, pickedBackground) {
     MC1pickerBtn.value = pickedMC1;
     CC1pickerBtn.value = pickedCC1;
-    updateHEXcodeDisplay(pickedMC1, pickedCC1);
+    updateHEXcodeDisplay(pickedMC1, pickedCC1, pickedBackground);
     updateSVG_innerHTML();
     pickSVG ();
 }
@@ -291,6 +293,7 @@ function pickSVG () {
     calculateSVGWidth (svgWidth);
     updateSVG_innerHTML();
     drawSVG (selectedMotif);
+    createBoxes ();
 }
 
 function determinarSVGcharacteristics () {
@@ -400,7 +403,7 @@ function calculateSVGWidth (svgWidth) {
         } else if (svgDivTotalWidth > viewportWidth) {
             console.log(`if => svgDivTotalWidth ${svgDivTotalWidth} > viewportWidth ${viewportWidth}`)
             restarWidth = svgDivTotalWidth - viewportWidth;
-            console.log(`restarWidth = svgDivTotalWidth - viewportWidth / ${restarWidth} = ${svgDivTotalWidth} - ${viewportWidth}`)
+            //console.log(`restarWidth = svgDivTotalWidth - viewportWidth / ${restarWidth} = ${svgDivTotalWidth} - ${viewportWidth}`)
             svgNewWidth = svgDivTotalWidth - restarWidth; 
             svgNewWidth = Math.round(svgNewWidth * 0.90);
             console.log(`svgNewWidth: ${svgNewWidth}`);
@@ -416,16 +419,16 @@ function calculateSVGWidth (svgWidth) {
         svgWidth = svgNewWidth;
 
         //svgHeight = svgNewHeight;
-        console.log (`svgDivTotalWidth = ${svgDivTotalWidth},
+        /* console.log (`svgDivTotalWidth = ${svgDivTotalWidth},
         selectedMotif: ${selectedMotif}
         SVG only:
-        //viewBox: ${viewBox}
-        //svgHeight = ${svgHeight},
+        viewBox: ${viewBox}
+        svgHeight = ${svgHeight},
         svgWidth = ${svgWidth} / svgNewWidht: ${svgNewWidth}, `) 
         console.log (`viewportWidth: ${viewportWidth}   
             svgWidth: ${svgWidth}
             svgHeight: ${svgHeight}
-            viewBox: ${viewBox}`); 
+            viewBox: ${viewBox}`);  */
 }
 
 function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
@@ -471,7 +474,7 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
                     svgHeight: ${svgHeight}
                     svgNewHeight: ${svgNewHeight}`)
             }
-            
+
         } else if (svgDivTotalWidth >= viewportWidth) {
             console.log(`if -> svgDivTotalWidth ${svgDivTotalWidth} > viewportWidth ${viewportWidth}`)
             restarWidth = svgDivTotalWidth - viewportWidth;
@@ -806,6 +809,7 @@ function createBoxes () {
     hideBtn (motifPickerDiv);
     disableBtn (MC1pickerBtn);
     disableBtn (CC1pickerBtn);
+    hideBtn (Title_chooseColors);
 }
 
 function give_innerHTMLtoBoxes () {

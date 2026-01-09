@@ -79,27 +79,10 @@
             <p></p>
         </div>
 
-
-        <div class="swatch">
-            <div id="motifPickerDiv">
-                <label for="motifPickerDropDown">Choose a motif:</label>
-                <select id="motifPickerDropDown" name="chosenMotif">
-
-                        <option value="motifDiamondDuetCowlHat">Diamond Duet Cowl/Hat</option>
-                        <option value="motifDiamondDuetMitts_A">Mitten A (same for all sizes)</option>
-                        <option value="motifDiamondDuetMitts_B">Mitten B (same for all sizes)</option>
-                    
-                </select>
-            </div>
-        </div>
-
         <div>
-            <div><h2>Choose your colours</h2></div>
-            <div id="colorPickerDiv">
-                
-                
+            <div><h2 id="Title_chooseColors">Choose your colours</h2></div>
+            <div id="colorPickerDiv" class="centerContent">
                 <div id="colorSwatches">
-
                     <div class="groupedSwatches">
                         <div id="MC1_swatch">
                             <div class="bigSwatch" >
@@ -113,25 +96,26 @@
 
                             </div>
                         </div>
-                </div>
-
-                    <div class="groupedSwatches">
-                        <div id="CC1_swatch">
-                            <div class="bigSwatch" >
-                                <h3>CC</h3>
-                                <label for="colorPickerCC1"> 
-                                    <input type="color" id="colorPickerCC1" title="Pick the contrasting color (CC)" value="#e7ac9d">  
-                                </label>
-                                <div class="swatchInfo" id="CC1_swatchTitle">
-   
-                                    <p id="CC1hexCode" class="hexCodes"></p>
+                        <div class="groupedSwatches">
+                            <div id="CC1_swatch">
+                                <div class="bigSwatch" >
+                                    <h3>CC</h3>
+                                    <label for="colorPickerCC1"> 
+                                        <input type="color" id="colorPickerCC1" title="Pick the contrasting color (CC)" value="#e7ac9d">  
+                                    </label>
+                                    <div class="swatchInfo" id="CC1_swatchTitle">
+    
+                                        <p id="CC1hexCode" class="hexCodes"></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
-                </div>
+                </div> 
+                <div class="centerContent verticallyCenterContent">
+                    <button id="resetColorsBtn" class="swatch">Reset colours</button>
+                </div>                   
+                
             </div> 
         </div>
         
@@ -156,8 +140,20 @@
             </div>
         </div>
 
+        <div class="swatch">
+            <div id="motifPickerDiv">
+                <label for="motifPickerDropDown">Show additional information for:</label>
+                <select id="motifPickerDropDown" name="chosenMotif">
+
+                        <option value="motifDiamondDuetCowlHat">Diamond Duet Cowl/Hat</option>
+                        <option value="motifDiamondDuetMitts_A">Mitten A (same for all sizes)</option>
+                        <option value="motifDiamondDuetMitts_B">Mitten B (same for all sizes)</option>
+                    
+                </select>
+            </div>
+        </div>
+
         <div class="centerContent">
-            <button id="resetColorsBtn" class="swatch">Reset colours</button>
             <button id="createBoxesBtn" class="swatch">create Boxes</button>
         </div>
 

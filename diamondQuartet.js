@@ -166,7 +166,7 @@ function resetColours () {
     localStorage.CC2 = pickedCC2;
     giveColorValueToSwatches();
 
-    updatePickedColors (pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedBackground);
+    updatePickedColors (pickedMC1, pickedMC2, pickedCC1, pickedCC2);
 }
 
 function resizeScreen () {
@@ -267,7 +267,7 @@ function changeMC1 () {
     //console.log('function changeMC1 executed');
     pickedMC1 = MC1pickerBtn.value;
     //console.log(`pickedMC1 = ${pickedMC1}`);
-    updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedBackground);
+    updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
     localStorage_MC1 ();
 
 }
@@ -276,7 +276,7 @@ function changeMC2 () {
     //console.log('function changeMC2 executed');
     pickedMC2 = MC2pickerBtn.value;
     //console.log(`pickedMC2 = ${pickedMC2}`);
-    updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedBackground);
+    updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
     localStorage_MC2 ();
 }
 
@@ -284,7 +284,7 @@ function changeCC1 () {
     //console.log('function changeCC1 executed');
     pickedCC1 = CC1pickerBtn.value;
     //console.log(`pickedCC1 = ${pickedCC1}`);
-    updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedBackground);
+    updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
     localStorage_CC1 ();
 }
 
@@ -292,19 +292,16 @@ function changeCC2 () {
     //console.log('function changeCC2 executed');
     pickedCC2 = CC2pickerBtn.value;
     //console.log(`pickedCC2 = ${pickedCC2}`);
-    updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedBackground);
+    updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
     localStorage_CC2 ();
 }
 
-
-
-function updatePickedColors (pickedMC1, pickedMC2, pickedCC1, pickedCC2, pickedBackground) {
+function updatePickedColors (pickedMC1, pickedMC2, pickedCC1, pickedCC2) {
     //console.log('function updatePickedColors executed');
     MC1pickerBtn.value = pickedMC1;
     MC2pickerBtn.value = pickedMC2;
     CC1pickerBtn.value = pickedCC1;
     CC2pickerBtn.value = pickedCC2;
-    //console.log(`function updatePickedColors executed = pickedMC 1: ${pickedMC1} / pickedMC 2: ${pickedMC2} / pickedCC 1: ${pickedCC1} / pickedCC 2: ${pickedCC2}`);
     updateHEXcodeDisplay(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
     updateSVG_innerHTML();
     pickSVG ();
@@ -363,7 +360,7 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
     //console.log(`function calculateTotalWidth executed: leftBoxWidth = ${leftBoxWidth}, rightBoxWidth = ${rightBoxWidth}, svgWidth = ${svgWidth}, viewportWidth = ${viewportWidth}`);
     viewBox = `0 0 ${svgWidth} ${svgHeight}`
     svgDivTotalWidth = leftBoxWidth + svgWidth + rightBoxWidth;
-    if (svgDivTotalWidth < viewportWidth || svgHeight > viewportHeight) {
+    if (svgDivTotalWidth <= viewportWidth || svgHeight > viewportHeight) {
         console.log(`svgDivTotalWidth < viewportWidth || svgHeight > viewportHeight
                 ${svgDivTotalWidth} < ${viewportWidth} || ${svgHeight} > ${viewportHeight}`);
         svgNewWidth = svgWidth;
