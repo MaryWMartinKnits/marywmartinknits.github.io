@@ -73,86 +73,90 @@
                     </p>
             </div>
         </section>
-        <hr>
     
         <div class="text note0 hidden">
             <p></p>
         </div>
 
-        <div>
-            <div><h2 id="Title_chooseColors">Choose your colours</h2></div>
-            <div id="colorPickerDiv" class="centerContent">
-                <div id="colorSwatches">
-                    <div class="groupedSwatches">
-                        <div id="MC1_swatch">
-                            <div class="bigSwatch" >
-                                <div class="swatchInfo" id="MC1_swatchTitle">
-                                    <h3>MC</h3>
-                                </div>
-                                <label for="colorPickerMC1">
-                                    <input type="color" id="colorPickerMC1" title="Pick the main color (MC)" value="#9a5452"> 
-                                </label>
-                                <p id="MC1hexCode" class="hexCodes"></p>
+        <div id="designDiv">
 
-                            </div>
-                        </div>
+        
+
+            <div>
+                <div><h2 id="Title_chooseColors">Choose your colours</h2></div>
+                <div id="colorPickerDiv" class="centerContent">
+                    <div id="colorSwatches">
                         <div class="groupedSwatches">
-                            <div id="CC1_swatch">
+                            <div id="MC1_swatch">
                                 <div class="bigSwatch" >
-                                    <h3>CC</h3>
-                                    <label for="colorPickerCC1"> 
-                                        <input type="color" id="colorPickerCC1" title="Pick the contrasting color (CC)" value="#e7ac9d">  
+                                    <div class="swatchInfo" id="MC1_swatchTitle">
+                                        <h3>MC</h3>
+                                    </div>
+                                    <label for="colorPickerMC1">
+                                        <input type="color" id="colorPickerMC1" title="Pick the main color (MC)" value="#9a5452"> 
                                     </label>
-                                    <div class="swatchInfo" id="CC1_swatchTitle">
-    
-                                        <p id="CC1hexCode" class="hexCodes"></p>
+                                    <p id="MC1hexCode" class="hexCodes"></p>
+
+                                </div>
+                            </div>
+                            <div class="groupedSwatches">
+                                <div id="CC1_swatch">
+                                    <div class="bigSwatch" >
+                                        <h3>CC</h3>
+                                        <label for="colorPickerCC1"> 
+                                            <input type="color" id="colorPickerCC1" title="Pick the contrasting color (CC)" value="#e7ac9d">  
+                                        </label>
+                                        <div class="swatchInfo" id="CC1_swatchTitle">
+        
+                                            <p id="CC1hexCode" class="hexCodes"></p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div> 
-                <div class="centerContent verticallyCenterContent">
-                    <button id="resetColorsBtn" class="swatch">Reset colours</button>
-                </div>                   
-                
-            </div> 
-        </div>
-        
-
-
-        <div id="svgChartDiv" tabindex="0">
-            <div id = boxesANDsvg>
-
-                <div id="topBox"></div>
-
-                <div id="WovenMotifSVG" class="svg3columnDisplay">
-                    <div id="leftBox"></div>
-
-                    <div class="chartDiv" id="SVGinDiv">
-                    </div>
-
-                    <div id="rightBox"></div>
-                </div>
-
-                <div id="bottomBox"></div>
-
-            </div>
-        </div>
-
-        <div id="bottomDiv" class="swatch centerContent">
-            <div id="motifPickerDiv" >
-                <label for="motifPickerDropDown">Show additional information for: </label>
-                <select id="motifPickerDropDown" name="chosenMotif">
-
-                        <option value="motifDiamondDuetCowlHat">Diamond Duet Cowl/Hat</option>
-                        <option value="motifDiamondDuetMitts_A">Mitten A (same for all sizes)</option>
-                        <option value="motifDiamondDuetMitts_B">Mitten B (same for all sizes)</option>
+                    </div> 
+                    <div class="centerContent verticallyCenterContent">
+                        <button id="resetColorsBtn" class="swatch">Reset colours</button>
+                    </div>                   
                     
-                </select>
+                </div> 
             </div>
-            <div>
-                <button id="createBoxesBtn" class="swatch">create Boxes</button>
+            
+
+
+            <div id="svgChartDiv" tabindex="0">
+                <div id = boxesANDsvg>
+
+                    <div id="topBox"></div>
+
+                    <div id="WovenMotifSVG" class="svg3columnDisplay">
+                        <div id="leftBox"></div>
+
+                        <div class="chartDiv" id="SVGinDiv">
+                        </div>
+
+                        <div id="rightBox"></div>
+                    </div>
+
+                    <div id="bottomBox"></div>
+
+                </div>
+            </div>
+
+            <div id="bottomDiv" class="swatch centerContent">
+                <div id="motifPickerDiv" >
+                    <label for="motifPickerDropDown">Show additional information for: </label>
+                    <select id="motifPickerDropDown" name="chosenMotif">
+
+                            <option value="motifDiamondDuetCowlHat">Diamond Duet Cowl/Hat</option>
+                            <option value="motifDiamondDuetMitts_A">Mitten A (same for all sizes)</option>
+                            <option value="motifDiamondDuetMitts_B">Mitten B (same for all sizes)</option>
+                        
+                    </select>
+                </div>
+                <div>
+                    <button id="createBoxesBtn" class="swatch">create Boxes</button>
+                </div>
             </div>
         </div>
 
