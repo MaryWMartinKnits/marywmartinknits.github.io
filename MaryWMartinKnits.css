@@ -1107,7 +1107,7 @@ input[type=number], #numOftotalDE {
 }
 
 .lateralBoxes {
-    width: 100%;
+   /*  width: 100%; */
     height: auto;
     display: inline-block;
      /* background-color: var(--color6);  */
