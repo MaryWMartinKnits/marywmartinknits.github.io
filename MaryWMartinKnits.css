@@ -1138,16 +1138,6 @@ input[type=number], #numOftotalDE {
     height: 2em;
 }
 
-#bottomBoxA_middleDiv {
-    border-left: 1px solid var(--color2);
-    border-right: 1px solid var(--color2);
-    height: 2em;
-}
-
-#bottomBoxA_firstDiv, #bottomBoxA_lastDiv  {
-    height: auto;
-     /* background-color: var(--color5);  */
-}
 
 .rotate-paragraph {
     transform: rotate(270deg);
