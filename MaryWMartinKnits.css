@@ -854,12 +854,16 @@ input[type=number], #numOftotalDE {
 }
 
 .svg3columnDisplay {
-    display: grid;
+    /* display: grid; */
     /* Defines three columns: auto-sized for sides, and max-content for main */
     grid-template-columns: auto max-content auto; /* //// */
     align-items: center; /* Vertically centers items in their grid area */
     justify-items: center; /* Horizontally centers items within their columns */
     /* width: 100%; */
+}
+
+.grid {
+    display: grid;
 }
 
 .center-div {
@@ -940,6 +944,10 @@ input[type=number], #numOftotalDE {
     .lateralBox_p {
         font-size: smaller;
     }
+     input[type="color"] {
+    height: 3em;
+    width: 3em;
+  }
 
 }
 
