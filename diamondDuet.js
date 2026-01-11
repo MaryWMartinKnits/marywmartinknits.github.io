@@ -547,7 +547,7 @@ function give_innerHTMLtoBoxes () {
     /* mitten B */
     motifDiamondDuetMitts_B_topBox_innerHTML = `For the initial Thumb Gusset section, the cables change colours at the edge of the motif when they change direction. This heeps all ables travelling to the right CC and all cables travelling to the left MC; Woven Motif C in the pattern. For the upper hand, the cables travel continuously around the mitten do not change colour; Woven Motif D in the pattern. <br> Diagram shows three vertical repeats of the Woven Motif. Refer to the pattern for the number of repeats required.`;
     motifDiamondDuetMitts_B_leftBox_innerHTML =     `For Woven Motif C, cables change colour to CC at this edge`;
-    motifDiamondDuetMitts_A_rightBox_innerHTML =    `For Woven Motif C, cables change colour to MC at this edge`;
+    motifDiamondDuetMitts_B_rightBox_innerHTML =    `For Woven Motif C, cables change colour to MC at this edge`;
     motifDiamondDuetMitts_B_bottomBoxA_innerHTML = motifDiamondDuetMitts_A_bottomBoxA_innerHTML;
     motifDiamondDuetMitts_B_bottomBoxB_innerHTML = `Sizes S, M, L work a different number of repeats of this section`;
 }
