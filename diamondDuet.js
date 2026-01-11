@@ -42,11 +42,6 @@ let CC1hexDisplay;
 
 let boxesANDsvg;
 let bottomBoxesAandB;
-//let //topBox;
-//let //bottomBoxA;
-//let //bottomBoxB;
-//let leftBox;
-//let rightBox;
 
 let topBoxWidth;
 let leftBoxWidth;
@@ -199,9 +194,10 @@ function cleanSVGandBoxes () {
     bottomBoxB_innerHTML = "";
     //createBoxes ();
 
-    let bottomBoxA_svg = document.querySelector("#bottomBoxA_svg");
-    if (bottomBoxA_svg != null) {
-        bottomBoxA_svg.remove()
+    let bottomBoxA = document.querySelector("#bottomBoxA");
+    if (bottomBoxA != null) {
+        bottomBoxA.remove();
+        /* bottomBoxA_svg.remove() */
         let topBox = document.querySelector('#topBox');
         topBox.remove();
         let leftBox = document.querySelector('#leftBox');
@@ -212,6 +208,7 @@ function cleanSVGandBoxes () {
         rightBox.remove();
         let bottomBoxB = document.querySelector('#bottomBoxB');
         bottomBoxB.remove();
+        SVGDiv.classList.remove('grid');
     }
 
     pickSVG ()
