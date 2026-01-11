@@ -101,7 +101,7 @@ let motifDiamondDuetMitts_B_bottomBoxB_innerHTML;
 //let allCClines;
 let pickedMC1;
 let pickedCC1;
-let pickedBackground = '#ffffff';
+/* let pickedBackground = '#ffffff'; */
 let MC1_swatchTitle;
 let CC1_swatchTitle;
 let resetColorsDiv;
@@ -156,6 +156,7 @@ function getDOMelements () {
     Title_chooseColors = document.querySelector('#Title_chooseColors')   
     addEventListeners ();
     chooseMotifColors ();
+    giveColorValueToSwatches(); 
     accordions (); 
 }
 
@@ -222,8 +223,25 @@ function resetColours () {
     pickedCC1 = '#e7ac9d'; // 
     localStorage.MC1 = pickedMC1;
     localStorage.CC1 = pickedCC1;
-    updatePickedColors (pickedMC1, pickedCC1, pickedBackground);
-    
+    giveColorValueToSwatches();
+    updatePickedColors (pickedMC1, pickedCC1);
+}
+
+function giveColorValueToSwatches() {
+    console.log('function giveColorValueToSwatches executed');
+    if (localStorage_MC1 !== null) {
+        pickedMC1 = localStorage.MC1;
+        MC1pickerBtn.value = pickedMC1;
+    } else {
+        MC1pickerBtn.value = pickedMC1;
+    }
+
+    if (localStorage_CC1 !== null) {
+        pickedCC1 = localStorage.CC1;
+        CC1pickerBtn.value = pickedCC1;
+    } else {
+        CC1pickerBtn.value = pickedCC1;
+    }
 }
 
 // accordions:
@@ -289,23 +307,22 @@ function changeMC1 () {
     console.log('function changeMC1 executed');
     pickedMC1 = MC1pickerBtn.value;
     console.log(`pickedMC1 = ${pickedMC1}`);
-    updatePickedColors(pickedMC1, pickedCC1, pickedBackground);
+    updatePickedColors(pickedMC1, pickedCC1);
     localStorage_MC1 ();
-
 }
 
 function changeCC1 () {
     console.log('function changeCC1 executed');
     pickedCC1 = CC1pickerBtn.value;
     console.log(`pickedCC1 = ${pickedCC1}`);
-    updatePickedColors(pickedMC1, pickedCC1, pickedBackground);
+    updatePickedColors(pickedMC1, pickedCC1);
     localStorage_CC1 ();
 }
 
-function updatePickedColors (pickedMC1, pickedCC1, pickedBackground) {
+function updatePickedColors (pickedMC1, pickedCC1) {
     MC1pickerBtn.value = pickedMC1;
     CC1pickerBtn.value = pickedCC1;
-    updateHEXcodeDisplay(pickedMC1, pickedCC1, pickedBackground);
+    updateHEXcodeDisplay(pickedMC1, pickedCC1);
     updateSVG_innerHTML();
     pickSVG ();
 }
