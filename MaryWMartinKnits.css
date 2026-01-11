@@ -843,7 +843,6 @@ input[type=number], #numOftotalDE {
     flex-wrap: nowrap;
     margin: auto;
     height: 2em;
-    background-color: lightblue;
 }
 
 
@@ -890,10 +889,6 @@ input[type=number], #numOftotalDE {
 .orientation {
     writing-mode: sideways-lr;
     margin: 0;
-}
-
-span {
-    background-color: khaki;
 }
 
 /* Responsive Design: */
