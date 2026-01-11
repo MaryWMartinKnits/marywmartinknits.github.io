@@ -165,7 +165,6 @@ function resetColours () {
     localStorage.CC1 = pickedCC1;
     localStorage.CC2 = pickedCC2;
     giveColorValueToSwatches();
-
     updatePickedColors (pickedMC1, pickedMC2, pickedCC1, pickedCC2);
 }
 
@@ -264,12 +263,11 @@ function updateHEXcodeDisplay (pickedMC1, pickedMC2, pickedCC1, pickedCC2) {
 }
 
 function changeMC1 () {
-    //console.log('function changeMC1 executed');
+    console.log('function changeMC1 executed');
     pickedMC1 = MC1pickerBtn.value;
-    //console.log(`pickedMC1 = ${pickedMC1}`);
+    console.log(`pickedMC1 = ${pickedMC1}`);
     updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
     localStorage_MC1 ();
-
 }
 
 function changeMC2 () {
