@@ -755,7 +755,148 @@ input[type=number], #numOftotalDE {
     justify-items: center;
 }
 
-    /* Responsive Design: */
+    
+
+.hexCodes {
+    color: var(--color4);
+    margin: 0.5rem;
+}
+
+.centerContent {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.verticallyCenterContent {
+    display: flex;
+    flex-direction: column;
+}
+
+#motifPickerDropDown {
+    color: var(--color5);
+    background-color: var(--color4);
+    font-size: large;
+}
+
+#motifPickerDropDown:hover {
+    color: var(--color4);
+    background-color: var(--color5);
+}
+
+#motifPickerDiv {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#resetColorsBtn {
+    height: min-content;
+}
+
+#bottomDiv {
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+    flex-wrap: wrap;
+}
+
+#designDiv {
+    padding: 1em 0;
+    border-radius: 10px;
+}
+
+/* svg boxes placement: */
+
+#topBox {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#topBox_p {
+    display: flex;
+    justify-content: center;
+
+}
+
+
+
+.whiteBackground {
+    background-color: white;
+}
+
+#boxesADNDsvg {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: auto;
+
+}
+
+#bottomBoxA {
+    justify-content: center;
+    display: flex;
+    flex-wrap: nowrap;
+    margin: auto;
+    height: 2em;
+    background-color: lightblue;
+}
+
+
+
+#SVGinDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.svg3columnDisplay {
+    display: grid;
+    /* Defines three columns: auto-sized for sides, and max-content for main */
+    grid-template-columns: auto max-content auto; /* //// */
+    align-items: center; /* Vertically centers items in their grid area */
+    justify-items: center; /* Horizontally centers items within their columns */
+    /* width: 100%; */
+}
+
+.center-div {
+    /* Prevents the main content from being affected by alignment properties if needed */
+    justify-self: center; 
+}
+
+.left-side {
+    /* Ensures the rotated element stays within its grid area bounds */
+    justify-self: end; 
+    justify-content: end;
+}
+
+.right-side {
+    /* Ensures the rotated element stays within its grid area bounds */
+    justify-self: start;
+    justify-content: start;
+}
+
+.lateralBoxes {
+    padding: 1em;
+    margin: 0;
+    overflow: visible;
+    display: flex;
+}
+
+.orientation {
+    writing-mode: sideways-lr;
+    margin: 0;
+}
+
+span {
+    background-color: khaki;
+}
+
+/* Responsive Design: */
 
 @media screen and (max-width: 500px) { /* Smartphone */
     #userInputDiv {
@@ -793,12 +934,18 @@ input[type=number], #numOftotalDE {
     }
     .panel {
         flex-wrap: nowrap;
-        /* flex-direction: column; */
     }
     .boxes_p {
         font-size: 1em;
         overflow: visible;
     }
+    .lateralBoxes {
+        padding: 0.25em;
+    }
+    .lateralBox_p {
+        font-size: smaller;
+    }
+
 }
 
 @media screen and (min-width: 501px) and (max-width: 775px) { /* small Tablet */
@@ -838,6 +985,13 @@ input[type=number], #numOftotalDE {
         font-size: small;
         overflow: visible;
     }
+    .lateralBoxes {
+        padding: 0.5em;
+    }
+    .lateralBox_p {
+        font-size: small;
+    }
+
 }
 
 @media screen and (min-width: 776px) and (max-width: 976px) { /* BIG Tablet */
@@ -965,7 +1119,6 @@ input[type=number], #numOftotalDE {
         font-weight: bold;
     }
 }
-/*  */
 
 @media screen and (max-device-width: 650px) {
     #placematA, #placematC {
@@ -974,14 +1127,13 @@ input[type=number], #numOftotalDE {
     #placematB, #placematD {
         justify-self: flex-start;
     }    
-    /* .panel {
-        flex-direction: column-reverse;
-        flex-direction: row-reverse;
-    } */
     .placematPicturesDiv {
         width: 100%;
         max-width: 100vw;
         text-align: center;
+    }
+    #bottomBoxA {
+    max-height: 15px;
     }
 }
 
@@ -998,15 +1150,15 @@ input[type=number], #numOftotalDE {
         width: 22vw;
         height: auto;
     }
-    /* .panel {
-        flex-direction: row-reverse;
-    } */
     .placematPicturesDiv {
         max-width: 40%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: flex-end;
+    }
+    #bottomBoxA {
+        max-height: 15px;
     }
 } 
 
@@ -1018,130 +1170,5 @@ input[type=number], #numOftotalDE {
         max-height: 50vh;
     }
 } 
-
-.hexCodes {
-    color: var(--color4);
-    margin: 0.5rem;
-}
-
-.centerContent {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-}
-
-.verticallyCenterContent {
-    display: flex;
-    flex-direction: column;
-}
-
-#motifPickerDropDown {
-    color: var(--color5);
-    background-color: var(--color4);
-    font-size: large;
-}
-
-#motifPickerDropDown:hover {
-    color: var(--color4);
-    background-color: var(--color5);
-}
-
-#motifPickerDiv {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-#resetColorsBtn {
-    height: min-content;
-}
-
-#bottomDiv {
-    display: flex;
-    justify-content: space-evenly;
-    width: 90%;
-    flex-wrap: wrap;
-}
-
-#designDiv {
-    padding: 1em 0;
-    border-radius: 10px;
-}
-
-/* svg boxes placement: */
-
-.svg3columnDisplay {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-#topBox {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#topBox_p {
-    display: flex;
-    justify-content: center;
-
-}
-
-#leftBox_svg {
-    width: auto;
-    aspect-ratio: 11/100; 
-}
-
-#rightBox_svg {
-    width: auto;
-    aspect-ratio: 11/100; 
-}
-
-#leftBox_p, #rightBox_p {
-    height: 100%;
-    padding: 0;
-    margin: 0;
-}
-
-.lateralBoxes {
-    width: 100%;
-    height: auto;
-    display: inline-block;
-     /* background-color: var(--color6);  */
-    padding: 5px;
-    
-}
-
-
-
-.whiteBackground {
-    background-color: white;
-}
-
-#boxesADNDsvg {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: auto;
-
-}
-
-#bottomBoxA {
-    justify-content: center;
-    display: flex;
-    flex-wrap: nowrap;
-    margin: auto;
-    height: 2em;
-}
-
-
-.rotate-paragraph {
-    transform: rotate(270deg);
-}
-
 
                 
