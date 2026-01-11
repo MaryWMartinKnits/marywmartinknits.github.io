@@ -17,6 +17,7 @@ let allFieldsets;
 
 // SVG:
 let SVGinDiv;
+let SVGDiv;
 let WovenMotifSVG;
         let svgHeight = 0;
         let svgWidth = 0; 
@@ -144,6 +145,7 @@ function getDOMelements () {
     console.log(accArray); 
     motifPicker = document.querySelector('#motifPickerDropDown');
     SVGinDiv = document.querySelector("#SVGinDiv");
+    SVGDiv = document.querySelector('#WovenMotifSVG');
     boxesANDsvg = document.querySelector('#boxesANDsvg');
     bottomBoxesAandB = document.querySelector('#bottomBoxesAandB');
     //topBox = document.querySelector("#topBox");
@@ -746,7 +748,6 @@ function createSVG () {
     ${selectedMotif_innerHTML}
     </svg>`;
     WovenMotifSVG.appendChild(SVGinDiv)
-    let SVGDiv = document.querySelector('#WovenMotifSVG');
     SVGDiv.classList.add('grid');
 
 }
