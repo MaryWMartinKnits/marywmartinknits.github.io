@@ -674,7 +674,24 @@ function createBottomBox (selectedMotif) {
     }
     let yHeight = bottomBoxAHeight * 0.99
     let y0 = bottomBoxAHeight - yHeight
+    let yMedium = bottomBoxAHeight / 2;
     bottomBoxAviewBox = `0 0 ${bottomBoxAWidth} ${bottomBoxAHeight}`
+
+    let arrowhead = `<defs>
+                    <marker id="arrowhead"
+                    viewBox="0 0 10 10"
+                    refX="5" refY="5"
+                    markerWidth="5" markerHeight="5"
+                    orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000" />
+                    </marker>
+                    </defs>`
+    let initialSVG = `<svg 
+            id= "bottomBoxA_svg" class= bottomBoxA_svg
+            width="${svgNewWidth}" 
+            height="${bottomBoxAHeight}" 
+            viewbox="${bottomBoxAviewBox}"
+            style="border:1px solid white; background-color:#ffffff"> `
 
     switch (selectedMotif) {
         case "motifDiamondDuetCowlHat":
@@ -684,50 +701,30 @@ function createBottomBox (selectedMotif) {
             firstX = widthOfEachSEction * 4;
             secondX = widthOfEachSEction * 6;
             bottomBoxA.innerHTML = 
-            `<svg 
-            id= "bottomBoxA_svg" class= bottomBoxA_svg
-            width="${svgNewWidth}" 
-            height="${bottomBoxAHeight}" 
-            viewbox="${bottomBoxAviewBox}"
-            style="border:1px solid white; background-color:#ffffff"> 
-                <line x1="${firstX}" y1="${y0}" x2="${firstX}" y2="${yHeight}" stroke="#5F5FA5" stroke-width="2" />
-                <line x1="${secondX}" y1="${y0}" x2="${secondX}" y2="${yHeight}" stroke="#5F5FA5" stroke-width="2" />
-            </svg>`
+            `${initialSVG}
+                ${arrowhead}
+
+                <line x1="${firstX}" y1="${y0}" x2="${firstX}" y2="${yHeight}" stroke="black" stroke-width="2" />
+                <line x1="${secondX}" y1="${y0}" x2="${secondX}" y2="${yHeight}" stroke="black" stroke-width="2" />
+                <line x1="${firstX+5}" y1="${yMedium}" x2="${secondX-5}" y2="${yMedium}" stroke="black" stroke-width="2" marker-start="url(#arrowhead)" marker-end="url(#arrowhead)" id="arrowLine"/>
+                </svg>`
             break;
         case "motifDiamondDuetMitts_A":
+        case "motifDiamondDuetMitts_B":
             /* BOTTOM: */
             bottomBoxA_innerHTML = motifDiamondDuetMitts_A_bottomBoxA_innerHTML;
             bottomBoxB_innerHTML = motifDiamondDuetMitts_A_bottomBoxB_innerHTML;
             firstX = widthOfEachSEction * 3;
             secondX = widthOfEachSEction * 5;
             bottomBoxA.innerHTML = 
-            `<svg 
-            id= "${selectedMotif.id}_svg" 
-            width="${svgNewWidth}" 
-            height="${bottomBoxAHeight}" 
-            viewbox="${bottomBoxAviewBox}"
-            style="border:1px solid white; background-color:#ffffff"> 
-                <line x1="${firstX}" y1="${y0}" x2="${firstX}" y2="${yHeight}" stroke="#5F5FA5" stroke-width="2" />
-                <line x1="${secondX}" y1="${y0}" x2="${secondX}" y2="${yHeight}" stroke="#5F5FA5" stroke-width="2" />
-            </svg>`
+            `${initialSVG}
+                ${arrowhead}
+                <line x1="${firstX}" y1="${y0}" x2="${firstX}" y2="${yHeight}" stroke="black" stroke-width="2" />
+                <line x1="${secondX}" y1="${y0}" x2="${secondX}" y2="${yHeight}" stroke="black" stroke-width="2" />
+                <line x1="${firstX+5}" y1="${yMedium}" x2="${secondX-5}" y2="${yMedium}" stroke="black" stroke-width="2" marker-start="url(#arrowhead)" marker-end="url(#arrowhead)" id="arrowLine"/>
+                </svg>`
             break;
-        case "motifDiamondDuetMitts_B":
-                /* BOTTOM: */
-            bottomBoxA_innerHTML = motifDiamondDuetMitts_B_bottomBoxA_innerHTML;
-            bottomBoxB_innerHTML = motifDiamondDuetMitts_B_bottomBoxB_innerHTML;
-            firstX = widthOfEachSEction * 3;
-            secondX = widthOfEachSEction * 5;
-            bottomBoxA.innerHTML = 
-            `<svg 
-            id= "${selectedMotif.id}_svg" 
-            width="${svgNewWidth}" 
-            height="${bottomBoxAHeight}" 
-            viewbox="${bottomBoxAviewBox}"
-            style="border:1px solid white; background-color:#ffffff"> 
-                <line x1="${firstX}" y1="${y0}" x2="${firstX}" y2="${yHeight}" stroke="#5F5FA5" stroke-width="2" />
-                <line x1="${secondX}" y1="${y0}" x2="${secondX}" y2="${yHeight}" stroke="#5F5FA5" stroke-width="2" />
-            </svg>`
-            break;
+        
         default: 
             /* BOTTOM: */ 
             break;
