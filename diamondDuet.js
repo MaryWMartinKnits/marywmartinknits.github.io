@@ -749,6 +749,9 @@ function createSVG () {
     ${selectedMotif_innerHTML}
     </svg>`;
     WovenMotifSVG.appendChild(SVGinDiv)
+    let SVGDiv = document.querySelector('#WovenMotifSVG');
+    SVGDiv.classList.add('grid');
+
 }
 
 function updateSVG_innerHTML () {
