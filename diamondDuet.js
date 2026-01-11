@@ -17,6 +17,7 @@ let allFieldsets;
 
 // SVG:
 let SVGinDiv;
+let SVGDiv;
 let WovenMotifSVG;
         let svgHeight = 0;
         let svgWidth = 0; 
@@ -42,11 +43,6 @@ let CC1hexDisplay;
 
 let boxesANDsvg;
 let bottomBoxesAandB;
-//let //topBox;
-//let //bottomBoxA;
-//let //bottomBoxB;
-//let leftBox;
-//let rightBox;
 
 let topBoxWidth;
 let leftBoxWidth;
@@ -149,6 +145,7 @@ function getDOMelements () {
     console.log(accArray); 
     motifPicker = document.querySelector('#motifPickerDropDown');
     SVGinDiv = document.querySelector("#SVGinDiv");
+    SVGDiv = document.querySelector('#WovenMotifSVG');
     boxesANDsvg = document.querySelector('#boxesANDsvg');
     bottomBoxesAandB = document.querySelector('#bottomBoxesAandB');
     //topBox = document.querySelector("#topBox");
@@ -199,9 +196,10 @@ function cleanSVGandBoxes () {
     bottomBoxB_innerHTML = "";
     //createBoxes ();
 
-    let bottomBoxA_svg = document.querySelector("#bottomBoxA_svg");
-    if (bottomBoxA_svg != null) {
-        bottomBoxA_svg.remove()
+    let bottomBoxA = document.querySelector("#bottomBoxA");
+    if (bottomBoxA != null) {
+        bottomBoxA.remove();
+        /* bottomBoxA_svg.remove() */
         let topBox = document.querySelector('#topBox');
         topBox.remove();
         let leftBox = document.querySelector('#leftBox');
@@ -212,6 +210,7 @@ function cleanSVGandBoxes () {
         rightBox.remove();
         let bottomBoxB = document.querySelector('#bottomBoxB');
         bottomBoxB.remove();
+        SVGDiv.classList.remove('grid');
     }
 
     pickSVG ()
@@ -749,7 +748,6 @@ function createSVG () {
     ${selectedMotif_innerHTML}
     </svg>`;
     WovenMotifSVG.appendChild(SVGinDiv)
-    let SVGDiv = document.querySelector('#WovenMotifSVG');
     SVGDiv.classList.add('grid');
 
 }
