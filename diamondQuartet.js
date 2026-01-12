@@ -1,29 +1,68 @@
 "use strict";
 
 // declaring variables:
+
 let viewportWidth;
 let viewportHeight;
 let begOfPage;
 let userInputTitle;
 let divToCreateSpace;
 let optimalHeight;
-
 let allSwitches;
-
 let allLabels;
 let allFieldsets;
 
-
 // SVG:
 let SVGinDiv;
+let SVGDiv;
 let WovenMotifSVG;
-        let svgHeight = 0;
-        let svgWidth = 0; 
-        let viewBox;
-let numberOfColors = "4";
+    let svgHeight = 0;
+    let svgWidth = 0; 
+    let viewBox;
+let numberOfColors = "2";
+let svgOldWidth;
+let svgOldHeight;
 
 let motifPicker;
 let pickedMotif;
+
+// choosing colors:
+let MC1pickerBtn;
+let CC1pickerBtn;
+let MC2pickerBtn;
+let CC2pickerBtn;
+let svgDivTotalWidth;
+let svgDivTotalWidth90;
+let restarWidth;
+let sumarWidth;
+let svgNewWidth;
+let svgNewHeight;
+let MC1hexDisplay;
+let CC1hexDisplay;
+let MC2hexDisplay;
+let CC2hexDisplay;
+
+let boxesANDsvg;
+let bottomBoxesAandB;
+
+let topBoxWidth;
+let leftBoxWidth;
+let rightBoxWidth;
+let leftBoxHeight;
+let rightBoxHeight;
+let bottomBoxAWidth;
+let bottomBoxAHeight;
+let bottomBoxBWidth;
+
+let leftViewBox;
+let rightViewBox;
+let bottomBoxAviewBox;
+
+let topBox_innerHTML;
+let leftBox_innerHTML;
+let rightBox_innerHTML;
+let bottomBoxA_innerHTML;
+let bottomBoxB_innerHTML;
 
 // Diamond Quartet Collection:
 let motifDiamondQuartetMitts_SandL
@@ -34,55 +73,28 @@ let selectedMotif = 'motifDiamondQuartetMitts_SandL';
 let selectedMotif_innerHTML = motifDiamondQuartetMitts_SandL_innerHTML;
 // end of Diamond Quartet Collection.
 
-// choosing colors:
-let MC1pickerBtn;
-let svgDivTotalWidth;
-let svgDivTotalWidth90;
-let restarWidth;
-let sumarWidth;
-let svgNewWidth;
-let svgNewHeight;
-let MC1hexDisplay;
-let MC2hexDisplay;
-let CC1hexDisplay;
-let CC2hexDisplay;
-
-let topBox;
-let bottomBox;
-let leftBox;
-let rightBox;
-let leftBoxWidth;
-let rightBoxWidth;
-let leftBoxHeight;
-let rightBoxHeight;
-let bottomBoxWidth;
-let topBoxWidth;
-
 //colors
-let MC2pickerBtn;
-let CC1pickerBtn;
-let CC2pickerBtn;
-let allMClines;
-let allCClines;
 let pickedMC1 = '#9370db'; // mediumpurple
 let pickedMC2 = '#c71585'; // mediumvioletred
 let pickedCC1 = '#ffa500'; // orange
 let pickedCC2 = '#8b4513'; // saddlebrown
-let pickedBackground = '#ffffff';
+
+let MC1_swatch;
+let CC1_swatch;
+let MC2_swatch;
+let CC2_swatch;
+
 let MC1_swatchTitle;
 let CC1_swatchTitle;
-let MC2_swatch;
-let CC2_swatch; 
-
+let MC2_swatchTitle;
+let CC2_swatchTitle;
+let resetColorsDiv;
 let resetColorsBtn;
-
-let note1;
-let note2;
-
-let pickerID; //for createColorPicker function
+let chooseNewColorsBtn;
+let createBoxesBtn;
+let Title_chooseColors;
 
 // accordions:
-
 let accArray;
 
 window.onload = init();
@@ -93,41 +105,54 @@ function init() {
 }
 
 function getDOMelements () {
-    //console.log('function getDOMelements executed');
     viewportWidth = window.innerWidth;
     viewportHeight = window.innerHeight;
     begOfPage = document.querySelector('#begOfPage')
-    //windowWidth = document.querySelector('#window-width');
-    //console.log(`windowWidth: ${windowWidth}`);
     divToCreateSpace = document.querySelector('.space');
     WovenMotifSVG = document.querySelector('#WovenMotifSVG');
+
     MC1pickerBtn = document.querySelector('#colorPickerMC1');
     MC2pickerBtn = document.querySelector('#colorPickerMC2');
     CC1pickerBtn = document.querySelector('#colorPickerCC1');
     CC2pickerBtn = document.querySelector('#colorPickerCC2');
+    resetColorsDiv = document.querySelector('#resetColorsDiv');
     resetColorsBtn = document.querySelector('#resetColorsBtn');
+    chooseNewColorsBtn = document.querySelector('#chooseNewColorsBtn');
+    createBoxesBtn = document.querySelector('#createBoxesBtn');
     MC1_swatchTitle = document.querySelector('#MC1_swatchTitle');
     CC1_swatchTitle = document.querySelector('#CC1_swatchTitle');
+    MC2_swatchTitle = document.querySelector('#MC2_swatchTitle');
+    CC2_swatchTitle = document.querySelector('#CC2_swatchTitle');
+ 
+    MC1_swatch = document.querySelector('#MC1_swatch');
+    CC1_swatch = document.querySelector('#CC1_swatch');
     MC2_swatch = document.querySelector('#MC2_swatch');
     CC2_swatch = document.querySelector('#CC2_swatch');
+
     MC1hexDisplay = document.querySelector('#MC1hexCode');
     MC2hexDisplay = document.querySelector('#MC2hexCode');
     CC1hexDisplay = document.querySelector('#CC1hexCode');
     CC2hexDisplay = document.querySelector('#CC2hexCode');
-    note1 = document.querySelector('#note1');
-    note2 = document.querySelector('#note2');
+    
     accArray = document.getElementsByClassName('accordion');
-    //console.log(accArray); 
+    console.log(accArray); 
     motifPicker = document.querySelector('#motifPickerDropDown');
     SVGinDiv = document.querySelector("#SVGinDiv");
-    topBox = document.querySelector("#topBox");
-    bottomBox = document.querySelector("#bottomBox");
-    leftBox = document.querySelector("#leftBox");
-    rightBox = document.querySelector("#rightBox");
+    SVGDiv = document.querySelector('#WovenMotifSVG');
+    boxesANDsvg = document.querySelector('#boxesANDsvg');
+    bottomBoxesAandB = document.querySelector('#bottomBoxesAandB');
+    Title_chooseColors = document.querySelector('#Title_chooseColors')   
     addEventListeners ();
-    chooseMotifColors (); 
+    chooseMotifColors ();
     giveColorValueToSwatches(); 
-    accordions ();  
+    accordions (); 
+    defaultSVG ();
+}
+
+function disableBtn (button) {
+    button.disabled = true;
+    button.classList.add('disabledBtn');
+    button.classList.remove('hidden');
 }
 
 function hideBtn (button) {
@@ -148,9 +173,55 @@ function addEventListeners () {
     MC2pickerBtn.addEventListener('change', changeMC2);
     CC1pickerBtn.addEventListener('change', changeCC1);
     CC2pickerBtn.addEventListener('change', changeCC2);
-    motifPicker.addEventListener('change', pickSVG)
+    
     resetColorsBtn.addEventListener('click', resetColours);
-    //giveColorValueToSwatches ();
+    /* motifPicker.addEventListener('change', cleanSVGandBoxes); */
+    motifPicker.addEventListener('change', createSVGwithBoxes);
+    /* createBoxesBtn.addEventListener('click', createSVGwithBoxes); */
+    chooseNewColorsBtn.addEventListener('click', enableColorChoicesAgain);
+}
+
+function enableColorChoicesAgain () {
+    console.log('function enable colorChoicesAgain');
+    enableBtn (resetColorsBtn);
+    enableBtn (Title_chooseColors);
+    /* chooseNewColorsBtn.classList.remove(hidden); */
+    hideBtn (chooseNewColorsBtn);
+    enableBtn (MC1pickerBtn);
+    enableBtn (CC1pickerBtn);
+}
+
+function defaultSVG () {
+    console.log('function defaultSVG executed')
+    cleanSVGandBoxes ()
+}
+
+function cleanSVGandBoxes () {
+    console.log('function cleanSVGandBoxes executed');
+    topBox_innerHTML = "";
+    leftBox_innerHTML = "";
+    rightBox_innerHTML = "";
+    bottomBoxA_innerHTML = "";
+    bottomBoxB_innerHTML = "";
+    //createBoxes ();
+
+    let bottomBoxA = document.querySelector("#bottomBoxA");
+    if (bottomBoxA != null) {
+        bottomBoxA.remove();
+        /* bottomBoxA_svg.remove() */
+        let topBox = document.querySelector('#topBox');
+        topBox.remove();
+        let leftBox = document.querySelector('#leftBox');
+        leftBox.remove();
+        /* let leftBox_p = document.querySelector('#leftBox_p');
+        leftBox_p.remove(); */
+        let rightBox = document.querySelector('#rightBox');
+        rightBox.remove();
+        let bottomBoxB = document.querySelector('#bottomBoxB');
+        bottomBoxB.remove();
+        SVGDiv.classList.remove('grid');
+    }
+    pickSVG ()
 }
 
 function resetColours () {
@@ -159,7 +230,6 @@ function resetColours () {
     pickedMC2 = '#c71585'; // mediumvioletred
     pickedCC1 = '#ffa500'; // orange
     pickedCC2 = '#8b4513'; // saddlebrown
-
     localStorage.MC1 = pickedMC1;
     localStorage.MC2 = pickedMC2;
     localStorage.CC1 = pickedCC1;
@@ -168,7 +238,37 @@ function resetColours () {
     updatePickedColors (pickedMC1, pickedMC2, pickedCC1, pickedCC2);
 }
 
-function resizeScreen () {
+function giveColorValueToSwatches() {
+    console.log('function giveColorValueToSwatches executed');
+    if (localStorage_MC1 !== null) {
+        pickedMC1 = localStorage.MC1;
+        MC1pickerBtn.value = pickedMC1;
+    } else {
+        MC1pickerBtn.value = pickedMC1;
+    }
+    if (localStorage_MC2 !== null) {
+        pickedMC2 = localStorage.MC2;
+        MC2pickerBtn.value = pickedMC2;
+    } else {
+        MC2pickerBtn.value = pickedMC2;
+    }
+
+    if (localStorage_CC1 !== null) {
+        pickedCC1 = localStorage.CC1;
+        CC1pickerBtn.value = pickedCC1;
+    } else {
+        CC1pickerBtn.value = pickedCC1;
+    }
+
+    if (localStorage_CC2 !== null) {
+        pickedCC2 = localStorage.CC2;
+        CC2pickerBtn.value = pickedCC2;
+    } else {
+        CC2pickerBtn.value = pickedCC2;
+    }
+}
+
+/* function resizeScreen () {
     for (let i = 0; i < accArray.length; i++) {
         let panel = accArray[i].nextElementSibling;
         if (panel.style.maxHeight && panel.style.maxHeight !== '0px') {
@@ -188,11 +288,9 @@ function resizeScreen () {
             }
         }
     }
-    
-}
+} */
 
 // accordions:
-
 function accordions () {
     for (let i = 0; i < accArray.length; i++) {
         accArray[i].addEventListener('click', toggleAccordions);
@@ -247,12 +345,9 @@ function chooseMotifColors () {
     } else {
         pickedCC2 = '#8b4513'; // saddlebrown
     }
-
-    //console.log(`function chooseMotifColors executed: pickedMC 1: ${pickedMC1} / pickedMC 2: ${pickedMC2} / pickedCC 1: ${pickedCC1} / pickedCC 2: ${pickedCC2}`);
     updateHEXcodeDisplay (pickedMC1, pickedMC2, pickedCC1, pickedCC2);
     updateSVG_innerHTML ();
     pickSVG();
-
 }
 
 function updateHEXcodeDisplay (pickedMC1, pickedMC2, pickedCC1, pickedCC2) {
@@ -306,94 +401,402 @@ function updatePickedColors (pickedMC1, pickedMC2, pickedCC1, pickedCC2) {
 }
 
 function pickSVG () {
-    //console.log('FUNCTION pickSVG executed');
+    console.log('FUNCTION pickSVG executed');
     selectedMotif = motifPickerDropDown.value;
     determinarSVGcharacteristics (selectedMotif);
-    viewBox = `0 0 ${svgWidth} ${svgHeight}`
-    calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth);
-
-    /* if (numberOfColors == "2") { // 2 color motifs:
-        hideBtn (MC2_swatch);
-        hideBtn (CC2_swatch);
-        //console.log(`selected motif: ${selectedMotif} with ${numberOfColors} colors -> hide MC2 & CC2 swatches`);
-       // changeMC1andCC1toMCandCC ();
-    } else if (numberOfColors == "4") {  // 4 color motifs: 
-        enableBtn (MC2_swatch);
-        enableBtn (CC2_swatch);
-        //console.log(`selected motif: ${selectedMotif} with ${numberOfColors} colors -> enable MC2 & CC2 swatches`);
-       // changeMCandCCtoMC1andCC1 ();
-    } */
-
+    viewBox = `0 0 ${svgOldWidth} ${svgOldHeight}`
+    calculateSVGWidth (svgWidth);
     updateSVG_innerHTML();
+    selectedMotif = 'motifDiamondDuetCowlHat';
     drawSVG (selectedMotif);
 }
 
 function determinarSVGcharacteristics () {
-switch (selectedMotif) {
-    case "motifDiamondQuartetMitts_SandL":
-        leftBoxWidth = 0;
-        rightBoxWidth = 0; 
-        svgHeight = 600; //I'll make this one dependant on the svgWidth
-        svgWidth = 1000; //I'll make the svgWidth dependant on the width of the screen
-        numberOfColors = "4";
-        selectedMotif_innerHTML = motifDiamondQuartetMitts_SandL_innerHTML;
-        break;
-    case "motifDiamondQuartetMitts_M":
-        svgHeight = 600;
-        svgWidth = 800;
-        numberOfColors = "4";
-        selectedMotif_innerHTML = motifDiamondQuartetMitts_M_innerHTML;
-        break;
-    default:  
-        svgHeight = 600;
-        svgWidth = 600;
-        numberOfColors = "4";
-        selectedMotif_innerHTML = motifDiamondQuartetMitts_SandL_innerHTML;
-    }
-
+    console.log(`function determinarSVGcharacteristics executed`);
+    topBox_innerHTML = "";
+    leftBox_innerHTML = "";
+    rightBox_innerHTML = "";
+    bottomBoxA_innerHTML = "";
+    bottomBoxB_innerHTML = "";
+    switch (selectedMotif) {
+        case "motifDiamondQuartetMitts_SandL":
+            /* SVG: */
+            svgHeight = 600; //I'll make this one dependant on the svgWidth
+            svgWidth = 1000; //I'll make the svgWidth dependant on the width of the screen
+            /* numberOfColors = "4"; */
+            selectedMotif_innerHTML = motifDiamondQuartetMitts_SandL_innerHTML;
+            break;
+        case "motifDiamondQuartetMitts_M":
+            /* SVG: */
+            svgHeight = 600;
+            svgWidth = 800;
+            /* numberOfColors = "4"; */
+            selectedMotif_innerHTML = motifDiamondQuartetMitts_M_innerHTML;
+            break;
+        default:  
+            /* SVG: */
+            svgHeight = 600;
+            svgWidth = 600;
+            /* numberOfColors = "4"; */
+            selectedMotif_innerHTML = motifDiamondQuartetMitts_SandL_innerHTML;
+        }
+    svgOldWidth = svgWidth;
+    svgOldHeight = svgHeight;
 }
 
-function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
+function calculateSVGWidth (svgWidth) {
+    console.log(`function //calculateSVGWidth// executed`);
+    console.log(`viewportWidth: ${viewportWidth}
+    svgWidth: ${svgWidth} -> svgNewWidth: ${svgNewWidth}`);
     viewportWidth = window.innerWidth;
-    //console.log(`function calculateTotalWidth executed: leftBoxWidth = ${leftBoxWidth}, rightBoxWidth = ${rightBoxWidth}, svgWidth = ${svgWidth}, viewportWidth = ${viewportWidth}`);
-    viewBox = `0 0 ${svgWidth} ${svgHeight}`
-    svgDivTotalWidth = leftBoxWidth + svgWidth + rightBoxWidth;
-    if (svgDivTotalWidth <= viewportWidth || svgHeight > viewportHeight) {
-        console.log(`svgDivTotalWidth < viewportWidth || svgHeight > viewportHeight
-                ${svgDivTotalWidth} < ${viewportWidth} || ${svgHeight} > ${viewportHeight}`);
-        svgNewWidth = svgWidth;
-        svgNewHeight = svgHeight;
+    viewBox = `0 0 ${svgOldWidth} ${svgOldHeight}`
+    svgDivTotalWidth = svgWidth* 0.9;
 
-    } else if (svgDivTotalWidth > viewportWidth) {
-        //console.log("svgDivTotalWidth > viewportWidth")
-        restarWidth = svgDivTotalWidth - viewportWidth;
-        svgNewWidth = svgDivTotalWidth - restarWidth;
-        svgNewWidth = svgNewWidth * 0.90;
+    if (svgWidth > 600) {
+        svgWidth = 600;
+        svgHeight = svgOldHeight * svgWidth / svgOldWidth;
+        svgNewWidth = svgWidth;
         svgNewHeight = svgHeight * svgNewWidth / svgWidth;
-        //console.log (`restarWidth = (svgDivTotalWidth - viewportWidth): (${svgDivTotalWidth} - ${viewportWidth}) = ${restarWidth} / svgWidth: ${svgWidth} -> svg(new)Width: ${svgNewWidth} / svgHeight: ${svgHeight} -> svgNewHeight: ${svgNewHeight}`);
     }
-        leftBoxHeight = svgNewHeight;
-        rightBoxHeight = svgNewHeight; 
-        bottomBoxWidth = svgNewWidth;
-        topBoxWidth = svgNewWidth;
-    
+
+    if (svgDivTotalWidth >= viewportWidth || svgHeight > viewportHeight) {
+            svgNewWidth = svgWidth * 0.9;
+            svgNewHeight = svgHeight * 0.9;
+        if (svgDivTotalWidth >= viewportWidth) {
+            sumarWidth = viewportWidth - svgDivTotalWidth;
+            svgNewWidth = Math.round((svgDivTotalWidth + sumarWidth) * 0.8)
+            svgNewHeight = svgHeight * svgNewWidth / svgWidth;
+        }
+        if (svgHeight > viewportHeight) {
+            svgNewHeight = Math.round(viewportHeight * 0.7)
+            svgNewWidth = svgWidth * svgNewHeight / svgHeight;
+        }
+    } else if (svgDivTotalWidth < viewportWidth) {
+        if (viewportWidth < 800) {
+                console.log(`if => small viewportWidth (<600): ${viewportWidth}`)
+                svgNewWidth = Math.round(svgNewWidth * 0.90);
+        }
+            svgNewHeight = svgHeight * svgNewWidth / svgWidth;
+    }
+    if (svgNewWidth > 600) {
+        svgWidth = svgNewWidth;
+        svgNewWidth = 600;
+        svgNewHeight = svgHeight * svgNewWidth / svgWidth;
+    }
 }
 
 function drawSVG (selectedMotif) {
-    //console.log('function drawSVG executed')
-    //console.log(`svgWidth: ${svgWidth} / svgNewWidth: ${svgNewWidth}`);
-    //console.log(`svgHeigth: ${svgHeight} / svgNewHeight: ${svgNewHeight}`);
-    //console.log(`viewportWidth: ${viewportWidth} / viewBox: ${viewBox}`);
+    console.log('function drawSVG executed')
     updateSVG_innerHTML();
     SVGinDiv.innerHTML = 
-    `<svg id= "${selectedMotif}" width="${svgNewWidth}" height="${svgNewHeight}" viewbox="${viewBox}"
+    `<svg id= "${selectedMotif}_svg" width="${svgNewWidth}" height="${svgNewHeight}" viewbox="${viewBox}"
     style="border:1px solid var(--color4); background-color:#ffffff"> 
     ${selectedMotif_innerHTML}
     </svg>`;
-    WovenMotifSVG.appendChild(leftBox);
     WovenMotifSVG.appendChild(SVGinDiv);
-    WovenMotifSVG.appendChild(rightBox);
     document.getElementById("svgChartDiv").focus();
+    console.log(SVGinDiv);
+}
+
+function createSVGwithBoxes () {
+    console.log('-- function createSVGwithBoxes executed');
+    /* hideBtn (resetColorsDiv); */
+    /* resetColorsDiv.remove(); */
+    selectedMotif = motifPickerDropDown.value;
+    cleanSVGandBoxes ();
+    calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth);
+    drawSVGwithBoxes ();
+    hideBtn (resetColorsBtn);
+    disableBtn (MC1pickerBtn);
+    disableBtn (CC1pickerBtn);
+    disableBtn (MC2pickerBtn);
+    disableBtn (CC2pickerBtn);
+    hideBtn (Title_chooseColors);
+}
+
+function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
+    console.log(`function calculateTotalWidth executed`);
+    viewportWidth = window.innerWidth;
+    if (svgWidth > svgNewWidth) {
+        console.log(`if (svgWidth > svgNewWidth)`);
+        svgWidth = svgNewWidth;
+        svgHeight = svgNewHeight;
+        svgWidth = svgNewWidth * 0.7;
+        svgHeight = svgNewHeight * 0.7;
+    } 
+    if ((svgNewWidth > (viewportWidth * 0.9)) || (viewportWidth < 500)) {
+        console.log(`if ((svgNewWidth > (viewportWidth * 0.9)) || (viewportWidth < 500))`)
+        svgNewWidth = svgNewWidth * 0.7;
+        svgNewHeight = svgNewHeight * 0.7;
+    }
+    viewBox = `0 0 ${svgOldWidth} ${svgOldHeight}`
+    topBoxWidth = svgWidth;
+    leftBoxHeight = svgHeight;
+    rightBoxHeight = svgHeight;
+
+    svgDivTotalWidth = leftBoxWidth + svgWidth + rightBoxWidth;
+    svgDivTotalWidth = leftBoxWidth + svgWidth + rightBoxWidth;
+    svgDivTotalWidth = svgDivTotalWidth * 0.9;
+
+    if (svgDivTotalWidth <= viewportWidth || svgHeight > viewportHeight) {
+        svgNewWidth = svgWidth;
+        svgNewHeight = svgHeight;
+        if (svgHeight > viewportHeight) {
+                console.log(`=> if svgHeight > viewportHeight`);
+                svgNewHeight = viewportHeight - (svgHeight - viewportHeight);
+                svgNewWidth = svgNewWidth * svgNewHeight / svgHeight;
+            }
+    } else if (svgDivTotalWidth >= viewportWidth) {
+        restarWidth = svgDivTotalWidth - viewportWidth;
+        svgNewWidth = svgDivTotalWidth - (svgDivTotalWidth - viewportWidth) - leftBoxWidth - rightBoxWidth; 
+        svgNewWidth = Math.round(svgNewWidth * 0.90);
+        if (viewportWidth < 600) {
+            console.log(`-- small viewportWidth: ${viewportWidth}`)
+            svgNewWidth = Math.round(svgNewWidth * 0.99);
+        }
+        svgNewHeight = svgHeight * svgNewWidth / svgWidth;            
+    }
+        svgWidth = svgNewWidth;
+        if (leftBoxWidth == 0) {
+            leftBoxHeight = 0;
+        } else {
+        leftBoxHeight = svgNewHeight;
+        }
+    if (svgNewWidth > 600) {
+    svgWidth = svgNewWidth;
+    svgNewWidth = 600;
+    svgHeight = svgNewHeight;
+    svgNewHeight = svgHeight * svgNewWidth / svgWidth;
+    }
+    topBoxWidth = viewportWidth * 0.9;
+    rightBoxHeight = svgNewHeight; 
+    bottomBoxAWidth = svgNewWidth;
+    bottomBoxBWidth = viewportWidth * 0.9;
+    bottomBoxAHeight = bottomBoxAWidth * 0.05;
+}
+
+function drawSVGwithBoxes () {
+    console.log('function drawSVGwithBoxes executed / selectedMotif: ' + selectedMotif )
+    selectedMotif = motifPickerDropDown.value;
+    createBoxes ();
+    document.getElementById("svgChartDiv").focus();
+    console.log(topBox);
+    console.log(leftBox);
+    console.log(document.querySelector(`#${selectedMotif}_svg`));
+    console.log(rightBox);
+    console.log(bottomBoxA);
+    console.log(bottomBoxB);
+}
+
+function createBoxes () {
+    console.log('function createBoxes executed');
+    give_innerHTMLtoBoxes ();
+    createTopBox ();
+    createLeftBox ();
+    createSVG ();
+    createRightBox ();
+    createBottomBox (selectedMotif);
+    /* chooseNewColorsBtn.classList.remove(hidden); */
+    enableBtn(chooseNewColorsBtn)
+}
+
+function give_innerHTMLtoBoxes () {
+    console.log('function give_innerHTMLtoBoxes executed');
+    
+    /* motifDiamondDuet_CowlHat_topBox_innerHTML = `The cables cross over the end of round to continue travelling in their established direction.`;
+    motifDiamondDuet_CowlHat_leftBox_innerHTML = "";
+    motifDiamondDuet_CowlHat_rightBox_innerHTML = `First three vertical repeats of Woven Motif. Refer to pattern for the number of repeats required.`;
+    motifDiamondDuet_CowlHat_bottomBoxB_innerHTML = `  additional repeats of this section lengthen the circumference of the cowl/hat `;
+    // mitten A 
+    motifDiamondDuetMitts_A_topBox_innerHTML = `For the initial Thumb Gusset section, the cables change colours at the edge of the motif when they change direction. This keeps all ables travellling to the right MC and all cables travelling to the left CC; Woven Motif A in the pattern. For the upper hand, the cables travel continuously around the mittien do not change colour; woven Motif B in the pattern. <br> Diagram shows three vertical repeats of the Woven Motif. Refer to the pattern for the number of repeats required.`;
+    motifDiamondDuetMitts_A_leftBox_innerHTML =  `For Woven Motif A, cables change colour to MC at this edge`;
+    motifDiamondDuetMitts_A_rightBox_innerHTML = `For Woven Motif A, cables change colour to CC at this edge`;
+    motifDiamondDuetMitts_A_bottomBoxB_innerHTML = `Sizes S, M, L work a different number of repeats of this section`;
+    // mitten B 
+    motifDiamondDuetMitts_B_topBox_innerHTML = `For the initial Thumb Gusset section, the cables change colours at the edge of the motif when they change direction. This heeps all ables travelling to the right CC and all cables travelling to the left MC; Woven Motif C in the pattern. For the upper hand, the cables travel continuously around the mitten do not change colour; Woven Motif D in the pattern. <br> Diagram shows three vertical repeats of the Woven Motif. Refer to the pattern for the number of repeats required.`;
+    motifDiamondDuetMitts_B_leftBox_innerHTML =     `For Woven Motif C, cables change colour to CC at this edge`;
+    motifDiamondDuetMitts_B_rightBox_innerHTML =    `For Woven Motif C, cables change colour to MC at this edge`;
+    motifDiamondDuetMitts_B_bottomBoxA_innerHTML = motifDiamondDuetMitts_A_bottomBoxA_innerHTML;
+    motifDiamondDuetMitts_B_bottomBoxB_innerHTML = `Sizes S, M, L work a different number of repeats of this section`; */
+}
+
+function createTopBox() { 
+    console.log('- function createTopBox executed');
+    let topBox = document.createElement('div')
+    topBox.setAttribute('id', 'topBox');
+    boxesANDsvg.prepend(topBox);
+
+    switch (selectedMotif) {
+        case "motifDiamondDuetCowlHat":
+            /* TOP: */
+            //topBox_innerHTML = motifDiamondDuet_CowlHat_topBox_innerHTML;
+            break;
+        default:  
+            /* TOP: */
+            //topBox_innerHTML = motifDiamondDuet_CowlHat_topBox_innerHTML;
+            break;
+    }
+
+    topBox.innerHTML = 
+    `<p id= "${topBox.id}_p" class="boxes_p"> ${topBox_innerHTML}  </p>`;
+    topBox.style.width = `${topBoxWidth}px`;
+    topBox.style.padding = `0`;    
+}
+
+function createLeftBox () {
+    console.log('- function createLeftBox executed');
+    let leftBox = document.createElement('div')
+    leftBox.setAttribute('id', 'leftBox');
+    leftBox.classList.add('lateralBoxes');
+    leftBox.classList.add('left-side');
+    WovenMotifSVG.appendChild(leftBox);
+
+    switch (selectedMotif) {
+        case "motifDiamondDuetCowlHat":
+            /* LEFT: */
+            //leftBox_innerHTML = motifDiamondDuet_CowlHat_leftBox_innerHTML;
+            break;
+        default: 
+            /* LEFT: */
+            //leftBox_innerHTML = motifDiamondDuet_CowlHat_leftBox_innerHTML; 
+            break;
+    }
+    leftBoxWidth = (viewportWidth - svgNewWidth) / 2;
+    leftBoxWidth = Math.round(leftBoxWidth * 0.9);
+    leftBoxHeight = svgNewHeight - (svgNewHeight * 0.05);
+
+    leftBox.style.height = `${leftBoxHeight}px`;
+    leftBox.style.width = `${(leftBoxWidth)}px`;
+
+    leftBox.innerHTML = `<p id=leftBox_p class="orientation lateralBox_p">${leftBox_innerHTML} </p>`
+
+}
+function createRightBox () { 
+    console.log('- function createRightBox executed');
+    let rightBox = document.createElement('div')
+    rightBox.setAttribute('id', 'rightBox');
+    rightBox.classList.add('lateralBoxes');
+    rightBox.classList.add('right-side');
+    rightBox.classList.add('rotateElement');
+    WovenMotifSVG.appendChild(rightBox);
+
+    switch (selectedMotif) {
+        case "motifDiamondDuetCowlHat":
+            /* RIGHT:  */
+            //rightBox_innerHTML = motifDiamondDuet_CowlHat_rightBox_innerHTML;
+            break;
+        default:  
+            /* RIGHT:  */
+            //rightBox_innerHTML = motifDiamondDuet_CowlHat_rightBox_innerHTML;
+            break;
+    }
+    
+    rightBoxWidth = (viewportWidth - svgNewWidth) / 2;
+    rightBoxWidth = Math.round(rightBoxWidth * 0.9);
+    rightBoxHeight = svgNewHeight - (svgNewHeight * 0.05);
+
+    rightBox.style.height = `${rightBoxHeight}px`; 
+    rightBox.style.width = `${(rightBoxWidth)}px`;
+
+    rightBox.innerHTML = `<p id=rightBox_p class="orientation lateralBox_p">${rightBox_innerHTML}`
+    /* let rightBox_p = document.querySelector('#rightBox_p'); */
+    
+}
+
+function createBottomBox (selectedMotif) {
+    console.log('- function createBottomBox executed');
+    let bottomBoxA = document.createElement('div')
+    bottomBoxA.setAttribute('id', 'bottomBoxA');
+    let bottomBoxB = document.createElement('div')
+    bottomBoxB.setAttribute('id', 'bottomBoxB');
+    bottomBoxesAandB.appendChild(bottomBoxA);
+    bottomBoxesAandB.appendChild(bottomBoxB);
+
+    let firstX;
+    let secondX;
+    bottomBoxAWidth = svgNewWidth
+    let widthOfEachSEction = bottomBoxAWidth / 8;
+    if (svgNewWidth <= 200) {
+        bottomBoxAHeight = 15;
+    } else if (svgNewWidth < 400) {
+        bottomBoxAHeight = 20;
+    } else {
+        bottomBoxAHeight = 25;
+    }
+    let yHeight = bottomBoxAHeight * 0.99
+    let y0 = bottomBoxAHeight - yHeight
+    let yMedium = bottomBoxAHeight / 2;
+    bottomBoxAviewBox = `0 0 ${bottomBoxAWidth} ${bottomBoxAHeight}`
+
+    let arrowhead = `<defs>
+                    <marker id="arrowhead"
+                    viewBox="0 0 10 10"
+                    refX="5" refY="5"
+                    markerWidth="5" markerHeight="5"
+                    orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000" />
+                    </marker>
+                    </defs>`
+    let initialSVG = `<svg 
+            id= "bottomBoxA_svg" class= bottomBoxA_svg
+            width="${svgNewWidth}" 
+            height="${bottomBoxAHeight}" 
+            viewbox="${bottomBoxAviewBox}"
+            style="border:1px solid white; background-color:#ffffff"> `
+
+    switch (selectedMotif) {
+        case "motifDiamondDuetCowlHat":
+            /* BOTTOM: */
+            /* bottomBoxA_innerHTML = motifDiamondDuet_CowlHat_bottomBoxA_innerHTML;
+            bottomBoxB_innerHTML = motifDiamondDuet_CowlHat_bottomBoxB_innerHTML;
+            firstX = widthOfEachSEction * 4;
+            secondX = widthOfEachSEction * 6;
+            bottomBoxA.innerHTML = 
+            `${initialSVG}
+                ${arrowhead}
+
+                <line x1="${firstX}" y1="${y0}" x2="${firstX}" y2="${yHeight}" stroke="black" stroke-width="2" />
+                <line x1="${secondX}" y1="${y0}" x2="${secondX}" y2="${yHeight}" stroke="black" stroke-width="2" />
+                <line x1="${firstX+5}" y1="${yMedium}" x2="${secondX-5}" y2="${yMedium}" stroke="black" stroke-width="2" marker-start="url(#arrowhead)" marker-end="url(#arrowhead)" id="arrowLine"/>
+                </svg>` */
+            break;        
+        default: 
+            /* BOTTOM: */ 
+            /* bottomBoxA_innerHTML = motifDiamondDuet_CowlHat_bottomBoxA_innerHTML;
+            bottomBoxB_innerHTML = motifDiamondDuet_CowlHat_bottomBoxB_innerHTML;
+            firstX = widthOfEachSEction * 4;
+            secondX = widthOfEachSEction * 6;
+            bottomBoxA.innerHTML = 
+            `${initialSVG}
+                ${arrowhead}
+
+                <line x1="${firstX}" y1="${y0}" x2="${firstX}" y2="${yHeight}" stroke="black" stroke-width="2" />
+                <line x1="${secondX}" y1="${y0}" x2="${secondX}" y2="${yHeight}" stroke="black" stroke-width="2" />
+                <line x1="${firstX+5}" y1="${yMedium}" x2="${secondX-5}" y2="${yMedium}" stroke="black" stroke-width="2" marker-start="url(#arrowhead)" marker-end="url(#arrowhead)" id="arrowLine"/>
+                </svg>` */
+            break;
+    }
+    bottomBoxB.innerHTML = `
+    <p id= "${bottomBoxB.id}_p" class="boxes_p"> ${bottomBoxB_innerHTML}  </p> <hr>
+    `;
+    if (leftBoxWidth == 0 ) {
+        bottomBoxA.style.margin = `0 0 0 22px`;
+    } else {
+        bottomBoxA.style.margin = `auto`;
+    }
+}
+
+function createSVG () {
+    console.log('-- function createSVG executed');
+    console.log(`viewportWidth: ${viewportWidth}
+        svgWidth: ${svgWidth} -> svgNewWidth: ${svgNewWidth}`);
+    SVGinDiv.innerHTML = 
+    `<svg id= "${selectedMotif}_svg" width="${svgNewWidth}" height="${svgNewHeight}" viewbox="${viewBox}"
+    style="border:1px solid var(--color4); background-color:#ffffff"> 
+    ${selectedMotif_innerHTML}
+    </svg>`;
+    WovenMotifSVG.appendChild(SVGinDiv)
+    SVGDiv.classList.add('grid');
 }
 
 function updateSVG_innerHTML () {
@@ -650,35 +1053,7 @@ function localStorage_CC2 () {
 // custom color picker:
 
 
-function giveColorValueToSwatches() {
-    console.log('function giveColorValueToSwatches executed');
-    if (localStorage_MC1 !== null) {
-        pickedMC1 = localStorage.MC1;
-        MC1pickerBtn.value = pickedMC1;
-    } else {
-        MC1pickerBtn.value = pickedMC1;
-    }
-    if (localStorage_MC2 !== null) {
-        pickedMC2 = localStorage.MC2;
-        MC2pickerBtn.value = pickedMC2;
-    } else {
-        MC2pickerBtn.value = pickedMC2;
-    }
 
-    if (localStorage_CC1 !== null) {
-        pickedCC1 = localStorage.CC1;
-        CC1pickerBtn.value = pickedCC1;
-    } else {
-        CC1pickerBtn.value = pickedCC1;
-    }
-
-    if (localStorage_CC2 !== null) {
-        pickedCC2 = localStorage.CC2;
-        CC2pickerBtn.value = pickedCC2;
-    } else {
-        CC2pickerBtn.value = pickedCC2;
-    }
-}
 
 
 

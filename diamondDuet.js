@@ -8,20 +8,17 @@ let begOfPage;
 let userInputTitle;
 let divToCreateSpace;
 let optimalHeight;
-
 let allSwitches;
-
 let allLabels;
 let allFieldsets;
-
 
 // SVG:
 let SVGinDiv;
 let SVGDiv;
 let WovenMotifSVG;
-        let svgHeight = 0;
-        let svgWidth = 0; 
-        let viewBox;
+    let svgHeight = 0;
+    let svgWidth = 0; 
+    let viewBox;
 let numberOfColors = "2";
 let svgOldWidth;
 let svgOldHeight;
@@ -52,7 +49,6 @@ let rightBoxHeight;
 let bottomBoxAWidth;
 let bottomBoxAHeight;
 let bottomBoxBWidth;
-
 
 let leftViewBox;
 let rightViewBox;
@@ -92,25 +88,17 @@ let motifDiamondDuetMitts_B_leftBox_innerHTML;
 let motifDiamondDuetMitts_B_rightBox_innerHTML;
 let motifDiamondDuetMitts_B_bottomBoxA_innerHTML;
 let motifDiamondDuetMitts_B_bottomBoxB_innerHTML;
-
 // end of Diamond Duet Collection.
 
-
 //colors
-
-//let allMClines;
-//let allCClines;
-let pickedMC1;
-let pickedCC1;
-/* let pickedBackground = '#ffffff'; */
+let pickedMC1 = '#9a5452';
+let pickedCC1 = '#e7ac9d';
 let MC1_swatchTitle;
 let CC1_swatchTitle;
 let resetColorsDiv;
 let resetColorsBtn;
 let chooseNewColorsBtn;
 let createBoxesBtn;
-let note1;
-let note2;
 let Title_chooseColors;
 
 // accordions:
@@ -128,8 +116,6 @@ function getDOMelements () {
     viewportWidth = window.innerWidth;
     viewportHeight = window.innerHeight;
     begOfPage = document.querySelector('#begOfPage')
-    //windowWidth = document.querySelector('#window-width');
-    //console.log(`windowWidth: ${windowWidth}`);
     divToCreateSpace = document.querySelector('.space');
     WovenMotifSVG = document.querySelector('#WovenMotifSVG');
     MC1pickerBtn = document.querySelector('#colorPickerMC1');
@@ -142,8 +128,6 @@ function getDOMelements () {
     CC1_swatchTitle = document.querySelector('#CC1_swatchTitle');
     MC1hexDisplay = document.querySelector('#MC1hexCode');
     CC1hexDisplay = document.querySelector('#CC1hexCode');
-    note1 = document.querySelector('#note1');
-    note2 = document.querySelector('#note2');
     accArray = document.getElementsByClassName('accordion');
     console.log(accArray); 
     motifPicker = document.querySelector('#motifPickerDropDown');
@@ -151,11 +135,6 @@ function getDOMelements () {
     SVGDiv = document.querySelector('#WovenMotifSVG');
     boxesANDsvg = document.querySelector('#boxesANDsvg');
     bottomBoxesAandB = document.querySelector('#bottomBoxesAandB');
-    //topBox = document.querySelector("#topBox");
-    //bottomBoxA = document.querySelector("#bottomBoxA");
-    //bottomBoxB = document.querySelector("#bottomBoxB");
-    //leftBox = document.querySelector("#leftBox");
-    //rightBox = document.querySelector("#rightBox");
     Title_chooseColors = document.querySelector('#Title_chooseColors')   
     addEventListeners ();
     chooseMotifColors ();
@@ -183,9 +162,9 @@ function enableBtn (button) {
 }
 
 function addEventListeners () {
-    //console.log('function addEventListeners executed');
     MC1pickerBtn.addEventListener('change', changeMC1);
     CC1pickerBtn.addEventListener('change', changeCC1);
+
     resetColorsBtn.addEventListener('click', resetColours);
     /* motifPicker.addEventListener('change', cleanSVGandBoxes); */
     motifPicker.addEventListener('change', createSVGwithBoxes);
@@ -264,7 +243,6 @@ function giveColorValueToSwatches() {
 }
 
 // accordions:
-
 function accordions () {
     for (let i = 0; i < accArray.length; i++) {
         accArray[i].addEventListener('click', toggleAccordions);
@@ -301,20 +279,15 @@ function chooseMotifColors () {
     } else {
         pickedMC1 = '#9a5452'; 
     }
-
-
     if (localStorage.CC1) {
         console.log(`Stored CC1: ${localStorage.CC1}`);
         pickedCC1 = localStorage.CC1;
     } else {
         pickedCC1 = '#e7ac9d'; 
     }
-
-    //console.log(`function chooseMotifColors executed: pickedMC 1: ${pickedMC1} / pickedCC 1: ${pickedCC1}`);
     updateHEXcodeDisplay (pickedMC1, pickedCC1);
     updateSVG_innerHTML ();
     pickSVG();
-
 }
 
 function updateHEXcodeDisplay (pickedMC1, pickedCC1) {
@@ -391,7 +364,7 @@ function determinarSVGcharacteristics () {
         default:  
             svgHeight = 600;
             svgWidth = 800;
-            numberOfColors = "2";
+            /* numberOfColors = "2"; */
             selectedMotif_innerHTML = motifDiamondDuetMitts_A_innerHTML;
             break;
     }
@@ -430,18 +403,14 @@ function calculateSVGWidth (svgWidth) {
         if (viewportWidth < 800) {
                 console.log(`if => small viewportWidth (<600): ${viewportWidth}`)
                 svgNewWidth = Math.round(svgNewWidth * 0.90);
-                /* console.log(`svgNewWidth: ${svgNewWidth}`); */
         }
             svgNewHeight = svgHeight * svgNewWidth / svgWidth;
     }
-    /* svgWidth = svgNewWidth; */
     if (svgNewWidth > 600) {
         svgWidth = svgNewWidth;
         svgNewWidth = 600;
         svgNewHeight = svgHeight * svgNewWidth / svgWidth;
     }
-    console.log(`viewportWidth: ${viewportWidth}
-    svgWidth: ${svgWidth} -> svgNewWidth: ${svgNewWidth}`);
 }
 
 function drawSVG (selectedMotif) {
@@ -473,9 +442,6 @@ function createSVGwithBoxes () {
 
 function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
     console.log(`function calculateTotalWidth executed`);
-
-    console.log(`viewportWidth: ${viewportWidth}
-    svgWidth: ${svgWidth} -> svgNewWidth: ${svgNewWidth}`);
     viewportWidth = window.innerWidth;
     if (svgWidth > svgNewWidth) {
         console.log(`if (svgWidth > svgNewWidth)`);
@@ -499,7 +465,6 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
     svgDivTotalWidth = svgDivTotalWidth * 0.9;
 
     if (svgDivTotalWidth <= viewportWidth || svgHeight > viewportHeight) {
-        /* console.log(`if -> svgDivTotalWidth < viewportWidth ${viewportWidth}`) */
         svgNewWidth = svgWidth;
         svgNewHeight = svgHeight;
         if (svgHeight > viewportHeight) {
@@ -508,15 +473,12 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
                 svgNewWidth = svgNewWidth * svgNewHeight / svgHeight;
             }
     } else if (svgDivTotalWidth >= viewportWidth) {
-        console.log(`if -> svgDivTotalWidth ${svgDivTotalWidth} > viewportWidth ${viewportWidth}`)
         restarWidth = svgDivTotalWidth - viewportWidth;
         svgNewWidth = svgDivTotalWidth - (svgDivTotalWidth - viewportWidth) - leftBoxWidth - rightBoxWidth; 
         svgNewWidth = Math.round(svgNewWidth * 0.90);
-        console.log(`svgNewWidth: ${svgNewWidth}`);
         if (viewportWidth < 600) {
             console.log(`-- small viewportWidth: ${viewportWidth}`)
             svgNewWidth = Math.round(svgNewWidth * 0.99);
-            console.log(`svgNewWidth: ${svgNewWidth}`);
         }
         svgNewHeight = svgHeight * svgNewWidth / svgWidth;            
     }
@@ -532,23 +494,16 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
     svgHeight = svgNewHeight;
     svgNewHeight = svgHeight * svgNewWidth / svgWidth;
     }
-    /* topBoxWidth = svgNewWidth; */
     topBoxWidth = viewportWidth * 0.9;
     rightBoxHeight = svgNewHeight; 
     bottomBoxAWidth = svgNewWidth;
-    /* bottomBoxBWidth = svgNewWidth; */
     bottomBoxBWidth = viewportWidth * 0.9;
     bottomBoxAHeight = bottomBoxAWidth * 0.05;
-
-    console.log(`viewportWidth: ${viewportWidth}
-    svgWidth: ${svgWidth} -> svgNewWidth: ${svgNewWidth}`);
-    
 }
 
 function drawSVGwithBoxes () {
     console.log('function drawSVGwithBoxes executed / selectedMotif: ' + selectedMotif )
     selectedMotif = motifPickerDropDown.value;
-    /* createSVG (); */
     createBoxes ();
     document.getElementById("svgChartDiv").focus();
     console.log(topBox);
@@ -790,7 +745,6 @@ function createSVG () {
     </svg>`;
     WovenMotifSVG.appendChild(SVGinDiv)
     SVGDiv.classList.add('grid');
-
 }
 
 function updateSVG_innerHTML () {
