@@ -795,7 +795,7 @@ input[type=number], #numOftotalDE {
     height: min-content;
 }
 
-#bottomDiv {
+#motifsDiv {
     display: flex;
     justify-content: space-evenly;
     width: 90%;
