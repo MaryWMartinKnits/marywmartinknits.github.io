@@ -71,7 +71,8 @@ let motifDiamondDuetMitts_A
 let motifDiamondDuetMitts_A_innerHTML;
 let motifDiamondDuetMitts_B
 let motifDiamondDuetMitts_B_innerHTML;
-let selectedMotif = 'motifDiamondDuetCowlHat';
+/* let selectedMotif = 'motifDiamondDuetCowlHat'; */
+let selectedMotif;
 let selectedMotif_innerHTML = motifDiamondDuetMitts_A_innerHTML;
 
 let motifDiamondDuet_CowlHat_topBox_innerHTML;
@@ -106,6 +107,7 @@ let MC1_swatchTitle;
 let CC1_swatchTitle;
 let resetColorsDiv;
 let resetColorsBtn;
+let chooseNewColorsBtn;
 let createBoxesBtn;
 let note1;
 let note2;
@@ -134,6 +136,7 @@ function getDOMelements () {
     CC1pickerBtn = document.querySelector('#colorPickerCC1');
     resetColorsDiv = document.querySelector('#resetColorsDiv');
     resetColorsBtn = document.querySelector('#resetColorsBtn');
+    chooseNewColorsBtn = document.querySelector('#chooseNewColorsBtn');
     createBoxesBtn = document.querySelector('#createBoxesBtn');
     MC1_swatchTitle = document.querySelector('#MC1_swatchTitle');
     CC1_swatchTitle = document.querySelector('#CC1_swatchTitle');
@@ -158,6 +161,7 @@ function getDOMelements () {
     chooseMotifColors ();
     giveColorValueToSwatches(); 
     accordions (); 
+    defaultSVG ();
 }
 
 function disableBtn (button) {
@@ -182,10 +186,26 @@ function addEventListeners () {
     //console.log('function addEventListeners executed');
     MC1pickerBtn.addEventListener('change', changeMC1);
     CC1pickerBtn.addEventListener('change', changeCC1);
-    /* motifPicker.addEventListener('change', pickSVG) */
-    motifPicker.addEventListener('change', cleanSVGandBoxes);
     resetColorsBtn.addEventListener('click', resetColours);
-    createBoxesBtn.addEventListener('click', createSVGwithBoxes);
+    /* motifPicker.addEventListener('change', cleanSVGandBoxes); */
+    motifPicker.addEventListener('change', createSVGwithBoxes);
+    /* createBoxesBtn.addEventListener('click', createSVGwithBoxes); */
+    chooseNewColorsBtn.addEventListener('click', enableColorChoicesAgain);
+}
+
+function enableColorChoicesAgain () {
+    console.log('function enable colorChoicesAgain');
+    enableBtn (resetColorsBtn);
+    enableBtn (Title_chooseColors);
+    /* chooseNewColorsBtn.classList.remove(hidden); */
+    hideBtn (chooseNewColorsBtn);
+    enableBtn (MC1pickerBtn);
+    enableBtn (CC1pickerBtn);
+}
+
+function defaultSVG () {
+    console.log('function defaultSVG executed')
+    cleanSVGandBoxes ()
 }
 
 function cleanSVGandBoxes () {
@@ -213,7 +233,6 @@ function cleanSVGandBoxes () {
         bottomBoxB.remove();
         SVGDiv.classList.remove('grid');
     }
-
     pickSVG ()
 }
 
@@ -275,7 +294,7 @@ function toggleAccordions () {
 
 // picking MC and CC:
 function chooseMotifColors () {
-    //console.log('function chooseMotifColors executed');
+    console.log('function chooseMotifColors executed');
     if (localStorage.MC1) {
         console.log(`Stored MC1: ${localStorage.MC1}`);
         pickedMC1 = localStorage.MC1;
@@ -320,11 +339,13 @@ function changeCC1 () {
 }
 
 function updatePickedColors (pickedMC1, pickedCC1) {
+    console.log('function updatePickedColors executed')
     MC1pickerBtn.value = pickedMC1;
     CC1pickerBtn.value = pickedCC1;
     updateHEXcodeDisplay(pickedMC1, pickedCC1);
     updateSVG_innerHTML();
-    pickSVG ();
+    cleanSVGandBoxes ();
+    /* pickSVG (); */
 }
 
 function pickSVG () {
@@ -334,6 +355,7 @@ function pickSVG () {
     viewBox = `0 0 ${svgOldWidth} ${svgOldHeight}`
     calculateSVGWidth (svgWidth);
     updateSVG_innerHTML();
+    selectedMotif = 'motifDiamondDuetCowlHat';
     drawSVG (selectedMotif);
 }
 
@@ -437,8 +459,8 @@ function drawSVG (selectedMotif) {
 
 function createSVGwithBoxes () {
     console.log('-- function createSVGwithBoxes executed');
-    hideBtn (resetColorsDiv);
-    resetColorsDiv.remove();
+    /* hideBtn (resetColorsDiv); */
+    /* resetColorsDiv.remove(); */
     selectedMotif = motifPickerDropDown.value;
     cleanSVGandBoxes ();
     calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth);
@@ -545,6 +567,8 @@ function createBoxes () {
     createSVG ();
     createRightBox ();
     createBottomBox (selectedMotif);
+    /* chooseNewColorsBtn.classList.remove(hidden); */
+    enableBtn(chooseNewColorsBtn)
 }
 
 function give_innerHTMLtoBoxes () {
