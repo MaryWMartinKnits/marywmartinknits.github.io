@@ -178,18 +178,18 @@ function addEventListeners () {
     /* motifPicker.addEventListener('change', cleanSVGandBoxes); */
     motifPicker.addEventListener('change', createSVGwithBoxes);
     /* createBoxesBtn.addEventListener('click', createSVGwithBoxes); */
-    chooseNewColorsBtn.addEventListener('click', enableColorChoicesAgain);
+    /* chooseNewColorsBtn.addEventListener('click', enableColorChoicesAgain); */
 }
 
-function enableColorChoicesAgain () {
+/* function enableColorChoicesAgain () {
     console.log('function enable colorChoicesAgain');
     enableBtn (resetColorsBtn);
     enableBtn (Title_chooseColors);
-    /* chooseNewColorsBtn.classList.remove(hidden); */
+    // chooseNewColorsBtn.classList.remove(hidden); 
     hideBtn (chooseNewColorsBtn);
     enableBtn (MC1pickerBtn);
     enableBtn (CC1pickerBtn);
-}
+} */
 
 function defaultSVG () {
     console.log('function defaultSVG executed')
@@ -500,18 +500,17 @@ function drawSVG (selectedMotif) {
 
 function createSVGwithBoxes () {
     console.log('-- function createSVGwithBoxes executed');
-    /* hideBtn (resetColorsDiv); */
-    /* resetColorsDiv.remove(); */
+    hideBtn (resetColorsDiv);
     selectedMotif = motifPickerDropDown.value;
     cleanSVGandBoxes ();
     calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth);
     drawSVGwithBoxes ();
     hideBtn (resetColorsBtn);
-    disableBtn (MC1pickerBtn);
+    /* disableBtn (MC1pickerBtn);
     disableBtn (CC1pickerBtn);
     disableBtn (MC2pickerBtn);
     disableBtn (CC2pickerBtn);
-    hideBtn (Title_chooseColors);
+    hideBtn (Title_chooseColors); */
 }
 
 function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {

@@ -842,7 +842,6 @@ input[type=number], #numOftotalDE {
     justify-content: center;
     display: flex;
     flex-wrap: nowrap;
-    margin: auto;
     height: 2em;
 }
 
