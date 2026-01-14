@@ -767,6 +767,7 @@ input[type=number], #numOftotalDE {
     display: flex;
     text-align: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .verticallyCenterContent {
@@ -805,6 +806,7 @@ input[type=number], #numOftotalDE {
 #designDiv {
     padding: 1em 0;
     border-radius: 10px;
+    max-width: 100vw;
 }
 
 /* svg boxes placement: */
