@@ -442,13 +442,13 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
         console.log(`if (svgWidth > svgNewWidth)`);
         svgWidth = svgNewWidth;
         svgHeight = svgNewHeight;
-        svgWidth = svgNewWidth * 0.7;
-        svgHeight = svgNewHeight * 0.7;
+        svgWidth = Math.round(svgNewWidth * 0.7);
+        svgHeight = Math.round(svgNewHeight * 0.7);
     } 
     if ((svgNewWidth > (viewportWidth * 0.9)) || (viewportWidth < 500)) {
         console.log(`if ((svgNewWidth > (viewportWidth * 0.9)) || (viewportWidth < 500))`)
-        svgNewWidth = svgNewWidth * 0.7;
-        svgNewHeight = svgNewHeight * 0.7;
+        svgNewWidth = Math.round(svgNewWidth * 0.7);
+        svgNewHeight = Math.round(svgNewHeight * 0.7);
     }
     viewBox = `0 0 ${svgOldWidth} ${svgOldHeight}`
     topBoxWidth = svgWidth;
@@ -456,8 +456,7 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
     rightBoxHeight = svgHeight;
 
     svgDivTotalWidth = leftBoxWidth + svgWidth + rightBoxWidth;
-    svgDivTotalWidth = leftBoxWidth + svgWidth + rightBoxWidth;
-    svgDivTotalWidth = svgDivTotalWidth * 0.9;
+    svgDivTotalWidth = Math.round(svgDivTotalWidth * 0.9);
 
     if (svgDivTotalWidth <= viewportWidth || svgHeight > viewportHeight) {
         svgNewWidth = svgWidth;
@@ -465,7 +464,7 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
         if (svgHeight > viewportHeight) {
                 console.log(`=> if svgHeight > viewportHeight`);
                 svgNewHeight = viewportHeight - (svgHeight - viewportHeight);
-                svgNewWidth = svgNewWidth * svgNewHeight / svgHeight;
+                svgNewWidth = Math.round(svgNewHeight * svgWidth / svgHeight);
             }
     } else if (svgDivTotalWidth >= viewportWidth) {
         restarWidth = svgDivTotalWidth - viewportWidth;
@@ -473,9 +472,10 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
         svgNewWidth = Math.round(svgNewWidth * 0.90);
         if (viewportWidth < 600) {
             console.log(`-- small viewportWidth: ${viewportWidth}`)
-            svgNewWidth = Math.round(svgNewWidth * 0.99);
+            svgNewWidth = Math.round(svgNewWidth * 0.98);
+            svgNewHeight = Math.round(svgNewHeight * 0.98); 
         }
-        svgNewHeight = svgHeight * svgNewWidth / svgWidth;            
+        svgNewHeight = Math.round(svgNewWidth * svgHeight / svgWidth);           
     }
         svgWidth = svgNewWidth;
         if (leftBoxWidth == 0) {
@@ -487,13 +487,13 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
     svgWidth = svgNewWidth;
     svgNewWidth = 600;
     svgHeight = svgNewHeight;
-    svgNewHeight = svgHeight * svgNewWidth / svgWidth;
+    svgNewHeight = Math.round(svgNewWidth * svgHeight / svgWidth);  
     }
-    topBoxWidth = viewportWidth * 0.9;
+    topBoxWidth = Math.round(viewportWidth * 0.9);
     rightBoxHeight = svgNewHeight; 
     bottomBoxAWidth = svgNewWidth;
-    bottomBoxBWidth = viewportWidth * 0.9;
-    bottomBoxAHeight = bottomBoxAWidth * 0.05;
+    bottomBoxBWidth = Math.round(viewportWidth * 0.9);
+    bottomBoxAHeight = Math.round(bottomBoxAWidth * 0.05);
 }
 
 function drawSVGwithBoxes () {
