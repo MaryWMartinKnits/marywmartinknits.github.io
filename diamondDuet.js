@@ -198,13 +198,10 @@ function cleanSVGandBoxes () {
     let bottomBoxA = document.querySelector("#bottomBoxA");
     if (bottomBoxA != null) {
         bottomBoxA.remove();
-        /* bottomBoxA_svg.remove() */
         let topBox = document.querySelector('#topBox');
         topBox.remove();
         let leftBox = document.querySelector('#leftBox');
         leftBox.remove();
-        /* let leftBox_p = document.querySelector('#leftBox_p');
-        leftBox_p.remove(); */
         let rightBox = document.querySelector('#rightBox');
         rightBox.remove();
         let bottomBoxB = document.querySelector('#bottomBoxB');
@@ -373,8 +370,8 @@ function determinarSVGcharacteristics () {
 
 function calculateSVGWidth (svgWidth) {
     console.log(`function //calculateSVGWidth// executed`);
-    console.log(`viewportWidth: ${viewportWidth}
-    svgWidth: ${svgWidth} -> svgNewWidth: ${svgNewWidth}`);
+    /* console.log(`viewportWidth: ${viewportWidth}
+    svgWidth: ${svgWidth} -> svgNewWidth: ${svgNewWidth}`); */
     viewportWidth = window.innerWidth;
     viewBox = `0 0 ${svgOldWidth} ${svgOldHeight}`
     svgDivTotalWidth = svgWidth* 0.9;
@@ -527,8 +524,7 @@ function createBoxes () {
 
 function give_innerHTMLtoBoxes () {
     console.log('function give_innerHTMLtoBoxes executed');
-    /* bottomBoxAWidth = svgNewWidth;
-    bottomBoxAHeight = bottomBoxAWidth * 24/210; */
+    /* Hat - Cowl */
     motifDiamondDuet_CowlHat_topBox_innerHTML = `The cables cross over the end of round to continue travelling in their established direction.`;
     motifDiamondDuet_CowlHat_leftBox_innerHTML = "";
     motifDiamondDuet_CowlHat_rightBox_innerHTML = `First three vertical repeats of Woven Motif. Refer to pattern for the number of repeats required.`;
@@ -692,37 +688,37 @@ function createBottomBox (selectedMotif) {
                 /* BOTTOM: */
             bottomBoxA_innerHTML = motifDiamondDuet_CowlHat_bottomBoxA_innerHTML;
             bottomBoxB_innerHTML = motifDiamondDuet_CowlHat_bottomBoxB_innerHTML;
-            firstX = widthOfEachSEction * 4;
-            secondX = widthOfEachSEction * 6;
-            bottomBoxA.innerHTML = 
-            `${initialSVG}
-                ${arrowhead}
-
-                <line x1="${firstX}" y1="${y0}" x2="${firstX}" y2="${yHeight}" stroke="black" stroke-width="2" />
-                <line x1="${secondX}" y1="${y0}" x2="${secondX}" y2="${yHeight}" stroke="black" stroke-width="2" />
-                <line x1="${firstX+5}" y1="${yMedium}" x2="${secondX-5}" y2="${yMedium}" stroke="black" stroke-width="2" marker-start="url(#arrowhead)" marker-end="url(#arrowhead)" id="arrowLine"/>
-                </svg>`
             break;
         case "motifDiamondDuetMitts_A":
-        case "motifDiamondDuetMitts_B":
-            /* BOTTOM: */
             bottomBoxA_innerHTML = motifDiamondDuetMitts_A_bottomBoxA_innerHTML;
             bottomBoxB_innerHTML = motifDiamondDuetMitts_A_bottomBoxB_innerHTML;
-            firstX = widthOfEachSEction * 3;
-            secondX = widthOfEachSEction * 5;
-            bottomBoxA.innerHTML = 
-            `${initialSVG}
-                ${arrowhead}
-                <line x1="${firstX}" y1="${y0}" x2="${firstX}" y2="${yHeight}" stroke="black" stroke-width="2" />
-                <line x1="${secondX}" y1="${y0}" x2="${secondX}" y2="${yHeight}" stroke="black" stroke-width="2" />
-                <line x1="${firstX+5}" y1="${yMedium}" x2="${secondX-5}" y2="${yMedium}" stroke="black" stroke-width="2" marker-start="url(#arrowhead)" marker-end="url(#arrowhead)" id="arrowLine"/>
-                </svg>`
             break;
-        
+        case "motifDiamondDuetMitts_B":
+            /* BOTTOM: */
+            bottomBoxA_innerHTML = motifDiamondDuetMitts_B_bottomBoxA_innerHTML;
+            bottomBoxB_innerHTML = motifDiamondDuetMitts_B_bottomBoxB_innerHTML;
+            break;
         default: 
             /* BOTTOM: */ 
             break;
     }
+     /* BOTTOM: */
+    firstX = widthOfEachSEction * 4;
+    secondX = widthOfEachSEction * 6;
+    let buffer = widthOfEachSEction / 6
+    secondX = secondX + buffer;
+    console.log(`buffer: ${buffer}
+        width of each section: ${widthOfEachSEction}
+        bottomBoxA Widht: ${bottomBoxAWidth}
+        firstX: ${firstX}
+        secondX: ${secondX}`);
+    bottomBoxA.innerHTML = 
+    `${initialSVG}
+        ${arrowhead}
+        <line x1="${firstX}" y1="${y0}" x2="${firstX}" y2="${yHeight}" stroke="black" stroke-width="2" />
+        <line x1="${secondX}" y1="${y0}" x2="${secondX}" y2="${yHeight}" stroke="black" stroke-width="2" />
+        <line x1="${firstX+5}" y1="${yMedium}" x2="${secondX-5}" y2="${yMedium}" stroke="black" stroke-width="2" marker-start="url(#arrowhead)" marker-end="url(#arrowhead)" id="arrowLine"/>
+        </svg>`
     bottomBoxB.innerHTML = `
     <p id= "${bottomBoxB.id}_p" class="boxes_p"> ${bottomBoxB_innerHTML}  </p> <hr>
     `;
@@ -735,8 +731,9 @@ function createBottomBox (selectedMotif) {
 
 function createSVG () {
     console.log('-- function createSVG executed');
-    console.log(`viewportWidth: ${viewportWidth}
+    /* console.log(`viewportWidth: ${viewportWidth}
         svgWidth: ${svgWidth} -> svgNewWidth: ${svgNewWidth}`);
+     */
     SVGinDiv.innerHTML = 
     `<svg id= "${selectedMotif}_svg" width="${svgNewWidth}" height="${svgNewHeight}" viewbox="${viewBox}"
     style="border:1px solid var(--color4); background-color:#ffffff"> 
