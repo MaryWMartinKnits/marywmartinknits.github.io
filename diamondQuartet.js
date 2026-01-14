@@ -50,19 +50,21 @@ let leftBoxWidth;
 let rightBoxWidth;
 let leftBoxHeight;
 let rightBoxHeight;
-let bottomBoxAWidth;
-let bottomBoxAHeight;
-let bottomBoxBWidth;
+let bottomBoxSWidth;
+let bottomBoxSHeight;
+let bottomBoxPWidth;
 
 let leftViewBox;
 let rightViewBox;
-let bottomBoxAviewBox;
+let bottomBoxSviewBox;
 
 let topBox_innerHTML;
-let leftBox_innerHTML;
-let rightBox_innerHTML;
-let bottomBoxA_innerHTML;
-let bottomBoxB_innerHTML;
+let leftBoxS_innerHTML;
+let leftBoxP_innerHTML;
+let rightBoxS_innerHTML;
+let rightBoxP_innerHTML;
+let bottomBoxS_innerHTML;
+let bottomBoxP_innerHTML;
 
 // Diamond Quartet Collection:
 let motifDQ_CowlHat;
@@ -267,16 +269,18 @@ function defaultSVG () {
 function cleanSVGandBoxes () {
     console.log('function cleanSVGandBoxes executed');
     topBox_innerHTML = "";
-    leftBox_innerHTML = "";
-    rightBox_innerHTML = "";
-    bottomBoxA_innerHTML = "";
-    bottomBoxB_innerHTML = "";
+    leftBoxS_innerHTML = "";
+    leftBoxP_innerHTML = "";
+    rightBoxS_innerHTML = "";
+    rightBoxP_innerHTML = "";
+    bottomBoxS_innerHTML = "";
+    bottomBoxP_innerHTML = "";
     //createBoxes ();
 
-    let bottomBoxA = document.querySelector("#bottomBoxA");
-    if (bottomBoxA != null) {
-        bottomBoxA.remove();
-        /* bottomBoxA_svg.remove() */
+    let bottomBoxS = document.querySelector("#bottomBoxS");
+    if (bottomBoxS != null) {
+        bottomBoxS.remove();
+        /* bottomBoxS_svg.remove() */
         let topBox = document.querySelector('#topBox');
         topBox.remove();
         let leftBox = document.querySelector('#leftBox');
@@ -285,8 +289,8 @@ function cleanSVGandBoxes () {
         leftBox_p.remove(); */
         let rightBox = document.querySelector('#rightBox');
         rightBox.remove();
-        let bottomBoxB = document.querySelector('#bottomBoxB');
-        bottomBoxB.remove();
+        let bottomBoxP = document.querySelector('#bottomBoxP');
+        bottomBoxP.remove();
         SVGDiv.classList.remove('grid');
     }
     pickSVG ()
@@ -460,28 +464,30 @@ function pickSVG () {
 function determinarSVGcharacteristics () {
 /*     console.log(`function determinarSVGcharacteristics executed`); */
     topBox_innerHTML = "";
-    leftBox_innerHTML = "";
-    rightBox_innerHTML = "";
-    bottomBoxA_innerHTML = "";
-    bottomBoxB_innerHTML = "";
+    leftBoxS_innerHTML = "";
+    leftBoxP_innerHTML = "";
+    rightBoxS_innerHTML = "";
+    rightBoxP_innerHTML = "";
+    bottomBoxS_innerHTML = "";
+    bottomBoxP_innerHTML = "";
     switch (selectedMotif) {
         case "motifDQ_CowlHat":
             /* SVG: */
-            svgWidth = 1200;
+            svgWidth = 800;
             svgHeight = 800; 
-            selectedMotif_innerHTML = x;
+            selectedMotif_innerHTML = motifDQ_CowlHat_innerHTML;
             break;
         case "motifDQ_MittsA_SizeS":
             /* SVG: */
-            svgWidth = 1200;
+            svgWidth = 1000;
             svgHeight = 800; 
-            selectedMotif_innerHTML = x;
+            selectedMotif_innerHTML = motifDQ_MittsA_SizeS_innerHTML;
             break;
         case "motifDQ_MittsB_SizeS":
         /* SVG: */
-            svgWidth = 1200;
+            svgWidth = 1000;
             svgHeight = 800; 
-            selectedMotif_innerHTML = x;
+            selectedMotif_innerHTML = motifDQ_MittsB_SizeS_innerHTML;
         break;
         case "motifDQ_MittsA_SizeM":
         /* SVG: */
@@ -493,25 +499,25 @@ function determinarSVGcharacteristics () {
         /* SVG: */
             svgWidth = 1200;
             svgHeight = 800; 
-            selectedMotif_innerHTML = x;
+            selectedMotif_innerHTML = motifDQ_MittsB_SizeM_innerHTML;
         break;
         case "motifDQ_MittsA_SizeL":
         /* SVG: */
-            svgWidth = 1200;
+            svgWidth = 1000;
             svgHeight = 800;  
-            selectedMotif_innerHTML = x;  
+            selectedMotif_innerHTML = motifDQ_MittsA_SizeL_innerHTML;  
         break;
         case "motifDQ_MittsB_SizeL":
         /* SVG: */
-            svgWidth = 1200;
+            svgWidth = 1000;
             svgHeight = 800;
-            selectedMotif_innerHTML = x;
+            selectedMotif_innerHTML = motifDQ_MittsB_SizeL_innerHTML;
         break;
         default:  
             /* SVG: */
-            svgWidth = 1200;
+            svgWidth = 800;
             svgHeight = 800;
-            selectedMotif_innerHTML = motifDQ_MittsA_SizeM_innerHTML;
+            selectedMotif_innerHTML = motifDQ_CowlHat_innerHTML;
             /* numberOfColors = "4"; */
         }
     svgOldWidth = svgWidth;
@@ -691,9 +697,9 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
     }
     topBoxWidth = Math.round(viewportWidth * 0.9);
     rightBoxHeight = svgNewHeight; 
-    bottomBoxAWidth = svgNewWidth;
-    bottomBoxBWidth = Math.round(viewportWidth * 0.9);
-    bottomBoxAHeight = Math.round(bottomBoxAWidth * 0.05);
+    bottomBoxSWidth = svgNewWidth;
+    bottomBoxPWidth = Math.round(viewportWidth * 0.9);
+    bottomBoxSHeight = Math.round(bottomBoxSWidth * 0.05);
     svgNewWidth = Math.round(svgNewHeight * svgOldWidth / svgOldHeight);
     svgNewHeight = Math.round(svgNewWidth * svgOldHeight / svgOldWidth);  
 
@@ -726,8 +732,8 @@ function drawSVGwithBoxes () {
     console.log(leftBox);
     console.log(document.querySelector(`#${selectedMotif}_svg`));
     console.log(rightBox);
-    console.log(bottomBoxA);
-    console.log(bottomBoxB);
+    console.log(bottomBoxS);
+    console.log(bottomBoxP);
 }
 
 function createBoxes () {
@@ -829,7 +835,7 @@ function createLeftBox () {
     leftBox.style.height = `${leftBoxHeight}px`;
     leftBox.style.width = `${(leftBoxWidth)}px`;
 
-    leftBox.innerHTML = `<p id=leftBox_p class="orientation lateralBox_p">${leftBox_innerHTML} </p>`
+    leftBox.innerHTML = `<p id=leftBox_p class="orientation lateralBox_p">${leftBoxP_innerHTML} </p>`
 
 }
 function createRightBox () { 
@@ -859,35 +865,35 @@ function createRightBox () {
     rightBox.style.height = `${rightBoxHeight}px`; 
     rightBox.style.width = `${(rightBoxWidth)}px`;
 
-    rightBox.innerHTML = `<p id=rightBox_p class="orientation lateralBox_p">${rightBox_innerHTML}`
+    rightBox.innerHTML = `<p id=rightBox_p class="orientation lateralBox_p">${rightBoxP_innerHTML}`
     /* let rightBox_p = document.querySelector('#rightBox_p'); */
     
 }
 
 function createBottomBox (selectedMotif) {
     console.log('- function createBottomBox executed');
-    let bottomBoxA = document.createElement('div')
-    bottomBoxA.setAttribute('id', 'bottomBoxA');
-    let bottomBoxB = document.createElement('div')
-    bottomBoxB.setAttribute('id', 'bottomBoxB');
-    bottomBoxesAandB.appendChild(bottomBoxA);
-    bottomBoxesAandB.appendChild(bottomBoxB);
+    let bottomBoxS = document.createElement('div')
+    bottomBoxS.setAttribute('id', 'bottomBoxS');
+    let bottomBoxP = document.createElement('div')
+    bottomBoxP.setAttribute('id', 'bottomBoxP');
+    bottomBoxesAandB.appendChild(bottomBoxS);
+    bottomBoxesAandB.appendChild(bottomBoxP);
 
     let firstX;
     let secondX;
-    bottomBoxAWidth = svgNewWidth
-    let widthOfEachSEction = bottomBoxAWidth / 8;
+    bottomBoxSWidth = svgNewWidth
+    let widthOfEachSEction = bottomBoxSWidth / 8;
     if (svgNewWidth <= 200) {
-        bottomBoxAHeight = 15;
+        bottomBoxSHeight = 15;
     } else if (svgNewWidth < 400) {
-        bottomBoxAHeight = 20;
+        bottomBoxSHeight = 20;
     } else {
-        bottomBoxAHeight = 25;
+        bottomBoxSHeight = 25;
     }
-    let yHeight = bottomBoxAHeight * 0.99
-    let y0 = bottomBoxAHeight - yHeight
-    let yMedium = bottomBoxAHeight / 2;
-    bottomBoxAviewBox = `0 0 ${bottomBoxAWidth} ${bottomBoxAHeight}`
+    let yHeight = bottomBoxSHeight * 0.99
+    let y0 = bottomBoxSHeight - yHeight
+    let yMedium = bottomBoxSHeight / 2;
+    bottomBoxSviewBox = `0 0 ${bottomBoxSWidth} ${bottomBoxSHeight}`
 
     let arrowhead = `<defs>
                     <marker id="arrowhead"
@@ -899,20 +905,20 @@ function createBottomBox (selectedMotif) {
                     </marker>
                     </defs>`
     let initialSVG = `<svg 
-            id= "bottomBoxA_svg" class= bottomBoxA_svg
+            id= "bottomBoxS_svg" class= bottomBoxS_svg
             width="${svgNewWidth}" 
-            height="${bottomBoxAHeight}" 
-            viewbox="${bottomBoxAviewBox}"
+            height="${bottomBoxSHeight}" 
+            viewbox="${bottomBoxSviewBox}"
             style="border:1px solid white; background-color:#ffffff"> `
 
     switch (selectedMotif) {
         case "motifDiamondDuetCowlHat":
             /* BOTTOM: */
-            /* bottomBoxA_innerHTML = motifDiamondDuet_CowlHat_bottomBoxA_innerHTML;
-            bottomBoxB_innerHTML = motifDiamondDuet_CowlHat_bottomBoxB_innerHTML;
+            /* bottomBoxS_innerHTML = motifDiamondDuet_CowlHat_bottomBoxS_innerHTML;
+            bottomBoxP_innerHTML = motifDiamondDuet_CowlHat_bottomBoxP_innerHTML;
             firstX = widthOfEachSEction * 4;
             secondX = widthOfEachSEction * 6;
-            bottomBoxA.innerHTML = 
+            bottomBoxS.innerHTML = 
             `${initialSVG}
                 ${arrowhead}
 
@@ -923,11 +929,11 @@ function createBottomBox (selectedMotif) {
             break;        
         default: 
             /* BOTTOM: */ 
-            /* bottomBoxA_innerHTML = motifDiamondDuet_CowlHat_bottomBoxA_innerHTML;
-            bottomBoxB_innerHTML = motifDiamondDuet_CowlHat_bottomBoxB_innerHTML;
+            /* bottomBoxS_innerHTML = motifDiamondDuet_CowlHat_bottomBoxS_innerHTML;
+            bottomBoxP_innerHTML = motifDiamondDuet_CowlHat_bottomBoxP_innerHTML;
             firstX = widthOfEachSEction * 4;
             secondX = widthOfEachSEction * 6;
-            bottomBoxA.innerHTML = 
+            bottomBoxS.innerHTML = 
             `${initialSVG}
                 ${arrowhead}
 
@@ -937,13 +943,13 @@ function createBottomBox (selectedMotif) {
                 </svg>` */
             break;
     }
-    bottomBoxB.innerHTML = `
-    <p id= "${bottomBoxB.id}_p" class="boxes_p"> ${bottomBoxB_innerHTML}  </p> <hr>
+    bottomBoxP.innerHTML = `
+    <p id= "${bottomBoxP.id}_p" class="boxes_p"> ${bottomBoxP_innerHTML}  </p> <hr>
     `;
     if (leftBoxWidth == 0 ) {
-        bottomBoxA.style.margin = `0 0 0 22px`;
+        bottomBoxS.style.margin = `0 0 0 22px`;
     } else {
-        bottomBoxA.style.margin = `auto`;
+        bottomBoxS.style.margin = `auto`;
     }
 }
 
@@ -1098,7 +1104,6 @@ function updateSVG_innerHTML () {
     /13  /13 <polygon points="249,41 191,99 151,59 209,1"  fill="mediumpurple" stroke="none" /> /13  <line x1="150" y1="60" x2="210" y2="0" stroke="black" /> /13  <line x1="190" y1="100" x2="250" y2="40" stroke="black" /> /13 <polygon points="191,1 249,59 209,99 151,41"  fill="${pickedCC2}" stroke="none" /> /13  <line x1="190" y1="0" x2="250" y2="60" stroke="black" /> /13  <line x1="150" y1="40" x2="210" y2="100" stroke="black" /> /13 <polygon points="150,0  150,40 151,41 191, 1  190,0 "  fill="${pickedCC2}" stroke="none" /> /13 <polygon points="250,0 250,40 249,41 209,1 210,0 "  fill="mediumpurple" stroke="none" />
     /13  /13 <polygon points="91,1 149,59 109,99 51,41"  fill="${pickedCC2}" stroke="none" /> /13  <line x1="90" y1="0" x2="150" y2="60" stroke="black" /> /13  <line x1="50" y1="40" x2="110" y2="100" stroke="black" /> /13 <polygon points="149,41 91,99 51,59 109,1"  fill="${pickedCC1}" stroke="none" /> /13  <line x1="50" y1="60" x2="110" y2="0" stroke="black" /> /13  <line x1="90" y1="100" x2="150" y2="40" stroke="black" /> /13 <polygon points="50,0  50,40 51,41 91, 1  90,0 "  fill="${pickedCC2}" stroke="none" /> /13 <polygon points="150,0 150,40 149,41 109,1 110,0 "  fill="${pickedCC1}" stroke="none" />
     <polygon points="0,10 10,0 50,0 50,40 40,50 0,50"  fill="${pickedCC1}" stroke="none" /> /13  <line x1="0" y1="10" x2="10" y2="0" stroke="black" />  /13  <line x1="40" y1="50" x2="50" y2="40" stroke="black" /> /13 <polygon points="0,50 0,10 1,9 41,49 40,50"  fill="${pickedCC1}" stroke="none" /> /13 <polygon points="0,50 0,90 1,91 41,51 40,50"  fill="${pickedMC2}" stroke="none" /> /13 
-    </svg>
 `;
     motifDQ_MittsA_SizeS_innerHTML = `
     <polygon points="0,0 0,800 1000,800 1000,0 " fill= "white" stroke="black" />
@@ -1267,7 +1272,6 @@ function updateSVG_innerHTML () {
     /13  /13 <polygon points="249,41 191,99 151,59 209,1"  fill="${pickedCC1}" stroke="none" /> /13  <line x1="150" y1="60" x2="210" y2="0" stroke="black" /> /13  <line x1="190" y1="100" x2="250" y2="40" stroke="black" /> /13 <polygon points="191,1 249,59 209,99 151,41"  fill="${pickedMC2}" stroke="none" /> /13  <line x1="190" y1="0" x2="250" y2="60" stroke="black" /> /13  <line x1="150" y1="40" x2="210" y2="100" stroke="black" /> /13 <polygon points="150,0  150,40 151,41 191, 1  190,0 "  fill="${pickedMC2}" stroke="none" /> /13 <polygon points="250,0 250,40 249,41 209,1 210,0 "  fill="${pickedCC1}" stroke="none" />
     /13  /13 <polygon points="91,1 149,59 109,99 51,41"  fill="${pickedMC2}" stroke="none" /> /13  <line x1="90" y1="0" x2="150" y2="60" stroke="black" /> /13  <line x1="50" y1="40" x2="110" y2="100" stroke="black" /> /13 <polygon points="149,41 91,99 51,59 109,1"  fill="mediumpurple" stroke="none" /> /13  <line x1="50" y1="60" x2="110" y2="0" stroke="black" /> /13  <line x1="90" y1="100" x2="150" y2="40" stroke="black" /> /13 <polygon points="50,0  50,40 51,41 91, 1  90,0 "  fill="${pickedMC2}" stroke="none" /> /13 <polygon points="150,0 150,40 149,41 109,1 110,0 "  fill="mediumpurple" stroke="none" />
     <polygon points="0,10 10,0 50,0 50,40 40,50 0,50"  fill="mediumpurple" stroke="none" /> /13  <line x1="0" y1="10" x2="10" y2="0" stroke="black" />  /13  <line x1="40" y1="50" x2="50" y2="40" stroke="black" /> /13 <polygon points="0,50 0,10 1,9 41,49 40,50"  fill="mediumpurple" stroke="none" /> /13 <polygon points="0,50 0,90 1,91 41,51 40,50"  fill="${pickedCC2}" stroke="none" /> /13 
-    </svg>
     `;
     motifDQ_MittsB_SizeS_innerHTML = `
     <polygon points="0,0 0,800 1200,800 1200,0 " fill= "white" stroke="black" />
@@ -1466,7 +1470,6 @@ function updateSVG_innerHTML () {
     /13  /13 <polygon points="191,1 249,59 209,99 151,41"  fill="mediumpurple" stroke="none" /> /13  <line x1="190" y1="0" x2="250" y2="60" stroke="black" /> /13  <line x1="150" y1="40" x2="210" y2="100" stroke="black" /> /13 <polygon points="249,41 191,99 151,59 209,1"  fill="${pickedCC2}" stroke="none" /> /13  <line x1="150" y1="60" x2="210" y2="0" stroke="black" /> /13  <line x1="190" y1="100" x2="250" y2="40" stroke="black" /> /13 <polygon points="150,0  150,40 151,41 191, 1  190,0 "  fill="mediumpurple" stroke="none" /> /13 <polygon points="250,0 250,40 249,41 209,1 210,0 "  fill="${pickedCC2}" stroke="none" />
     /13  /13 <polygon points="149,41 91,99 51,59 109,1"  fill="${pickedMC2}" stroke="none" /> /13  <line x1="50" y1="60" x2="110" y2="0" stroke="black" /> /13  <line x1="90" y1="100" x2="150" y2="40" stroke="black" /> /13 <polygon points="91,1 149,59 109,99 51,41"  fill="mediumpurple" stroke="none" /> /13  <line x1="90" y1="0" x2="150" y2="60" stroke="black" /> /13  <line x1="50" y1="40" x2="110" y2="100" stroke="black" /> /13 <polygon points="50,0  50,40 51,41 91, 1  90,0 "  fill="mediumpurple" stroke="none" /> /13 <polygon points="150,0 150,40 149,41 109,1 110,0 "  fill="${pickedMC2}" stroke="none" />
     <polygon points="0,10 10,0 50,0 50,40 40,50 0,50"  fill="${pickedMC2}" stroke="none" /> /13  <line x1="0" y1="10" x2="10" y2="0" stroke="black" />  /13  <line x1="40" y1="50" x2="50" y2="40" stroke="black" /> /13 <polygon points="0,50 0,10 1,9 41,49 40,50"  fill="${pickedMC2}" stroke="none" /> /13 <polygon points="0,50 0,90 1,91 41,51 40,50"  fill="${pickedCC1}" stroke="none" /> /13 
-    </svg>
     `;
     motifDQ_MittsA_SizeM_innerHTML = `
         <polygon points="0,0 0,800 1200,800 1200,0 " fill= "white" stroke="black" />
@@ -1665,7 +1668,7 @@ function updateSVG_innerHTML () {
         /13  /13 <polygon points="249,41 191,99 151,59 209,1"  fill="${pickedMC1}" stroke="none" /> /13  <line x1="150" y1="60" x2="210" y2="0" stroke="black" /> /13  <line x1="190" y1="100" x2="250" y2="40" stroke="black" /> /13 <polygon points="191,1 249,59 209,99 151,41"  fill="${pickedCC2}" stroke="none" /> /13  <line x1="190" y1="0" x2="250" y2="60" stroke="black" /> /13  <line x1="150" y1="40" x2="210" y2="100" stroke="black" /> /13 <polygon points="150,0  150,40 151,41 191, 1  190,0 "  fill="${pickedCC2}" stroke="none" /> /13 <polygon points="250,0 250,40 249,41 209,1 210,0 "  fill="${pickedMC1}" stroke="none" />
         /13  /13 <polygon points="91,1 149,59 109,99 51,41"  fill="${pickedCC2}" stroke="none" /> /13  <line x1="90" y1="0" x2="150" y2="60" stroke="black" /> /13  <line x1="50" y1="40" x2="110" y2="100" stroke="black" /> /13 <polygon points="149,41 91,99 51,59 109,1"  fill="${pickedCC1}" stroke="none" /> /13  <line x1="50" y1="60" x2="110" y2="0" stroke="black" /> /13  <line x1="90" y1="100" x2="150" y2="40" stroke="black" /> /13 <polygon points="50,0  50,40 51,41 91, 1  90,0 "  fill="${pickedCC2}" stroke="none" /> /13 <polygon points="150,0 150,40 149,41 109,1 110,0 "  fill="${pickedCC1}" stroke="none" />
         <polygon points="0,10 10,0 50,0 50,40 40,50 0,50"  fill="${pickedCC1}" stroke="none" /> /13  <line x1="0" y1="10" x2="10" y2="0" stroke="black" />  /13  <line x1="40" y1="50" x2="50" y2="40" stroke="black" /> /13 <polygon points="0,50 0,10 1,9 41,49 40,50"  fill="${pickedCC1}" stroke="none" /> /13 <polygon points="0,50 0,90 1,91 41,51 40,50"  fill="${pickedMC2}" stroke="none" /> /13 
-</svg>`;
+        `;
     motifDQ_MittsB_SizeM_innerHTML = `
     <polygon points="0,0 0,800 1200,800 1200,0 " fill= "white" stroke="black" />
     <polygon points="1200,790 1190,800 1150,800 1150,760 1160,750 1200,750 "  fill="${pickedCC2}" stroke="none" /> /13  <line x1="1200" y1="790" x2="1190" y2="800" stroke="black" />  /13  <line x1="1160" y1="750" x2="1150" y2="760" stroke="black" /> /13 <polygon points="1200,750 1200,790 1199,791 1159,751 1160,750"  fill="${pickedCC2}" stroke="none" /> /13 <polygon points="1200,750 1200,710 1199,709 1159,749 1160,750"  fill="mediumpurple" stroke="none" /> /13 
@@ -1863,7 +1866,7 @@ function updateSVG_innerHTML () {
     /13  /13 <polygon points="191,1 249,59 209,99 151,41"  fill="mediumpurple" stroke="none" /> /13  <line x1="190" y1="0" x2="250" y2="60" stroke="black" /> /13  <line x1="150" y1="40" x2="210" y2="100" stroke="black" /> /13 <polygon points="249,41 191,99 151,59 209,1"  fill="${pickedCC2}" stroke="none" /> /13  <line x1="150" y1="60" x2="210" y2="0" stroke="black" /> /13  <line x1="190" y1="100" x2="250" y2="40" stroke="black" /> /13 <polygon points="150,0  150,40 151,41 191, 1  190,0 "  fill="mediumpurple" stroke="none" /> /13 <polygon points="250,0 250,40 249,41 209,1 210,0 "  fill="${pickedCC2}" stroke="none" />
     /13  /13 <polygon points="149,41 91,99 51,59 109,1"  fill="${pickedMC2}" stroke="none" /> /13  <line x1="50" y1="60" x2="110" y2="0" stroke="black" /> /13  <line x1="90" y1="100" x2="150" y2="40" stroke="black" /> /13 <polygon points="91,1 149,59 109,99 51,41"  fill="mediumpurple" stroke="none" /> /13  <line x1="90" y1="0" x2="150" y2="60" stroke="black" /> /13  <line x1="50" y1="40" x2="110" y2="100" stroke="black" /> /13 <polygon points="50,0  50,40 51,41 91, 1  90,0 "  fill="mediumpurple" stroke="none" /> /13 <polygon points="150,0 150,40 149,41 109,1 110,0 "  fill="${pickedMC2}" stroke="none" />
     <polygon points="0,10 10,0 50,0 50,40 40,50 0,50"  fill="${pickedMC2}" stroke="none" /> /13  <line x1="0" y1="10" x2="10" y2="0" stroke="black" />  /13  <line x1="40" y1="50" x2="50" y2="40" stroke="black" /> /13 <polygon points="0,50 0,10 1,9 41,49 40,50"  fill="${pickedMC2}" stroke="none" /> /13 <polygon points="0,50 0,90 1,91 41,51 40,50"  fill="${pickedCC1}" stroke="none" /> /13 
-    </svg>`;
+    `;
     motifDQ_MittsA_SizeL_innerHTML = motifDQ_MittsA_SizeS_innerHTML;
     motifDQ_MittsB_SizeL_innerHTML = motifDQ_MittsB_SizeS_innerHTML;    
 }
