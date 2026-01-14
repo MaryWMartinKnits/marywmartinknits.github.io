@@ -323,7 +323,7 @@ function pickSVG () {
     viewBox = `0 0 ${svgOldWidth} ${svgOldHeight}`
     calculateSVGWidth (svgWidth);
     updateSVG_innerHTML();
-    selectedMotif = 'motifDiamondDuetCowlHat';
+    /* selectedMotif = 'motifDiamondDuetCowlHat'; */
     drawSVG (selectedMotif);
 }
 
