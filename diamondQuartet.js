@@ -217,7 +217,6 @@ function getDOMelements () {
     chooseMotifColors ();
     giveColorValueToSwatches(); 
     accordions (); 
-    selectedMotif = motifDQ_CowlHat;
     defaultSVG ();
 }
 
@@ -252,16 +251,6 @@ function addEventListeners () {
     /* chooseNewColorsBtn.addEventListener('click', enableColorChoicesAgain); */
 }
 
-/* function enableColorChoicesAgain () {
-    console.log('function enable colorChoicesAgain');
-    enableBtn (resetColorsBtn);
-    enableBtn (Title_chooseColors);
-    // chooseNewColorsBtn.classList.remove(hidden); 
-    hideBtn (chooseNewColorsBtn);
-    enableBtn (MC1pickerBtn);
-    enableBtn (CC1pickerBtn);
-} */
-
 function defaultSVG () {
     console.log('function defaultSVG executed')
     cleanSVGandBoxes ()
@@ -276,7 +265,6 @@ function cleanSVGandBoxes () {
     rightBoxP_innerHTML = "";
     bottomBoxS_innerHTML = "";
     bottomBoxP_innerHTML = "";
-    //createBoxes ();
 
     let bottomBoxS = document.querySelector("#bottomBoxS");
     if (bottomBoxS != null) {
@@ -286,8 +274,6 @@ function cleanSVGandBoxes () {
         topBox.remove();
         let leftBox = document.querySelector('#leftBox');
         leftBox.remove();
-        /* let leftBox_p = document.querySelector('#leftBox_p');
-        leftBox_p.remove(); */
         let rightBox = document.querySelector('#rightBox');
         rightBox.remove();
         let bottomBoxP = document.querySelector('#bottomBoxP');
@@ -441,14 +427,15 @@ function changeCC2 () {
 }
 
 function updatePickedColors (pickedMC1, pickedMC2, pickedCC1, pickedCC2) {
-    //console.log('function updatePickedColors executed');
+    console.log('function updatePickedColors executed');
     MC1pickerBtn.value = pickedMC1;
     MC2pickerBtn.value = pickedMC2;
     CC1pickerBtn.value = pickedCC1;
     CC2pickerBtn.value = pickedCC2;
     updateHEXcodeDisplay(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
     updateSVG_innerHTML();
-    pickSVG ();
+    cleanSVGandBoxes ();
+    /* pickSVG (); */
 }
 
 function pickSVG () {
@@ -458,14 +445,12 @@ function pickSVG () {
     viewBox = `0 0 ${svgOldWidth} ${svgOldHeight}`
     calculateSVGWidth (svgWidth);
     updateSVG_innerHTML();
-/*     selectedMotif = 'motifDiamondDuetCowlHat'; */
     drawSVG (selectedMotif);
 }
 
 function determinarSVGcharacteristics () {
     console.log(`function determinarSVGcharacteristics executed`);
     console.log(`selectedMotif: ${selectedMotif}`);
-    console.log(selectedMotif);
     topBox_innerHTML = "";
     leftBoxS_innerHTML = "";
     leftBoxP_innerHTML = "";
@@ -519,7 +504,7 @@ function determinarSVGcharacteristics () {
         default:  
             /* SVG: */
             svgWidth = 800;
-            svgHeight = 800;
+            svgHeight = 800; 
             selectedMotif_innerHTML = motifDQ_CowlHat_innerHTML;
             /* numberOfColors = "4"; */
         }
@@ -586,13 +571,7 @@ function createSVGwithBoxes () {
     cleanSVGandBoxes ();
     calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth);
     drawSVGwithBoxes ();
-    /* hideBtn (resetColorsBtn); */
     resetColorsDiv.remove();
-    /* disableBtn (MC1pickerBtn);
-    disableBtn (CC1pickerBtn);
-    disableBtn (MC2pickerBtn);
-    disableBtn (CC2pickerBtn);
-    hideBtn (Title_chooseColors); */
 }
 
 function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
@@ -705,8 +684,6 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
     bottomBoxSHeight = Math.round(bottomBoxSWidth * 0.05);
     svgNewWidth = Math.round(svgNewHeight * svgOldWidth / svgOldHeight);
     svgNewHeight = Math.round(svgNewWidth * svgOldHeight / svgOldWidth);  
-
-
     // checkpoing:
         if (svgNewWidth == (svgNewHeight * svgWidth / svgHeight)) {
             checkpoint = 'yes yes yes';
@@ -747,8 +724,6 @@ function createBoxes () {
     createSVG ();
     createRightBox ();
     createBottomBox (selectedMotif);
-    /* chooseNewColorsBtn.classList.remove(hidden); */
-    /* enableBtn(chooseNewColorsBtn) */
 }
 
 function give_innerHTMLtoBoxes () {
@@ -827,9 +802,10 @@ function createTopBox() {
             break;
         default:  
             /* TOP: */
+            topBox_innerHTML = motifDQ_CowlHat_topBox_innerHTML;
+            break;
             break;
     }
-
     topBox.innerHTML = 
     `<p id= "${topBox.id}_p" class="boxes_p"> ${topBox_innerHTML}  </p>`;
     topBox.style.width = `${topBoxWidth}px`;
@@ -883,7 +859,8 @@ function createLeftBox () {
             break;
         default: 
             /* LEFT: */
-            //leftBox_innerHTML = motifDiamondDuet_CowlHat_leftBox_innerHTML; 
+            leftBoxS_innerHTML = motifDQ_CowlHat_leftBoxS_innerHTML;
+            leftBoxP_innerHTML = motifDQ_CowlHat_leftBoxP_innerHTML;
             break;
     }
     leftBoxWidth = (viewportWidth - svgNewWidth) / 2;
@@ -894,7 +871,6 @@ function createLeftBox () {
     leftBox.style.width = `${(leftBoxWidth)}px`;
 
     leftBox.innerHTML = `<p id=leftBox_p class="orientation lateralBox_p">${leftBoxP_innerHTML} </p>`
-
 }
 function createRightBox () { 
     console.log('- function createRightBox executed');
@@ -904,9 +880,7 @@ function createRightBox () {
     rightBox.classList.add('right-side');
     rightBox.classList.add('rotateElement');
     WovenMotifSVG.appendChild(rightBox);
-
     switch (selectedMotif) {
-
         case "motifDQ_CowlHat":
              /* RIGHT:  */
             rightBoxS_innerHTML = motifDQ_CowlHat_rightBoxS_innerHTML;
@@ -943,8 +917,9 @@ function createRightBox () {
             rightBoxP_innerHTML = motifDQ_MittsB_SizeL_rightBoxP_innerHTML;
             break;
         default:  
-            /* RIGHT:  */
-            //rightBox_innerHTML = motifDiamondDuet_CowlHat_rightBox_innerHTML;
+             /* RIGHT:  */
+            rightBoxS_innerHTML = motifDQ_CowlHat_rightBoxS_innerHTML;
+            rightBoxP_innerHTML = motifDQ_CowlHat_rightBoxP_innerHTML;
             break;
     }
     
@@ -956,8 +931,6 @@ function createRightBox () {
     rightBox.style.width = `${(rightBoxWidth)}px`;
 
     rightBox.innerHTML = `<p id=rightBox_p class="orientation lateralBox_p">${rightBoxP_innerHTML}`
-    /* let rightBox_p = document.querySelector('#rightBox_p'); */
-    
 }
 
 function createBottomBox (selectedMotif) {
@@ -1008,7 +981,9 @@ function createBottomBox (selectedMotif) {
             widthOfEachSEction = bottomBoxSWidth / 8;
             firstX = widthOfEachSEction * 4;
             /* secondX = widthOfEachSEction * 6; */
-            secondX = bottomBoxSWidth;
+            /* secondX = bottomBoxSWidth; */
+            /* secondX = widthOfEachSEction * 8.32; */
+            secondX = bottomBoxSWidth + (widthOfEachSEction * 0.2);
             bottomBoxP_innerHTML = motifDQ_CowlHat_bottomBoxP_innerHTML;
 
             motifDQ_CowlHat_bottomBoxS_innerHTML = `
@@ -1074,7 +1049,6 @@ function createBottomBox (selectedMotif) {
     }
     motifDQ_CowlHat_bottomBoxS_innerHTML = 
 
-
     bottomBoxP.innerHTML = `
     <p id= "${bottomBoxP.id}_p" class="boxes_p"> ${bottomBoxP_innerHTML}  </p> <hr>
     `;
@@ -1099,6 +1073,7 @@ function createSVG () {
 }
 
 function updateSVG_innerHTML () {
+    console.log('function updateSVG_innerHTML executed');
     motifDQ_CowlHat_innerHTML = `
     <polygon points="0,0 0,800 800,800 800,0 " fill= "white" stroke="black" />
     <polygon points="800,790 790,800 750,800 750,760 760,750 800,750 "  fill="${pickedMC1}" stroke="none" /> /13  <line x1="800" y1="790" x2="790" y2="800" stroke="black" />  /13  <line x1="760" y1="750" x2="750" y2="760" stroke="black" /> /13 <polygon points="800,750 800,790 799,791 759,751 760,750"  fill="${pickedMC1}" stroke="none" /> /13 <polygon points="800,750 800,710 799,709 759,749 760,750"  fill="${pickedCC2}" stroke="none" /> /13 
