@@ -859,7 +859,6 @@ input[type=number], #numOftotalDE {
     grid-template-columns: auto max-content auto; /* //// */
     align-items: center; /* Vertically centers items in their grid area */
     justify-items: center; /* Horizontally centers items within their columns */
-    /* width: 100%; */
 }
 
 .grid {

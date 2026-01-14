@@ -1,5 +1,5 @@
 "use strict";
-
+let checkpoint;
 // declaring variables:
 
 let viewportWidth;
@@ -168,7 +168,6 @@ function enableBtn (button) {
 }
 
 function addEventListeners () {
-    console.log('function addEventListeners executed');
     MC1pickerBtn.addEventListener('change', changeMC1);
     MC2pickerBtn.addEventListener('change', changeMC2);
     CC1pickerBtn.addEventListener('change', changeCC1);
@@ -239,7 +238,7 @@ function resetColours () {
 }
 
 function giveColorValueToSwatches() {
-    console.log('function giveColorValueToSwatches executed');
+/*     console.log('function giveColorValueToSwatches executed'); */
     if (localStorage_MC1 !== null) {
         pickedMC1 = localStorage.MC1;
         MC1pickerBtn.value = pickedMC1;
@@ -320,7 +319,7 @@ function toggleAccordions () {
 
 // picking MC and CC:
 function chooseMotifColors () {
-    console.log('function chooseMotifColors executed');
+/*     console.log('function chooseMotifColors executed'); */
     if (localStorage.MC1) {
         //console.log(`Stored MC1: ${localStorage.MC1}`);
         pickedMC1 = localStorage.MC1;
@@ -401,7 +400,7 @@ function updatePickedColors (pickedMC1, pickedMC2, pickedCC1, pickedCC2) {
 }
 
 function pickSVG () {
-    console.log('FUNCTION pickSVG executed');
+/*     console.log('FUNCTION pickSVG executed'); */
     selectedMotif = motifPickerDropDown.value;
     determinarSVGcharacteristics (selectedMotif);
     viewBox = `0 0 ${svgOldWidth} ${svgOldHeight}`
@@ -412,7 +411,7 @@ function pickSVG () {
 }
 
 function determinarSVGcharacteristics () {
-    console.log(`function determinarSVGcharacteristics executed`);
+/*     console.log(`function determinarSVGcharacteristics executed`); */
     topBox_innerHTML = "";
     leftBox_innerHTML = "";
     rightBox_innerHTML = "";
@@ -445,41 +444,41 @@ function determinarSVGcharacteristics () {
 }
 
 function calculateSVGWidth (svgWidth) {
-    console.log(`function // calculateSVGWidth // executed`);
+    console.log(`function -- calculateSVGWidth  executed`);
     viewportWidth = window.innerWidth;
     viewBox = `0 0 ${svgOldWidth} ${svgOldHeight}`
-    svgDivTotalWidth = svgWidth* 0.9;
+    svgDivTotalWidth = Math.round(svgWidth* 0.9);
 
     if (svgWidth >= 600) {
         svgWidth = 600;
-        svgHeight = svgOldHeight * svgWidth / svgOldWidth;
+        svgHeight = Math.round(svgOldHeight * svgWidth / svgOldWidth);
         svgNewWidth = svgWidth;
-        svgNewHeight = svgHeight * svgNewWidth / svgWidth;
+        svgNewHeight = Math.round(svgHeight * svgNewWidth / svgWidth);
     }
 
     if (svgDivTotalWidth >= viewportWidth || svgHeight > viewportHeight) {
-            svgNewWidth = svgWidth * 0.9;
-            svgNewHeight = svgHeight * 0.9;
+            svgNewWidth = Math.round(svgWidth * 0.9);
+            svgNewHeight = Math.round(svgHeight * 0.9);
         if (svgDivTotalWidth >= viewportWidth) {
             sumarWidth = viewportWidth - svgDivTotalWidth;
             svgNewWidth = Math.round((svgDivTotalWidth + sumarWidth) * 0.8)
-            svgNewHeight = svgHeight * svgNewWidth / svgWidth;
+            svgNewHeight = Math.round(svgHeight * svgNewWidth / svgWidth);
         }
         if (svgHeight > viewportHeight) {
             svgNewHeight = Math.round(viewportHeight * 0.7)
-            svgNewWidth = svgWidth * svgNewHeight / svgHeight;
+            svgNewWidth = Math.round(svgWidth * svgNewHeight / svgHeight);
         }
     } else if (svgDivTotalWidth < viewportWidth) {
         if (viewportWidth < 800) {
                 console.log(`if => small viewportWidth (<600): ${viewportWidth}`)
                 svgNewWidth = Math.round(svgNewWidth * 0.90);
         }
-            svgNewHeight = svgHeight * svgNewWidth / svgWidth;
+            svgNewHeight = Math.round(svgHeight * svgNewWidth / svgWidth);
     }
     if (svgNewWidth > 600) {
         svgWidth = svgNewWidth;
         svgNewWidth = 600;
-        svgNewHeight = svgHeight * svgNewWidth / svgWidth;
+        svgNewHeight = Math.round(svgHeight * svgNewWidth / svgWidth);
     }
 }
 
@@ -514,18 +513,47 @@ function createSVGwithBoxes () {
 
 function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
     console.log(`function calculateTotalWidth executed`);
+    // checkpoing:
+    if (svgNewWidth == (svgNewHeight * svgWidth / svgHeight)) {
+        checkpoint = 'yes';
+        console.log(checkpoint);
+    } else {
+        checkpoint = 'no'
+        console.log(` ${checkpoint} / first checkpoint
+            svgWidth: ${svgWidth}    -- >     svgHeight: ${svgHeight}
+            svgNewWidth: ${svgNewWidth} -->    svgNewHeight: ${svgNewHeight}
+            svgNewWidth should be: ${Math.round(svgNewHeight * svgWidth / svgHeight)} (not ${svgNewWidth})
+            or svgNewHeight should be: ${Math.round(svgNewWidth * svgHeight / svgWidth)} (not ${svgNewHeight})
+            `)
+    }
+    // end checkpoint.
+
     viewportWidth = window.innerWidth;
     if (svgWidth > svgNewWidth) {
         console.log(`if (svgWidth > svgNewWidth)`);
         svgWidth = svgNewWidth;
         svgHeight = svgNewHeight;
-        svgWidth = svgNewWidth * 0.7;
-        svgHeight = svgNewHeight * 0.7;
+        svgNewWidth = Math.round(svgNewWidth * 0.7);
+        svgNewHeight = Math.round(svgNewWidth * svgHeight / svgWidth);
+        // checkpoing:
+        if (svgNewWidth == (svgNewHeight * svgWidth / svgHeight)) {
+            checkpoint = 'yes';
+            console.log(checkpoint);
+        } else {
+            checkpoint = 'no'
+            console.log(` ${checkpoint} / if checkpoint
+                svgWidth: ${svgWidth}    -- >     svgHeight: ${svgHeight}
+                svgNewWidth: ${svgNewWidth} -->    svgNewHeight: ${svgNewHeight}
+                svgNewWidth should be: ${Math.round(svgNewHeight * svgWidth / svgHeight)} (not ${svgNewWidth})
+                or svgNewHeight should be: ${Math.round(svgNewWidth * svgHeight / svgWidth)} (not ${svgNewHeight})
+                `)
+        }
+        // end checkpoint.
     } 
     if ((svgNewWidth > (viewportWidth * 0.9)) || (viewportWidth < 500)) {
         console.log(`if ((svgNewWidth > (viewportWidth * 0.9)) || (viewportWidth < 500))`)
-        svgNewWidth = svgNewWidth * 0.7;
-        svgNewHeight = svgNewHeight * 0.7;
+        svgNewWidth = Math.round(svgNewWidth * 0.7);
+        svgNewHeight = Math.round(svgNewHeight * 0.7);
     }
     viewBox = `0 0 ${svgOldWidth} ${svgOldHeight}`
     topBoxWidth = svgWidth;
@@ -533,44 +561,85 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
     rightBoxHeight = svgHeight;
 
     svgDivTotalWidth = leftBoxWidth + svgWidth + rightBoxWidth;
-    svgDivTotalWidth = leftBoxWidth + svgWidth + rightBoxWidth;
-    svgDivTotalWidth = svgDivTotalWidth * 0.9;
+    svgDivTotalWidth = Math.round(svgDivTotalWidth * 0.9);
+
+    // checkpoing:
+    if (svgNewWidth == (svgNewHeight * svgWidth / svgHeight)) {
+        checkpoint = 'yes';
+        console.log(checkpoint);
+    } else {
+        checkpoint = 'no'
+        console.log(` ${checkpoint} / middle checkpoint
+            svgWidth: ${svgWidth}    -- >     svgHeight: ${svgHeight}
+            svgNewWidth: ${svgNewWidth} -->    svgNewHeight: ${svgNewHeight}
+            svgNewWidth should be: ${Math.round(svgNewHeight * svgWidth / svgHeight)} (not ${svgNewWidth})
+            or svgNewHeight should be: ${Math.round(svgNewWidth * svgHeight / svgWidth)} (not ${svgNewHeight})
+            `)
+    }
+    // end checkpoint.
 
     if (svgDivTotalWidth <= viewportWidth || svgHeight > viewportHeight) {
+        console.log(`if (svgDivTotalWidth <= viewportWidth || svgHeight > viewportHeight)`)
         svgNewWidth = svgWidth;
         svgNewHeight = svgHeight;
         if (svgHeight > viewportHeight) {
                 console.log(`=> if svgHeight > viewportHeight`);
                 svgNewHeight = viewportHeight - (svgHeight - viewportHeight);
-                svgNewWidth = svgNewWidth * svgNewHeight / svgHeight;
+                svgNewWidth = Math.round(svgNewHeight * svgWidth / svgHeight);
             }
     } else if (svgDivTotalWidth >= viewportWidth) {
+        console.log(`else if (svgDivTotalWidth >= viewportWidth)`)
         restarWidth = svgDivTotalWidth - viewportWidth;
         svgNewWidth = svgDivTotalWidth - (svgDivTotalWidth - viewportWidth) - leftBoxWidth - rightBoxWidth; 
         svgNewWidth = Math.round(svgNewWidth * 0.90);
         if (viewportWidth < 600) {
             console.log(`-- small viewportWidth: ${viewportWidth}`)
-            svgNewWidth = Math.round(svgNewWidth * 0.99);
+            svgNewWidth = Math.round(svgNewWidth * 0.98);
+            svgNewHeight = Math.round(svgNewHeight * 0.98);  
         }
-        svgNewHeight = svgHeight * svgNewWidth / svgWidth;            
+                console.log('---')
+        svgNewHeight = Math.round(svgNewWidth * svgHeight / svgWidth);        
     }
         svgWidth = svgNewWidth;
+        svgHeight = svgNewHeight;
         if (leftBoxWidth == 0) {
             leftBoxHeight = 0;
         } else {
         leftBoxHeight = svgNewHeight;
         }
     if (svgNewWidth > 600) {
-    svgWidth = svgNewWidth;
-    svgNewWidth = 600;
-    svgHeight = svgNewHeight;
-    svgNewHeight = svgHeight * svgNewWidth / svgWidth;
+        console.log(`if (svgNewWidth > 600)`);
+        svgWidth = svgNewWidth;
+        svgNewWidth = 600;
+        svgHeight = svgNewHeight;
+        svgNewHeight = Math.round(svgNewWidth * svgHeight / svgWidth);  
     }
-    topBoxWidth = viewportWidth * 0.9;
+    topBoxWidth = Math.round(viewportWidth * 0.9);
     rightBoxHeight = svgNewHeight; 
     bottomBoxAWidth = svgNewWidth;
-    bottomBoxBWidth = viewportWidth * 0.9;
-    bottomBoxAHeight = bottomBoxAWidth * 0.05;
+    bottomBoxBWidth = Math.round(viewportWidth * 0.9);
+    bottomBoxAHeight = Math.round(bottomBoxAWidth * 0.05);
+    svgNewWidth = Math.round(svgNewHeight * svgOldWidth / svgOldHeight);
+    svgNewHeight = Math.round(svgNewWidth * svgOldHeight / svgOldWidth);  
+
+
+    // checkpoing:
+        if (svgNewWidth == (svgNewHeight * svgWidth / svgHeight)) {
+            checkpoint = 'yes yes yes';
+            console.log(checkpoint);
+            console.log(` new width = new height * old width / old height  
+                ${svgNewWidth} =? ${Math.round(svgNewHeight * svgOldWidth / svgOldHeight)}
+                `)
+        } else {
+            checkpoint = 'no'
+            console.log(` ${checkpoint} / FINAL checkpoint.
+                svgWidth: ${svgWidth}    -- >     svgHeight: ${svgHeight}
+                svgNewWidth: ${svgNewWidth} -->    svgNewHeight: ${svgNewHeight}
+                svgNewWidth should be: ${Math.round(svgNewHeight * svgWidth / svgHeight)} (not ${svgNewWidth})
+                or svgNewHeight should be: ${Math.round(svgNewWidth * svgHeight / svgWidth)} (not ${svgNewHeight})
+                `)
+        }
+        // end checkpoint.
 }
 
 function drawSVGwithBoxes () {
