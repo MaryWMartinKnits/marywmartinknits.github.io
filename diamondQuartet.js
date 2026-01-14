@@ -65,12 +65,81 @@ let bottomBoxA_innerHTML;
 let bottomBoxB_innerHTML;
 
 // Diamond Quartet Collection:
-let motifDiamondQuartetMitts_SandL
-let motifDiamondQuartetMitts_SandL_innerHTML;
-let motifDiamondQuartetMitts_M
-let motifDiamondQuartetMitts_M_innerHTML;
-let selectedMotif = 'motifDiamondQuartetMitts_SandL';
-let selectedMotif_innerHTML = motifDiamondQuartetMitts_SandL_innerHTML;
+let motifDQ_CowlHat;
+let motifDQ_MittsA_SizeS;
+let motifDQ_MittsB_SizeS;
+let motifDQ_MittsA_SizeM;
+let motifDQ_MittsB_SizeM;
+let motifDQ_MittsA_SizeL;
+let motifDQ_MittsB_SizeL;
+let selectedMotif;
+let motifDQ_CowlHat_innerHTML;
+let motifDQ_MittsA_SizeS_innerHTML;
+let motifDQ_MittsB_SizeS_innerHTML;
+let motifDQ_MittsA_SizeM_innerHTML;
+let motifDQ_MittsB_SizeM_innerHTML;
+let motifDQ_MittsA_SizeL_innerHTML;
+let motifDQ_MittsB_SizeL_innerHTML;
+let selectedMotif_innerHTML = motifDQ_CowlHat_innerHTML;
+
+let motifDQ_CowlHat_topBox_innerHTML;
+let motifDQ_CowlHat_leftBoxS_innerHTML;
+let motifDQ_CowlHat_leftBoxP_innerHTML;
+let motifDQ_CowlHat_rightBoxS_innerHTML;
+let motifDQ_CowlHat_rightBoxP_innerHTML;
+let motifDQ_CowlHat_bottomBoxS_innerHTML;
+let motifDQ_CowlHat_bottomBoxP_innerHTML;
+
+let motifDQ_MittsA_SizeS_topBox_innerHTML;
+let motifDQ_MittsA_SizeS_leftBoxS_innerHTML;
+let motifDQ_MittsA_SizeS_leftBoxP_innerHTML;
+let motifDQ_MittsA_SizeS_rightBoxS_innerHTML;
+let motifDQ_MittsA_SizeS_rightBoxP_innerHTML;
+let motifDQ_MittsA_SizeS_bottomBoxS_innerHTML;
+let motifDQ_MittsA_SizeS_bottomBoxP_innerHTML;
+
+
+let motifDQ_MittsB_SizeS_topBox_innerHTML;
+let motifDQ_MittsB_SizeS_leftBoxS_innerHTML;
+let motifDQ_MittsB_SizeS_leftBoxP_innerHTML;
+let motifDQ_MittsB_SizeS_rightBoxS_innerHTML;
+let motifDQ_MittsB_SizeS_rightBoxP_innerHTML;
+let motifDQ_MittsB_SizeS_bottomBoxS_innerHTML;
+let motifDQ_MittsB_SizeS_bottomBoxP_innerHTML;
+
+let motifDQ_MittsA_SizeM_topBox_innerHTML;
+let motifDQ_MittsA_SizeM_leftBoxS_innerHTML;
+let motifDQ_MittsA_SizeM_leftBoxP_innerHTML;
+let motifDQ_MittsA_SizeM_rightBoxS_innerHTML;
+let motifDQ_MittsA_SizeM_rightBoxP_innerHTML;
+let motifDQ_MittsA_SizeM_bottomBoxS_innerHTML;
+let motifDQ_MittsA_SizeM_bottomBoxP_innerHTML;
+
+let motifDQ_MittsB_SizeM_topBox_innerHTML;
+let motifDQ_MittsB_SizeM_leftBoxS_innerHTML;
+let motifDQ_MittsB_SizeM_leftBoxP_innerHTML;
+let motifDQ_MittsB_SizeM_rightBoxS_innerHTML;
+let motifDQ_MittsB_SizeM_rightBoxP_innerHTML;
+let motifDQ_MittsB_SizeM_bottomBoxS_innerHTML;
+let motifDQ_MittsB_SizeM_bottomBoxP_innerHTML;
+
+let motifDQ_MittsA_SizeL_topBox_innerHTML;
+let motifDQ_MittsA_SizeL_leftBoxS_innerHTML;
+let motifDQ_MittsA_SizeL_leftBoxP_innerHTML;
+let motifDQ_MittsA_SizeL_rightBoxS_innerHTML;
+let motifDQ_MittsA_SizeL_rightBoxP_innerHTML;
+let motifDQ_MittsA_SizeL_bottomBoxS_innerHTML;
+let motifDQ_MittsA_SizeL_bottomBoxP_innerHTML;
+
+let motifDQ_MittsB_SizeL_topBox_innerHTML;
+let motifDQ_MittsB_SizeL_leftBoxS_innerHTML;
+let motifDQ_MittsB_SizeL_leftBoxP_innerHTML;
+let motifDQ_MittsB_SizeL_rightBoxS_innerHTML;
+let motifDQ_MittsB_SizeL_rightBoxP_innerHTML;
+let motifDQ_MittsB_SizeL_bottomBoxS_innerHTML;
+let motifDQ_MittsB_SizeL_bottomBoxP_innerHTML;
+
+
 // end of Diamond Quartet Collection.
 
 //colors
