@@ -445,14 +445,12 @@ function determinarSVGcharacteristics () {
 }
 
 function calculateSVGWidth (svgWidth) {
-    console.log(`function //calculateSVGWidth// executed`);
-    console.log(`viewportWidth: ${viewportWidth}
-    svgWidth: ${svgWidth} -> svgNewWidth: ${svgNewWidth}`);
+    console.log(`function // calculateSVGWidth // executed`);
     viewportWidth = window.innerWidth;
     viewBox = `0 0 ${svgOldWidth} ${svgOldHeight}`
     svgDivTotalWidth = svgWidth* 0.9;
 
-    if (svgWidth > 600) {
+    if (svgWidth >= 600) {
         svgWidth = 600;
         svgHeight = svgOldHeight * svgWidth / svgOldWidth;
         svgNewWidth = svgWidth;
@@ -505,7 +503,8 @@ function createSVGwithBoxes () {
     cleanSVGandBoxes ();
     calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth);
     drawSVGwithBoxes ();
-    hideBtn (resetColorsBtn);
+    /* hideBtn (resetColorsBtn); */
+    resetColorsDiv.remove();
     /* disableBtn (MC1pickerBtn);
     disableBtn (CC1pickerBtn);
     disableBtn (MC2pickerBtn);
@@ -596,7 +595,7 @@ function createBoxes () {
     createRightBox ();
     createBottomBox (selectedMotif);
     /* chooseNewColorsBtn.classList.remove(hidden); */
-    enableBtn(chooseNewColorsBtn)
+    /* enableBtn(chooseNewColorsBtn) */
 }
 
 function give_innerHTMLtoBoxes () {
@@ -787,8 +786,8 @@ function createBottomBox (selectedMotif) {
 
 function createSVG () {
     console.log('-- function createSVG executed');
-    console.log(`viewportWidth: ${viewportWidth}
-        svgWidth: ${svgWidth} -> svgNewWidth: ${svgNewWidth}`);
+    /* console.log(`viewportWidth: ${viewportWidth}
+        svgWidth: ${svgWidth} -> svgNewWidth: ${svgNewWidth}`); */
     SVGinDiv.innerHTML = 
     `<svg id= "${selectedMotif}_svg" width="${svgNewWidth}" height="${svgNewHeight}" viewbox="${viewBox}"
     style="border:1px solid var(--color4); background-color:#ffffff"> 
