@@ -62,13 +62,12 @@ let bottomBoxB_innerHTML;
 
 // Diamond Duet Collection:
 let motifDiamondDuetCowlHat
-let motifDiamondDuetCowlHat_innerHTML;
 let motifDiamondDuetMitts_A
-let motifDiamondDuetMitts_A_innerHTML;
 let motifDiamondDuetMitts_B
-let motifDiamondDuetMitts_B_innerHTML;
-/* let selectedMotif = 'motifDiamondDuetCowlHat'; */
 let selectedMotif;
+let motifDiamondDuetCowlHat_innerHTML;
+let motifDiamondDuetMitts_A_innerHTML;
+let motifDiamondDuetMitts_B_innerHTML;
 let selectedMotif_innerHTML = motifDiamondDuetMitts_A_innerHTML;
 
 let motifDiamondDuet_CowlHat_topBox_innerHTML;
@@ -324,7 +323,7 @@ function pickSVG () {
     viewBox = `0 0 ${svgOldWidth} ${svgOldHeight}`
     calculateSVGWidth (svgWidth);
     updateSVG_innerHTML();
-    selectedMotif = 'motifDiamondDuetCowlHat';
+    /* selectedMotif = 'motifDiamondDuetCowlHat'; */
     drawSVG (selectedMotif);
 }
 
@@ -537,8 +536,8 @@ function give_innerHTMLtoBoxes () {
     motifDiamondDuetMitts_B_topBox_innerHTML = `For the initial Thumb Gusset section, the cables change colours at the edge of the motif when they change direction. This heeps all ables travelling to the right CC and all cables travelling to the left MC; Woven Motif C in the pattern. For the upper hand, the cables travel continuously around the mitten do not change colour; Woven Motif D in the pattern. <br> Diagram shows three vertical repeats of the Woven Motif. Refer to the pattern for the number of repeats required.`;
     motifDiamondDuetMitts_B_leftBox_innerHTML =     `For Woven Motif C, cables change colour to CC at this edge`;
     motifDiamondDuetMitts_B_rightBox_innerHTML =    `For Woven Motif C, cables change colour to MC at this edge`;
-    motifDiamondDuetMitts_B_bottomBoxA_innerHTML = motifDiamondDuetMitts_A_bottomBoxA_innerHTML;
-    motifDiamondDuetMitts_B_bottomBoxB_innerHTML = `Sizes S, M, L work a different number of repeats of this section`;
+/*     motifDiamondDuetMitts_B_bottomBoxA_innerHTML = motifDiamondDuetMitts_A_bottomBoxA_innerHTML;
+ */    motifDiamondDuetMitts_B_bottomBoxB_innerHTML = `Sizes S, M, L work a different number of repeats of this section`;
 }
 
 function createTopBox() { 
@@ -948,7 +947,7 @@ function updateSVG_innerHTML () {
     /13  /13 <polygon points="149,41 91,99 51,59 109,1"  fill="${pickedCC1}" stroke="none" /> /13  <line x1="50" y1="60" x2="110" y2="0" stroke="black" /> /13  <line x1="90" y1="100" x2="150" y2="40" stroke="black" /> /13 <polygon points="91,1 149,59 109,99 51,41"  fill="${pickedMC1}" stroke="none" /> /13  <line x1="90" y1="0" x2="150" y2="60" stroke="black" /> /13  <line x1="50" y1="40" x2="110" y2="100" stroke="black" /> /13 <polygon points="50,0  50,40 51,41 91, 1  90,0 "  fill="${pickedMC1}" stroke="none" /> /13 <polygon points="150,0 150,40 149,41 109,1 110,0 "  fill="${pickedCC1}" stroke="none" />
     <polygon points="0,10 10,0 50,0 50,40 40,50 0,50"  fill="${pickedCC1}" stroke="none" /> /13  <line x1="0" y1="10" x2="10" y2="0" stroke="black" />  /13  <line x1="40" y1="50" x2="50" y2="40" stroke="black" /> /13 <polygon points="0,50 0,10 1,9 41,49 40,50"  fill="${pickedCC1}" stroke="none" /> /13 <polygon points="0,50 0,90 1,91 41,51 40,50"  fill="${pickedMC1}" stroke="none" /> /13 
 </svg>
-    `
+    ` 
 }
 
 function localStorage_MC1 () {
