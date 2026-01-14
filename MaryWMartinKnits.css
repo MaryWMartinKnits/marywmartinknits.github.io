@@ -864,6 +864,9 @@ input[type=number], #numOftotalDE {
 
 .grid {
     display: grid;
+    column-gap: 0;
+    align-items: center;
+    justify-content: center;
 }
 
 .center-div {

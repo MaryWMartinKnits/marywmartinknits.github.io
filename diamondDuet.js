@@ -370,13 +370,11 @@ function determinarSVGcharacteristics () {
 
 function calculateSVGWidth (svgWidth) {
     console.log(`function //calculateSVGWidth// executed`);
-    /* console.log(`viewportWidth: ${viewportWidth}
-    svgWidth: ${svgWidth} -> svgNewWidth: ${svgNewWidth}`); */
     viewportWidth = window.innerWidth;
     viewBox = `0 0 ${svgOldWidth} ${svgOldHeight}`
     svgDivTotalWidth = svgWidth* 0.9;
 
-    if (svgWidth > 600) {
+    if (svgWidth >= 600) {
         svgWidth = 600;
         svgHeight = svgOldHeight * svgWidth / svgOldWidth;
         svgNewWidth = svgWidth;
@@ -430,7 +428,8 @@ function createSVGwithBoxes () {
     cleanSVGandBoxes ();
     calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth);
     drawSVGwithBoxes ();
-    hideBtn (resetColorsBtn);
+    /* hideBtn (resetColorsBtn); */
+        resetColorsDiv.remove();
     /* disableBtn (MC1pickerBtn);
     disableBtn (CC1pickerBtn);
     hideBtn (Title_chooseColors); */
