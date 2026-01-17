@@ -679,7 +679,7 @@ function createBottomBox (selectedMotif) {
             width="${svgNewWidth}" 
             height="${bottomBoxAHeight}" 
             viewbox="${bottomBoxAviewBox}"
-            style="border:1px solid white; background-color:#ffffff"> `
+            style="background-color:#ffffff"> `
 
     switch (selectedMotif) {
         case "motifDiamondDuetCowlHat":
@@ -703,13 +703,6 @@ function createBottomBox (selectedMotif) {
      /* BOTTOM: */
     firstX = widthOfEachSEction * 4;
     secondX = widthOfEachSEction * 6;
-    let buffer = widthOfEachSEction / 6
-    secondX = secondX + buffer;
-    console.log(`buffer: ${buffer}
-        width of each section: ${widthOfEachSEction}
-        bottomBoxA Widht: ${bottomBoxAWidth}
-        firstX: ${firstX}
-        secondX: ${secondX}`);
     bottomBoxA.innerHTML = 
     `${initialSVG}
         ${arrowhead}
