@@ -48,14 +48,18 @@ let bottomBoxesAandB;
 let topBoxWidth;
 let leftBoxWidth;
 let rightBoxWidth;
+let leftBoxSWidth;
+let rightBoxSWidth;
 let leftBoxHeight;
 let rightBoxHeight;
+let leftBoxSHeight;
+let rightBoxSHeight;
 let bottomBoxSWidth;
 let bottomBoxSHeight;
 let bottomBoxPWidth;
 
-let leftViewBox;
-let rightViewBox;
+let leftBoxSViewBox;
+let rightBoxSViewBox;
 let bottomBoxSviewBox;
 
 let topBox_innerHTML;
@@ -722,8 +726,8 @@ function give_innerHTMLtoBoxes () {
     motifDQ_MittsA_SizeS_bottomBoxP_innerHTML = "";
     // mitten B - Size S & L:
     motifDQ_MittsB_SizeS_topBox_innerHTML = "The cables change colours at the edge of the motif. The new colour is given in the Woven Motif A: Edge Index Table for Size S & L <br> Diagram shows the first four vertical repeats of Woven Motif B. Refere to the pattern for the number of repeats required.";
-    motifDQ_MittsB_SizeS_leftBoxP_innerHTML = motifDQ_MittsA_SizeS_leftBoxP_innerHTML;
-    motifDQ_MittsB_SizeS_rightBoxP_innerHTML = motifDQ_MittsA_SizeS_rightBoxP_innerHTML;
+    motifDQ_MittsB_SizeS_leftBoxP_innerHTML = motifDQ_MittsB_SizeS_leftBoxP_innerHTML;
+    motifDQ_MittsB_SizeS_rightBoxP_innerHTML = motifDQ_MittsB_SizeS_rightBoxP_innerHTML;
     motifDQ_MittsB_SizeS_bottomBoxP_innerHTML = "";
     // mitten A - Size M:
     motifDQ_MittsA_SizeM_topBox_innerHTML = "The cables change colours at the edge of the motif. The new colur is given in the Woven Motif A: Edge Index Table for Size M. <br> Diagram shows the first four vertical repeats of Woven Motif B. Refer to the pattern for the number of repeats required.";
@@ -732,8 +736,8 @@ function give_innerHTMLtoBoxes () {
     motifDQ_MittsA_SizeM_bottomBoxP_innerHTML = "";
     // mitten B - Size M:
     motifDQ_MittsB_SizeM_topBox_innerHTML = "The cables change colours at the edge fo fthe motif. The new colour is given in the Woven Motif B: Edge Index Table for Size M. <br> Diagram shows the first four vertical repeats Woven Motif B. REfer to the pattern for the number of repeats required.";
-    motifDQ_MittsB_SizeM_leftBoxP_innerHTML = motifDQ_MittsA_SizeS_leftBoxP_innerHTML;
-    motifDQ_MittsB_SizeM_rightBoxP_innerHTML = motifDQ_MittsA_SizeS_rightBoxP_innerHTML;
+    motifDQ_MittsB_SizeM_leftBoxP_innerHTML = motifDQ_MittsB_SizeS_leftBoxP_innerHTML;
+    motifDQ_MittsB_SizeM_rightBoxP_innerHTML = motifDQ_MittsB_SizeS_rightBoxP_innerHTML;
     motifDQ_MittsB_SizeM_bottomBoxP_innerHTML = "";
 }
 
@@ -841,8 +845,69 @@ function createRightBox () {
     rightBox.setAttribute('id', 'rightBox');
     rightBox.classList.add('lateralBoxes');
     rightBox.classList.add('right-side');
-    rightBox.classList.add('rotateElement');
-    WovenMotifSVG.appendChild(rightBox);
+        WovenMotifSVG.appendChild(rightBox);
+
+    rightBoxWidth = (viewportWidth - svgNewWidth) / 2;
+    rightBoxWidth = Math.round(leftBoxWidth * 0.9);
+    /* rightBoxHeight = svgNewHeight - (svgNewHeight * 0.05); */
+    rightBoxHeight = svgNewHeight;
+    rightBox.style.height = `${rightBoxHeight}px`;
+    rightBox.style.width = `${(rightBoxWidth)}px`;
+
+    let rightBoxS = document.createElement('div')
+    rightBoxS.setAttribute('id', 'rightBoxS');
+    rightBoxS.classList.add('lateralBoxes');
+    rightBoxS.classList.add('right-side');
+        rightBox.appendChild(rightBoxS);
+    let rightBoxP = document.createElement('div')
+    rightBoxP.setAttribute('id', 'rightBoxP');
+    rightBoxP.classList.add('lateralBoxes');
+    rightBoxP.classList.add('right-side');
+    rightBoxP.classList.add('rotateElement');
+        rightBox.appendChild(rightBoxP);
+
+    /* RIGHT:  */ 
+    let firstY;
+    let secondY;
+    let thirdY;
+    rightBoxHeight = svgNewHeight;
+    rightBoxSHeight = rightBoxHeight;
+    let heightOfEachSEction
+    if (svgNewWidth <= 200) {
+        rightBoxSWidth = 15;
+    } else if (svgNewWidth < 400) {
+        rightBoxSWidth = 20;
+    } else {
+        rightBoxSWidth = 25;
+    }
+    let x1 = rightBoxWidth * 0.99
+    let x2 = rightBoxWidth - x1
+    rightBoxSViewBox = `0 0 ${rightBoxSWidth} ${rightBoxSHeight}`
+    
+    heightOfEachSEction = rightBoxSHeight / 8;
+    firstY = heightOfEachSEction * 2;
+    secondY = heightOfEachSEction * 4;
+    thirdY = heightOfEachSEction * 6;
+
+    let initialSVG = `<svg 
+            id= "rightBoxS_svg" class= rightBoxS_svg
+            width="${rightBoxSWidth}" 
+            height="${rightBoxSHeight}" 
+            viewbox="${rightBoxSViewBox}"
+            style="background-color:#ffffff"> `
+    let rightBoxSlines_innerHTML = `
+                <line x1="${x1}" y1="0" x2="${x2}" y2="0" stroke="blue" stroke-width="2" />
+
+                <line x1="${x1}" y1="${firstY}" x2="${x2}" y2="${firstY}" stroke="black" stroke-width="2" />
+                <line x1="${x1}" y1="${secondY}" x2="${x2}" y2="${secondY}" stroke="black" stroke-width="2" />
+                <line x1="${x1}" y1="${thirdY}" x2="${x2}" y2="${thirdY}" stroke="black" stroke-width="2" />
+                
+                <line x1="${x1}" y1="${rightBoxSHeight}" x2="${x2}" y2="${rightBoxSHeight}" stroke="blue" stroke-width="2" />
+
+                </svg>
+                `
+   
+             
     switch (selectedMotif) {
         case "motifDQ_CowlHat":
              /* RIGHT:  */
@@ -851,8 +916,13 @@ function createRightBox () {
             break;
         case "motifDQ_MittsA_SizeS":
             //* RIGHT:  */
-            rightBoxS_innerHTML = motifDQ_MittsA_SizeS_rightBoxS_innerHTML;
             rightBoxP_innerHTML = motifDQ_MittsA_SizeS_rightBoxP_innerHTML;
+            rightBoxS_innerHTML = motifDQ_MittsA_SizeS_rightBoxS_innerHTML;
+            rightBoxS.innerHTML = 
+            `${initialSVG}
+                ${rightBoxSlines_innerHTML}
+            </svg>`;
+
             break;
         case "motifDQ_MittsB_SizeS":
              /* RIGHT:  */
@@ -886,14 +956,14 @@ function createRightBox () {
             break;
     }
     
-    rightBoxWidth = (viewportWidth - svgNewWidth) / 2;
+    /* rightBoxWidth = (viewportWidth - svgNewWidth) / 2;
     rightBoxWidth = Math.round(rightBoxWidth * 0.9);
     rightBoxHeight = svgNewHeight - (svgNewHeight * 0.05);
 
     rightBox.style.height = `${rightBoxHeight}px`; 
-    rightBox.style.width = `${(rightBoxWidth)}px`;
+    rightBox.style.width = `${(rightBoxWidth)}px`; */
 
-    rightBox.innerHTML = `<p id=rightBox_p class="orientation lateralBox_p">${rightBoxP_innerHTML}`
+    rightBoxP.innerHTML = `<p id=rightBox_p class="orientation lateralBox_p">${rightBoxP_innerHTML}`
 }
 
 function createBottomBox (selectedMotif) {
@@ -936,7 +1006,7 @@ function createBottomBox (selectedMotif) {
             width="${svgNewWidth}" 
             height="${bottomBoxSHeight}" 
             viewbox="${bottomBoxSviewBox}"
-            style="border:1px solid white; background-color:#ffffff"> `
+            style="background-color:#ffffff"> `
 
     switch (selectedMotif) {
         case "motifDQ_CowlHat":
@@ -948,21 +1018,17 @@ function createBottomBox (selectedMotif) {
             /* secondX = widthOfEachSEction * 8.32; */
             secondX = bottomBoxSWidth + (widthOfEachSEction * 0.2);
             bottomBoxP_innerHTML = motifDQ_CowlHat_bottomBoxP_innerHTML;
-
             motifDQ_CowlHat_bottomBoxS_innerHTML = `
                 <line x1="${firstX}" y1="${y0}" x2="${firstX}" y2="${yHeight}" stroke="black" stroke-width="2" />
                 <line x1="${secondX}" y1="${y0}" x2="${secondX}" y2="${yHeight}" stroke="black" stroke-width="2" />
                 <line x1="${firstX+5}" y1="${yMedium}" x2="${secondX-5}" y2="${yMedium}" stroke="black" stroke-width="2" marker-start="url(#arrowhead)" marker-end="url(#arrowhead)" id="arrowLine"/>
                `
             bottomBoxS_innerHTML = motifDQ_CowlHat_bottomBoxS_innerHTML;
-
             bottomBoxS.innerHTML = 
             `${initialSVG}
                 ${arrowhead}
                 ${bottomBoxS_innerHTML}
             </svg>`;
-
-
             break;
         case "motifDQ_MittsA_SizeS":
              /* BOTTOM:  */ 
