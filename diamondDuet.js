@@ -523,21 +523,21 @@ function createBoxes () {
 function give_innerHTMLtoBoxes () {
     console.log('function give_innerHTMLtoBoxes executed');
     /* Hat - Cowl */
-    motifDiamondDuet_CowlHat_topBox_innerHTML = `The cables cross over the end of round to continue travelling in their established direction.`;
+    motifDiamondDuet_CowlHat_topBox_innerHTML = "";
     motifDiamondDuet_CowlHat_leftBox_innerHTML = "";
-    motifDiamondDuet_CowlHat_rightBox_innerHTML = `First three vertical repeats of Woven Motif. Refer to pattern for the number of repeats required.`;
+    motifDiamondDuet_CowlHat_rightBox_innerHTML = "";
     motifDiamondDuet_CowlHat_bottomBoxB_innerHTML = `  additional repeats of this section lengthen the circumference of the cowl/hat `;
     /* mitten A */
-    motifDiamondDuetMitts_A_topBox_innerHTML = `For the initial Thumb Gusset section, the cables change colours at the edge of the motif when they change direction. This keeps all ables travellling to the right MC and all cables travelling to the left CC; Woven Motif A in the pattern. For the upper hand, the cables travel continuously around the mittien do not change colour; woven Motif B in the pattern. <br> Diagram shows three vertical repeats of the Woven Motif. Refer to the pattern for the number of repeats required.`;
-    motifDiamondDuetMitts_A_leftBox_innerHTML =  `For Woven Motif A, cables change colour to MC at this edge`;
-    motifDiamondDuetMitts_A_rightBox_innerHTML = `For Woven Motif A, cables change colour to CC at this edge`;
-    motifDiamondDuetMitts_A_bottomBoxB_innerHTML = `Sizes S, M, L work a different number of repeats of this section`;
+    motifDiamondDuetMitts_A_topBox_innerHTML = "";
+    motifDiamondDuetMitts_A_leftBox_innerHTML =  `Cables change to MC at this edge for Woven Motif A1.`;
+    motifDiamondDuetMitts_A_rightBox_innerHTML = `Cables change to CC at this edge for Woven Motif A1.`;
+    motifDiamondDuetMitts_A_bottomBoxB_innerHTML = `Each size works a different number of repeats of this section.`;
     /* mitten B */
-    motifDiamondDuetMitts_B_topBox_innerHTML = `For the initial Thumb Gusset section, the cables change colours at the edge of the motif when they change direction. This heeps all ables travelling to the right CC and all cables travelling to the left MC; Woven Motif C in the pattern. For the upper hand, the cables travel continuously around the mitten do not change colour; Woven Motif D in the pattern. <br> Diagram shows three vertical repeats of the Woven Motif. Refer to the pattern for the number of repeats required.`;
-    motifDiamondDuetMitts_B_leftBox_innerHTML =     `For Woven Motif C, cables change colour to CC at this edge`;
-    motifDiamondDuetMitts_B_rightBox_innerHTML =    `For Woven Motif C, cables change colour to MC at this edge`;
+    motifDiamondDuetMitts_B_topBox_innerHTML = "";
+    motifDiamondDuetMitts_B_leftBox_innerHTML =     `Cables change to CC at this edge for Woven Motif B1.`;
+    motifDiamondDuetMitts_B_rightBox_innerHTML =    `Cables change to MC at this edge for Woven Motif B1.`;
 /*     motifDiamondDuetMitts_B_bottomBoxA_innerHTML = motifDiamondDuetMitts_A_bottomBoxA_innerHTML;
- */    motifDiamondDuetMitts_B_bottomBoxB_innerHTML = `Sizes S, M, L work a different number of repeats of this section`;
+ */    motifDiamondDuetMitts_B_bottomBoxB_innerHTML = motifDiamondDuetMitts_A_bottomBoxB_innerHTML;
 }
 
 function createTopBox() { 

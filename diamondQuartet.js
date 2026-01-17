@@ -124,24 +124,6 @@ let motifDQ_MittsB_SizeM_rightBoxS_innerHTML;
 let motifDQ_MittsB_SizeM_rightBoxP_innerHTML;
 let motifDQ_MittsB_SizeM_bottomBoxS_innerHTML;
 let motifDQ_MittsB_SizeM_bottomBoxP_innerHTML;
-
-let motifDQ_MittsA_SizeL_topBox_innerHTML;
-let motifDQ_MittsA_SizeL_leftBoxS_innerHTML;
-let motifDQ_MittsA_SizeL_leftBoxP_innerHTML;
-let motifDQ_MittsA_SizeL_rightBoxS_innerHTML;
-let motifDQ_MittsA_SizeL_rightBoxP_innerHTML;
-let motifDQ_MittsA_SizeL_bottomBoxS_innerHTML;
-let motifDQ_MittsA_SizeL_bottomBoxP_innerHTML;
-
-let motifDQ_MittsB_SizeL_topBox_innerHTML;
-let motifDQ_MittsB_SizeL_leftBoxS_innerHTML;
-let motifDQ_MittsB_SizeL_leftBoxP_innerHTML;
-let motifDQ_MittsB_SizeL_rightBoxS_innerHTML;
-let motifDQ_MittsB_SizeL_rightBoxP_innerHTML;
-let motifDQ_MittsB_SizeL_bottomBoxS_innerHTML;
-let motifDQ_MittsB_SizeL_bottomBoxP_innerHTML;
-
-
 // end of Diamond Quartet Collection.
 
 //colors
@@ -576,7 +558,7 @@ function createSVGwithBoxes () {
 
 function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
     console.log(`function calculateTotalWidth executed`);
-    // checkpoing:
+    /* // checkpoing:
     if (svgNewWidth == (svgNewHeight * svgWidth / svgHeight)) {
         checkpoint = 'yes';
         console.log(checkpoint);
@@ -589,7 +571,7 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
             or svgNewHeight should be: ${Math.round(svgNewWidth * svgHeight / svgWidth)} (not ${svgNewHeight})
             `)
     }
-    // end checkpoint.
+    // end checkpoint. */
 
     viewportWidth = window.innerWidth;
     if (svgWidth > svgNewWidth) {
@@ -598,7 +580,7 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
         svgHeight = svgNewHeight;
         svgNewWidth = Math.round(svgNewWidth * 0.7);
         svgNewHeight = Math.round(svgNewWidth * svgHeight / svgWidth);
-        // checkpoing:
+        /* // checkpoing:
         if (svgNewWidth == (svgNewHeight * svgWidth / svgHeight)) {
             checkpoint = 'yes';
             console.log(checkpoint);
@@ -611,7 +593,7 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
                 or svgNewHeight should be: ${Math.round(svgNewWidth * svgHeight / svgWidth)} (not ${svgNewHeight})
                 `)
         }
-        // end checkpoint.
+        // end checkpoint. */
     } 
     if ((svgNewWidth > (viewportWidth * 0.9)) || (viewportWidth < 500)) {
         console.log(`if ((svgNewWidth > (viewportWidth * 0.9)) || (viewportWidth < 500))`)
@@ -626,7 +608,7 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
     svgDivTotalWidth = leftBoxWidth + svgWidth + rightBoxWidth;
     svgDivTotalWidth = Math.round(svgDivTotalWidth * 0.9);
 
-    // checkpoing:
+    /* // checkpoing:
     if (svgNewWidth == (svgNewHeight * svgWidth / svgHeight)) {
         checkpoint = 'yes';
         console.log(checkpoint);
@@ -639,7 +621,7 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
             or svgNewHeight should be: ${Math.round(svgNewWidth * svgHeight / svgWidth)} (not ${svgNewHeight})
             `)
     }
-    // end checkpoint.
+    // end checkpoint. */
 
     if (svgDivTotalWidth <= viewportWidth || svgHeight > viewportHeight) {
         console.log(`if (svgDivTotalWidth <= viewportWidth || svgHeight > viewportHeight)`)
@@ -684,7 +666,7 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
     bottomBoxSHeight = Math.round(bottomBoxSWidth * 0.05);
     svgNewWidth = Math.round(svgNewHeight * svgOldWidth / svgOldHeight);
     svgNewHeight = Math.round(svgNewWidth * svgOldHeight / svgOldWidth);  
-    // checkpoing:
+    /* // checkpoing:
         if (svgNewWidth == (svgNewHeight * svgWidth / svgHeight)) {
             checkpoint = 'yes yes yes';
             console.log(checkpoint);
@@ -700,7 +682,7 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
                 or svgNewHeight should be: ${Math.round(svgNewWidth * svgHeight / svgWidth)} (not ${svgNewHeight})
                 `)
         }
-        // end checkpoint.
+        // end checkpoint. */
 }
 
 function drawSVGwithBoxes () {
@@ -729,16 +711,16 @@ function createBoxes () {
 function give_innerHTMLtoBoxes () {
     console.log('function give_innerHTMLtoBoxes executed');
     // Cowl Hat:
-    motifDQ_CowlHat_topBox_innerHTML = "The cables cross over the end of round to continue travelling in their stablished direction.";
+    motifDQ_CowlHat_topBox_innerHTML = "";
     motifDQ_CowlHat_leftBoxP_innerHTML = "";
-    motifDQ_CowlHat_rightBoxP_innerHTML = "First four vertical repeats of Woven Motif. Refer to pattern for the number of repeats required.";
-    motifDQ_CowlHat_bottomBoxP_innerHTML = "This section repeats around the circumference";
-    // mitten A - Size S:
+    motifDQ_CowlHat_rightBoxP_innerHTML = "";
+    motifDQ_CowlHat_bottomBoxP_innerHTML = "additional repeats of this section lengthen the circumference of the cowl/hat";
+    // mitten A - Size S & L:
     motifDQ_MittsA_SizeS_topBox_innerHTML = "The cables change colours at the edge of the motif. The new colour is given in the Woven Motif A: Edge Index Table for Size S & L";
     motifDQ_MittsA_SizeS_leftBoxP_innerHTML = "Edge 2";
     motifDQ_MittsA_SizeS_rightBoxP_innerHTML = "Edge 1";
     motifDQ_MittsA_SizeS_bottomBoxP_innerHTML = "";
-    // mitten B - Size S:
+    // mitten B - Size S & L:
     motifDQ_MittsB_SizeS_topBox_innerHTML = "The cables change colours at the edge of the motif. The new colour is given in the Woven Motif A: Edge Index Table for Size S & L <br> Diagram shows the first four vertical repeats of Woven Motif B. Refere to the pattern for the number of repeats required.";
     motifDQ_MittsB_SizeS_leftBoxP_innerHTML = motifDQ_MittsA_SizeS_leftBoxP_innerHTML;
     motifDQ_MittsB_SizeS_rightBoxP_innerHTML = motifDQ_MittsA_SizeS_rightBoxP_innerHTML;
@@ -753,16 +735,6 @@ function give_innerHTMLtoBoxes () {
     motifDQ_MittsB_SizeM_leftBoxP_innerHTML = motifDQ_MittsA_SizeS_leftBoxP_innerHTML;
     motifDQ_MittsB_SizeM_rightBoxP_innerHTML = motifDQ_MittsA_SizeS_rightBoxP_innerHTML;
     motifDQ_MittsB_SizeM_bottomBoxP_innerHTML = "";
-    // mitten A - Size L:
-    motifDQ_MittsA_SizeL_topBox_innerHTML = motifDQ_MittsA_SizeS_topBox_innerHTML;
-    motifDQ_MittsA_SizeL_leftBoxP_innerHTML = motifDQ_MittsA_SizeS_leftBoxP_innerHTML;
-    motifDQ_MittsA_SizeL_rightBoxP_innerHTML = motifDQ_MittsA_SizeS_rightBoxP_innerHTML;
-    motifDQ_MittsA_SizeL_bottomBoxP_innerHTML = "For Size L, work this section once more";
-    // mitten B - Size M:
-    motifDQ_MittsB_SizeL_topBox_innerHTML = motifDQ_MittsB_SizeS_topBox_innerHTML;
-    motifDQ_MittsB_SizeL_leftBoxP_innerHTML = motifDQ_MittsB_SizeS_leftBoxP_innerHTML;
-    motifDQ_MittsB_SizeL_rightBoxP_innerHTML = motifDQ_MittsB_SizeS_rightBoxP_innerHTML;
-    motifDQ_MittsB_SizeL_bottomBoxP_innerHTML = "For Size L, work this section once more";
 }
 
 function createTopBox() { 
@@ -792,18 +764,9 @@ function createTopBox() {
             /* TOP: */
             topBox_innerHTML = motifDQ_MittsB_SizeM_topBox_innerHTML;
             break;
-        case "motifDQ_MittsA_SizeL":
-            /* TOP: */
-            topBox_innerHTML = motifDQ_MittsA_SizeL_topBox_innerHTML;
-            break;
-        case "motifDQ_MittsB_SizeL":
-            /* TOP: */
-            topBox_innerHTML = motifDQ_MittsA_SizeL_topBox_innerHTML;
-            break;
         default:  
             /* TOP: */
             topBox_innerHTML = motifDQ_CowlHat_topBox_innerHTML;
-            break;
             break;
     }
     topBox.innerHTML = 
