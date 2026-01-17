@@ -825,8 +825,6 @@ input[type=number], #numOftotalDE {
 
 }
 
-
-
 .whiteBackground {
     background-color: white;
 }
@@ -886,9 +884,19 @@ input[type=number], #numOftotalDE {
     justify-self: start;
     justify-content: start;
 }
-
+#leftBox, #leftBoxS {
+    padding-right: 0;
+}
 #rightBox, #rightBoxS {
     padding-left: 0;
+}
+
+#leftBoxP {
+    margin-right: 0.5em;
+}
+
+#rightBoxP {
+    margin-left: 0.5em;
 }
 
 .lateralBoxes {
@@ -896,6 +904,26 @@ input[type=number], #numOftotalDE {
     margin: 0;
     overflow: visible;
     display: flex;
+}
+
+.lateralBox_p {
+    /* font-size: small; */
+    font-size: large;
+}
+
+.MiniP_container {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+.mini_p {
+    font-size: smaller;
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .orientation {
@@ -948,9 +976,7 @@ input[type=number], #numOftotalDE {
     }
     .lateralBoxes {
         /* padding: 0.25em; */
-    }
-    .lateralBox_p {
-        font-size: smaller;
+        /* font-size: smaller; */
     }
      input[type="color"] {
     height: 3em;
@@ -998,9 +1024,7 @@ input[type=number], #numOftotalDE {
     }
     .lateralBoxes {
         /* padding: 0.5em; */
-    }
-    .lateralBox_p {
-        font-size: small;
+        /* font-size: small; */
     }
 
 }
