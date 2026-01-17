@@ -48,14 +48,18 @@ let bottomBoxesAandB;
 let topBoxWidth;
 let leftBoxWidth;
 let rightBoxWidth;
+let leftBoxSWidth;
+let rightBoxSWidth;
 let leftBoxHeight;
 let rightBoxHeight;
+let leftBoxSHeight;
+let rightBoxSHeight;
 let bottomBoxSWidth;
 let bottomBoxSHeight;
 let bottomBoxPWidth;
 
-let leftViewBox;
-let rightViewBox;
+let leftBoxSViewBox;
+let rightBoxSViewBox;
 let bottomBoxSviewBox;
 
 let topBox_innerHTML;
@@ -86,44 +90,40 @@ let motifDQ_MittsB_SizeL_innerHTML;
 let selectedMotif_innerHTML = motifDQ_CowlHat_innerHTML;
 
 let motifDQ_CowlHat_topBox_innerHTML;
-let motifDQ_CowlHat_leftBoxS_innerHTML;
-let motifDQ_CowlHat_leftBoxP_innerHTML;
-let motifDQ_CowlHat_rightBoxS_innerHTML;
-let motifDQ_CowlHat_rightBoxP_innerHTML;
 let motifDQ_CowlHat_bottomBoxS_innerHTML;
 let motifDQ_CowlHat_bottomBoxP_innerHTML;
 
 let motifDQ_MittsA_SizeS_topBox_innerHTML;
-let motifDQ_MittsA_SizeS_leftBoxS_innerHTML;
-let motifDQ_MittsA_SizeS_leftBoxP_innerHTML;
-let motifDQ_MittsA_SizeS_rightBoxS_innerHTML;
-let motifDQ_MittsA_SizeS_rightBoxP_innerHTML;
 let motifDQ_MittsA_SizeS_bottomBoxS_innerHTML;
 let motifDQ_MittsA_SizeS_bottomBoxP_innerHTML;
 
 let motifDQ_MittsB_SizeS_topBox_innerHTML;
-let motifDQ_MittsB_SizeS_leftBoxS_innerHTML;
-let motifDQ_MittsB_SizeS_leftBoxP_innerHTML;
-let motifDQ_MittsB_SizeS_rightBoxS_innerHTML;
-let motifDQ_MittsB_SizeS_rightBoxP_innerHTML;
 let motifDQ_MittsB_SizeS_bottomBoxS_innerHTML;
 let motifDQ_MittsB_SizeS_bottomBoxP_innerHTML;
 
 let motifDQ_MittsA_SizeM_topBox_innerHTML;
-let motifDQ_MittsA_SizeM_leftBoxS_innerHTML;
-let motifDQ_MittsA_SizeM_leftBoxP_innerHTML;
-let motifDQ_MittsA_SizeM_rightBoxS_innerHTML;
-let motifDQ_MittsA_SizeM_rightBoxP_innerHTML;
 let motifDQ_MittsA_SizeM_bottomBoxS_innerHTML;
 let motifDQ_MittsA_SizeM_bottomBoxP_innerHTML;
 
 let motifDQ_MittsB_SizeM_topBox_innerHTML;
-let motifDQ_MittsB_SizeM_leftBoxS_innerHTML;
-let motifDQ_MittsB_SizeM_leftBoxP_innerHTML;
-let motifDQ_MittsB_SizeM_rightBoxS_innerHTML;
-let motifDQ_MittsB_SizeM_rightBoxP_innerHTML;
 let motifDQ_MittsB_SizeM_bottomBoxS_innerHTML;
 let motifDQ_MittsB_SizeM_bottomBoxP_innerHTML;
+    let leftBoxMini_p1;
+    let leftBoxMini_p2;
+    let leftBoxMini_p3;
+    let leftBoxMini_p4;
+    let rightBoxMini_p1;
+    let rightBoxMini_p2;
+    let rightBoxMini_p3;
+    let rightBoxMini_p4;
+    let leftBoxMini_p1_HTML;
+    let leftBoxMini_p2_HTML;
+    let leftBoxMini_p3_HTML;
+    let leftBoxMini_p4_HTML;
+    let rightBoxMini_p1_HTML;
+    let rightBoxMini_p2_HTML;
+    let rightBoxMini_p3_HTML;
+    let rightBoxMini_p4_HTML;
 // end of Diamond Quartet Collection.
 
 //colors
@@ -712,28 +712,18 @@ function give_innerHTMLtoBoxes () {
     console.log('function give_innerHTMLtoBoxes executed');
     // Cowl Hat:
     motifDQ_CowlHat_topBox_innerHTML = "";
-    motifDQ_CowlHat_leftBoxP_innerHTML = "";
-    motifDQ_CowlHat_rightBoxP_innerHTML = "";
     motifDQ_CowlHat_bottomBoxP_innerHTML = "additional repeats of this section lengthen the circumference of the cowl/hat";
     // mitten A - Size S & L:
     motifDQ_MittsA_SizeS_topBox_innerHTML = "The cables change colours at the edge of the motif. The new colour is given in the Woven Motif A: Edge Index Table for Size S & L";
-    motifDQ_MittsA_SizeS_leftBoxP_innerHTML = "Edge 2";
-    motifDQ_MittsA_SizeS_rightBoxP_innerHTML = "Edge 1";
     motifDQ_MittsA_SizeS_bottomBoxP_innerHTML = "";
     // mitten B - Size S & L:
     motifDQ_MittsB_SizeS_topBox_innerHTML = "The cables change colours at the edge of the motif. The new colour is given in the Woven Motif A: Edge Index Table for Size S & L <br> Diagram shows the first four vertical repeats of Woven Motif B. Refere to the pattern for the number of repeats required.";
-    motifDQ_MittsB_SizeS_leftBoxP_innerHTML = motifDQ_MittsA_SizeS_leftBoxP_innerHTML;
-    motifDQ_MittsB_SizeS_rightBoxP_innerHTML = motifDQ_MittsA_SizeS_rightBoxP_innerHTML;
     motifDQ_MittsB_SizeS_bottomBoxP_innerHTML = "";
     // mitten A - Size M:
     motifDQ_MittsA_SizeM_topBox_innerHTML = "The cables change colours at the edge of the motif. The new colur is given in the Woven Motif A: Edge Index Table for Size M. <br> Diagram shows the first four vertical repeats of Woven Motif B. Refer to the pattern for the number of repeats required.";
-    motifDQ_MittsA_SizeM_leftBoxP_innerHTML = motifDQ_MittsA_SizeS_leftBoxP_innerHTML;
-    motifDQ_MittsA_SizeM_rightBoxP_innerHTML = motifDQ_MittsA_SizeS_rightBoxP_innerHTML;
     motifDQ_MittsA_SizeM_bottomBoxP_innerHTML = "";
     // mitten B - Size M:
     motifDQ_MittsB_SizeM_topBox_innerHTML = "The cables change colours at the edge fo fthe motif. The new colour is given in the Woven Motif B: Edge Index Table for Size M. <br> Diagram shows the first four vertical repeats Woven Motif B. REfer to the pattern for the number of repeats required.";
-    motifDQ_MittsB_SizeM_leftBoxP_innerHTML = motifDQ_MittsA_SizeS_leftBoxP_innerHTML;
-    motifDQ_MittsB_SizeM_rightBoxP_innerHTML = motifDQ_MittsA_SizeS_rightBoxP_innerHTML;
     motifDQ_MittsB_SizeM_bottomBoxP_innerHTML = "";
 }
 
@@ -783,117 +773,368 @@ function createLeftBox () {
     leftBox.classList.add('left-side');
     WovenMotifSVG.appendChild(leftBox);
 
-    switch (selectedMotif) {
-        case "motifDQ_CowlHat":
-            /* LEFT: */
-            //leftBox_innerHTML = motifDiamondDuet_CowlHat_leftBox_innerHTML;
-            leftBoxS_innerHTML = motifDQ_CowlHat_leftBoxS_innerHTML;
-            leftBoxP_innerHTML = motifDQ_CowlHat_leftBoxP_innerHTML;
-            break;
-        case "motifDQ_MittsA_SizeS":
-            /* LEFT: */
-            leftBoxS_innerHTML = motifDQ_MittsA_SizeS_leftBoxS_innerHTML;
-            leftBoxP_innerHTML = motifDQ_MittsA_SizeS_leftBoxP_innerHTML;
-            break;
-        case "motifDQ_MittsB_SizeS":
-            /* LEFT: */
-            leftBoxS_innerHTML = motifDQ_MittsB_SizeS_leftBoxS_innerHTML;
-            leftBoxP_innerHTML = motifDQ_MittsB_SizeS_leftBoxP_innerHTML;
-            break;
-        case "motifDQ_MittsA_SizeM":
-            /* LEFT: */
-            leftBoxS_innerHTML = motifDQ_MittsA_SizeM_leftBoxS_innerHTML;
-            leftBoxP_innerHTML = motifDQ_MittsA_SizeM_leftBoxP_innerHTML;
-            break;
-        case "motifDQ_MittsB_SizeM":
-            /* LEFT: */
-            leftBoxS_innerHTML = motifDQ_MittsB_SizeM_leftBoxS_innerHTML;
-            leftBoxP_innerHTML = motifDQ_MittsB_SizeM_leftBoxP_innerHTML;
-            break;
-        case "motifDQ_MittsA_SizeL":
-            /* LEFT: */
-            leftBoxS_innerHTML = motifDQ_MittsA_SizeL_leftBoxS_innerHTML;
-            leftBoxP_innerHTML = motifDQ_MittsA_SizeL_leftBoxP_innerHTML;
-            break;
-        case "motifDQ_MittsB_SizeL":
-            /* LEFT: */
-            leftBoxS_innerHTML = motifDQ_MittsB_SizeL_leftBoxS_innerHTML;
-            leftBoxP_innerHTML = motifDQ_MittsB_SizeL_leftBoxP_innerHTML;
-            break;
-        default: 
-            /* LEFT: */
-            leftBoxS_innerHTML = motifDQ_CowlHat_leftBoxS_innerHTML;
-            leftBoxP_innerHTML = motifDQ_CowlHat_leftBoxP_innerHTML;
-            break;
-    }
     leftBoxWidth = (viewportWidth - svgNewWidth) / 2;
     leftBoxWidth = Math.round(leftBoxWidth * 0.9);
-    leftBoxHeight = svgNewHeight - (svgNewHeight * 0.05);
-
+    leftBoxHeight = svgNewHeight;
     leftBox.style.height = `${leftBoxHeight}px`;
     leftBox.style.width = `${(leftBoxWidth)}px`;
 
-    leftBox.innerHTML = `<p id=leftBox_p class="orientation lateralBox_p">${leftBoxP_innerHTML} </p>`
+
+    /* LEFT:  */ 
+    let firstY;
+    let secondY;
+    let thirdY;
+    leftBoxHeight = svgNewHeight;
+    leftBoxSHeight = leftBoxHeight;
+    let heightOfEachSEction
+    if (svgNewWidth <= 200) {
+        leftBoxSWidth = 15;
+    } else if (svgNewWidth < 400) {
+        leftBoxSWidth = 20;
+    } else {
+        leftBoxSWidth = 25;
+    }
+    let x1 = leftBoxWidth * 0.99
+    let x2 = leftBoxWidth - x1
+    leftBoxSViewBox = `0 0 ${leftBoxSWidth} ${leftBoxSHeight}`
+    
+    heightOfEachSEction = leftBoxSHeight / 8;
+    firstY = heightOfEachSEction * 2;
+    secondY = heightOfEachSEction * 4;
+    thirdY = heightOfEachSEction * 6;
+
+    let leftBoxP = document.createElement('div')
+    leftBoxP.setAttribute('id', 'leftBoxP');
+    leftBoxP.classList.add('lateralBoxes');
+    leftBoxP.classList.add('left-side');
+    leftBoxP.classList.add('rotateElement');
+        leftBox.appendChild(leftBoxP);
+
+    let leftBoxMiniP = document.createElement('div')
+    leftBoxMiniP.setAttribute('id', 'leftBoxMiniP');
+    leftBoxMiniP.classList.add('MiniP_container');
+        leftBox.appendChild(leftBoxMiniP);
+
+        leftBoxMini_p1 = "leftBoxMini_p1";
+        leftBoxMini_p2 = "leftBoxMini_p2";
+        leftBoxMini_p3 = "leftBoxMini_p3";
+        leftBoxMini_p4 = "leftBoxMini_p4";
+
+        let side = "left";
+
+    createMini_p(leftBoxMini_p1, leftBoxMiniP, "0", firstY, side, "4");
+    createMini_p(leftBoxMini_p2, leftBoxMiniP, firstY, secondY, side, "3");
+    createMini_p(leftBoxMini_p3, leftBoxMiniP, secondY, thirdY, side, "2");
+    createMini_p(leftBoxMini_p4, leftBoxMiniP, thirdY, leftBoxHeight, side, "1");
+
+    let leftBoxS = document.createElement('div')
+    leftBoxS.setAttribute('id', 'leftBoxS');
+    leftBoxS.classList.add('lateralBoxes');
+    leftBoxS.classList.add('left-side');
+        leftBox.appendChild(leftBoxS);
+    
+    
+
+    let initialSVG = `<svg 
+            id= "leftBoxS_svg" class= leftBoxS_svg
+            width="${leftBoxSWidth}" 
+            height="${leftBoxSHeight}" 
+            viewbox="${leftBoxSViewBox}"
+            style="background-color:#ffffff"> `
+    let leftBoxSlines_innerHTML = `
+                <line x1="${x1}" y1="${firstY}" x2="${x2}" y2="${firstY}" stroke="black" stroke-width="2" />
+                <line x1="${x1}" y1="${secondY}" x2="${x2}" y2="${secondY}" stroke="black" stroke-width="2" />
+                <line x1="${x1}" y1="${thirdY}" x2="${x2}" y2="${thirdY}" stroke="black" stroke-width="2" />
+                </svg>
+                `
+
+    switch (selectedMotif) {
+        case "motifDQ_CowlHat":
+            /* LEFT: */
+            break;
+        case "motifDQ_MittsA_SizeS":
+            /* LEFT: */
+            leftBoxP_innerHTML = "Edge 2";
+            leftBoxS.innerHTML = 
+            `${initialSVG}
+                ${leftBoxSlines_innerHTML}
+            </svg>`;
+            break;
+        case "motifDQ_MittsB_SizeS":
+            /* LEFT: */
+            leftBoxP_innerHTML = "Edge 2";
+            leftBoxS.innerHTML = 
+            `${initialSVG}
+                ${leftBoxSlines_innerHTML}
+            </svg>`;
+            break;
+        case "motifDQ_MittsA_SizeM":
+            /* LEFT: */
+            leftBoxP_innerHTML = "Edge 2";
+            leftBoxS.innerHTML = 
+            `${initialSVG}
+                ${leftBoxSlines_innerHTML}
+            </svg>`;
+            break;
+        case "motifDQ_MittsB_SizeM":
+            /* LEFT: */
+            leftBoxP_innerHTML = "Edge 2";
+            leftBoxS.innerHTML = 
+            `${initialSVG}
+                ${leftBoxSlines_innerHTML}
+            </svg>`;
+            break;
+        default: 
+            /* LEFT: */
+            leftBoxP_innerHTML = "Edge 2";
+            leftBoxS.innerHTML = 
+            `${initialSVG}
+                ${leftBoxSlines_innerHTML}
+            </svg>`;
+            break;
+    }
+    leftBoxP.innerHTML = `<p id=leftBox_p class="orientation lateralBox_p">${leftBoxP_innerHTML} </p>`
 }
+
 function createRightBox () { 
     console.log('- function createRightBox executed');
     let rightBox = document.createElement('div')
     rightBox.setAttribute('id', 'rightBox');
     rightBox.classList.add('lateralBoxes');
     rightBox.classList.add('right-side');
-    rightBox.classList.add('rotateElement');
-    WovenMotifSVG.appendChild(rightBox);
+        WovenMotifSVG.appendChild(rightBox);
+
+    rightBoxWidth = (viewportWidth - svgNewWidth) / 2;
+    rightBoxWidth = Math.round(rightBoxWidth * 0.9);
+    rightBoxHeight = svgNewHeight;
+    rightBox.style.height = `${rightBoxHeight}px`;
+    rightBox.style.width = `${(rightBoxWidth)}px`;
+
+    /* RIGHT:  */ 
+    let firstY;
+    let secondY;
+    let thirdY;
+    rightBoxHeight = svgNewHeight;
+    rightBoxSHeight = rightBoxHeight;
+    let heightOfEachSEction
+    if (svgNewWidth <= 200) {
+        rightBoxSWidth = 15;
+    } else if (svgNewWidth < 400) {
+        rightBoxSWidth = 20;
+    } else {
+        rightBoxSWidth = 25;
+    }
+    let x1 = rightBoxWidth * 0.99
+    let x2 = rightBoxWidth - x1
+    rightBoxSViewBox = `0 0 ${rightBoxSWidth} ${rightBoxSHeight}`
+    
+    heightOfEachSEction = rightBoxSHeight / 8;
+    firstY = heightOfEachSEction * 2;
+    secondY = heightOfEachSEction * 4;
+    thirdY = heightOfEachSEction * 6;
+
+    let rightBoxS = document.createElement('div')
+    rightBoxS.setAttribute('id', 'rightBoxS');
+    rightBoxS.classList.add('lateralBoxes');
+    rightBoxS.classList.add('right-side');
+        rightBox.appendChild(rightBoxS);
+
+    let rightBoxMiniP = document.createElement('div')
+    rightBoxMiniP.setAttribute('id', 'rightBoxMiniP');
+    rightBoxMiniP.classList.add('MiniP_container');
+        rightBox.appendChild(rightBoxMiniP);
+
+        let side = "right"
+
+    createMini_p(rightBoxMini_p1, rightBoxMiniP, "0", firstY, side, "4");
+    createMini_p(rightBoxMini_p2, rightBoxMiniP, firstY, secondY, side, "3");
+    createMini_p(rightBoxMini_p3, rightBoxMiniP, secondY, thirdY, side, "2");
+    createMini_p(rightBoxMini_p4, rightBoxMiniP, thirdY, rightBoxHeight, side, "1");
+
+
+    let rightBoxP = document.createElement('div')
+    rightBoxP.setAttribute('id', 'rightBoxP');
+    rightBoxP.classList.add('lateralBoxes');
+    rightBoxP.classList.add('right-side');
+    rightBoxP.classList.add('rotateElement');
+        rightBox.appendChild(rightBoxP);
+
+    
+
+    let initialSVG = `<svg 
+            id= "rightBoxS_svg" class= rightBoxS_svg
+            width="${rightBoxSWidth}" 
+            height="${rightBoxSHeight}" 
+            viewbox="${rightBoxSViewBox}"
+            style="background-color:#ffffff"> `
+    let rightBoxSlines_innerHTML = `
+                <line x1="${x1}" y1="${firstY}" x2="${x2}" y2="${firstY}" stroke="black" stroke-width="2" />
+                <line x1="${x1}" y1="${secondY}" x2="${x2}" y2="${secondY}" stroke="black" stroke-width="2" />
+                <line x1="${x1}" y1="${thirdY}" x2="${x2}" y2="${thirdY}" stroke="black" stroke-width="2" />
+                </svg>
+                `
+   
     switch (selectedMotif) {
         case "motifDQ_CowlHat":
              /* RIGHT:  */
-            rightBoxS_innerHTML = motifDQ_CowlHat_rightBoxS_innerHTML;
-            rightBoxP_innerHTML = motifDQ_CowlHat_rightBoxP_innerHTML;
+            rightBoxP_innerHTML = "First four vertical repeats of Woven Motif. Refer to pattern for the number of repeats required."
             break;
         case "motifDQ_MittsA_SizeS":
             //* RIGHT:  */
-            rightBoxS_innerHTML = motifDQ_MittsA_SizeS_rightBoxS_innerHTML;
-            rightBoxP_innerHTML = motifDQ_MittsA_SizeS_rightBoxP_innerHTML;
+            rightBoxP_innerHTML = "Edge 1"
+            rightBoxS.innerHTML = 
+            `${initialSVG}
+                ${rightBoxSlines_innerHTML}
+            </svg>`;
+
             break;
         case "motifDQ_MittsB_SizeS":
              /* RIGHT:  */
-            rightBoxS_innerHTML = motifDQ_MittsB_SizeS_rightBoxS_innerHTML;
-            rightBoxP_innerHTML = motifDQ_MittsB_SizeS_rightBoxP_innerHTML;
+            rightBoxP_innerHTML = "Edge 1"
+            rightBoxS.innerHTML = 
+            `${initialSVG}
+                ${rightBoxSlines_innerHTML}
+            </svg>`;
             break;
         case "motifDQ_MittsA_SizeM":
              /* RIGHT:  */
-            rightBoxS_innerHTML = motifDQ_MittsA_SizeM_rightBoxS_innerHTML;
-            rightBoxP_innerHTML = motifDQ_MittsA_SizeM_rightBoxP_innerHTML;
+            rightBoxP_innerHTML = "Edge 1"
+            rightBoxS.innerHTML = 
+            `${initialSVG}
+                ${rightBoxSlines_innerHTML}
+            </svg>`;
             break;
         case "motifDQ_MittsB_SizeM":
              /* RIGHT:  */
-            rightBoxS_innerHTML = motifDQ_MittsB_SizeM_rightBoxS_innerHTML;
-            rightBoxP_innerHTML = motifDQ_MittsB_SizeM_rightBoxP_innerHTML;
-            break;
-        case "motifDQ_MittsA_SizeL":
-             /* RIGHT:  */
-            rightBoxS_innerHTML = motifDQ_MittsA_SizeL_rightBoxS_innerHTML;
-            rightBoxP_innerHTML = motifDQ_MittsA_SizeL_rightBoxP_innerHTML;
-            break;
-        case "motifDQ_MittsB_SizeL":
-             /* RIGHT:  */ 
-            rightBoxS_innerHTML = motifDQ_MittsB_SizeL_rightBoxS_innerHTML;
-            rightBoxP_innerHTML = motifDQ_MittsB_SizeL_rightBoxP_innerHTML;
+            rightBoxP_innerHTML = "Edge 1"
+            rightBoxS.innerHTML = 
+            `${initialSVG}
+                ${rightBoxSlines_innerHTML}
+            </svg>`;
             break;
         default:  
              /* RIGHT:  */
-            rightBoxS_innerHTML = motifDQ_CowlHat_rightBoxS_innerHTML;
-            rightBoxP_innerHTML = motifDQ_CowlHat_rightBoxP_innerHTML;
+            rightBoxP_innerHTML = "Edge 1"
+            rightBoxS.innerHTML = 
+            `${initialSVG}
+                ${rightBoxSlines_innerHTML}
+            </svg>`;
             break;
     }
+
+    rightBoxP.innerHTML = `<p id=rightBox_p class="orientation lateralBox_p">${rightBoxP_innerHTML}`
+}
+
+function createMini_p (boxID, container, Height1, Height2, side, n) {
+    console.log('function createMini_p executed')
+    console.log(`boxID: ${boxID}`)
+    let px = document.createElement('div')       
+    px.setAttribute('id', `${boxID}`)
+    px.classList.add('mini_p');
+    px.classList.add('rotateElement');
+
+    switch (selectedMotif) {
+        case "motifDQ_CowlHat":
+            leftBoxMini_p1_HTML = "";
+            leftBoxMini_p2_HTML = "";
+            leftBoxMini_p3_HTML = "";
+            leftBoxMini_p4_HTML = "";
+            rightBoxMini_p1_HTML = "";
+            rightBoxMini_p2_HTML = "";
+            rightBoxMini_p3_HTML = "";
+            rightBoxMini_p4_HTML = "";
+            break;
+        case "motifDQ_MittsA_SizeS":
+            leftBoxMini_p1_HTML = "Odd Repeat Colour changes to CC1";
+            leftBoxMini_p2_HTML = "Even Repeat Colour changes to MC1";
+            leftBoxMini_p3_HTML = "Odd Repeat Colour changes to CC1";
+            leftBoxMini_p4_HTML = "Even Repeat Colour changes to MC1";
+            rightBoxMini_p1_HTML = "Odd Repeat Colour changes to CC2";
+            rightBoxMini_p2_HTML = "Even Repeat Colour changes to MC2";
+            rightBoxMini_p3_HTML = "Odd Repeat Colour changes to CC2";
+            rightBoxMini_p4_HTML = "Even Repeat Colour changes to MC2";
+            break;
+        case "motifDQ_MittsB_SizeS":
+            leftBoxMini_p1_HTML = "Odd Repeat Colour changes to CC2";
+            leftBoxMini_p2_HTML = "Even Repeat Colour changes to MC2";
+            leftBoxMini_p3_HTML = "Odd Repeat Colour changes to CC2";
+            leftBoxMini_p4_HTML = "Even Repeat Colour changes to MC2";
+            rightBoxMini_p1_HTML = "Odd Repeat Colour changes to CC1";
+            rightBoxMini_p2_HTML = "Even Repeat Colour changes to MC1";
+            rightBoxMini_p3_HTML = "Odd Repeat Colour changes to CC1";
+            rightBoxMini_p4_HTML = "Even Repeat Colour changes to MC1";
+            break;
+        case "motifDQ_MittsA_SizeM":
+            leftBoxMini_p1_HTML = "Odd Repeat Colour changes to MC1";
+            leftBoxMini_p2_HTML = "Even Repeat Colour changes to CC1";
+            leftBoxMini_p3_HTML = "Odd Repeat Colour changes to MC1";
+            leftBoxMini_p4_HTML = "Even Repeat Colour changes to CC1";
+            rightBoxMini_p1_HTML = "Odd Repeat Colour changes to CC2";
+            rightBoxMini_p2_HTML = "Even Repeat Colour changes to MC2";
+            rightBoxMini_p3_HTML = "Odd Repeat Colour changes to CC2";
+            rightBoxMini_p4_HTML = "Even Repeat Colour changes to MC2";
+            break;
+        case "motifDQ_MittsB_SizeM":
+            leftBoxMini_p1_HTML = "Odd Repeat Colour changes to CC2";
+            leftBoxMini_p2_HTML = "Even Repeat Colour changes to MC2";
+            leftBoxMini_p3_HTML = "Odd Repeat Colour changes to CC2";
+            leftBoxMini_p4_HTML = "Even Repeat Colour changes to MC2";
+            rightBoxMini_p1_HTML = "Odd Repeat Colour changes to MC1";
+            rightBoxMini_p2_HTML = "Even Repeat Colour changes to CC1";
+            rightBoxMini_p3_HTML = "Odd Repeat Colour changes to MC1";
+            rightBoxMini_p4_HTML = "Even Repeat Colour changes to CC1";
+            break;
+        default: 
+            leftBoxMini_p1_HTML = "1";
+            leftBoxMini_p2_HTML = "2";
+            leftBoxMini_p3_HTML = "3";
+            leftBoxMini_p4_HTML = "4";
+            rightBoxMini_p1_HTML = "1";
+            rightBoxMini_p2_HTML = "2";
+            rightBoxMini_p3_HTML = "3";
+            rightBoxMini_p4_HTML = "4";
+            break;
+    }
+    let px_innerHTML = "";
+    if (side == "left") {
+        switch (n) {
+            case "1":
+                px_innerHTML = leftBoxMini_p1_HTML;
+                break
+            case "2":
+                px_innerHTML = leftBoxMini_p2_HTML;
+                break
+            case "3":
+                px_innerHTML = leftBoxMini_p3_HTML;
+                break
+            case "4":
+                px_innerHTML = leftBoxMini_p4_HTML;
+                break
+        } 
+    } else if (side == "right") {
+        switch (n) {
+            case "1":
+                px_innerHTML = rightBoxMini_p1_HTML;
+                break
+            case "2":
+                px_innerHTML = rightBoxMini_p2_HTML;
+                break
+            case "3":
+                px_innerHTML = rightBoxMini_p3_HTML;
+                break
+            case "4":
+                px_innerHTML = rightBoxMini_p4_HTML;
+                break
+        }
+    }
+     
     
-    rightBoxWidth = (viewportWidth - svgNewWidth) / 2;
-    rightBoxWidth = Math.round(rightBoxWidth * 0.9);
-    rightBoxHeight = svgNewHeight - (svgNewHeight * 0.05);
-
-    rightBox.style.height = `${rightBoxHeight}px`; 
-    rightBox.style.width = `${(rightBoxWidth)}px`;
-
-    rightBox.innerHTML = `<p id=rightBox_p class="orientation lateralBox_p">${rightBoxP_innerHTML}`
+    px.innerHTML = `<p id="${boxID}_p" class="orientation lateralBox_p mini_p"> ${px_innerHTML} </p>`
+    container.appendChild(px);
+    let pxHeight = Height2 - Height1
+    px.style.height = `${pxHeight}px`;
+    console.log(`boxID_p`);
+    console.log(`${boxID}_p`);
 }
 
 function createBottomBox (selectedMotif) {
@@ -936,33 +1177,27 @@ function createBottomBox (selectedMotif) {
             width="${svgNewWidth}" 
             height="${bottomBoxSHeight}" 
             viewbox="${bottomBoxSviewBox}"
-            style="border:1px solid white; background-color:#ffffff"> `
+            style="background-color:#ffffff"> `
 
     switch (selectedMotif) {
         case "motifDQ_CowlHat":
              /* BOTTOM:  */ 
             widthOfEachSEction = bottomBoxSWidth / 8;
             firstX = widthOfEachSEction * 4;
-            /* secondX = widthOfEachSEction * 6; */
-            /* secondX = bottomBoxSWidth; */
-            /* secondX = widthOfEachSEction * 8.32; */
-            secondX = bottomBoxSWidth + (widthOfEachSEction * 0.2);
+            /* secondX = bottomBoxSWidth + (widthOfEachSEction * 0.2); */
+            secondX = bottomBoxSWidth;
             bottomBoxP_innerHTML = motifDQ_CowlHat_bottomBoxP_innerHTML;
-
             motifDQ_CowlHat_bottomBoxS_innerHTML = `
                 <line x1="${firstX}" y1="${y0}" x2="${firstX}" y2="${yHeight}" stroke="black" stroke-width="2" />
                 <line x1="${secondX}" y1="${y0}" x2="${secondX}" y2="${yHeight}" stroke="black" stroke-width="2" />
                 <line x1="${firstX+5}" y1="${yMedium}" x2="${secondX-5}" y2="${yMedium}" stroke="black" stroke-width="2" marker-start="url(#arrowhead)" marker-end="url(#arrowhead)" id="arrowLine"/>
                `
             bottomBoxS_innerHTML = motifDQ_CowlHat_bottomBoxS_innerHTML;
-
             bottomBoxS.innerHTML = 
             `${initialSVG}
                 ${arrowhead}
                 ${bottomBoxS_innerHTML}
             </svg>`;
-
-
             break;
         case "motifDQ_MittsA_SizeS":
              /* BOTTOM:  */ 
@@ -996,18 +1231,6 @@ function createBottomBox (selectedMotif) {
             break;     
         default: 
             /* BOTTOM: */ 
-            /* bottomBoxS_innerHTML = motifDiamondDuet_CowlHat_bottomBoxS_innerHTML;
-            bottomBoxP_innerHTML = motifDiamondDuet_CowlHat_bottomBoxP_innerHTML;
-            firstX = widthOfEachSEction * 4;
-            secondX = widthOfEachSEction * 6;
-            bottomBoxS.innerHTML = 
-            `${initialSVG}
-                ${arrowhead}
-
-                <line x1="${firstX}" y1="${y0}" x2="${firstX}" y2="${yHeight}" stroke="black" stroke-width="2" />
-                <line x1="${secondX}" y1="${y0}" x2="${secondX}" y2="${yHeight}" stroke="black" stroke-width="2" />
-                <line x1="${firstX+5}" y1="${yMedium}" x2="${secondX-5}" y2="${yMedium}" stroke="black" stroke-width="2" marker-start="url(#arrowhead)" marker-end="url(#arrowhead)" id="arrowLine"/>
-                </svg>` */
             break;
     }
     motifDQ_CowlHat_bottomBoxS_innerHTML = 
