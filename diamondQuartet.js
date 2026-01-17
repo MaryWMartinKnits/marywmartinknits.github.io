@@ -93,21 +93,21 @@ let motifDQ_CowlHat_rightBoxP_innerHTML;
 let motifDQ_CowlHat_bottomBoxS_innerHTML;
 let motifDQ_CowlHat_bottomBoxP_innerHTML;
 
-let motifDQ_MittsA_SizeS_topBox_innerHTML;
-let motifDQ_MittsA_SizeS_leftBoxS_innerHTML;
-let motifDQ_MittsA_SizeS_leftBoxP_innerHTML;
-let motifDQ_MittsA_SizeS_rightBoxS_innerHTML;
-let motifDQ_MittsA_SizeS_rightBoxP_innerHTML;
-let motifDQ_MittsA_SizeS_bottomBoxS_innerHTML;
-let motifDQ_MittsA_SizeS_bottomBoxP_innerHTML;
+let motifDQ_MittsA_SizeSL_topBox_innerHTML;
+let motifDQ_MittsA_SizeSL_leftBoxS_innerHTML;
+let motifDQ_MittsA_SizeSL_leftBoxP_innerHTML;
+let motifDQ_MittsA_SizeSL_rightBoxS_innerHTML;
+let motifDQ_MittsA_SizeSL_rightBoxP_innerHTML;
+let motifDQ_MittsA_SizeSL_bottomBoxS_innerHTML;
+let motifDQ_MittsA_SizeSL_bottomBoxP_innerHTML;
 
-let motifDQ_MittsB_SizeS_topBox_innerHTML;
-let motifDQ_MittsB_SizeS_leftBoxS_innerHTML;
-let motifDQ_MittsB_SizeS_leftBoxP_innerHTML;
-let motifDQ_MittsB_SizeS_rightBoxS_innerHTML;
-let motifDQ_MittsB_SizeS_rightBoxP_innerHTML;
-let motifDQ_MittsB_SizeS_bottomBoxS_innerHTML;
-let motifDQ_MittsB_SizeS_bottomBoxP_innerHTML;
+let motifDQ_MittsB_SizeSL_topBox_innerHTML;
+let motifDQ_MittsB_SizeSL_leftBoxS_innerHTML;
+let motifDQ_MittsB_SizeSL_leftBoxP_innerHTML;
+let motifDQ_MittsB_SizeSL_rightBoxS_innerHTML;
+let motifDQ_MittsB_SizeSL_rightBoxP_innerHTML;
+let motifDQ_MittsB_SizeSL_bottomBoxS_innerHTML;
+let motifDQ_MittsB_SizeSL_bottomBoxP_innerHTML;
 
 let motifDQ_MittsA_SizeM_topBox_innerHTML;
 let motifDQ_MittsA_SizeM_leftBoxS_innerHTML;
@@ -124,24 +124,6 @@ let motifDQ_MittsB_SizeM_rightBoxS_innerHTML;
 let motifDQ_MittsB_SizeM_rightBoxP_innerHTML;
 let motifDQ_MittsB_SizeM_bottomBoxS_innerHTML;
 let motifDQ_MittsB_SizeM_bottomBoxP_innerHTML;
-
-let motifDQ_MittsA_SizeL_topBox_innerHTML;
-let motifDQ_MittsA_SizeL_leftBoxS_innerHTML;
-let motifDQ_MittsA_SizeL_leftBoxP_innerHTML;
-let motifDQ_MittsA_SizeL_rightBoxS_innerHTML;
-let motifDQ_MittsA_SizeL_rightBoxP_innerHTML;
-let motifDQ_MittsA_SizeL_bottomBoxS_innerHTML;
-let motifDQ_MittsA_SizeL_bottomBoxP_innerHTML;
-
-let motifDQ_MittsB_SizeL_topBox_innerHTML;
-let motifDQ_MittsB_SizeL_leftBoxS_innerHTML;
-let motifDQ_MittsB_SizeL_leftBoxP_innerHTML;
-let motifDQ_MittsB_SizeL_rightBoxS_innerHTML;
-let motifDQ_MittsB_SizeL_rightBoxP_innerHTML;
-let motifDQ_MittsB_SizeL_bottomBoxS_innerHTML;
-let motifDQ_MittsB_SizeL_bottomBoxP_innerHTML;
-
-
 // end of Diamond Quartet Collection.
 
 //colors
@@ -729,20 +711,20 @@ function createBoxes () {
 function give_innerHTMLtoBoxes () {
     console.log('function give_innerHTMLtoBoxes executed');
     // Cowl Hat:
-    motifDQ_CowlHat_topBox_innerHTML = "The cables cross over the end of round to continue travelling in their stablished direction.";
+    motifDQ_CowlHat_topBox_innerHTML = "";
     motifDQ_CowlHat_leftBoxP_innerHTML = "";
-    motifDQ_CowlHat_rightBoxP_innerHTML = "First four vertical repeats of Woven Motif. Refer to pattern for the number of repeats required.";
-    motifDQ_CowlHat_bottomBoxP_innerHTML = "This section repeats around the circumference";
-    // mitten A - Size S:
-    motifDQ_MittsA_SizeS_topBox_innerHTML = "The cables change colours at the edge of the motif. The new colour is given in the Woven Motif A: Edge Index Table for Size S & L";
-    motifDQ_MittsA_SizeS_leftBoxP_innerHTML = "Edge 2";
-    motifDQ_MittsA_SizeS_rightBoxP_innerHTML = "Edge 1";
-    motifDQ_MittsA_SizeS_bottomBoxP_innerHTML = "";
-    // mitten B - Size S:
-    motifDQ_MittsB_SizeS_topBox_innerHTML = "The cables change colours at the edge of the motif. The new colour is given in the Woven Motif A: Edge Index Table for Size S & L <br> Diagram shows the first four vertical repeats of Woven Motif B. Refere to the pattern for the number of repeats required.";
-    motifDQ_MittsB_SizeS_leftBoxP_innerHTML = motifDQ_MittsA_SizeS_leftBoxP_innerHTML;
-    motifDQ_MittsB_SizeS_rightBoxP_innerHTML = motifDQ_MittsA_SizeS_rightBoxP_innerHTML;
-    motifDQ_MittsB_SizeS_bottomBoxP_innerHTML = "";
+    motifDQ_CowlHat_rightBoxP_innerHTML = "";
+    motifDQ_CowlHat_bottomBoxP_innerHTML = "additional repeats of this section lengthen the circumference of the cowl/hat";
+    // mitten A - Size S & L:
+    motifDQ_MittsA_SizeSL_topBox_innerHTML = "The cables change colours at the edge of the motif. The new colour is given in the Woven Motif A: Edge Index Table for Size S & L";
+    motifDQ_MittsA_SizeSL_leftBoxP_innerHTML = "Edge 2";
+    motifDQ_MittsA_SizeSL_rightBoxP_innerHTML = "Edge 1";
+    motifDQ_MittsA_SizeSL_bottomBoxP_innerHTML = "";
+    // mitten B - Size S & L:
+    motifDQ_MittsB_SizeSL_topBox_innerHTML = "The cables change colours at the edge of the motif. The new colour is given in the Woven Motif A: Edge Index Table for Size S & L <br> Diagram shows the first four vertical repeats of Woven Motif B. Refere to the pattern for the number of repeats required.";
+    motifDQ_MittsB_SizeSL_leftBoxP_innerHTML = motifDQ_MittsA_SizeS_leftBoxP_innerHTML;
+    motifDQ_MittsB_SizeSL_rightBoxP_innerHTML = motifDQ_MittsA_SizeS_rightBoxP_innerHTML;
+    motifDQ_MittsB_SizeSL_bottomBoxP_innerHTML = "";
     // mitten A - Size M:
     motifDQ_MittsA_SizeM_topBox_innerHTML = "The cables change colours at the edge of the motif. The new colur is given in the Woven Motif A: Edge Index Table for Size M. <br> Diagram shows the first four vertical repeats of Woven Motif B. Refer to the pattern for the number of repeats required.";
     motifDQ_MittsA_SizeM_leftBoxP_innerHTML = motifDQ_MittsA_SizeS_leftBoxP_innerHTML;
@@ -753,16 +735,6 @@ function give_innerHTMLtoBoxes () {
     motifDQ_MittsB_SizeM_leftBoxP_innerHTML = motifDQ_MittsA_SizeS_leftBoxP_innerHTML;
     motifDQ_MittsB_SizeM_rightBoxP_innerHTML = motifDQ_MittsA_SizeS_rightBoxP_innerHTML;
     motifDQ_MittsB_SizeM_bottomBoxP_innerHTML = "";
-    // mitten A - Size L:
-    motifDQ_MittsA_SizeL_topBox_innerHTML = motifDQ_MittsA_SizeS_topBox_innerHTML;
-    motifDQ_MittsA_SizeL_leftBoxP_innerHTML = motifDQ_MittsA_SizeS_leftBoxP_innerHTML;
-    motifDQ_MittsA_SizeL_rightBoxP_innerHTML = motifDQ_MittsA_SizeS_rightBoxP_innerHTML;
-    motifDQ_MittsA_SizeL_bottomBoxP_innerHTML = "For Size L, work this section once more";
-    // mitten B - Size M:
-    motifDQ_MittsB_SizeL_topBox_innerHTML = motifDQ_MittsB_SizeS_topBox_innerHTML;
-    motifDQ_MittsB_SizeL_leftBoxP_innerHTML = motifDQ_MittsB_SizeS_leftBoxP_innerHTML;
-    motifDQ_MittsB_SizeL_rightBoxP_innerHTML = motifDQ_MittsB_SizeS_rightBoxP_innerHTML;
-    motifDQ_MittsB_SizeL_bottomBoxP_innerHTML = "For Size L, work this section once more";
 }
 
 function createTopBox() { 
