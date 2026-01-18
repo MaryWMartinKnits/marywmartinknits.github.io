@@ -832,6 +832,7 @@ function createLeftBox () {
             break;
     }
     leftBoxP.innerHTML = `<p id=leftBox_p class="orientation lateralBox_p">${leftBoxP_innerHTML} </p>`
+
 }
 
 function createRightBox () { 
@@ -1068,8 +1069,11 @@ function createMini_p (boxID, container, Height1, Height2, side, n) {
         }
     }
      
-    
-    px.innerHTML = `<p id="${boxID}_p" class="orientation lateralBox_p mini_p"> ${px_innerHTML} </p>`
+    /* if (viewportWidth > 500) { */
+        px.innerHTML = `<p id="${boxID}_p" class="orientation lateralBox_p mini_p"> ${px_innerHTML} </p>`
+/*     } else if (viewportWidth <= 500) {
+        px.innerHTML = `<p id="${boxID}_p" class="lateralBox_p mini_p"> ${px_innerHTML} </p>`
+    } */
     container.appendChild(px);
     let pxHeight = Height2 - Height1
     px.style.height = `${pxHeight}px`;

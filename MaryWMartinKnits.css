@@ -915,7 +915,6 @@ input[type=number], #numOftotalDE {
 }
 
 .lateralBox_p {
-    /* font-size: small; */
     font-size: large;
 }
 
@@ -989,6 +988,12 @@ input[type=number], #numOftotalDE {
     .mini_p {
         font-size: smaller;
     }
+    #leftBoxP {
+        margin-right: 0.2em;
+    }
+    #rightBoxP {
+        margin-left: 0.2em;
+    }
 }
 
 @media screen and (min-width: 501px) and (max-width: 775px) { /* small Tablet */
@@ -1030,6 +1035,12 @@ input[type=number], #numOftotalDE {
     }
     .mini_p {
         font-size: smaller;
+    }
+    #leftBoxP {
+        margin-right: 0.3em;
+    }
+    #rightBoxP {
+        margin-left: 0.3em;
     }
 }
 
