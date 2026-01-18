@@ -838,11 +838,15 @@ input[type=number], #numOftotalDE {
 
 }
 
-#bottomBoxA {
+#bottomBoxS {
     justify-content: center;
     display: flex;
     flex-wrap: nowrap;
     height: 2em;
+}
+
+#bottomBoxP_p {
+    margin-top: 0.75em;
 }
 
 
@@ -886,6 +890,10 @@ input[type=number], #numOftotalDE {
 }
 #leftBox, #leftBoxS {
     padding-right: 0;
+}
+
+#leftBoxS {
+    padding-right: 0.2em; 
 }
 #rightBox, #rightBoxS {
     padding-left: 0;
@@ -1157,7 +1165,7 @@ input[type=number], #numOftotalDE {
         max-width: 100vw;
         text-align: center;
     }
-    #bottomBoxA {
+    #bottomBoxS {
     max-height: 15px;
     }
 }
@@ -1182,7 +1190,7 @@ input[type=number], #numOftotalDE {
         justify-content: center;
         align-items: flex-end;
     }
-    #bottomBoxA {
+    #bottomBoxS {
         max-height: 15px;
     }
 } 
