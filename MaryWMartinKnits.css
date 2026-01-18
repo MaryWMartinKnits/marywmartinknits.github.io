@@ -928,7 +928,7 @@ input[type=number], #numOftotalDE {
     align-items: center;
 }
 .mini_p {
-    font-size: smaller;
+    font-size: small;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -982,10 +982,13 @@ input[type=number], #numOftotalDE {
         font-size: 1em;
         overflow: visible;
     }
-     input[type="color"] {
-    height: 3em;
-    width: 3em;
-  }
+    input[type="color"] {
+        height: 3em;
+        width: 3em;
+    }
+    .mini_p {
+        font-size: smaller;
+    }
 }
 
 @media screen and (min-width: 501px) and (max-width: 775px) { /* small Tablet */
@@ -1024,6 +1027,9 @@ input[type=number], #numOftotalDE {
         .boxes_p {
         font-size: small;
         overflow: visible;
+    }
+    .mini_p {
+        font-size: smaller;
     }
 }
 
@@ -1064,6 +1070,9 @@ input[type=number], #numOftotalDE {
    .pairStitchesDiv p {
        display: block;
    }
+   .mini_p {
+        font-size: small;
+    }
 }
 
 @media screen and (min-width: 977px) and (max-width: 1028px)  { /* Desktop */
@@ -1100,6 +1109,9 @@ input[type=number], #numOftotalDE {
        display: block;
        font-size: 0.8rem;
    }
+   .mini_p {
+        font-size: normal;
+    }
 }
 
 @media screen and (min-width: 1029px) and (max-width: 1800px) { /* Big screen */
@@ -1150,6 +1162,9 @@ input[type=number], #numOftotalDE {
    #SVGnumbers text {
         font-size: 1.2rem;
         font-weight: bold;
+    }
+    .mini_p {
+        font-size: normal;
     }
 }
 

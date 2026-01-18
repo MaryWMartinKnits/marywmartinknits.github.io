@@ -90,14 +90,14 @@ let motifDQ_MittsA_SizeS_bottomBoxS_innerHTML;
 let motifDQ_MittsB_SizeS_bottomBoxS_innerHTML;
 let motifDQ_MittsA_SizeM_bottomBoxS_innerHTML;
 let motifDQ_MittsB_SizeM_bottomBoxS_innerHTML;
-    let leftBoxMini_p1;
-    let leftBoxMini_p2;
-    let leftBoxMini_p3;
-    let leftBoxMini_p4;
-    let rightBoxMini_p1;
-    let rightBoxMini_p2;
-    let rightBoxMini_p3;
-    let rightBoxMini_p4;
+    let leftBoxMini_p1 = "leftBoxMini_p1";
+    let leftBoxMini_p2 = "leftBoxMini_p2";
+    let leftBoxMini_p3 = "leftBoxMini_p3";
+    let leftBoxMini_p4 = "leftBoxMini_p4";
+    let rightBoxMini_p1 = "rightBoxMini_p1";
+    let rightBoxMini_p2 = "rightBoxMini_p2";
+    let rightBoxMini_p3 = "rightBoxMini_p3";
+    let rightBoxMini_p4 = "rightBoxMini_p4";
     let leftBoxMini_p1_HTML;
     let leftBoxMini_p2_HTML;
     let leftBoxMini_p3_HTML;
@@ -470,8 +470,8 @@ function calculateSVGWidth (svgWidth) {
     viewBox = `0 0 ${svgOldWidth} ${svgOldHeight}`
     svgDivTotalWidth = Math.round(svgWidth* 0.9);
 
-    if (svgWidth >= 600) {
-        svgWidth = 600;
+    if (svgWidth >= 650) {
+        svgWidth = 650;
         svgHeight = Math.round(svgOldHeight * svgWidth / svgOldWidth);
         svgNewWidth = svgWidth;
         svgNewHeight = Math.round(svgHeight * svgNewWidth / svgWidth);
@@ -491,14 +491,14 @@ function calculateSVGWidth (svgWidth) {
         }
     } else if (svgDivTotalWidth < viewportWidth) {
         if (viewportWidth < 800) {
-                console.log(`if => small viewportWidth (<600): ${viewportWidth}`)
+                console.log(`if => small viewportWidth (<800): ${viewportWidth}`)
                 svgNewWidth = Math.round(svgNewWidth * 0.90);
         }
             svgNewHeight = Math.round(svgHeight * svgNewWidth / svgWidth);
     }
-    if (svgNewWidth > 600) {
+    if (svgNewWidth > 650) {
         svgWidth = svgNewWidth;
-        svgNewWidth = 600;
+        svgNewWidth = 650;
         svgNewHeight = Math.round(svgHeight * svgNewWidth / svgWidth);
     }
 }
@@ -622,10 +622,10 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
         } else {
         leftBoxHeight = svgNewHeight;
         }
-    if (svgNewWidth > 600) {
-        console.log(`if (svgNewWidth > 600)`);
+    if (svgNewWidth > 700) {
+        console.log(`if (svgNewWidth > 700)`);
         svgWidth = svgNewWidth;
-        svgNewWidth = 600;
+        svgNewWidth = 700;
         svgHeight = svgNewHeight;
         svgNewHeight = Math.round(svgNewWidth * svgHeight / svgWidth);  
     }
@@ -771,8 +771,6 @@ function createLeftBox () {
     leftBoxS.classList.add('left-side');
         leftBox.appendChild(leftBoxS);
     
-    
-
     let initialSVG = `<svg 
             id= "leftBoxS_svg" class= leftBoxS_svg
             width="${leftBoxSWidth}" 
