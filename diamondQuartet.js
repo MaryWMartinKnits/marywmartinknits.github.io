@@ -76,8 +76,6 @@ let motifDQ_MittsA_SizeS;
 let motifDQ_MittsB_SizeS;
 let motifDQ_MittsA_SizeM;
 let motifDQ_MittsB_SizeM;
-let motifDQ_MittsA_SizeL;
-let motifDQ_MittsB_SizeL;
 let selectedMotif;
 
 let motifDQ_CowlHat_innerHTML;
@@ -85,37 +83,21 @@ let motifDQ_MittsA_SizeS_innerHTML;
 let motifDQ_MittsB_SizeS_innerHTML;
 let motifDQ_MittsA_SizeM_innerHTML;
 let motifDQ_MittsB_SizeM_innerHTML;
-let motifDQ_MittsA_SizeL_innerHTML;
-let motifDQ_MittsB_SizeL_innerHTML;
 let selectedMotif_innerHTML = motifDQ_CowlHat_innerHTML;
 
-let motifDQ_CowlHat_topBox_innerHTML;
 let motifDQ_CowlHat_bottomBoxS_innerHTML;
-let motifDQ_CowlHat_bottomBoxP_innerHTML;
-
-let motifDQ_MittsA_SizeS_topBox_innerHTML;
 let motifDQ_MittsA_SizeS_bottomBoxS_innerHTML;
-let motifDQ_MittsA_SizeS_bottomBoxP_innerHTML;
-
-let motifDQ_MittsB_SizeS_topBox_innerHTML;
 let motifDQ_MittsB_SizeS_bottomBoxS_innerHTML;
-let motifDQ_MittsB_SizeS_bottomBoxP_innerHTML;
-
-let motifDQ_MittsA_SizeM_topBox_innerHTML;
 let motifDQ_MittsA_SizeM_bottomBoxS_innerHTML;
-let motifDQ_MittsA_SizeM_bottomBoxP_innerHTML;
-
-let motifDQ_MittsB_SizeM_topBox_innerHTML;
 let motifDQ_MittsB_SizeM_bottomBoxS_innerHTML;
-let motifDQ_MittsB_SizeM_bottomBoxP_innerHTML;
-    let leftBoxMini_p1;
-    let leftBoxMini_p2;
-    let leftBoxMini_p3;
-    let leftBoxMini_p4;
-    let rightBoxMini_p1;
-    let rightBoxMini_p2;
-    let rightBoxMini_p3;
-    let rightBoxMini_p4;
+    let leftBoxMini_p1 = "leftBoxMini_p1";
+    let leftBoxMini_p2 = "leftBoxMini_p2";
+    let leftBoxMini_p3 = "leftBoxMini_p3";
+    let leftBoxMini_p4 = "leftBoxMini_p4";
+    let rightBoxMini_p1 = "rightBoxMini_p1";
+    let rightBoxMini_p2 = "rightBoxMini_p2";
+    let rightBoxMini_p3 = "rightBoxMini_p3";
+    let rightBoxMini_p4 = "rightBoxMini_p4";
     let leftBoxMini_p1_HTML;
     let leftBoxMini_p2_HTML;
     let leftBoxMini_p3_HTML;
@@ -471,18 +453,6 @@ function determinarSVGcharacteristics () {
             svgHeight = 800; 
             selectedMotif_innerHTML = motifDQ_MittsB_SizeM_innerHTML;
         break;
-        case "motifDQ_MittsA_SizeL":
-        /* SVG: */
-            svgWidth = 1000;
-            svgHeight = 800;  
-            selectedMotif_innerHTML = motifDQ_MittsA_SizeL_innerHTML;  
-        break;
-        case "motifDQ_MittsB_SizeL":
-        /* SVG: */
-            svgWidth = 1000;
-            svgHeight = 800;
-            selectedMotif_innerHTML = motifDQ_MittsB_SizeL_innerHTML;
-        break;
         default:  
             /* SVG: */
             svgWidth = 800;
@@ -500,8 +470,8 @@ function calculateSVGWidth (svgWidth) {
     viewBox = `0 0 ${svgOldWidth} ${svgOldHeight}`
     svgDivTotalWidth = Math.round(svgWidth* 0.9);
 
-    if (svgWidth >= 600) {
-        svgWidth = 600;
+    if (svgWidth >= 650) {
+        svgWidth = 650;
         svgHeight = Math.round(svgOldHeight * svgWidth / svgOldWidth);
         svgNewWidth = svgWidth;
         svgNewHeight = Math.round(svgHeight * svgNewWidth / svgWidth);
@@ -521,14 +491,14 @@ function calculateSVGWidth (svgWidth) {
         }
     } else if (svgDivTotalWidth < viewportWidth) {
         if (viewportWidth < 800) {
-                console.log(`if => small viewportWidth (<600): ${viewportWidth}`)
+                console.log(`if => small viewportWidth (<800): ${viewportWidth}`)
                 svgNewWidth = Math.round(svgNewWidth * 0.90);
         }
             svgNewHeight = Math.round(svgHeight * svgNewWidth / svgWidth);
     }
-    if (svgNewWidth > 600) {
+    if (svgNewWidth > 650) {
         svgWidth = svgNewWidth;
-        svgNewWidth = 600;
+        svgNewWidth = 650;
         svgNewHeight = Math.round(svgHeight * svgNewWidth / svgWidth);
     }
 }
@@ -652,10 +622,10 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
         } else {
         leftBoxHeight = svgNewHeight;
         }
-    if (svgNewWidth > 600) {
-        console.log(`if (svgNewWidth > 600)`);
+    if (svgNewWidth > 700) {
+        console.log(`if (svgNewWidth > 700)`);
         svgWidth = svgNewWidth;
-        svgNewWidth = 600;
+        svgNewWidth = 700;
         svgHeight = svgNewHeight;
         svgNewHeight = Math.round(svgNewWidth * svgHeight / svgWidth);  
     }
@@ -666,23 +636,6 @@ function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
     bottomBoxSHeight = Math.round(bottomBoxSWidth * 0.05);
     svgNewWidth = Math.round(svgNewHeight * svgOldWidth / svgOldHeight);
     svgNewHeight = Math.round(svgNewWidth * svgOldHeight / svgOldWidth);  
-    /* // checkpoing:
-        if (svgNewWidth == (svgNewHeight * svgWidth / svgHeight)) {
-            checkpoint = 'yes yes yes';
-            console.log(checkpoint);
-            console.log(` new width = new height * old width / old height  
-                ${svgNewWidth} =? ${Math.round(svgNewHeight * svgOldWidth / svgOldHeight)}
-                `)
-        } else {
-            checkpoint = 'no'
-            console.log(` ${checkpoint} / FINAL checkpoint.
-                svgWidth: ${svgWidth}    -- >     svgHeight: ${svgHeight}
-                svgNewWidth: ${svgNewWidth} -->    svgNewHeight: ${svgNewHeight}
-                svgNewWidth should be: ${Math.round(svgNewHeight * svgWidth / svgHeight)} (not ${svgNewWidth})
-                or svgNewHeight should be: ${Math.round(svgNewWidth * svgHeight / svgWidth)} (not ${svgNewHeight})
-                `)
-        }
-        // end checkpoint. */
 }
 
 function drawSVGwithBoxes () {
@@ -700,7 +653,7 @@ function drawSVGwithBoxes () {
 
 function createBoxes () {
     console.log('function createBoxes executed');
-    give_innerHTMLtoBoxes ();
+    /* give_innerHTMLtoBoxes (); */
     createTopBox ();
     createLeftBox ();
     createSVG ();
@@ -708,24 +661,9 @@ function createBoxes () {
     createBottomBox (selectedMotif);
 }
 
-function give_innerHTMLtoBoxes () {
+/* function give_innerHTMLtoBoxes () {
     console.log('function give_innerHTMLtoBoxes executed');
-    // Cowl Hat:
-    motifDQ_CowlHat_topBox_innerHTML = "";
-    motifDQ_CowlHat_bottomBoxP_innerHTML = "additional repeats of this section lengthen the circumference of the cowl/hat";
-    // mitten A - Size S & L:
-    motifDQ_MittsA_SizeS_topBox_innerHTML = "The cables change colours at the edge of the motif. The new colour is given in the Woven Motif A: Edge Index Table for Size S & L";
-    motifDQ_MittsA_SizeS_bottomBoxP_innerHTML = "";
-    // mitten B - Size S & L:
-    motifDQ_MittsB_SizeS_topBox_innerHTML = "The cables change colours at the edge of the motif. The new colour is given in the Woven Motif A: Edge Index Table for Size S & L <br> Diagram shows the first four vertical repeats of Woven Motif B. Refere to the pattern for the number of repeats required.";
-    motifDQ_MittsB_SizeS_bottomBoxP_innerHTML = "";
-    // mitten A - Size M:
-    motifDQ_MittsA_SizeM_topBox_innerHTML = "The cables change colours at the edge of the motif. The new colur is given in the Woven Motif A: Edge Index Table for Size M. <br> Diagram shows the first four vertical repeats of Woven Motif B. Refer to the pattern for the number of repeats required.";
-    motifDQ_MittsA_SizeM_bottomBoxP_innerHTML = "";
-    // mitten B - Size M:
-    motifDQ_MittsB_SizeM_topBox_innerHTML = "The cables change colours at the edge fo fthe motif. The new colour is given in the Woven Motif B: Edge Index Table for Size M. <br> Diagram shows the first four vertical repeats Woven Motif B. REfer to the pattern for the number of repeats required.";
-    motifDQ_MittsB_SizeM_bottomBoxP_innerHTML = "";
-}
+} */
 
 function createTopBox() { 
     console.log('- function createTopBox executed');
@@ -736,27 +674,27 @@ function createTopBox() {
     switch (selectedMotif) {
         case "motifDQ_CowlHat":
             /* TOP: */
-            topBox_innerHTML = motifDQ_CowlHat_topBox_innerHTML;
+            topBox_innerHTML = "Cowl or Hat";
             break;
         case "motifDQ_MittsA_SizeS":
             /* TOP: */
-            topBox_innerHTML = motifDQ_MittsA_SizeS_topBox_innerHTML;
+            topBox_innerHTML = "Fingerless Mitt A: Size S & L";
             break;
         case "motifDQ_MittsB_SizeS":
             /* TOP: */
-            topBox_innerHTML = motifDQ_MittsB_SizeS_topBox_innerHTML;
+            topBox_innerHTML = "Fingerless Mitt B: Size S & L";
             break;
         case "motifDQ_MittsA_SizeM":
             /* TOP: */
-            topBox_innerHTML = motifDQ_MittsA_SizeM_topBox_innerHTML;
+            topBox_innerHTML = "Fingerless Mitt A: Size M";
             break;
         case "motifDQ_MittsB_SizeM":
             /* TOP: */
-            topBox_innerHTML = motifDQ_MittsB_SizeM_topBox_innerHTML;
+            topBox_innerHTML = "Fingerless Mitt S: Size M";
             break;
         default:  
             /* TOP: */
-            topBox_innerHTML = motifDQ_CowlHat_topBox_innerHTML;
+            topBox_innerHTML = "";
             break;
     }
     topBox.innerHTML = 
@@ -833,8 +771,6 @@ function createLeftBox () {
     leftBoxS.classList.add('left-side');
         leftBox.appendChild(leftBoxS);
     
-    
-
     let initialSVG = `<svg 
             id= "leftBoxS_svg" class= leftBoxS_svg
             width="${leftBoxSWidth}" 
@@ -842,9 +778,11 @@ function createLeftBox () {
             viewbox="${leftBoxSViewBox}"
             style="background-color:#ffffff"> `
     let leftBoxSlines_innerHTML = `
+                <line x1="${x1}" y1="2" x2="${x2}" y2="2" stroke="black" stroke-width="2" />
                 <line x1="${x1}" y1="${firstY}" x2="${x2}" y2="${firstY}" stroke="black" stroke-width="2" />
                 <line x1="${x1}" y1="${secondY}" x2="${x2}" y2="${secondY}" stroke="black" stroke-width="2" />
                 <line x1="${x1}" y1="${thirdY}" x2="${x2}" y2="${thirdY}" stroke="black" stroke-width="2" />
+                <line x1="${x1}" y1="${leftBoxHeight - 2}" x2="${x2}" y2="${leftBoxHeight - 2}" stroke="black" stroke-width="2" />
                 </svg>
                 `
 
@@ -894,6 +832,7 @@ function createLeftBox () {
             break;
     }
     leftBoxP.innerHTML = `<p id=leftBox_p class="orientation lateralBox_p">${leftBoxP_innerHTML} </p>`
+
 }
 
 function createRightBox () { 
@@ -968,20 +907,22 @@ function createRightBox () {
             viewbox="${rightBoxSViewBox}"
             style="background-color:#ffffff"> `
     let rightBoxSlines_innerHTML = `
+                <line x1="${x1}" y1="2" x2="${x2}" y2="2" stroke="black" stroke-width="2" />
                 <line x1="${x1}" y1="${firstY}" x2="${x2}" y2="${firstY}" stroke="black" stroke-width="2" />
                 <line x1="${x1}" y1="${secondY}" x2="${x2}" y2="${secondY}" stroke="black" stroke-width="2" />
                 <line x1="${x1}" y1="${thirdY}" x2="${x2}" y2="${thirdY}" stroke="black" stroke-width="2" />
+                <line x1="${x1}" y1="${rightBoxHeight - 2}" x2="${x2}" y2="${rightBoxHeight - 2}" stroke="black" stroke-width="2" />
                 </svg>
                 `
    
     switch (selectedMotif) {
         case "motifDQ_CowlHat":
              /* RIGHT:  */
-            rightBoxP_innerHTML = "First four vertical repeats of Woven Motif. Refer to pattern for the number of repeats required."
+            rightBoxP_innerHTML = "";
             break;
         case "motifDQ_MittsA_SizeS":
             //* RIGHT:  */
-            rightBoxP_innerHTML = "Edge 1"
+            rightBoxP_innerHTML = "Edge 1";
             rightBoxS.innerHTML = 
             `${initialSVG}
                 ${rightBoxSlines_innerHTML}
@@ -990,7 +931,7 @@ function createRightBox () {
             break;
         case "motifDQ_MittsB_SizeS":
              /* RIGHT:  */
-            rightBoxP_innerHTML = "Edge 1"
+            rightBoxP_innerHTML = "Edge 1";
             rightBoxS.innerHTML = 
             `${initialSVG}
                 ${rightBoxSlines_innerHTML}
@@ -998,7 +939,7 @@ function createRightBox () {
             break;
         case "motifDQ_MittsA_SizeM":
              /* RIGHT:  */
-            rightBoxP_innerHTML = "Edge 1"
+            rightBoxP_innerHTML = "Edge 1";
             rightBoxS.innerHTML = 
             `${initialSVG}
                 ${rightBoxSlines_innerHTML}
@@ -1006,7 +947,7 @@ function createRightBox () {
             break;
         case "motifDQ_MittsB_SizeM":
              /* RIGHT:  */
-            rightBoxP_innerHTML = "Edge 1"
+            rightBoxP_innerHTML = "Edge 1";
             rightBoxS.innerHTML = 
             `${initialSVG}
                 ${rightBoxSlines_innerHTML}
@@ -1045,44 +986,44 @@ function createMini_p (boxID, container, Height1, Height2, side, n) {
             rightBoxMini_p4_HTML = "";
             break;
         case "motifDQ_MittsA_SizeS":
-            leftBoxMini_p1_HTML = "Odd Repeat Colour changes to CC1";
-            leftBoxMini_p2_HTML = "Even Repeat Colour changes to MC1";
-            leftBoxMini_p3_HTML = "Odd Repeat Colour changes to CC1";
-            leftBoxMini_p4_HTML = "Even Repeat Colour changes to MC1";
-            rightBoxMini_p1_HTML = "Odd Repeat Colour changes to CC2";
-            rightBoxMini_p2_HTML = "Even Repeat Colour changes to MC2";
-            rightBoxMini_p3_HTML = "Odd Repeat Colour changes to CC2";
-            rightBoxMini_p4_HTML = "Even Repeat Colour changes to MC2";
+            leftBoxMini_p1_HTML = "Odd Repeat: Colour changes to CC1";
+            leftBoxMini_p2_HTML = "Even Repeat: Colour changes to MC1";
+            leftBoxMini_p3_HTML = "Odd Repeat: Colour changes to CC1";
+            leftBoxMini_p4_HTML = "Even Repeat: Colour changes to MC1";
+            rightBoxMini_p1_HTML = "Odd Repeat: Colour changes to CC2";
+            rightBoxMini_p2_HTML = "Even Repeat: Colour changes to MC2";
+            rightBoxMini_p3_HTML = "Odd Repeat: Colour changes to CC2";
+            rightBoxMini_p4_HTML = "Even Repeat: Colour changes to MC2";
             break;
         case "motifDQ_MittsB_SizeS":
-            leftBoxMini_p1_HTML = "Odd Repeat Colour changes to CC2";
-            leftBoxMini_p2_HTML = "Even Repeat Colour changes to MC2";
-            leftBoxMini_p3_HTML = "Odd Repeat Colour changes to CC2";
-            leftBoxMini_p4_HTML = "Even Repeat Colour changes to MC2";
-            rightBoxMini_p1_HTML = "Odd Repeat Colour changes to CC1";
-            rightBoxMini_p2_HTML = "Even Repeat Colour changes to MC1";
-            rightBoxMini_p3_HTML = "Odd Repeat Colour changes to CC1";
-            rightBoxMini_p4_HTML = "Even Repeat Colour changes to MC1";
+            leftBoxMini_p1_HTML = "Odd Repeat: Colour changes to CC2";
+            leftBoxMini_p2_HTML = "Even Repeat: Colour changes to MC2";
+            leftBoxMini_p3_HTML = "Odd Repeat: Colour changes to CC2";
+            leftBoxMini_p4_HTML = "Even Repeat: Colour changes to MC2";
+            rightBoxMini_p1_HTML = "Odd Repeat: Colour changes to CC1";
+            rightBoxMini_p2_HTML = "Even Repeat: Colour changes to MC1";
+            rightBoxMini_p3_HTML = "Odd Repeat: Colour changes to CC1";
+            rightBoxMini_p4_HTML = "Even Repeat: Colour changes to MC1";
             break;
         case "motifDQ_MittsA_SizeM":
-            leftBoxMini_p1_HTML = "Odd Repeat Colour changes to MC1";
-            leftBoxMini_p2_HTML = "Even Repeat Colour changes to CC1";
-            leftBoxMini_p3_HTML = "Odd Repeat Colour changes to MC1";
-            leftBoxMini_p4_HTML = "Even Repeat Colour changes to CC1";
-            rightBoxMini_p1_HTML = "Odd Repeat Colour changes to CC2";
-            rightBoxMini_p2_HTML = "Even Repeat Colour changes to MC2";
-            rightBoxMini_p3_HTML = "Odd Repeat Colour changes to CC2";
-            rightBoxMini_p4_HTML = "Even Repeat Colour changes to MC2";
+            leftBoxMini_p1_HTML = "Odd Repeat: Colour changes to MC1";
+            leftBoxMini_p2_HTML = "Even Repeat: Colour changes to CC1";
+            leftBoxMini_p3_HTML = "Odd Repeat: Colour changes to MC1";
+            leftBoxMini_p4_HTML = "Even Repeat: Colour changes to CC1";
+            rightBoxMini_p1_HTML = "Odd Repeat: Colour changes to CC2";
+            rightBoxMini_p2_HTML = "Even Repeat: Colour changes to MC2";
+            rightBoxMini_p3_HTML = "Odd Repeat: Colour changes to CC2";
+            rightBoxMini_p4_HTML = "Even Repeat: Colour changes to MC2";
             break;
         case "motifDQ_MittsB_SizeM":
-            leftBoxMini_p1_HTML = "Odd Repeat Colour changes to CC2";
-            leftBoxMini_p2_HTML = "Even Repeat Colour changes to MC2";
-            leftBoxMini_p3_HTML = "Odd Repeat Colour changes to CC2";
-            leftBoxMini_p4_HTML = "Even Repeat Colour changes to MC2";
-            rightBoxMini_p1_HTML = "Odd Repeat Colour changes to MC1";
-            rightBoxMini_p2_HTML = "Even Repeat Colour changes to CC1";
-            rightBoxMini_p3_HTML = "Odd Repeat Colour changes to MC1";
-            rightBoxMini_p4_HTML = "Even Repeat Colour changes to CC1";
+            leftBoxMini_p1_HTML = "Odd Repeat: Colour changes to CC2";
+            leftBoxMini_p2_HTML = "Even Repeat: Colour changes to MC2";
+            leftBoxMini_p3_HTML = "Odd Repeat: Colour changes to CC2";
+            leftBoxMini_p4_HTML = "Even Repeat: Colour changes to MC2";
+            rightBoxMini_p1_HTML = "Odd Repeat: Colour changes to MC1";
+            rightBoxMini_p2_HTML = "Even Repeat: Colour changes to CC1";
+            rightBoxMini_p3_HTML = "Odd Repeat: Colour changes to MC1";
+            rightBoxMini_p4_HTML = "Even Repeat: Colour changes to CC1";
             break;
         default: 
             leftBoxMini_p1_HTML = "1";
@@ -1128,8 +1069,11 @@ function createMini_p (boxID, container, Height1, Height2, side, n) {
         }
     }
      
-    
-    px.innerHTML = `<p id="${boxID}_p" class="orientation lateralBox_p mini_p"> ${px_innerHTML} </p>`
+    /* if (viewportWidth > 500) { */
+        px.innerHTML = `<p id="${boxID}_p" class="orientation lateralBox_p mini_p"> ${px_innerHTML} </p>`
+/*     } else if (viewportWidth <= 500) {
+        px.innerHTML = `<p id="${boxID}_p" class="lateralBox_p mini_p"> ${px_innerHTML} </p>`
+    } */
     container.appendChild(px);
     let pxHeight = Height2 - Height1
     px.style.height = `${pxHeight}px`;
@@ -1184,9 +1128,8 @@ function createBottomBox (selectedMotif) {
              /* BOTTOM:  */ 
             widthOfEachSEction = bottomBoxSWidth / 8;
             firstX = widthOfEachSEction * 4;
-            /* secondX = bottomBoxSWidth + (widthOfEachSEction * 0.2); */
             secondX = bottomBoxSWidth;
-            bottomBoxP_innerHTML = motifDQ_CowlHat_bottomBoxP_innerHTML;
+            bottomBoxP_innerHTML = "additional repeats of this section lengthen the circumference of the cowl/hat";
             motifDQ_CowlHat_bottomBoxS_innerHTML = `
                 <line x1="${firstX}" y1="${y0}" x2="${firstX}" y2="${yHeight}" stroke="black" stroke-width="2" />
                 <line x1="${secondX}" y1="${y0}" x2="${secondX}" y2="${yHeight}" stroke="black" stroke-width="2" />
@@ -1201,34 +1144,50 @@ function createBottomBox (selectedMotif) {
             break;
         case "motifDQ_MittsA_SizeS":
              /* BOTTOM:  */ 
+            widthOfEachSEction = bottomBoxSWidth / 10;
+            firstX = widthOfEachSEction * 2;
+            secondX = widthOfEachSEction * 6;
+            bottomBoxP_innerHTML = "For Size L, work this section once more.";
+            motifDQ_MittsA_SizeS_bottomBoxS_innerHTML = `
+                <line x1="${firstX}" y1="${y0}" x2="${firstX}" y2="${yHeight}" stroke="black" stroke-width="2" />
+                <line x1="${secondX}" y1="${y0}" x2="${secondX}" y2="${yHeight}" stroke="black" stroke-width="2" />
+                <line x1="${firstX+5}" y1="${yMedium}" x2="${secondX-5}" y2="${yMedium}" stroke="black" stroke-width="2" marker-start="url(#arrowhead)" marker-end="url(#arrowhead)" id="arrowLine"/>
+               `
             bottomBoxS_innerHTML = motifDQ_MittsA_SizeS_bottomBoxS_innerHTML;
-            bottomBoxP_innerHTML = motifDQ_MittsA_SizeS_bottomBoxP_innerHTML;
+            bottomBoxS.innerHTML = 
+            `${initialSVG}
+                ${arrowhead}
+                ${bottomBoxS_innerHTML}
+            </svg>`;
             break;
         case "motifDQ_MittsB_SizeS":
              /* BOTTOM:  */ 
+            widthOfEachSEction = bottomBoxSWidth / 10;
+            firstX = widthOfEachSEction * 2;
+            secondX = widthOfEachSEction * 6;
+            bottomBoxP_innerHTML = "For Size L, work this section once more.";
+            motifDQ_MittsB_SizeS_bottomBoxS_innerHTML = `
+                <line x1="${firstX}" y1="${y0}" x2="${firstX}" y2="${yHeight}" stroke="black" stroke-width="2" />
+                <line x1="${secondX}" y1="${y0}" x2="${secondX}" y2="${yHeight}" stroke="black" stroke-width="2" />
+                <line x1="${firstX+5}" y1="${yMedium}" x2="${secondX-5}" y2="${yMedium}" stroke="black" stroke-width="2" marker-start="url(#arrowhead)" marker-end="url(#arrowhead)" id="arrowLine"/>
+               `
             bottomBoxS_innerHTML = motifDQ_MittsB_SizeS_bottomBoxS_innerHTML;
-            bottomBoxP_innerHTML = motifDQ_MittsB_SizeS_bottomBoxP_innerHTML;
+            bottomBoxS.innerHTML = 
+            `${initialSVG}
+                ${arrowhead}
+                ${bottomBoxS_innerHTML}
+            </svg>`;
             break;
         case "motifDQ_MittsA_SizeM":
              /* BOTTOM:  */ 
             bottomBoxS_innerHTML = motifDQ_MittsA_SizeM_bottomBoxS_innerHTML;
-            bottomBoxP_innerHTML = motifDQ_MittsA_SizeM_bottomBoxP_innerHTML;
+            bottomBoxP_innerHTML = "";
             break;
         case "motifDQ_MittsB_SizeM":
              /* BOTTOM:  */ 
             bottomBoxS_innerHTML = motifDQ_MittsB_SizeM_bottomBoxS_innerHTML;
-            bottomBoxP_innerHTML = motifDQ_MittsB_SizeM_bottomBoxP_innerHTML;
+            bottomBoxP_innerHTML = "";
             break;
-        case "motifDQ_MittsA_SizeL":
-             /* BOTTOM:  */ 
-            bottomBoxS_innerHTML = motifDQ_MittsA_SizeL_bottomBoxS_innerHTML;
-            bottomBoxP_innerHTML = motifDQ_MittsA_SizeL_bottomBoxP_innerHTML;
-            break;
-        case "motifDQ_MittsB_SizeL":
-             /* BOTTOM:  */ 
-            bottomBoxS_innerHTML = motifDQ_MittsB_SizeL_bottomBoxS_innerHTML;
-            bottomBoxP_innerHTML = motifDQ_MittsB_SizeL_bottomBoxP_innerHTML;
-            break;     
         default: 
             /* BOTTOM: */ 
             break;
@@ -1890,8 +1849,8 @@ function updateSVG_innerHTML () {
         /13  /13 <polygon points="799,291 741,349 701,309 759,251"  fill="${pickedMC1}" stroke="none" /> /13  <line x1="700" y1="310" x2="760" y2="250" stroke="black" /> /13  <line x1="740" y1="350" x2="800" y2="290" stroke="black" /> /13 <polygon points="741,251 799,309 759,349 701,291"  fill="${pickedCC2}" stroke="none" /> /13  <line x1="740" y1="250" x2="800" y2="310" stroke="black" /> /13  <line x1="700" y1="290" x2="760" y2="350" stroke="black" />
         /13  /13 <polygon points="699,291 641,349 601,309 659,251"  fill="${pickedCC1}" stroke="none" /> /13  <line x1="600" y1="310" x2="660" y2="250" stroke="black" /> /13  <line x1="640" y1="350" x2="700" y2="290" stroke="black" /> /13 <polygon points="641,251 699,309 659,349 601,291"  fill="${pickedMC2}" stroke="none" /> /13  <line x1="640" y1="250" x2="700" y2="310" stroke="black" /> /13  <line x1="600" y1="290" x2="660" y2="350" stroke="black" />
         /13  /13 <polygon points="599,291 541,349 501,309 559,251"  fill="${pickedCC1}" stroke="none" /> /13  <line x1="500" y1="310" x2="560" y2="250" stroke="black" /> /13  <line x1="540" y1="350" x2="600" y2="290" stroke="black" /> /13 <polygon points="541,251 599,309 559,349 501,291"  fill="${pickedMC2}" stroke="none" /> /13  <line x1="540" y1="250" x2="600" y2="310" stroke="black" /> /13  <line x1="500" y1="290" x2="560" y2="350" stroke="black" />
-        /13  /13 <polygon points="499,291 441,349 401,309 459,251"  fill="${pickedMC1}}" stroke="none" /> /13  <line x1="400" y1="310" x2="460" y2="250" stroke="black" /> /13  <line x1="440" y1="350" x2="500" y2="290" stroke="black" /> /13 <polygon points="441,251 499,309 459,349 401,291"  fill="${pickedCC2}" stroke="none" /> /13  <line x1="440" y1="250" x2="500" y2="310" stroke="black" /> /13  <line x1="400" y1="290" x2="460" y2="350" stroke="black" />
-        /13  /13 <polygon points="399,291 341,349 301,309 359,251"  fill="${pickedMC1}}" stroke="none" /> /13  <line x1="300" y1="310" x2="360" y2="250" stroke="black" /> /13  <line x1="340" y1="350" x2="400" y2="290" stroke="black" /> /13 <polygon points="341,251 399,309 359,349 301,291"  fill="${pickedCC2}" stroke="none" /> /13  <line x1="340" y1="250" x2="400" y2="310" stroke="black" /> /13  <line x1="300" y1="290" x2="360" y2="350" stroke="black" />
+        /13  /13 <polygon points="499,291 441,349 401,309 459,251"  fill="${pickedMC1}" stroke="none" /> /13  <line x1="400" y1="310" x2="460" y2="250" stroke="black" /> /13  <line x1="440" y1="350" x2="500" y2="290" stroke="black" /> /13 <polygon points="441,251 499,309 459,349 401,291"  fill="${pickedCC2}" stroke="none" /> /13  <line x1="440" y1="250" x2="500" y2="310" stroke="black" /> /13  <line x1="400" y1="290" x2="460" y2="350" stroke="black" />
+        /13  /13 <polygon points="399,291 341,349 301,309 359,251"  fill="${pickedMC1}" stroke="none" /> /13  <line x1="300" y1="310" x2="360" y2="250" stroke="black" /> /13  <line x1="340" y1="350" x2="400" y2="290" stroke="black" /> /13 <polygon points="341,251 399,309 359,349 301,291"  fill="${pickedCC2}" stroke="none" /> /13  <line x1="340" y1="250" x2="400" y2="310" stroke="black" /> /13  <line x1="300" y1="290" x2="360" y2="350" stroke="black" />
         /13  /13 <polygon points="299,291 241,349 201,309 259,251"  fill="${pickedCC1}" stroke="none" /> /13  <line x1="200" y1="310" x2="260" y2="250" stroke="black" /> /13  <line x1="240" y1="350" x2="300" y2="290" stroke="black" /> /13 <polygon points="241,251 299,309 259,349 201,291"  fill="${pickedMC2}" stroke="none" /> /13  <line x1="240" y1="250" x2="300" y2="310" stroke="black" /> /13  <line x1="200" y1="290" x2="260" y2="350" stroke="black" />
         /13  /13 <polygon points="199,291 141,349 101,309 159,251"  fill="${pickedCC1}" stroke="none" /> /13  <line x1="100" y1="310" x2="160" y2="250" stroke="black" /> /13  <line x1="140" y1="350" x2="200" y2="290" stroke="black" /> /13 <polygon points="141,251 199,309 159,349 101,291"  fill="${pickedMC2}" stroke="none" /> /13  <line x1="140" y1="250" x2="200" y2="310" stroke="black" /> /13  <line x1="100" y1="290" x2="160" y2="350" stroke="black" />
         /13  /13 <polygon points="99,291 41,349 1,309 59,251"  fill="${pickedMC1}" stroke="none" /> /13  <line x1="0" y1="310" x2="60" y2="250" stroke="black" /> /13  <line x1="40" y1="350" x2="100" y2="290" stroke="black" /> /13 <polygon points="41,251 99,309 59,349 1,291"  fill="${pickedCC2}" stroke="none" /> /13  <line x1="40" y1="250" x2="100" y2="310" stroke="black" /> /13  <line x1="0" y1="290" x2="60" y2="350" stroke="black" />
@@ -2159,9 +2118,7 @@ function updateSVG_innerHTML () {
     /13  /13 <polygon points="191,1 249,59 209,99 151,41"  fill="${pickedMC1}" stroke="none" /> /13  <line x1="190" y1="0" x2="250" y2="60" stroke="black" /> /13  <line x1="150" y1="40" x2="210" y2="100" stroke="black" /> /13 <polygon points="249,41 191,99 151,59 209,1"  fill="${pickedCC2}" stroke="none" /> /13  <line x1="150" y1="60" x2="210" y2="0" stroke="black" /> /13  <line x1="190" y1="100" x2="250" y2="40" stroke="black" /> /13 <polygon points="150,0  150,40 151,41 191, 1  190,0 "  fill="${pickedMC1}" stroke="none" /> /13 <polygon points="250,0 250,40 249,41 209,1 210,0 "  fill="${pickedCC2}" stroke="none" />
     /13  /13 <polygon points="149,41 91,99 51,59 109,1"  fill="${pickedMC2}" stroke="none" /> /13  <line x1="50" y1="60" x2="110" y2="0" stroke="black" /> /13  <line x1="90" y1="100" x2="150" y2="40" stroke="black" /> /13 <polygon points="91,1 149,59 109,99 51,41"  fill="${pickedMC1}" stroke="none" /> /13  <line x1="90" y1="0" x2="150" y2="60" stroke="black" /> /13  <line x1="50" y1="40" x2="110" y2="100" stroke="black" /> /13 <polygon points="50,0  50,40 51,41 91, 1  90,0 "  fill="${pickedMC1}" stroke="none" /> /13 <polygon points="150,0 150,40 149,41 109,1 110,0 "  fill="${pickedMC2}" stroke="none" />
     <polygon points="0,10 10,0 50,0 50,40 40,50 0,50"  fill="${pickedMC2}" stroke="none" /> /13  <line x1="0" y1="10" x2="10" y2="0" stroke="black" />  /13  <line x1="40" y1="50" x2="50" y2="40" stroke="black" /> /13 <polygon points="0,50 0,10 1,9 41,49 40,50"  fill="${pickedMC2}" stroke="none" /> /13 <polygon points="0,50 0,90 1,91 41,51 40,50"  fill="${pickedCC1}" stroke="none" /> /13     
-    `;
-    motifDQ_MittsA_SizeL_innerHTML = motifDQ_MittsA_SizeS_innerHTML;
-    motifDQ_MittsB_SizeL_innerHTML = motifDQ_MittsB_SizeS_innerHTML;    
+    `;   
 }
 
 function localStorage_MC1 () {
