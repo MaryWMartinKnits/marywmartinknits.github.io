@@ -714,6 +714,10 @@ input[type=number], #numOftotalDE {
     margin-left: 0.5rem;
 }
 
+#DDhatCowl, #DQcowl {
+    float: left;
+}
+
 .panelText {
     min-height: max-content;
     display: inline-block;
@@ -1235,4 +1239,13 @@ input[type=number], #numOftotalDE {
     max-width: 500px;
     margin-bottom: 1.5em;
 }
-                
+      
+iframe {
+    max-width: 90vw;
+    aspect-ratio: 9/16;
+}
+
+.videoPanel {
+    display: flex;
+    justify-content: center;
+}
