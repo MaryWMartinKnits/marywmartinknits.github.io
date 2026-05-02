@@ -122,13 +122,11 @@ let accArray;
 
 window.onload = init();
 
-function init() {
-    console.log('page loaded, the DOM is ready');
+function init() {  
     getDOMelements ();
 }
 
 function getDOMelements () {
-    console.log('function getDOMelements executed');
     begOfPage = document.querySelector('#begOfPage')
     createSetUpRowsBtn = document.querySelector('#createSetUpRowsBtn');
     windowWidth = document.querySelector('#window-width');
@@ -148,7 +146,6 @@ function getDOMelements () {
     note1 = document.querySelector('#note1');
     note2 = document.querySelector('#note2');
     accArray = document.getElementsByClassName('accordion');
-    console.log(accArray); 
     createInputSection(); 
     createYCselectionButtons();
     addEventListeners ();
@@ -169,7 +166,6 @@ function enableBtn (button) {
 }
 
 function createInputSection () {
-    console.log('function createInputSection executed');
     let code = 0;
     let pairNumber = 1;
     for (let i = 0; i < numberOfSections; i++) {
@@ -204,7 +200,6 @@ function createInputSection () {
 }
 
 function createYCselectionButtons () {
-    console.log('function createYCselectionButtons executed');
     allYCcheckboxes = document.querySelectorAll('.YCcheckbox');
     if (userSelectionArray.length == numberOfDE * 2) {
         for (let i = 0; i < allYCcheckboxes.length; i ++) {
@@ -218,7 +213,6 @@ function createYCselectionButtons () {
 }
 
 function addEventListeners () {
-    console.log('function addEventListeners executed');
     continueEditingBtn.addEventListener('click', continueEditingColors);
     createSetUpRowsBtn.addEventListener('click', restrictions);
     createChartBtn.addEventListener('click', SVGcondition);
@@ -230,7 +224,6 @@ function addEventListeners () {
         thisCheckbox = allYCcheckboxes[i];
          allYCcheckboxes[i].addEventListener('change', function(event) {changeColorSelection(thisCheckbox)})
      }
-    //  window.addEventListener('resize', resizeScreen);
 }
 
 function resizeScreen () {
@@ -273,7 +266,6 @@ function changeColorSelection (checkedYC) {
 }
 
 function disableInputSwitches () {
-    // console.log('function disableInputSwitches executed');
     allSwitches = document.querySelectorAll('input');
     allLabels = document.querySelectorAll('label');
     allFieldsets = document.querySelectorAll('fieldset');
@@ -288,7 +280,6 @@ function disableInputSwitches () {
 }
 
 function enableInputSwitches () {
-    console.log('function enableInputSwitches executed');
     allSwitches = document.querySelectorAll('input');
     allLabels = document.querySelectorAll('label');
     allFieldsets = document.querySelectorAll('fieldset');
@@ -304,13 +295,11 @@ function enableInputSwitches () {
 }
 
 function createUserSelectionArray () {
-    console.log('function createUserSelectionArray executed')
     disableInputSwitches();
     if (userSelectionArray.length > numberOfDE * 2) {
         userSelectionArray = [];
     } 
     if (editingCounter > 0) {
-        console.log(`editingCounter = ${editingCounter}`)
         createNewUserSelectionArrayForOutput();
     }
     if (userSelectionArray <= numberOfDE * 2) {
@@ -332,14 +321,11 @@ function createUserSelectionArray () {
             userSelectionArray.push(thisObject);
         }   // i loop
     } // if
-    console.log('userSelectionArray: ')
-    console.log(userSelectionArray);
 }
 
 function createSetUpRow1Array () {
     createUserSelectionArray();
     SVGcondition();
-    console.log('function createSetUpRow1Array executed');;
     let c = 0;
     for (let i = 0; i < numberOfSections; i++) {
         for (let j = 0; j < numberofDEperSection; j++) {
@@ -357,8 +343,6 @@ function createSetUpRow1Array () {
             c = c+2
         } //j loop
     } //i loop
-    console.log('setUpRow1Array:');
-    console.log(setUpRow1Array);
     wovenPlacematSetUpRow1(setUpRow1Array);
 }
 
@@ -392,26 +376,22 @@ function firstPairOfSection_SetUpRow1 (c,thisObject) {
 
 function middlePairsOfSection_SetUpRow1 (c, thisObject) {
     if (userSelectionArray[c].yarnColor == 'MC' && userSelectionArray[c+1].yarnColor == 'MC') {
-        // console.log(`right MC & left MC`)
         purlStitchCount = 0;
         DE = kfb;
         DEstitchCountRow1++
         purlStitchCount = purlStitchCount + 2;
         keepPurling = false;
     } else if (userSelectionArray[c].yarnColor == 'MC' && userSelectionArray[c+1].yarnColor == 'CC') {
-        // console.log(`right MC & left CC`)
         purlStitchCount = 0
         DE = ktbl1;
         purlStitchCount = purlStitchCount + 2
         keepPurling = false;
     } else if (userSelectionArray[c].yarnColor == 'CC' && userSelectionArray[c+1].yarnColor == 'CC') {
-        // console.log(`right CC & left CC`);
         purlStitchCount = purlStitchCount + 3
         purl = 'purl'
         DE =  purl // p2, p1,
         keepPurling = true;
     } else if (userSelectionArray[c].yarnColor == 'CC' && userSelectionArray[c+1].yarnColor == 'MC') {
-        // console.log(`right CC & left MC`);
         purlStitchCount = 0
         DE = ktbl1;
         purlStitchCount = purlStitchCount + 2
@@ -462,7 +442,6 @@ function lastPairOfSection_SetUpRow1 (c, thisObject) {
 }
 
 function wovenPlacematSetUpRow1 (setUpRow1Array) {
-    console.log(`function wovenPlacematSetUpRow1 executed.`)
     FIRSTsection_SetUpRow1(setUpRow1Array);
     MiddleSections_SetUpRow1(setUpRow1Array);
     LASTsection_SetUpRow1(setUpRow1Array);
@@ -470,7 +449,6 @@ function wovenPlacematSetUpRow1 (setUpRow1Array) {
 } 
 
 function FIRSTsection_SetUpRow1 (setUpRow1Array) {
-    console.log('function writeFIRSTsection_SetUpRow1 executed');
     beforePurlSts = false;
     for (let i = 0; i < numberofDEperSection; i++) {
             ExtraPurlStsInvolved = setUpRow1Array[i].keepPurling;
@@ -487,12 +465,9 @@ function FIRSTsection_SetUpRow1 (setUpRow1Array) {
                 determineStitchPatternForLASTpair(i, setUpRow1Array);
             }
     } // i loop
-    console.log('middleSections1Array: ');
-    console.log(middleSections1Array);
 }
 
 function MiddleSections_SetUpRow1 (setUpRow1Array) {
-    console.log('function writeMiddleSections_SetUpRow1 executed');
     for (let i = 4; i < setUpRow1Array.length - 4; i++) {
         ExtraPurlStsInvolved = setUpRow1Array[i].keepPurling;
         if (setUpRow1Array[i].section == setUpRow1Array[i+1].section) { // Exception: the last st of the section cannot have extra purling sts after.
@@ -511,7 +486,6 @@ function MiddleSections_SetUpRow1 (setUpRow1Array) {
 }
 
 function LASTsection_SetUpRow1 (setUpRow1Array) {
-    console.log('function writeLASTsection_SetUpRow1 executed');
     for (let i = setUpRow1Array.length - 4; i < setUpRow1Array.length; i++) {
         ExtraPurlStsInvolved = setUpRow1Array[i].keepPurling;
         if (setUpRow1Array[i].section !== setUpRow1Array[i-1].section) {
@@ -527,11 +501,10 @@ function LASTsection_SetUpRow1 (setUpRow1Array) {
             afterPurlSts = false; //last pair of the section -> there are no afterPurl sts.
             determineStitchPatternForLASTpair(i, setUpRow1Array)
         }
-    } // i loop
+    } 
 }
 
 function determineStitchPatternForFIRSTpair (i, setUpRow1Array) {
-    // console.log('determineStitchPatternForFIRSTpair funtion executed')
     beforePurlSts = false; // false, there's not a previous purl st count for the first pair.
     if (!beforePurlSts) {
         if (ExtraPurlStsInvolved) { // true -> what to do if this is a purl DE stitch.
@@ -552,7 +525,6 @@ function determineStitchPatternForFIRSTpair (i, setUpRow1Array) {
 }
 
 function determineStitchPatternForMIDDLEpairs (i, setUpRow1Array) {
-    // console.log('determineStitchPatternForMIDDLEpairs function executed')
     if (beforePurlSts ) { // true -> what to do if there's s previous purl st count.
         if (ExtraPurlStsInvolved) { // true -> what to do if this is a purl DE stitch.
             if (afterPurlSts) {
@@ -586,7 +558,6 @@ function determineStitchPatternForMIDDLEpairs (i, setUpRow1Array) {
 }
 
 function determineStitchPatternForLASTpair (i, setUpRow1Array) {
-    // console.log('determineStitchPatternForLASTpair function executed')
     afterPurlSts = false;
     if (beforePurlSts ) { // true -> what to do if there's s previous purl st count.
         if (ExtraPurlStsInvolved) { // true -> what to do if this is a purl DE stitch.
@@ -614,9 +585,7 @@ function determineStitchPatternForLASTpair (i, setUpRow1Array) {
 }
 
 function writeSetUpRow1 (middleSections1ArrayWritten) {
-    console.log('function writeSetUpRow1 executed');
     totalStCountRow1 = originalStitchCount + DEstitchCountRow1;
-    // writtenStitchCount1 = `(${originalStitchCount} sts + ${DEstitchCountRow1} increased sts = ${originalStitchCount + DEstitchCountRow1} total sts).`
     writtenStitchCount1 = `(${totalStCountRow1} sts).`
     writtenSection1All = '';
     for (let i = 0; i < middleSections1ArrayWritten.length; i++) {
@@ -641,7 +610,6 @@ function writeSetUpRow1 (middleSections1ArrayWritten) {
 }
 
 function allPairsOfSection_SetUpRow2 (i, thisObject) {
-    console.log('function allPairsOfSection_SetUpRow2 executed'); 
     Row1DEinstructions = setUpRow1Array[i].DE;
     let Row1DEobject;
     Row1DE = '';
@@ -700,7 +668,7 @@ function allPairsOfSection_SetUpRow2 (i, thisObject) {
                     
                 } // k loop
             }
-        } else { // Row1DE == ''
+        } else { 
             Row2DE = cero_into_two;
             DEstitchCountRow2 = DEstitchCountRow2 + 2;
             combination = 'both CC last pair';
@@ -714,7 +682,6 @@ function allPairsOfSection_SetUpRow2 (i, thisObject) {
 }
 
 function createSetUpRow2Array (setUpRow1Array) {
-    console.log('function createSetUpRow2Array executed');
     let c = 0;
     let colorCode = c;
     DEstitchCountRow2 = 0;
@@ -729,12 +696,11 @@ function createSetUpRow2Array (setUpRow1Array) {
         if (i == numberofDEperSection - 1) {
             c++
         }
-    } // i loop
+    } 
     wovenPlacematSetUpRow2(setUpRow2Array);
 }
 
 function wovenPlacematSetUpRow2 (setUpRow2Array) {
-    console.log(`function wovenPlacematSetUpRow1 executed.`)
     FIRSTsection_SetUpRow2(setUpRow2Array);
     middleSections_SetUpRow2(setUpRow2Array);
     LASTsection_SetUpRow2(setUpRow2Array);
@@ -750,7 +716,7 @@ function FIRSTsection_SetUpRow2 (setUpRow2Array) {
             } else if (setUpRow2Array[i].section !== setUpRow2Array[i+1].section) { 
                 determineStitchPatternForLASTpairRow2(i, setUpRow2Array);
             }
-    } // i loop
+    } 
 }
 
 function middleSections_SetUpRow2(setUpRow2Array) {
@@ -762,7 +728,7 @@ function middleSections_SetUpRow2(setUpRow2Array) {
         } else if (setUpRow2Array[i].section !== setUpRow2Array[i+1].section) { // fourth pair of the section
             determineStitchPatternForLASTpairRow2(i, setUpRow2Array);
         }
-    } // i loop
+    } 
 }
 
 function LASTsection_SetUpRow2(setUpRow2Array) {
@@ -774,7 +740,7 @@ function LASTsection_SetUpRow2(setUpRow2Array) {
         } else if (setUpRow2Array[i].section == setUpRow2Array[i-(numberofDEperSection-1)].section) {
             determineStitchPatternForLASTpairRow2(i, setUpRow2Array)
         }
-    } // i loop
+    } 
 }
 
 function determineStitchPatternForFIRSTpairRow2 (i, setUpRow2Array) {
@@ -802,10 +768,8 @@ function determineStitchPatternForLASTpairRow2 (i, setUpRow2Array) {
 }
 
 function writeSetUpRow2 () {
-    console.log('function writeSetUpRow2 executed');
     totalStCountRow2 = totalStCountRow1 + DEstitchCountRow2;
     writtenStitchCount2 = `(${totalStCountRow2} sts). `
-    // writtenStitchCount2 = `(${totalStCountRow1} sts + ${DEstitchCountRow2} increased sts = ${totalStCountRow2} total sts).` // erase after checking accuracy.
     SetUpRow2 = '';
     for (let i = 0; i < middleSections2Array.length; i++) {
         allSections2ArrayWritten[i] = `<span class="colorCoding${i}"> ${middleSections2Array[i].writtenInstructions} </span> ${slipMarker}`
@@ -830,7 +794,6 @@ function writeSetUpRow2 () {
     disableInputSwitches();
     hideBtn(createSetUpRowsBtn);
     hideBtn(createChartBtn);
-    // note1.classList.add('hidden');
     const colorPickerDiv = document.querySelector('#colorPickerDiv');
     colorPickerDiv.style.display = 'none';
     const note0 = document.querySelectorAll('.note0');
@@ -846,7 +809,6 @@ function writeSetUpRow2 () {
 // continue editing colors section:
 
 function continueEditingColors () {
-    console.log('function continueEditingColors executed');
     enableInputSwitches();
     hideBtn(continueEditingBtn);
     enableBtn(createChartBtn);
@@ -858,14 +820,10 @@ function continueEditingColors () {
     oldPlacemat.classList.remove('newPlacemat');
     updateSVG.classList.remove('hidden');
     updateSVG.classList.add('outOfSync');
-    // window.onresize = resized; //
     note1.classList.add('hidden');
 }
 
 function createNewInputSection () {
-    console.log('function createNEWinputSection executed');
-    console.log('userSelectionArray: ')
-    console.log(userSelectionArray);
     storeOldUserSelectionArray();
     userInputDiv.innerHTML = '';
     let code = 0;
@@ -884,9 +842,6 @@ function createNewInputSection () {
         betweenMarkersDiv.classList.add('section', 'betweenMarkers')
         colorCode = `colorCoding${code}`
         code ++
-        // if (code == numberofDEperSection) {
-        //     code = 0
-        // }
         sectionSection.classList.add(`${colorCode}`)
         wholeSection.appendChild(betweenMarkersDiv);
         for (let k = 0; k < numberofDEperSection; k++) {
@@ -937,7 +892,6 @@ function createNewInputSection () {
         let thisCheckbox = newYCcheckboxes[i];
         newYCcheckboxes[i].addEventListener('change', function(event) {changeColorSelectionAgain(thisCheckbox)})
     }
-    console.log(`'NEW input section created! editingCounter = ${editingCounter}`);
 }
 
 function changeColorSelectionAgain (checkedYC) {
@@ -957,14 +911,10 @@ function changeColorSelectionAgain (checkedYC) {
 }
 
 function storeOldUserSelectionArray () {
-    console.log('function storeOldUserSelectionArray executed');
     oldUserSelectionArray = userSelectionArray;
-    console.log('oldUserSelectionArray: ');
-    console.log(oldUserSelectionArray);
 }
 
 function createNewUserSelectionArrayForOutput () {
-    console.log('function createNewUserSelectionArrayForOutput executed');
     if (newUserSelectionArray.length > 0) {
         oldUserSelectionArray = newUserSelectionArray;
         newUserSelectionArray = [];
@@ -982,18 +932,10 @@ function createNewUserSelectionArrayForOutput () {
         } else if (checkboxClassList.contains('MCselected') || checkboxClassList.contains('noneSelected') || allYCcheckboxes[i].value == 'MCselected') {
             thisObject['newSelection'] = 'MCselected';
             thisObject['yarnColor'] = 'MC';
-        } else {
-            console.log('error')
-        }
+        } 
         newUserSelectionArray.push(thisObject);
     } // i loop
-    console.log('old userSelectionArray: ');
-    console.log(oldUserSelectionArray);
-    console.log('new userSelectionArray:');
-    console.log(newUserSelectionArray);
     userSelectionArray = newUserSelectionArray;
-    console.log('userSelectionArray = newUserSelectionArray: ')
-    console.log(userSelectionArray);
     hideBtn(continueEditingBtn);
     disableInputSwitches();
     enableBtn(createChartBtn);
@@ -1002,15 +944,12 @@ function createNewUserSelectionArrayForOutput () {
 
 function  SVGcondition () {
     createUserSelectionArray();
-    console.log('function SVGcondition executed');
     disableInputSwitches();
     continueEditingBtn.classList.remove('hidden');
     NumberCablePairs = numberOfDE; // = 28
     if (NumberCablePairs % 4 == 0) {
         createSVG (NumberCablePairs);
-    } else {
-        console.log(`the number of cable pairs should be divisible by 4. Current number of pairs = ${NumberCablePairs}`)
-    }
+    } 
     updateSVG.classList.add('hidden');
     updateSVG.classList.remove('outOfSync');
 
@@ -1019,7 +958,6 @@ function  SVGcondition () {
 }
 
 function createSVG (NumberCablePairs) {
-    console.log('function createSVG executed')
     let scalar;
     if (window.innerWidth < window.innerHeight) {
         scalar = ((window.innerWidth * 0.90) / NumberCablePairs);
@@ -1038,9 +976,7 @@ function createSVG (NumberCablePairs) {
 
         svgWidth =  `${Math.round(scalar * NumberCablePairs)}`;
         svgHeight = Math.round(scalar * NumVerticalRepeats);
-        console.log(`svgWidth = ${svgWidth}. svgHeight = ${svgHeight}. Scalar = ${scalar}`)
-    let maximumNumberOfLineSegments = Math.ceil((svgHeight / svgWidth)) + 1
-    console.log('maximumNumberOfLineSegments: ' + maximumNumberOfLineSegments)
+    /* let maximumNumberOfLineSegments = Math.ceil((svgHeight / svgWidth)) + 1 */
     initialCoordinates (scalar);
     if (newUserSelectionArray.length == 0) {
         enableBtn(continueEditingBtn);
@@ -1050,7 +986,6 @@ function createSVG (NumberCablePairs) {
 }
 
 function createChartNumbers () {
-    console.log('function createChartNumbers executed');
     chartNumbersDiv.classList.remove('hidden');
     let pairN;
     let colorBoxes = '';
@@ -1134,13 +1069,11 @@ function createChartNumbers () {
 }
 
 function initialCoordinates (scalar) {
-    console.log(`function initialCoordinates executed with scalar = ${scalar}`)
     creatingInitialCoordinatesArray (scalar);
     cablesTrayectory ();
 }
 
 function creatingInitialCoordinatesArray (scalar) {
-    console.log(`function creatingInititalCoordinatesArray executed with scalar = ${scalar}.`)
     cablesArray = [];
     PairNumber = 0;
     for (let i = 0; i < NumberOfCables; i++) {
@@ -1164,12 +1097,9 @@ function creatingInitialCoordinatesArray (scalar) {
         thisObject['section'] = userSelectionArray[i].section;
         cablesArray.push(thisObject)
     } // i loop
-    console.log('cablesArray: ');
-    console.log(cablesArray);
 }
 
 function cablesTrayectory () {
-    console.log('function cablesTrayectory executed');
     let newDirection;
     for (let i = 0; i < NumberOfCables; i++) {
         let StartingX = cablesArray[i].x1;
@@ -1179,12 +1109,10 @@ function cablesTrayectory () {
             cableThatChangedDirection(i, newDirection);
         }
     }
-    console.log('NumberOfCables = '+ NumberOfCables)
     createLines();
 }
 
 function ifRightOrLeftMoving (i, StartingX, StartingY) {
-    // console.log('function ifRightOrLeftMoving executed');
     RightMoving = cablesArray[i].rightMoving;
     // if cablesArray[i] is right moving => RightMoving = true; else RightMoving = false
     if (RightMoving) { // true -> RIGHT moving cable
@@ -1218,9 +1146,7 @@ function ifRightOrLeftMoving (i, StartingX, StartingY) {
     return newDirection;
 }
 
-
 function cableThatChangedDirection (i, newDirection) {
-    // console.log('function cableThatChangedDirection executed');
     let CurrentX = cablesArray[i].x2;
     let CurrentY = cablesArray[i].y2
     if (cablesArray[i].newDirection == 'right') {
@@ -1254,7 +1180,6 @@ function determinelineThickness () {
 }
 
 function createLines () {
-    console.log('function createLines executed')
         let line1right;
         let line1left;
         let allLeftLines1 = '';
@@ -1319,8 +1244,6 @@ function createLines () {
     ${allLines1} + ${allLines2}
     </svg>`
     svgPlacemat.appendChild(SVGinDiv);
-    console.log(cablesArray);
-    console.log(`svgSize: (${svgWidth}, ${svgHeight})`);
     enableBtn(continueEditingBtn);
     hideBtn(createChartBtn);
     document.getElementById("svgChartDiv").focus();
@@ -1328,48 +1251,38 @@ function createLines () {
 
 // picking MC and CC:
 function chooseLineColor () {
-    console.log('function chooseLineColor executed');
     pickedMC = '#5F5FA5'; //var(--color4);
     pickedCC = '#ffa500'; // orange
     MCpickerBtn.value = pickedMC;
     CCpickerBtn.value = pickedCC;
-    console.log(`pickedMC: ${pickedMC} / pickedCC: ${pickedCC}`);
 }
 
 function changeLineMC () {
-    console.log('function changeLineMC executed');
     pickedMC = MCpickerBtn.value;
-    console.log(`MC = ${pickedMC}`);
     updatePickedColors(pickedMC, pickedCC, pickedBackground);
 }
 
 function changeLineCC () {
-    console.log('function changeLineCC executed');
     pickedCC = CCpickerBtn.value;
-    console.log(`CC = ${pickedCC}`);
     updatePickedColors(pickedMC, pickedCC, pickedBackground);
 }
 
 function changeBackground () {
-    console.log('function changeBackground executed');
     pickedBackground =  backgroundPickerBtn.value;
     updatePickedColors(pickedMC, pickedCC, pickedBackground)
 }
 
  function updatePickedColors (pickedMC, pickedCC, pickedBackground) {
-     console.log('function updatePickedColors executed')  
      for (let i = 0; i < allMClines; i++) {
          allMClines[i].style.stroke = `${pickedMC}`
      }
      for (let i = 0; i < allCClines; i++) {
          allCClines[i].style.stroke = `${pickedCC}`
      }
-     console.log(`MC: ${pickedMC}. CC: ${pickedCC}`);
  }
 
 
  function restrictions () {
-    console.log('function restrictions executed');
     askPassword();
  }
 
@@ -1386,12 +1299,9 @@ function changeBackground () {
 
  function askPassword () {
     password = window.prompt('Enter password found in the Design Your Own Placemat pattern').toLowerCase();
-    console.log(password);
     if (password == "tabbyweave") {
-        console.log('password is correct');
         askEmail();
     } else {
-        console.log('password was incorrect');
        let question = window.confirm('The password was incorrect, do you want to try again?')
        if (question) {
         askPassword();

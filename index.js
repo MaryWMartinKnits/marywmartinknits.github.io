@@ -5,16 +5,11 @@ let accArray;
 window.onload = init();
 
 function init() {
-    console.log('page loaded, the DOM is ready');
     getDOMelements ();
 }
 
 function getDOMelements () {
-
-    
     accArray = document.getElementsByClassName('accordion');
-    console.log(accArray); 
-   
     accordions (); 
 }
 
