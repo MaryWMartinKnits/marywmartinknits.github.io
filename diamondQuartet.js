@@ -16,9 +16,9 @@ let allFieldsets;
 let SVGinDiv;
 let SVGDiv;
 let WovenMotifSVG;
-    let svgHeight = 0;
-    let svgWidth = 0; 
-    let viewBox;
+let svgHeight = 0;
+let svgWidth = 0;
+let viewBox;
 let numberOfColors = "2";
 let svgOldWidth;
 let svgOldHeight;
@@ -90,29 +90,29 @@ let motifDQ_MittsA_SizeS_bottomBoxS_innerHTML;
 let motifDQ_MittsB_SizeS_bottomBoxS_innerHTML;
 let motifDQ_MittsA_SizeM_bottomBoxS_innerHTML;
 let motifDQ_MittsB_SizeM_bottomBoxS_innerHTML;
-    let leftBoxMini_p1 = "leftBoxMini_p1";
-    let leftBoxMini_p2 = "leftBoxMini_p2";
-    let leftBoxMini_p3 = "leftBoxMini_p3";
-    let leftBoxMini_p4 = "leftBoxMini_p4";
-    let rightBoxMini_p1 = "rightBoxMini_p1";
-    let rightBoxMini_p2 = "rightBoxMini_p2";
-    let rightBoxMini_p3 = "rightBoxMini_p3";
-    let rightBoxMini_p4 = "rightBoxMini_p4";
-    let leftBoxMini_p1_HTML;
-    let leftBoxMini_p2_HTML;
-    let leftBoxMini_p3_HTML;
-    let leftBoxMini_p4_HTML;
-    let rightBoxMini_p1_HTML;
-    let rightBoxMini_p2_HTML;
-    let rightBoxMini_p3_HTML;
-    let rightBoxMini_p4_HTML;
+let leftBoxMini_p1 = "leftBoxMini_p1";
+let leftBoxMini_p2 = "leftBoxMini_p2";
+let leftBoxMini_p3 = "leftBoxMini_p3";
+let leftBoxMini_p4 = "leftBoxMini_p4";
+let rightBoxMini_p1 = "rightBoxMini_p1";
+let rightBoxMini_p2 = "rightBoxMini_p2";
+let rightBoxMini_p3 = "rightBoxMini_p3";
+let rightBoxMini_p4 = "rightBoxMini_p4";
+let leftBoxMini_p1_HTML;
+let leftBoxMini_p2_HTML;
+let leftBoxMini_p3_HTML;
+let leftBoxMini_p4_HTML;
+let rightBoxMini_p1_HTML;
+let rightBoxMini_p2_HTML;
+let rightBoxMini_p3_HTML;
+let rightBoxMini_p4_HTML;
 // end of Diamond Quartet Collection.
 
 //colors
-let pickedMC1 = '#9370db'; // mediumpurple
-let pickedMC2 = '#c71585'; // mediumvioletred
-let pickedCC1 = '#ffa500'; // ${pickedCC1}
-let pickedCC2 = '#8b4513'; // ${pickedCC2}
+let pickedMC1 = "#9370db"; // mediumpurple
+let pickedMC2 = "#c71585"; // mediumvioletred
+let pickedCC1 = "#ffa500"; // ${pickedCC1}
+let pickedCC2 = "#8b4513"; // ${pickedCC2}
 
 let MC1_swatch;
 let CC1_swatch;
@@ -135,978 +135,838 @@ let accArray;
 window.onload = init();
 
 function init() {
-    console.log('page loaded, the DOM is ready');
-    getDOMelements ();
+  getDOMelements();
 }
 
-function getDOMelements () {
-    viewportWidth = window.innerWidth;
-    viewportHeight = window.innerHeight;
-    begOfPage = document.querySelector('#begOfPage')
-    divToCreateSpace = document.querySelector('.space');
-    WovenMotifSVG = document.querySelector('#WovenMotifSVG');
+function getDOMelements() {
+  viewportWidth = window.innerWidth;
+  viewportHeight = window.innerHeight;
+  begOfPage = document.querySelector("#begOfPage");
+  divToCreateSpace = document.querySelector(".space");
+  WovenMotifSVG = document.querySelector("#WovenMotifSVG");
 
-    MC1pickerBtn = document.querySelector('#colorPickerMC1');
-    MC2pickerBtn = document.querySelector('#colorPickerMC2');
-    CC1pickerBtn = document.querySelector('#colorPickerCC1');
-    CC2pickerBtn = document.querySelector('#colorPickerCC2');
-    resetColorsDiv = document.querySelector('#resetColorsDiv');
-    resetColorsBtn = document.querySelector('#resetColorsBtn');
-    chooseNewColorsBtn = document.querySelector('#chooseNewColorsBtn');
-    createBoxesBtn = document.querySelector('#createBoxesBtn');
-    MC1_swatchTitle = document.querySelector('#MC1_swatchTitle');
-    CC1_swatchTitle = document.querySelector('#CC1_swatchTitle');
-    MC2_swatchTitle = document.querySelector('#MC2_swatchTitle');
-    CC2_swatchTitle = document.querySelector('#CC2_swatchTitle');
- 
-    MC1_swatch = document.querySelector('#MC1_swatch');
-    CC1_swatch = document.querySelector('#CC1_swatch');
-    MC2_swatch = document.querySelector('#MC2_swatch');
-    CC2_swatch = document.querySelector('#CC2_swatch');
+  MC1pickerBtn = document.querySelector("#colorPickerMC1");
+  MC2pickerBtn = document.querySelector("#colorPickerMC2");
+  CC1pickerBtn = document.querySelector("#colorPickerCC1");
+  CC2pickerBtn = document.querySelector("#colorPickerCC2");
+  resetColorsDiv = document.querySelector("#resetColorsDiv");
+  resetColorsBtn = document.querySelector("#resetColorsBtn");
+  chooseNewColorsBtn = document.querySelector("#chooseNewColorsBtn");
+  createBoxesBtn = document.querySelector("#createBoxesBtn");
+  MC1_swatchTitle = document.querySelector("#MC1_swatchTitle");
+  CC1_swatchTitle = document.querySelector("#CC1_swatchTitle");
+  MC2_swatchTitle = document.querySelector("#MC2_swatchTitle");
+  CC2_swatchTitle = document.querySelector("#CC2_swatchTitle");
 
-    MC1hexDisplay = document.querySelector('#MC1hexCode');
-    MC2hexDisplay = document.querySelector('#MC2hexCode');
-    CC1hexDisplay = document.querySelector('#CC1hexCode');
-    CC2hexDisplay = document.querySelector('#CC2hexCode');
-    
-    accArray = document.getElementsByClassName('accordion');
-    console.log(accArray); 
-    motifPicker = document.querySelector('#motifPickerDropDown');
-    SVGinDiv = document.querySelector("#SVGinDiv");
-    SVGDiv = document.querySelector('#WovenMotifSVG');
-    boxesANDsvg = document.querySelector('#boxesANDsvg');
-    bottomBoxesAandB = document.querySelector('#bottomBoxesAandB');
-    Title_chooseColors = document.querySelector('#Title_chooseColors')   
-    addEventListeners ();
-    chooseMotifColors ();
-    giveColorValueToSwatches(); 
-    accordions (); 
-    defaultSVG ();
+  MC1_swatch = document.querySelector("#MC1_swatch");
+  CC1_swatch = document.querySelector("#CC1_swatch");
+  MC2_swatch = document.querySelector("#MC2_swatch");
+  CC2_swatch = document.querySelector("#CC2_swatch");
+
+  MC1hexDisplay = document.querySelector("#MC1hexCode");
+  MC2hexDisplay = document.querySelector("#MC2hexCode");
+  CC1hexDisplay = document.querySelector("#CC1hexCode");
+  CC2hexDisplay = document.querySelector("#CC2hexCode");
+
+  accArray = document.getElementsByClassName("accordion");
+  motifPicker = document.querySelector("#motifPickerDropDown");
+  SVGinDiv = document.querySelector("#SVGinDiv");
+  SVGDiv = document.querySelector("#WovenMotifSVG");
+  boxesANDsvg = document.querySelector("#boxesANDsvg");
+  bottomBoxesAandB = document.querySelector("#bottomBoxesAandB");
+  Title_chooseColors = document.querySelector("#Title_chooseColors");
+  addEventListeners();
+  chooseMotifColors();
+  giveColorValueToSwatches();
+  accordions();
+  defaultSVG();
 }
 
-function disableBtn (button) {
-    button.disabled = true;
-    button.classList.add('disabledBtn');
-    button.classList.remove('hidden');
+function disableBtn(button) {
+  button.disabled = true;
+  button.classList.add("disabledBtn");
+  button.classList.remove("hidden");
 }
 
-function hideBtn (button) {
-    button.disabled = true;
-    button.classList.add('disabledBtn');
-    button.classList.add('hidden');
+function hideBtn(button) {
+  button.disabled = true;
+  button.classList.add("disabledBtn");
+  button.classList.add("hidden");
 }
 
-function enableBtn (button) {
-    button.disabled = false;
-    button.classList.remove('disabledBtn');
-    button.classList.remove('hidden');
+function enableBtn(button) {
+  button.disabled = false;
+  button.classList.remove("disabledBtn");
+  button.classList.remove("hidden");
 }
 
-function addEventListeners () {
-    MC1pickerBtn.addEventListener('change', changeMC1);
-    MC2pickerBtn.addEventListener('change', changeMC2);
-    CC1pickerBtn.addEventListener('change', changeCC1);
-    CC2pickerBtn.addEventListener('change', changeCC2);
-    
-    resetColorsBtn.addEventListener('click', resetColours);
-    /* motifPicker.addEventListener('change', cleanSVGandBoxes); */
-    motifPicker.addEventListener('change', createSVGwithBoxes);
-    /* createBoxesBtn.addEventListener('click', createSVGwithBoxes); */
-    /* chooseNewColorsBtn.addEventListener('click', enableColorChoicesAgain); */
+function addEventListeners() {
+  MC1pickerBtn.addEventListener("change", changeMC1);
+  MC2pickerBtn.addEventListener("change", changeMC2);
+  CC1pickerBtn.addEventListener("change", changeCC1);
+  CC2pickerBtn.addEventListener("change", changeCC2);
+
+  resetColorsBtn.addEventListener("click", resetColours);
+  motifPicker.addEventListener("change", createSVGwithBoxes);
 }
 
-function defaultSVG () {
-    console.log('function defaultSVG executed')
-    cleanSVGandBoxes ()
+function defaultSVG() {
+  cleanSVGandBoxes();
 }
 
-function cleanSVGandBoxes () {
-    console.log('function cleanSVGandBoxes executed');
-    topBox_innerHTML = "";
-    leftBoxS_innerHTML = "";
-    leftBoxP_innerHTML = "";
-    rightBoxS_innerHTML = "";
-    rightBoxP_innerHTML = "";
-    bottomBoxS_innerHTML = "";
-    bottomBoxP_innerHTML = "";
+function cleanSVGandBoxes() {
+  topBox_innerHTML = "";
+  leftBoxS_innerHTML = "";
+  leftBoxP_innerHTML = "";
+  rightBoxS_innerHTML = "";
+  rightBoxP_innerHTML = "";
+  bottomBoxS_innerHTML = "";
+  bottomBoxP_innerHTML = "";
 
-    let bottomBoxS = document.querySelector("#bottomBoxS");
-    if (bottomBoxS != null) {
-        bottomBoxS.remove();
-        /* bottomBoxS_svg.remove() */
-        let topBox = document.querySelector('#topBox');
-        topBox.remove();
-        let leftBox = document.querySelector('#leftBox');
-        leftBox.remove();
-        let rightBox = document.querySelector('#rightBox');
-        rightBox.remove();
-        let bottomBoxP = document.querySelector('#bottomBoxP');
-        bottomBoxP.remove();
-        SVGDiv.classList.remove('grid');
-    }
-    pickSVG ()
+  let bottomBoxS = document.querySelector("#bottomBoxS");
+  if (bottomBoxS != null) {
+    bottomBoxS.remove();
+    let topBox = document.querySelector("#topBox");
+    topBox.remove();
+    let leftBox = document.querySelector("#leftBox");
+    leftBox.remove();
+    let rightBox = document.querySelector("#rightBox");
+    rightBox.remove();
+    let bottomBoxP = document.querySelector("#bottomBoxP");
+    bottomBoxP.remove();
+    SVGDiv.classList.remove("grid");
+  }
+  pickSVG();
 }
 
-function resetColours () {
-    console.log('function resetColours executed');
-    pickedMC1 = '#9370db'; // mediumpurple
-    pickedMC2 = '#c71585'; // mediumvioletred
-    pickedCC1 = '#ffa500'; // ${pickedCC1}
-    pickedCC2 = '#8b4513'; // ${pickedCC2}
-    localStorage.MC1 = pickedMC1;
-    localStorage.MC2 = pickedMC2;
-    localStorage.CC1 = pickedCC1;
-    localStorage.CC2 = pickedCC2;
-    giveColorValueToSwatches();
-    updatePickedColors (pickedMC1, pickedMC2, pickedCC1, pickedCC2);
+function resetColours() {
+  pickedMC1 = "#9370db"; // mediumpurple
+  pickedMC2 = "#c71585"; // mediumvioletred
+  pickedCC1 = "#ffa500"; // ${pickedCC1}
+  pickedCC2 = "#8b4513"; // ${pickedCC2}
+  localStorage.MC1 = pickedMC1;
+  localStorage.MC2 = pickedMC2;
+  localStorage.CC1 = pickedCC1;
+  localStorage.CC2 = pickedCC2;
+  giveColorValueToSwatches();
+  updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
 }
 
 function giveColorValueToSwatches() {
-console.log('function giveColorValueToSwatches executed'); 
-    if (localStorage_MC1 !== null) {
-        pickedMC1 = localStorage.MC1;
-        MC1pickerBtn.value = pickedMC1;
-    } else {
-        MC1pickerBtn.value = pickedMC1;
-    }
-    if (localStorage_MC2 !== null) {
-        pickedMC2 = localStorage.MC2;
-        MC2pickerBtn.value = pickedMC2;
-    } else {
-        MC2pickerBtn.value = pickedMC2;
-    }
+  if (localStorage_MC1 !== null) {
+    pickedMC1 = localStorage.MC1;
+    MC1pickerBtn.value = pickedMC1;
+  } else {
+    MC1pickerBtn.value = pickedMC1;
+  }
+  if (localStorage_MC2 !== null) {
+    pickedMC2 = localStorage.MC2;
+    MC2pickerBtn.value = pickedMC2;
+  } else {
+    MC2pickerBtn.value = pickedMC2;
+  }
 
-    if (localStorage_CC1 !== null) {
-        pickedCC1 = localStorage.CC1;
-        CC1pickerBtn.value = pickedCC1;
-    } else {
-        CC1pickerBtn.value = pickedCC1;
-    }
+  if (localStorage_CC1 !== null) {
+    pickedCC1 = localStorage.CC1;
+    CC1pickerBtn.value = pickedCC1;
+  } else {
+    CC1pickerBtn.value = pickedCC1;
+  }
 
-    if (localStorage_CC2 !== null) {
-        pickedCC2 = localStorage.CC2;
-        CC2pickerBtn.value = pickedCC2;
-    } else {
-        CC2pickerBtn.value = pickedCC2;
-    }
+  if (localStorage_CC2 !== null) {
+    pickedCC2 = localStorage.CC2;
+    CC2pickerBtn.value = pickedCC2;
+  } else {
+    CC2pickerBtn.value = pickedCC2;
+  }
 }
 
 // accordions:
-function accordions () {
-    for (let i = 0; i < accArray.length; i++) {
-        accArray[i].addEventListener('click', toggleAccordions);
-    }
+function accordions() {
+  for (let i = 0; i < accArray.length; i++) {
+    accArray[i].addEventListener("click", toggleAccordions);
+  }
 }
 
-function toggleAccordions () {
-    this.classList.toggle('active');
-    let panel = this.nextElementSibling;
-    if (panel.style.maxHeight && panel.style.maxHeight !== '0px') {
-        panel.style.maxHeight = `0px`;
-        if (panel.id == 'socials') {
-            panel.style.padding = '0px'; 
-        }
-    } else {
-        panel.style.maxHeight = `${panel.scrollHeight}px`; 
-        if (panel.class == 'intro') {
-            panel.style.maxHeight = `${panel.scrollHeight + 2000}px`; 
-        }
-        if (panel.id == 'socials') {
-            panel.style.padding = '16px';
-            panel.style.maxHeight = `${panel.scrollHeight + 16}px`; 
-            document.getElementById('socials').focus();
-        }
+function toggleAccordions() {
+  this.classList.toggle("active");
+  let panel = this.nextElementSibling;
+  if (panel.style.maxHeight && panel.style.maxHeight !== "0px") {
+    panel.style.maxHeight = `0px`;
+    if (panel.id == "socials") {
+      panel.style.padding = "0px";
     }
+  } else {
+    panel.style.maxHeight = `${panel.scrollHeight}px`;
+    if (panel.class == "intro") {
+      panel.style.maxHeight = `${panel.scrollHeight + 2000}px`;
+    }
+    if (panel.id == "socials") {
+      panel.style.padding = "16px";
+      panel.style.maxHeight = `${panel.scrollHeight + 16}px`;
+      document.getElementById("socials").focus();
+    }
+  }
 }
 
 // picking MC and CC:
-function chooseMotifColors () {
-    console.log('function chooseMotifColors executed'); 
-    if (localStorage.MC1) {
-        //console.log(`Stored MC1: ${localStorage.MC1}`);
-        pickedMC1 = localStorage.MC1;
-    } else {
-        pickedMC1 = '#9370db'; // mediumpurple
+function chooseMotifColors() {
+  if (localStorage.MC1) {
+    pickedMC1 = localStorage.MC1;
+  } else {
+    pickedMC1 = "#9370db"; // mediumpurple
+  }
+  if (localStorage.MC2) {
+    pickedMC2 = localStorage.MC2;
+  } else {
+    pickedMC2 = "#c71585"; // mediumvioletred
+  }
+  if (localStorage.CC1) {
+    pickedCC1 = localStorage.CC1;
+  } else {
+    pickedCC1 = "#ffa500"; // ${pickedCC1}
+  }
+  if (localStorage.CC2) {
+    pickedCC2 = localStorage.CC2;
+  } else {
+    pickedCC2 = "#8b4513"; // ${pickedCC2}
+  }
+  updateHEXcodeDisplay(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
+  updateSVG_innerHTML();
+  pickSVG();
+}
+
+function updateHEXcodeDisplay(pickedMC1, pickedMC2, pickedCC1, pickedCC2) {
+  MC1hexDisplay.innerHTML = `hex: ${pickedMC1}`;
+  MC2hexDisplay.innerHTML = `hex: ${pickedMC2}`;
+  CC1hexDisplay.innerHTML = `hex: ${pickedCC1}`;
+  CC2hexDisplay.innerHTML = `hex: ${pickedCC2}`;
+}
+
+function changeMC1() {
+  pickedMC1 = MC1pickerBtn.value;
+  updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
+  localStorage_MC1();
+}
+
+function changeMC2() {
+  pickedMC2 = MC2pickerBtn.value;
+  updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
+  localStorage_MC2();
+}
+
+function changeCC1() {
+  pickedCC1 = CC1pickerBtn.value;
+  updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
+  localStorage_CC1();
+}
+
+function changeCC2() {
+  pickedCC2 = CC2pickerBtn.value;
+  updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
+  localStorage_CC2();
+}
+
+function updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2) {
+  MC1pickerBtn.value = pickedMC1;
+  MC2pickerBtn.value = pickedMC2;
+  CC1pickerBtn.value = pickedCC1;
+  CC2pickerBtn.value = pickedCC2;
+  updateHEXcodeDisplay(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
+  updateSVG_innerHTML();
+  cleanSVGandBoxes();
+}
+
+function pickSVG() {
+  selectedMotif = motifPickerDropDown.value;
+  determinarSVGcharacteristics(selectedMotif);
+  viewBox = `0 0 ${svgOldWidth} ${svgOldHeight}`;
+  calculateSVGWidth(svgWidth);
+  updateSVG_innerHTML();
+  drawSVG(selectedMotif);
+}
+
+function determinarSVGcharacteristics() {
+  topBox_innerHTML = "";
+  leftBoxS_innerHTML = "";
+  leftBoxP_innerHTML = "";
+  rightBoxS_innerHTML = "";
+  rightBoxP_innerHTML = "";
+  bottomBoxS_innerHTML = "";
+  bottomBoxP_innerHTML = "";
+  switch (selectedMotif) {
+          /* SVG: */
+    case "motifDQ_CowlHat":
+      svgWidth = 800;
+      svgHeight = 800;
+      selectedMotif_innerHTML = motifDQ_CowlHat_innerHTML;
+      break;
+    case "motifDQ_MittsA_SizeS":
+      svgWidth = 1000;
+      svgHeight = 800;
+      selectedMotif_innerHTML = motifDQ_MittsA_SizeS_innerHTML;
+      break;
+    case "motifDQ_MittsB_SizeS":
+      svgWidth = 1000;
+      svgHeight = 800;
+      selectedMotif_innerHTML = motifDQ_MittsB_SizeS_innerHTML;
+      break;
+    case "motifDQ_MittsA_SizeM":
+      svgWidth = 1200;
+      svgHeight = 800;
+      selectedMotif_innerHTML = motifDQ_MittsA_SizeM_innerHTML;
+      break;
+    case "motifDQ_MittsB_SizeM":
+      svgWidth = 1200;
+      svgHeight = 800;
+      selectedMotif_innerHTML = motifDQ_MittsB_SizeM_innerHTML;
+      break;
+    default:
+      svgWidth = 800;
+      svgHeight = 800;
+      selectedMotif_innerHTML = motifDQ_CowlHat_innerHTML;
+  }
+  svgOldWidth = svgWidth;
+  svgOldHeight = svgHeight;
+}
+
+function calculateSVGWidth(svgWidth) {
+  viewportWidth = window.innerWidth;
+  viewBox = `0 0 ${svgOldWidth} ${svgOldHeight}`;
+  svgDivTotalWidth = Math.round(svgWidth * 0.9);
+
+  if (svgWidth >= 650) {
+    svgWidth = 650;
+    svgHeight = Math.round((svgOldHeight * svgWidth) / svgOldWidth);
+    svgNewWidth = svgWidth;
+    svgNewHeight = Math.round((svgHeight * svgNewWidth) / svgWidth);
+  }
+
+  if (svgDivTotalWidth >= viewportWidth || svgHeight > viewportHeight) {
+    svgNewWidth = Math.round(svgWidth * 0.9);
+    svgNewHeight = Math.round(svgHeight * 0.9);
+    if (svgDivTotalWidth >= viewportWidth) {
+      sumarWidth = viewportWidth - svgDivTotalWidth;
+      svgNewWidth = Math.round((svgDivTotalWidth + sumarWidth) * 0.8);
+      svgNewHeight = Math.round((svgHeight * svgNewWidth) / svgWidth);
     }
-    if (localStorage.MC2) {
-        //console.log(`Stored MC2: ${localStorage.MC2}`);
-        pickedMC2 = localStorage.MC2;
-    } else {
-        pickedMC2 = '#c71585'; // mediumvioletred
+    if (svgHeight > viewportHeight) {
+      svgNewHeight = Math.round(viewportHeight * 0.7);
+      svgNewWidth = Math.round((svgWidth * svgNewHeight) / svgHeight);
     }
-    if (localStorage.CC1) {
-        //console.log(`Stored CC1: ${localStorage.CC1}`);
-        pickedCC1 = localStorage.CC1;
-    } else {
-        pickedCC1 = '#ffa500'; // ${pickedCC1}
+  } else if (svgDivTotalWidth < viewportWidth) {
+    if (viewportWidth < 800) {
+      svgNewWidth = Math.round(svgNewWidth * 0.9);
     }
-    if (localStorage.CC2) {
-        //console.log(`Stored CC2: ${localStorage.CC2}`);
-        pickedCC2 = localStorage.CC2;
-    } else {
-        pickedCC2 = '#8b4513'; // ${pickedCC2}
-    }
-    updateHEXcodeDisplay (pickedMC1, pickedMC2, pickedCC1, pickedCC2);
-    updateSVG_innerHTML ();
-    pickSVG();
+    svgNewHeight = Math.round((svgHeight * svgNewWidth) / svgWidth);
+  }
+  if (svgNewWidth > 650) {
+    svgWidth = svgNewWidth;
+    svgNewWidth = 650;
+    svgNewHeight = Math.round((svgHeight * svgNewWidth) / svgWidth);
+  }
 }
 
-function updateHEXcodeDisplay (pickedMC1, pickedMC2, pickedCC1, pickedCC2) {
-    MC1hexDisplay.innerHTML = `hex: ${pickedMC1}`;
-    MC2hexDisplay.innerHTML = `hex: ${pickedMC2}`;
-    CC1hexDisplay.innerHTML = `hex: ${pickedCC1}`;
-    CC2hexDisplay.innerHTML = `hex: ${pickedCC2}`;
-}
-
-function changeMC1 () {
-    console.log('function changeMC1 executed');
-    pickedMC1 = MC1pickerBtn.value;
-    console.log(`pickedMC1 = pickedMC1`);
-    updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
-    localStorage_MC1 ();
-}
-
-function changeMC2 () {
-    //console.log('function changeMC2 executed');
-    pickedMC2 = MC2pickerBtn.value;
-    //console.log(`pickedMC2 = ${pickedMC2}`);
-    updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
-    localStorage_MC2 ();
-}
-
-function changeCC1 () {
-    //console.log('function changeCC1 executed');
-    pickedCC1 = CC1pickerBtn.value;
-    //console.log(`pickedCC1 = ${pickedCC1}`);
-    updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
-    localStorage_CC1 ();
-}
-
-function changeCC2 () {
-    //console.log('function changeCC2 executed');
-    pickedCC2 = CC2pickerBtn.value;
-    //console.log(`pickedCC2 = ${pickedCC2}`);
-    updatePickedColors(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
-    localStorage_CC2 ();
-}
-
-function updatePickedColors (pickedMC1, pickedMC2, pickedCC1, pickedCC2) {
-    console.log('function updatePickedColors executed');
-    MC1pickerBtn.value = pickedMC1;
-    MC2pickerBtn.value = pickedMC2;
-    CC1pickerBtn.value = pickedCC1;
-    CC2pickerBtn.value = pickedCC2;
-    updateHEXcodeDisplay(pickedMC1, pickedMC2, pickedCC1, pickedCC2);
-    updateSVG_innerHTML();
-    cleanSVGandBoxes ();
-    /* pickSVG (); */
-}
-
-function pickSVG () {
-    console.log('FUNCTION pickSVG executed'); 
-    selectedMotif = motifPickerDropDown.value;
-    determinarSVGcharacteristics (selectedMotif);
-    viewBox = `0 0 ${svgOldWidth} ${svgOldHeight}`
-    calculateSVGWidth (svgWidth);
-    updateSVG_innerHTML();
-    drawSVG (selectedMotif);
-}
-
-function determinarSVGcharacteristics () {
-    console.log(`function determinarSVGcharacteristics executed`);
-    console.log(`selectedMotif: ${selectedMotif}`);
-    topBox_innerHTML = "";
-    leftBoxS_innerHTML = "";
-    leftBoxP_innerHTML = "";
-    rightBoxS_innerHTML = "";
-    rightBoxP_innerHTML = "";
-    bottomBoxS_innerHTML = "";
-    bottomBoxP_innerHTML = "";
-    switch (selectedMotif) {
-        case "motifDQ_CowlHat":
-            /* SVG: */
-            svgWidth = 800;
-            svgHeight = 800; 
-            selectedMotif_innerHTML = motifDQ_CowlHat_innerHTML;
-            break;
-        case "motifDQ_MittsA_SizeS":
-            /* SVG: */
-            svgWidth = 1000;
-            svgHeight = 800; 
-            selectedMotif_innerHTML = motifDQ_MittsA_SizeS_innerHTML;
-            break;
-        case "motifDQ_MittsB_SizeS":
-        /* SVG: */
-            svgWidth = 1000;
-            svgHeight = 800; 
-            selectedMotif_innerHTML = motifDQ_MittsB_SizeS_innerHTML;
-        break;
-        case "motifDQ_MittsA_SizeM":
-        /* SVG: */
-            svgWidth = 1200;
-            svgHeight = 800; 
-            selectedMotif_innerHTML = motifDQ_MittsA_SizeM_innerHTML;
-        break;
-        case "motifDQ_MittsB_SizeM":
-        /* SVG: */
-            svgWidth = 1200;
-            svgHeight = 800; 
-            selectedMotif_innerHTML = motifDQ_MittsB_SizeM_innerHTML;
-        break;
-        default:  
-            /* SVG: */
-            svgWidth = 800;
-            svgHeight = 800; 
-            selectedMotif_innerHTML = motifDQ_CowlHat_innerHTML;
-            /* numberOfColors = "4"; */
-        }
-    svgOldWidth = svgWidth;
-    svgOldHeight = svgHeight;
-}
-
-function calculateSVGWidth (svgWidth) {
-    console.log(`function -- calculateSVGWidth  executed`);
-    viewportWidth = window.innerWidth;
-    viewBox = `0 0 ${svgOldWidth} ${svgOldHeight}`
-    svgDivTotalWidth = Math.round(svgWidth* 0.9);
-
-    if (svgWidth >= 650) {
-        svgWidth = 650;
-        svgHeight = Math.round(svgOldHeight * svgWidth / svgOldWidth);
-        svgNewWidth = svgWidth;
-        svgNewHeight = Math.round(svgHeight * svgNewWidth / svgWidth);
-    }
-
-    if (svgDivTotalWidth >= viewportWidth || svgHeight > viewportHeight) {
-            svgNewWidth = Math.round(svgWidth * 0.9);
-            svgNewHeight = Math.round(svgHeight * 0.9);
-        if (svgDivTotalWidth >= viewportWidth) {
-            sumarWidth = viewportWidth - svgDivTotalWidth;
-            svgNewWidth = Math.round((svgDivTotalWidth + sumarWidth) * 0.8)
-            svgNewHeight = Math.round(svgHeight * svgNewWidth / svgWidth);
-        }
-        if (svgHeight > viewportHeight) {
-            svgNewHeight = Math.round(viewportHeight * 0.7)
-            svgNewWidth = Math.round(svgWidth * svgNewHeight / svgHeight);
-        }
-    } else if (svgDivTotalWidth < viewportWidth) {
-        if (viewportWidth < 800) {
-                console.log(`if => small viewportWidth (<800): ${viewportWidth}`)
-                svgNewWidth = Math.round(svgNewWidth * 0.90);
-        }
-            svgNewHeight = Math.round(svgHeight * svgNewWidth / svgWidth);
-    }
-    if (svgNewWidth > 650) {
-        svgWidth = svgNewWidth;
-        svgNewWidth = 650;
-        svgNewHeight = Math.round(svgHeight * svgNewWidth / svgWidth);
-    }
-}
-
-function drawSVG (selectedMotif) {
-    console.log('function drawSVG executed')
-    updateSVG_innerHTML();
-    SVGinDiv.innerHTML = 
-    `<svg id= "${selectedMotif}_svg" width="${svgNewWidth}" height="${svgNewHeight}" viewbox="${viewBox}"
+function drawSVG(selectedMotif) {
+  updateSVG_innerHTML();
+  SVGinDiv.innerHTML = `<svg id= "${selectedMotif}_svg" width="${svgNewWidth}" height="${svgNewHeight}" viewbox="${viewBox}"
     style="border:1px solid var(--color4); background-color:#ffffff"> 
     ${selectedMotif_innerHTML}
     </svg>`;
-    WovenMotifSVG.appendChild(SVGinDiv);
-    document.getElementById("svgChartDiv").focus();
-    console.log(SVGinDiv);
+  WovenMotifSVG.appendChild(SVGinDiv);
+  document.getElementById("svgChartDiv").focus();
 }
 
-function createSVGwithBoxes () {
-    console.log('-- function createSVGwithBoxes executed');
-    hideBtn (resetColorsDiv);
-    selectedMotif = motifPickerDropDown.value;
-    cleanSVGandBoxes ();
-    calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth);
-    drawSVGwithBoxes ();
-    resetColorsDiv.remove();
+function createSVGwithBoxes() {
+  hideBtn(resetColorsDiv);
+  selectedMotif = motifPickerDropDown.value;
+  cleanSVGandBoxes();
+  calculateTotalWidth(leftBoxWidth, rightBoxWidth, svgWidth);
+  drawSVGwithBoxes();
+  resetColorsDiv.remove();
 }
 
-function calculateTotalWidth (leftBoxWidth, rightBoxWidth, svgWidth) {
-    console.log(`function calculateTotalWidth executed`);
-    /* // checkpoing:
-    if (svgNewWidth == (svgNewHeight * svgWidth / svgHeight)) {
-        checkpoint = 'yes';
-        console.log(checkpoint);
-    } else {
-        checkpoint = 'no'
-        console.log(` ${checkpoint} / first checkpoint
-            svgWidth: ${svgWidth}    -- >     svgHeight: ${svgHeight}
-            svgNewWidth: ${svgNewWidth} -->    svgNewHeight: ${svgNewHeight}
-            svgNewWidth should be: ${Math.round(svgNewHeight * svgWidth / svgHeight)} (not ${svgNewWidth})
-            or svgNewHeight should be: ${Math.round(svgNewWidth * svgHeight / svgWidth)} (not ${svgNewHeight})
-            `)
+function calculateTotalWidth(leftBoxWidth, rightBoxWidth, svgWidth) {
+  viewportWidth = window.innerWidth;
+  if (svgWidth > svgNewWidth) {
+    svgWidth = svgNewWidth;
+    svgHeight = svgNewHeight;
+    svgNewWidth = Math.round(svgNewWidth * 0.7);
+    svgNewHeight = Math.round((svgNewWidth * svgHeight) / svgWidth);
+  }
+  if (svgNewWidth > viewportWidth * 0.9 || viewportWidth < 500) {
+    svgNewWidth = Math.round(svgNewWidth * 0.7);
+    svgNewHeight = Math.round(svgNewHeight * 0.7);
+  }
+  viewBox = `0 0 ${svgOldWidth} ${svgOldHeight}`;
+  topBoxWidth = svgWidth;
+  leftBoxHeight = svgHeight;
+  rightBoxHeight = svgHeight;
+
+  svgDivTotalWidth = leftBoxWidth + svgWidth + rightBoxWidth;
+  svgDivTotalWidth = Math.round(svgDivTotalWidth * 0.9);
+
+  if (svgDivTotalWidth <= viewportWidth || svgHeight > viewportHeight) {
+    svgNewWidth = svgWidth;
+    svgNewHeight = svgHeight;
+    if (svgHeight > viewportHeight) {
+      svgNewHeight = viewportHeight - (svgHeight - viewportHeight);
+      svgNewWidth = Math.round((svgNewHeight * svgWidth) / svgHeight);
     }
-    // end checkpoint. */
-
-    viewportWidth = window.innerWidth;
-    if (svgWidth > svgNewWidth) {
-        console.log(`if (svgWidth > svgNewWidth)`);
-        svgWidth = svgNewWidth;
-        svgHeight = svgNewHeight;
-        svgNewWidth = Math.round(svgNewWidth * 0.7);
-        svgNewHeight = Math.round(svgNewWidth * svgHeight / svgWidth);
-        /* // checkpoing:
-        if (svgNewWidth == (svgNewHeight * svgWidth / svgHeight)) {
-            checkpoint = 'yes';
-            console.log(checkpoint);
-        } else {
-            checkpoint = 'no'
-            console.log(` ${checkpoint} / if checkpoint
-                svgWidth: ${svgWidth}    -- >     svgHeight: ${svgHeight}
-                svgNewWidth: ${svgNewWidth} -->    svgNewHeight: ${svgNewHeight}
-                svgNewWidth should be: ${Math.round(svgNewHeight * svgWidth / svgHeight)} (not ${svgNewWidth})
-                or svgNewHeight should be: ${Math.round(svgNewWidth * svgHeight / svgWidth)} (not ${svgNewHeight})
-                `)
-        }
-        // end checkpoint. */
-    } 
-    if ((svgNewWidth > (viewportWidth * 0.9)) || (viewportWidth < 500)) {
-        console.log(`if ((svgNewWidth > (viewportWidth * 0.9)) || (viewportWidth < 500))`)
-        svgNewWidth = Math.round(svgNewWidth * 0.7);
-        svgNewHeight = Math.round(svgNewHeight * 0.7);
+  } else if (svgDivTotalWidth >= viewportWidth) {
+    restarWidth = svgDivTotalWidth - viewportWidth;
+    svgNewWidth =
+      svgDivTotalWidth -
+      (svgDivTotalWidth - viewportWidth) -
+      leftBoxWidth -
+      rightBoxWidth;
+    svgNewWidth = Math.round(svgNewWidth * 0.9);
+    if (viewportWidth < 600) {
+      svgNewWidth = Math.round(svgNewWidth * 0.98);
+      svgNewHeight = Math.round(svgNewHeight * 0.98);
     }
-    viewBox = `0 0 ${svgOldWidth} ${svgOldHeight}`
-    topBoxWidth = svgWidth;
-    leftBoxHeight = svgHeight;
-    rightBoxHeight = svgHeight;
-
-    svgDivTotalWidth = leftBoxWidth + svgWidth + rightBoxWidth;
-    svgDivTotalWidth = Math.round(svgDivTotalWidth * 0.9);
-
-    /* // checkpoing:
-    if (svgNewWidth == (svgNewHeight * svgWidth / svgHeight)) {
-        checkpoint = 'yes';
-        console.log(checkpoint);
-    } else {
-        checkpoint = 'no'
-        console.log(` ${checkpoint} / middle checkpoint
-            svgWidth: ${svgWidth}    -- >     svgHeight: ${svgHeight}
-            svgNewWidth: ${svgNewWidth} -->    svgNewHeight: ${svgNewHeight}
-            svgNewWidth should be: ${Math.round(svgNewHeight * svgWidth / svgHeight)} (not ${svgNewWidth})
-            or svgNewHeight should be: ${Math.round(svgNewWidth * svgHeight / svgWidth)} (not ${svgNewHeight})
-            `)
-    }
-    // end checkpoint. */
-
-    if (svgDivTotalWidth <= viewportWidth || svgHeight > viewportHeight) {
-        console.log(`if (svgDivTotalWidth <= viewportWidth || svgHeight > viewportHeight)`)
-        svgNewWidth = svgWidth;
-        svgNewHeight = svgHeight;
-        if (svgHeight > viewportHeight) {
-                console.log(`=> if svgHeight > viewportHeight`);
-                svgNewHeight = viewportHeight - (svgHeight - viewportHeight);
-                svgNewWidth = Math.round(svgNewHeight * svgWidth / svgHeight);
-            }
-    } else if (svgDivTotalWidth >= viewportWidth) {
-        console.log(`else if (svgDivTotalWidth >= viewportWidth)`)
-        restarWidth = svgDivTotalWidth - viewportWidth;
-        svgNewWidth = svgDivTotalWidth - (svgDivTotalWidth - viewportWidth) - leftBoxWidth - rightBoxWidth; 
-        svgNewWidth = Math.round(svgNewWidth * 0.90);
-        if (viewportWidth < 600) {
-            console.log(`-- small viewportWidth: ${viewportWidth}`)
-            svgNewWidth = Math.round(svgNewWidth * 0.98);
-            svgNewHeight = Math.round(svgNewHeight * 0.98);  
-        }
-                console.log('---')
-        svgNewHeight = Math.round(svgNewWidth * svgHeight / svgWidth);        
-    }
-        svgWidth = svgNewWidth;
-        svgHeight = svgNewHeight;
-        if (leftBoxWidth == 0) {
-            leftBoxHeight = 0;
-        } else {
-        leftBoxHeight = svgNewHeight;
-        }
-    if (svgNewWidth > 700) {
-        console.log(`if (svgNewWidth > 700)`);
-        svgWidth = svgNewWidth;
-        svgNewWidth = 700;
-        svgHeight = svgNewHeight;
-        svgNewHeight = Math.round(svgNewWidth * svgHeight / svgWidth);  
-    }
-    topBoxWidth = Math.round(viewportWidth * 0.9);
-    rightBoxHeight = svgNewHeight; 
-    bottomBoxSWidth = svgNewWidth;
-    bottomBoxPWidth = Math.round(viewportWidth * 0.9);
-    bottomBoxSHeight = Math.round(bottomBoxSWidth * 0.05);
-    svgNewWidth = Math.round(svgNewHeight * svgOldWidth / svgOldHeight);
-    svgNewHeight = Math.round(svgNewWidth * svgOldHeight / svgOldWidth);  
-}
-
-function drawSVGwithBoxes () {
-    console.log('function drawSVGwithBoxes executed / selectedMotif: ' + selectedMotif )
-    selectedMotif = motifPickerDropDown.value;
-    createBoxes ();
-    document.getElementById("svgChartDiv").focus();
-    console.log(topBox);
-    console.log(leftBox);
-    console.log(document.querySelector(`#${selectedMotif}_svg`));
-    console.log(rightBox);
-    console.log(bottomBoxS);
-    console.log(bottomBoxP);
-}
-
-function createBoxes () {
-    console.log('function createBoxes executed');
-    /* give_innerHTMLtoBoxes (); */
-    createTopBox ();
-    createLeftBox ();
-    createSVG ();
-    createRightBox ();
-    createBottomBox (selectedMotif);
-}
-
-/* function give_innerHTMLtoBoxes () {
-    console.log('function give_innerHTMLtoBoxes executed');
-} */
-
-function createTopBox() { 
-    console.log('- function createTopBox executed');
-    let topBox = document.createElement('div')
-    topBox.setAttribute('id', 'topBox');
-    boxesANDsvg.prepend(topBox);
-
-    switch (selectedMotif) {
-        case "motifDQ_CowlHat":
-            /* TOP: */
-            topBox_innerHTML = "Cowl or Hat";
-            break;
-        case "motifDQ_MittsA_SizeS":
-            /* TOP: */
-            topBox_innerHTML = "Fingerless Mitt A: Size S & L";
-            break;
-        case "motifDQ_MittsB_SizeS":
-            /* TOP: */
-            topBox_innerHTML = "Fingerless Mitt B: Size S & L";
-            break;
-        case "motifDQ_MittsA_SizeM":
-            /* TOP: */
-            topBox_innerHTML = "Fingerless Mitt A: Size M";
-            break;
-        case "motifDQ_MittsB_SizeM":
-            /* TOP: */
-            topBox_innerHTML = "Fingerless Mitt S: Size M";
-            break;
-        default:  
-            /* TOP: */
-            topBox_innerHTML = "";
-            break;
-    }
-    topBox.innerHTML = 
-    `<p id= "${topBox.id}_p" class="boxes_p"> ${topBox_innerHTML}  </p>`;
-    topBox.style.width = `${topBoxWidth}px`;
-    topBox.style.padding = `0`;    
-}
-
-function createLeftBox () {
-    console.log('- function createLeftBox executed');
-    let leftBox = document.createElement('div')
-    leftBox.setAttribute('id', 'leftBox');
-    leftBox.classList.add('lateralBoxes');
-    leftBox.classList.add('left-side');
-    WovenMotifSVG.appendChild(leftBox);
-
-    leftBoxWidth = (viewportWidth - svgNewWidth) / 2;
-    leftBoxWidth = Math.round(leftBoxWidth * 0.9);
+    svgNewHeight = Math.round((svgNewWidth * svgHeight) / svgWidth);
+  }
+  svgWidth = svgNewWidth;
+  svgHeight = svgNewHeight;
+  if (leftBoxWidth == 0) {
+    leftBoxHeight = 0;
+  } else {
     leftBoxHeight = svgNewHeight;
-    leftBox.style.height = `${leftBoxHeight}px`;
-    leftBox.style.width = `${(leftBoxWidth)}px`;
+  }
+  if (svgNewWidth > 700) {
+    svgWidth = svgNewWidth;
+    svgNewWidth = 700;
+    svgHeight = svgNewHeight;
+    svgNewHeight = Math.round((svgNewWidth * svgHeight) / svgWidth);
+  }
+  topBoxWidth = Math.round(viewportWidth * 0.9);
+  rightBoxHeight = svgNewHeight;
+  bottomBoxSWidth = svgNewWidth;
+  bottomBoxPWidth = Math.round(viewportWidth * 0.9);
+  bottomBoxSHeight = Math.round(bottomBoxSWidth * 0.05);
+  svgNewWidth = Math.round((svgNewHeight * svgOldWidth) / svgOldHeight);
+  svgNewHeight = Math.round((svgNewWidth * svgOldHeight) / svgOldWidth);
+}
 
+function drawSVGwithBoxes() {
+  selectedMotif = motifPickerDropDown.value;
+  createBoxes();
+  document.getElementById("svgChartDiv").focus();
+}
 
-    /* LEFT:  */ 
-    let firstY;
-    let secondY;
-    let thirdY;
-    leftBoxHeight = svgNewHeight;
-    leftBoxSHeight = leftBoxHeight;
-    let heightOfEachSEction
-    if (svgNewWidth <= 200) {
-        leftBoxSWidth = 15;
-    } else if (svgNewWidth < 400) {
-        leftBoxSWidth = 20;
-    } else {
-        leftBoxSWidth = 25;
-    }
-    let x1 = leftBoxWidth * 0.99
-    let x2 = leftBoxWidth - x1
-    leftBoxSViewBox = `0 0 ${leftBoxSWidth} ${leftBoxSHeight}`
-    
-    heightOfEachSEction = leftBoxSHeight / 8;
-    firstY = heightOfEachSEction * 2;
-    secondY = heightOfEachSEction * 4;
-    thirdY = heightOfEachSEction * 6;
+function createBoxes() {
+  createTopBox();
+  createLeftBox();
+  createSVG();
+  createRightBox();
+  createBottomBox(selectedMotif);
+}
 
-    let leftBoxP = document.createElement('div')
-    leftBoxP.setAttribute('id', 'leftBoxP');
-    leftBoxP.classList.add('lateralBoxes');
-    leftBoxP.classList.add('left-side');
-    leftBoxP.classList.add('rotateElement');
-        leftBox.appendChild(leftBoxP);
+function createTopBox() {
+  let topBox = document.createElement("div");
+  topBox.setAttribute("id", "topBox");
+  boxesANDsvg.prepend(topBox);
 
-    let leftBoxMiniP = document.createElement('div')
-    leftBoxMiniP.setAttribute('id', 'leftBoxMiniP');
-    leftBoxMiniP.classList.add('MiniP_container');
-        leftBox.appendChild(leftBoxMiniP);
+  switch (selectedMotif) {
+          /* TOP: */
+    case "motifDQ_CowlHat":
+      topBox_innerHTML = "Cowl or Hat";
+      break;
+    case "motifDQ_MittsA_SizeS":
+      topBox_innerHTML = "Fingerless Mitt A: Size S & L";
+      break;
+    case "motifDQ_MittsB_SizeS":
+      topBox_innerHTML = "Fingerless Mitt B: Size S & L";
+      break;
+    case "motifDQ_MittsA_SizeM":
+      topBox_innerHTML = "Fingerless Mitt A: Size M";
+      break;
+    case "motifDQ_MittsB_SizeM":
+      topBox_innerHTML = "Fingerless Mitt S: Size M";
+      break;
+    default:
+      topBox_innerHTML = "";
+      break;
+  }
+  topBox.innerHTML = `<p id= "${topBox.id}_p" class="boxes_p"> ${topBox_innerHTML}  </p>`;
+  topBox.style.width = `${topBoxWidth}px`;
+  topBox.style.padding = `0`;
+}
 
-        leftBoxMini_p1 = "leftBoxMini_p1";
-        leftBoxMini_p2 = "leftBoxMini_p2";
-        leftBoxMini_p3 = "leftBoxMini_p3";
-        leftBoxMini_p4 = "leftBoxMini_p4";
+function createLeftBox() {
+  let leftBox = document.createElement("div");
+  leftBox.setAttribute("id", "leftBox");
+  leftBox.classList.add("lateralBoxes");
+  leftBox.classList.add("left-side");
+  WovenMotifSVG.appendChild(leftBox);
 
-        let side = "left";
+  leftBoxWidth = (viewportWidth - svgNewWidth) / 2;
+  leftBoxWidth = Math.round(leftBoxWidth * 0.9);
+  leftBoxHeight = svgNewHeight;
+  leftBox.style.height = `${leftBoxHeight}px`;
+  leftBox.style.width = `${leftBoxWidth}px`;
 
-    createMini_p(leftBoxMini_p1, leftBoxMiniP, "0", firstY, side, "4");
-    createMini_p(leftBoxMini_p2, leftBoxMiniP, firstY, secondY, side, "3");
-    createMini_p(leftBoxMini_p3, leftBoxMiniP, secondY, thirdY, side, "2");
-    createMini_p(leftBoxMini_p4, leftBoxMiniP, thirdY, leftBoxHeight, side, "1");
+  /* LEFT:  */
+  let firstY;
+  let secondY;
+  let thirdY;
+  leftBoxHeight = svgNewHeight;
+  leftBoxSHeight = leftBoxHeight;
+  let heightOfEachSEction;
+  if (svgNewWidth <= 200) {
+    leftBoxSWidth = 15;
+  } else if (svgNewWidth < 400) {
+    leftBoxSWidth = 20;
+  } else {
+    leftBoxSWidth = 25;
+  }
+  let x1 = leftBoxWidth * 0.99;
+  let x2 = leftBoxWidth - x1;
+  leftBoxSViewBox = `0 0 ${leftBoxSWidth} ${leftBoxSHeight}`;
 
-    let leftBoxS = document.createElement('div')
-    leftBoxS.setAttribute('id', 'leftBoxS');
-    leftBoxS.classList.add('lateralBoxes');
-    leftBoxS.classList.add('left-side');
-        leftBox.appendChild(leftBoxS);
-    
-    let initialSVG = `<svg 
+  heightOfEachSEction = leftBoxSHeight / 8;
+  firstY = heightOfEachSEction * 2;
+  secondY = heightOfEachSEction * 4;
+  thirdY = heightOfEachSEction * 6;
+
+  let leftBoxP = document.createElement("div");
+  leftBoxP.setAttribute("id", "leftBoxP");
+  leftBoxP.classList.add("lateralBoxes");
+  leftBoxP.classList.add("left-side");
+  leftBoxP.classList.add("rotateElement");
+  leftBox.appendChild(leftBoxP);
+
+  let leftBoxMiniP = document.createElement("div");
+  leftBoxMiniP.setAttribute("id", "leftBoxMiniP");
+  leftBoxMiniP.classList.add("MiniP_container");
+  leftBox.appendChild(leftBoxMiniP);
+
+  leftBoxMini_p1 = "leftBoxMini_p1";
+  leftBoxMini_p2 = "leftBoxMini_p2";
+  leftBoxMini_p3 = "leftBoxMini_p3";
+  leftBoxMini_p4 = "leftBoxMini_p4";
+
+  let side = "left";
+
+  createMini_p(leftBoxMini_p1, leftBoxMiniP, "0", firstY, side, "4");
+  createMini_p(leftBoxMini_p2, leftBoxMiniP, firstY, secondY, side, "3");
+  createMini_p(leftBoxMini_p3, leftBoxMiniP, secondY, thirdY, side, "2");
+  createMini_p(leftBoxMini_p4, leftBoxMiniP, thirdY, leftBoxHeight, side, "1");
+
+  let leftBoxS = document.createElement("div");
+  leftBoxS.setAttribute("id", "leftBoxS");
+  leftBoxS.classList.add("lateralBoxes");
+  leftBoxS.classList.add("left-side");
+  leftBox.appendChild(leftBoxS);
+
+  let initialSVG = `<svg 
             id= "leftBoxS_svg" class= leftBoxS_svg
             width="${leftBoxSWidth}" 
             height="${leftBoxSHeight}" 
             viewbox="${leftBoxSViewBox}"
-            style="background-color:#ffffff"> `
-    let leftBoxSlines_innerHTML = `
+            style="background-color:#ffffff"> `;
+  let leftBoxSlines_innerHTML = `
                 <line x1="${x1}" y1="2" x2="${x2}" y2="2" stroke="black" stroke-width="2" />
                 <line x1="${x1}" y1="${firstY}" x2="${x2}" y2="${firstY}" stroke="black" stroke-width="2" />
                 <line x1="${x1}" y1="${secondY}" x2="${x2}" y2="${secondY}" stroke="black" stroke-width="2" />
                 <line x1="${x1}" y1="${thirdY}" x2="${x2}" y2="${thirdY}" stroke="black" stroke-width="2" />
                 <line x1="${x1}" y1="${leftBoxHeight - 2}" x2="${x2}" y2="${leftBoxHeight - 2}" stroke="black" stroke-width="2" />
-                </svg>
-                `
-
-    switch (selectedMotif) {
-        case "motifDQ_CowlHat":
-            /* LEFT: */
-            break;
-        case "motifDQ_MittsA_SizeS":
-            /* LEFT: */
-            leftBoxP_innerHTML = "Edge 2";
-            leftBoxS.innerHTML = 
-            `${initialSVG}
+                </svg>    
+                            `;
+  /* LEFT: */
+  switch (selectedMotif) {
+    case "motifDQ_CowlHat":
+      break;
+    case "motifDQ_MittsA_SizeS":
+      leftBoxP_innerHTML = "Edge 2";
+      leftBoxS.innerHTML = `${initialSVG}
                 ${leftBoxSlines_innerHTML}
             </svg>`;
-            break;
-        case "motifDQ_MittsB_SizeS":
-            /* LEFT: */
-            leftBoxP_innerHTML = "Edge 2";
-            leftBoxS.innerHTML = 
-            `${initialSVG}
+      break;
+    case "motifDQ_MittsB_SizeS":
+      leftBoxP_innerHTML = "Edge 2";
+      leftBoxS.innerHTML = `${initialSVG}
                 ${leftBoxSlines_innerHTML}
             </svg>`;
-            break;
-        case "motifDQ_MittsA_SizeM":
-            /* LEFT: */
-            leftBoxP_innerHTML = "Edge 2";
-            leftBoxS.innerHTML = 
-            `${initialSVG}
+      break;
+    case "motifDQ_MittsA_SizeM":
+      leftBoxP_innerHTML = "Edge 2";
+      leftBoxS.innerHTML = `${initialSVG}
                 ${leftBoxSlines_innerHTML}
             </svg>`;
-            break;
-        case "motifDQ_MittsB_SizeM":
-            /* LEFT: */
-            leftBoxP_innerHTML = "Edge 2";
-            leftBoxS.innerHTML = 
-            `${initialSVG}
+      break;
+    case "motifDQ_MittsB_SizeM":
+      leftBoxP_innerHTML = "Edge 2";
+      leftBoxS.innerHTML = `${initialSVG}
                 ${leftBoxSlines_innerHTML}
             </svg>`;
-            break;
-        default: 
-            /* LEFT: */
-            leftBoxP_innerHTML = "Edge 2";
-            leftBoxS.innerHTML = 
-            `${initialSVG}
+      break;
+    default:
+      leftBoxP_innerHTML = "Edge 2";
+      leftBoxS.innerHTML = `${initialSVG}
                 ${leftBoxSlines_innerHTML}
             </svg>`;
-            break;
-    }
-    leftBoxP.innerHTML = `<p id=leftBox_p class="orientation lateralBox_p">${leftBoxP_innerHTML} </p>`
-
+      break;
+  }
+  leftBoxP.innerHTML = `<p id=leftBox_p class="orientation lateralBox_p">${leftBoxP_innerHTML} </p>`;
 }
 
-function createRightBox () { 
-    console.log('- function createRightBox executed');
-    let rightBox = document.createElement('div')
-    rightBox.setAttribute('id', 'rightBox');
-    rightBox.classList.add('lateralBoxes');
-    rightBox.classList.add('right-side');
-        WovenMotifSVG.appendChild(rightBox);
+function createRightBox() {
+  console.log("- function createRightBox executed");
+  let rightBox = document.createElement("div");
+  rightBox.setAttribute("id", "rightBox");
+  rightBox.classList.add("lateralBoxes");
+  rightBox.classList.add("right-side");
+  WovenMotifSVG.appendChild(rightBox);
 
-    rightBoxWidth = (viewportWidth - svgNewWidth) / 2;
-    rightBoxWidth = Math.round(rightBoxWidth * 0.9);
-    rightBoxHeight = svgNewHeight;
-    rightBox.style.height = `${rightBoxHeight}px`;
-    rightBox.style.width = `${(rightBoxWidth)}px`;
+  rightBoxWidth = (viewportWidth - svgNewWidth) / 2;
+  rightBoxWidth = Math.round(rightBoxWidth * 0.9);
+  rightBoxHeight = svgNewHeight;
+  rightBox.style.height = `${rightBoxHeight}px`;
+  rightBox.style.width = `${rightBoxWidth}px`;
 
-    /* RIGHT:  */ 
-    let firstY;
-    let secondY;
-    let thirdY;
-    rightBoxHeight = svgNewHeight;
-    rightBoxSHeight = rightBoxHeight;
-    let heightOfEachSEction
-    if (svgNewWidth <= 200) {
-        rightBoxSWidth = 15;
-    } else if (svgNewWidth < 400) {
-        rightBoxSWidth = 20;
-    } else {
-        rightBoxSWidth = 25;
-    }
-    let x1 = rightBoxWidth * 0.99
-    let x2 = rightBoxWidth - x1
-    rightBoxSViewBox = `0 0 ${rightBoxSWidth} ${rightBoxSHeight}`
-    
-    heightOfEachSEction = rightBoxSHeight / 8;
-    firstY = heightOfEachSEction * 2;
-    secondY = heightOfEachSEction * 4;
-    thirdY = heightOfEachSEction * 6;
+  /* RIGHT:  */
+  let firstY;
+  let secondY;
+  let thirdY;
+  rightBoxHeight = svgNewHeight;
+  rightBoxSHeight = rightBoxHeight;
+  let heightOfEachSEction;
+  if (svgNewWidth <= 200) {
+    rightBoxSWidth = 15;
+  } else if (svgNewWidth < 400) {
+    rightBoxSWidth = 20;
+  } else {
+    rightBoxSWidth = 25;
+  }
+  let x1 = rightBoxWidth * 0.99;
+  let x2 = rightBoxWidth - x1;
+  rightBoxSViewBox = `0 0 ${rightBoxSWidth} ${rightBoxSHeight}`;
 
-    let rightBoxS = document.createElement('div')
-    rightBoxS.setAttribute('id', 'rightBoxS');
-    rightBoxS.classList.add('lateralBoxes');
-    rightBoxS.classList.add('right-side');
-        rightBox.appendChild(rightBoxS);
+  heightOfEachSEction = rightBoxSHeight / 8;
+  firstY = heightOfEachSEction * 2;
+  secondY = heightOfEachSEction * 4;
+  thirdY = heightOfEachSEction * 6;
 
-    let rightBoxMiniP = document.createElement('div')
-    rightBoxMiniP.setAttribute('id', 'rightBoxMiniP');
-    rightBoxMiniP.classList.add('MiniP_container');
-        rightBox.appendChild(rightBoxMiniP);
+  let rightBoxS = document.createElement("div");
+  rightBoxS.setAttribute("id", "rightBoxS");
+  rightBoxS.classList.add("lateralBoxes");
+  rightBoxS.classList.add("right-side");
+  rightBox.appendChild(rightBoxS);
 
-        let side = "right"
+  let rightBoxMiniP = document.createElement("div");
+  rightBoxMiniP.setAttribute("id", "rightBoxMiniP");
+  rightBoxMiniP.classList.add("MiniP_container");
+  rightBox.appendChild(rightBoxMiniP);
 
-    createMini_p(rightBoxMini_p1, rightBoxMiniP, "0", firstY, side, "4");
-    createMini_p(rightBoxMini_p2, rightBoxMiniP, firstY, secondY, side, "3");
-    createMini_p(rightBoxMini_p3, rightBoxMiniP, secondY, thirdY, side, "2");
-    createMini_p(rightBoxMini_p4, rightBoxMiniP, thirdY, rightBoxHeight, side, "1");
+  let side = "right";
 
+  createMini_p(rightBoxMini_p1, rightBoxMiniP, "0", firstY, side, "4");
+  createMini_p(rightBoxMini_p2, rightBoxMiniP, firstY, secondY, side, "3");
+  createMini_p(rightBoxMini_p3, rightBoxMiniP, secondY, thirdY, side, "2");
+  createMini_p(
+    rightBoxMini_p4,
+    rightBoxMiniP,
+    thirdY,
+    rightBoxHeight,
+    side,
+    "1",
+  );
 
-    let rightBoxP = document.createElement('div')
-    rightBoxP.setAttribute('id', 'rightBoxP');
-    rightBoxP.classList.add('lateralBoxes');
-    rightBoxP.classList.add('right-side');
-    rightBoxP.classList.add('rotateElement');
-        rightBox.appendChild(rightBoxP);
+  let rightBoxP = document.createElement("div");
+  rightBoxP.setAttribute("id", "rightBoxP");
+  rightBoxP.classList.add("lateralBoxes");
+  rightBoxP.classList.add("right-side");
+  rightBoxP.classList.add("rotateElement");
+  rightBox.appendChild(rightBoxP);
 
-    
-
-    let initialSVG = `<svg 
+  let initialSVG = `<svg 
             id= "rightBoxS_svg" class= rightBoxS_svg
             width="${rightBoxSWidth}" 
             height="${rightBoxSHeight}" 
             viewbox="${rightBoxSViewBox}"
-            style="background-color:#ffffff"> `
-    let rightBoxSlines_innerHTML = `
+            style="background-color:#ffffff"> `;
+  let rightBoxSlines_innerHTML = `
                 <line x1="${x1}" y1="2" x2="${x2}" y2="2" stroke="black" stroke-width="2" />
                 <line x1="${x1}" y1="${firstY}" x2="${x2}" y2="${firstY}" stroke="black" stroke-width="2" />
                 <line x1="${x1}" y1="${secondY}" x2="${x2}" y2="${secondY}" stroke="black" stroke-width="2" />
                 <line x1="${x1}" y1="${thirdY}" x2="${x2}" y2="${thirdY}" stroke="black" stroke-width="2" />
                 <line x1="${x1}" y1="${rightBoxHeight - 2}" x2="${x2}" y2="${rightBoxHeight - 2}" stroke="black" stroke-width="2" />
                 </svg>
-                `
-   
-    switch (selectedMotif) {
-        case "motifDQ_CowlHat":
-             /* RIGHT:  */
-            rightBoxP_innerHTML = "";
-            break;
-        case "motifDQ_MittsA_SizeS":
-            //* RIGHT:  */
-            rightBoxP_innerHTML = "Edge 1";
-            rightBoxS.innerHTML = 
-            `${initialSVG}
-                ${rightBoxSlines_innerHTML}
-            </svg>`;
+                `;
 
-            break;
-        case "motifDQ_MittsB_SizeS":
-             /* RIGHT:  */
-            rightBoxP_innerHTML = "Edge 1";
-            rightBoxS.innerHTML = 
-            `${initialSVG}
+  switch (selectedMotif) {
+          /* RIGHT:  */
+    case "motifDQ_CowlHat":
+      rightBoxP_innerHTML = "";
+      break;
+    case "motifDQ_MittsA_SizeS":
+      rightBoxP_innerHTML = "Edge 1";
+      rightBoxS.innerHTML = `${initialSVG}
                 ${rightBoxSlines_innerHTML}
             </svg>`;
-            break;
-        case "motifDQ_MittsA_SizeM":
-             /* RIGHT:  */
-            rightBoxP_innerHTML = "Edge 1";
-            rightBoxS.innerHTML = 
-            `${initialSVG}
+      break;
+    case "motifDQ_MittsB_SizeS":
+      rightBoxP_innerHTML = "Edge 1";
+      rightBoxS.innerHTML = `${initialSVG}
                 ${rightBoxSlines_innerHTML}
             </svg>`;
-            break;
-        case "motifDQ_MittsB_SizeM":
-             /* RIGHT:  */
-            rightBoxP_innerHTML = "Edge 1";
-            rightBoxS.innerHTML = 
-            `${initialSVG}
+      break;
+    case "motifDQ_MittsA_SizeM":
+      rightBoxP_innerHTML = "Edge 1";
+      rightBoxS.innerHTML = `${initialSVG}
                 ${rightBoxSlines_innerHTML}
             </svg>`;
-            break;
-        default:  
-             /* RIGHT:  */
-            rightBoxP_innerHTML = "Edge 1"
-            rightBoxS.innerHTML = 
-            `${initialSVG}
+      break;
+    case "motifDQ_MittsB_SizeM":
+      rightBoxP_innerHTML = "Edge 1";
+      rightBoxS.innerHTML = `${initialSVG}
                 ${rightBoxSlines_innerHTML}
             </svg>`;
-            break;
-    }
+      break;
+    default:
+      rightBoxP_innerHTML = "Edge 1";
+      rightBoxS.innerHTML = `${initialSVG}
+                ${rightBoxSlines_innerHTML}
+            </svg>`;
+      break;
+  }
 
-    rightBoxP.innerHTML = `<p id=rightBox_p class="orientation lateralBox_p">${rightBoxP_innerHTML}`
+  rightBoxP.innerHTML = `<p id=rightBox_p class="orientation lateralBox_p">${rightBoxP_innerHTML}`;
 }
 
-function createMini_p (boxID, container, Height1, Height2, side, n) {
-    console.log('function createMini_p executed')
-    console.log(`boxID: ${boxID}`)
-    let px = document.createElement('div')       
-    px.setAttribute('id', `${boxID}`)
-    px.classList.add('mini_p');
-    px.classList.add('rotateElement');
+function createMini_p(boxID, container, Height1, Height2, side, n) {
+  let px = document.createElement("div");
+  px.setAttribute("id", `${boxID}`);
+  px.classList.add("mini_p");
+  px.classList.add("rotateElement");
 
-    switch (selectedMotif) {
-        case "motifDQ_CowlHat":
-            leftBoxMini_p1_HTML = "";
-            leftBoxMini_p2_HTML = "";
-            leftBoxMini_p3_HTML = "";
-            leftBoxMini_p4_HTML = "";
-            rightBoxMini_p1_HTML = "";
-            rightBoxMini_p2_HTML = "";
-            rightBoxMini_p3_HTML = "";
-            rightBoxMini_p4_HTML = "";
-            break;
-        case "motifDQ_MittsA_SizeS":
-            leftBoxMini_p1_HTML = "Odd Repeat: Colour changes to CC1";
-            leftBoxMini_p2_HTML = "Even Repeat: Colour changes to MC1";
-            leftBoxMini_p3_HTML = "Odd Repeat: Colour changes to CC1";
-            leftBoxMini_p4_HTML = "Even Repeat: Colour changes to MC1";
-            rightBoxMini_p1_HTML = "Odd Repeat: Colour changes to CC2";
-            rightBoxMini_p2_HTML = "Even Repeat: Colour changes to MC2";
-            rightBoxMini_p3_HTML = "Odd Repeat: Colour changes to CC2";
-            rightBoxMini_p4_HTML = "Even Repeat: Colour changes to MC2";
-            break;
-        case "motifDQ_MittsB_SizeS":
-            leftBoxMini_p1_HTML = "Odd Repeat: Colour changes to CC2";
-            leftBoxMini_p2_HTML = "Even Repeat: Colour changes to MC2";
-            leftBoxMini_p3_HTML = "Odd Repeat: Colour changes to CC2";
-            leftBoxMini_p4_HTML = "Even Repeat: Colour changes to MC2";
-            rightBoxMini_p1_HTML = "Odd Repeat: Colour changes to CC1";
-            rightBoxMini_p2_HTML = "Even Repeat: Colour changes to MC1";
-            rightBoxMini_p3_HTML = "Odd Repeat: Colour changes to CC1";
-            rightBoxMini_p4_HTML = "Even Repeat: Colour changes to MC1";
-            break;
-        case "motifDQ_MittsA_SizeM":
-            leftBoxMini_p1_HTML = "Odd Repeat: Colour changes to MC1";
-            leftBoxMini_p2_HTML = "Even Repeat: Colour changes to CC1";
-            leftBoxMini_p3_HTML = "Odd Repeat: Colour changes to MC1";
-            leftBoxMini_p4_HTML = "Even Repeat: Colour changes to CC1";
-            rightBoxMini_p1_HTML = "Odd Repeat: Colour changes to CC2";
-            rightBoxMini_p2_HTML = "Even Repeat: Colour changes to MC2";
-            rightBoxMini_p3_HTML = "Odd Repeat: Colour changes to CC2";
-            rightBoxMini_p4_HTML = "Even Repeat: Colour changes to MC2";
-            break;
-        case "motifDQ_MittsB_SizeM":
-            leftBoxMini_p1_HTML = "Odd Repeat: Colour changes to CC2";
-            leftBoxMini_p2_HTML = "Even Repeat: Colour changes to MC2";
-            leftBoxMini_p3_HTML = "Odd Repeat: Colour changes to CC2";
-            leftBoxMini_p4_HTML = "Even Repeat: Colour changes to MC2";
-            rightBoxMini_p1_HTML = "Odd Repeat: Colour changes to MC1";
-            rightBoxMini_p2_HTML = "Even Repeat: Colour changes to CC1";
-            rightBoxMini_p3_HTML = "Odd Repeat: Colour changes to MC1";
-            rightBoxMini_p4_HTML = "Even Repeat: Colour changes to CC1";
-            break;
-        default: 
-            leftBoxMini_p1_HTML = "1";
-            leftBoxMini_p2_HTML = "2";
-            leftBoxMini_p3_HTML = "3";
-            leftBoxMini_p4_HTML = "4";
-            rightBoxMini_p1_HTML = "1";
-            rightBoxMini_p2_HTML = "2";
-            rightBoxMini_p3_HTML = "3";
-            rightBoxMini_p4_HTML = "4";
-            break;
+  switch (selectedMotif) {
+    case "motifDQ_CowlHat":
+      leftBoxMini_p1_HTML = "";
+      leftBoxMini_p2_HTML = "";
+      leftBoxMini_p3_HTML = "";
+      leftBoxMini_p4_HTML = "";
+      rightBoxMini_p1_HTML = "";
+      rightBoxMini_p2_HTML = "";
+      rightBoxMini_p3_HTML = "";
+      rightBoxMini_p4_HTML = "";
+      break;
+    case "motifDQ_MittsA_SizeS":
+      leftBoxMini_p1_HTML = "Odd Repeat: Colour changes to CC1";
+      leftBoxMini_p2_HTML = "Even Repeat: Colour changes to MC1";
+      leftBoxMini_p3_HTML = "Odd Repeat: Colour changes to CC1";
+      leftBoxMini_p4_HTML = "Even Repeat: Colour changes to MC1";
+      rightBoxMini_p1_HTML = "Odd Repeat: Colour changes to CC2";
+      rightBoxMini_p2_HTML = "Even Repeat: Colour changes to MC2";
+      rightBoxMini_p3_HTML = "Odd Repeat: Colour changes to CC2";
+      rightBoxMini_p4_HTML = "Even Repeat: Colour changes to MC2";
+      break;
+    case "motifDQ_MittsB_SizeS":
+      leftBoxMini_p1_HTML = "Odd Repeat: Colour changes to CC2";
+      leftBoxMini_p2_HTML = "Even Repeat: Colour changes to MC2";
+      leftBoxMini_p3_HTML = "Odd Repeat: Colour changes to CC2";
+      leftBoxMini_p4_HTML = "Even Repeat: Colour changes to MC2";
+      rightBoxMini_p1_HTML = "Odd Repeat: Colour changes to CC1";
+      rightBoxMini_p2_HTML = "Even Repeat: Colour changes to MC1";
+      rightBoxMini_p3_HTML = "Odd Repeat: Colour changes to CC1";
+      rightBoxMini_p4_HTML = "Even Repeat: Colour changes to MC1";
+      break;
+    case "motifDQ_MittsA_SizeM":
+      leftBoxMini_p1_HTML = "Odd Repeat: Colour changes to MC1";
+      leftBoxMini_p2_HTML = "Even Repeat: Colour changes to CC1";
+      leftBoxMini_p3_HTML = "Odd Repeat: Colour changes to MC1";
+      leftBoxMini_p4_HTML = "Even Repeat: Colour changes to CC1";
+      rightBoxMini_p1_HTML = "Odd Repeat: Colour changes to CC2";
+      rightBoxMini_p2_HTML = "Even Repeat: Colour changes to MC2";
+      rightBoxMini_p3_HTML = "Odd Repeat: Colour changes to CC2";
+      rightBoxMini_p4_HTML = "Even Repeat: Colour changes to MC2";
+      break;
+    case "motifDQ_MittsB_SizeM":
+      leftBoxMini_p1_HTML = "Odd Repeat: Colour changes to CC2";
+      leftBoxMini_p2_HTML = "Even Repeat: Colour changes to MC2";
+      leftBoxMini_p3_HTML = "Odd Repeat: Colour changes to CC2";
+      leftBoxMini_p4_HTML = "Even Repeat: Colour changes to MC2";
+      rightBoxMini_p1_HTML = "Odd Repeat: Colour changes to MC1";
+      rightBoxMini_p2_HTML = "Even Repeat: Colour changes to CC1";
+      rightBoxMini_p3_HTML = "Odd Repeat: Colour changes to MC1";
+      rightBoxMini_p4_HTML = "Even Repeat: Colour changes to CC1";
+      break;
+    default:
+      leftBoxMini_p1_HTML = "1";
+      leftBoxMini_p2_HTML = "2";
+      leftBoxMini_p3_HTML = "3";
+      leftBoxMini_p4_HTML = "4";
+      rightBoxMini_p1_HTML = "1";
+      rightBoxMini_p2_HTML = "2";
+      rightBoxMini_p3_HTML = "3";
+      rightBoxMini_p4_HTML = "4";
+      break;
+  }
+  let px_innerHTML = "";
+  if (side == "left") {
+    switch (n) {
+      case "1":
+        px_innerHTML = leftBoxMini_p1_HTML;
+        break;
+      case "2":
+        px_innerHTML = leftBoxMini_p2_HTML;
+        break;
+      case "3":
+        px_innerHTML = leftBoxMini_p3_HTML;
+        break;
+      case "4":
+        px_innerHTML = leftBoxMini_p4_HTML;
+        break;
     }
-    let px_innerHTML = "";
-    if (side == "left") {
-        switch (n) {
-            case "1":
-                px_innerHTML = leftBoxMini_p1_HTML;
-                break
-            case "2":
-                px_innerHTML = leftBoxMini_p2_HTML;
-                break
-            case "3":
-                px_innerHTML = leftBoxMini_p3_HTML;
-                break
-            case "4":
-                px_innerHTML = leftBoxMini_p4_HTML;
-                break
-        } 
-    } else if (side == "right") {
-        switch (n) {
-            case "1":
-                px_innerHTML = rightBoxMini_p1_HTML;
-                break
-            case "2":
-                px_innerHTML = rightBoxMini_p2_HTML;
-                break
-            case "3":
-                px_innerHTML = rightBoxMini_p3_HTML;
-                break
-            case "4":
-                px_innerHTML = rightBoxMini_p4_HTML;
-                break
-        }
+  } else if (side == "right") {
+    switch (n) {
+      case "1":
+        px_innerHTML = rightBoxMini_p1_HTML;
+        break;
+      case "2":
+        px_innerHTML = rightBoxMini_p2_HTML;
+        break;
+      case "3":
+        px_innerHTML = rightBoxMini_p3_HTML;
+        break;
+      case "4":
+        px_innerHTML = rightBoxMini_p4_HTML;
+        break;
     }
-     
-    /* if (viewportWidth > 500) { */
-        px.innerHTML = `<p id="${boxID}_p" class="orientation lateralBox_p mini_p"> ${px_innerHTML} </p>`
-/*     } else if (viewportWidth <= 500) {
-        px.innerHTML = `<p id="${boxID}_p" class="lateralBox_p mini_p"> ${px_innerHTML} </p>`
-    } */
-    container.appendChild(px);
-    let pxHeight = Height2 - Height1
-    px.style.height = `${pxHeight}px`;
-    console.log(`boxID_p`);
-    console.log(`${boxID}_p`);
+  }
+  px.innerHTML = `<p id="${boxID}_p" class="orientation lateralBox_p mini_p"> ${px_innerHTML} </p>`;
+  container.appendChild(px);
+  let pxHeight = Height2 - Height1;
+  px.style.height = `${pxHeight}px`;
 }
 
-function createBottomBox (selectedMotif) {
-    console.log('- function createBottomBox executed');
-    let bottomBoxS = document.createElement('div')
-    bottomBoxS.setAttribute('id', 'bottomBoxS');
-    let bottomBoxP = document.createElement('div')
-    bottomBoxP.setAttribute('id', 'bottomBoxP');
-    bottomBoxesAandB.appendChild(bottomBoxS);
-    bottomBoxesAandB.appendChild(bottomBoxP);
+function createBottomBox(selectedMotif) {
+  let bottomBoxS = document.createElement("div");
+  bottomBoxS.setAttribute("id", "bottomBoxS");
+  let bottomBoxP = document.createElement("div");
+  bottomBoxP.setAttribute("id", "bottomBoxP");
+  bottomBoxesAandB.appendChild(bottomBoxS);
+  bottomBoxesAandB.appendChild(bottomBoxP);
 
-    let firstX;
-    let secondX;
-    bottomBoxSWidth = svgNewWidth
-    let widthOfEachSEction;
-    if (svgNewWidth <= 200) {
-        bottomBoxSHeight = 15;
-    } else if (svgNewWidth < 400) {
-        bottomBoxSHeight = 20;
-    } else {
-        bottomBoxSHeight = 25;
-    }
-    let yHeight = bottomBoxSHeight * 0.99
-    let y0 = bottomBoxSHeight - yHeight
-    let yMedium = bottomBoxSHeight / 2;
-    bottomBoxSviewBox = `0 0 ${bottomBoxSWidth} ${bottomBoxSHeight}`
+  let firstX;
+  let secondX;
+  bottomBoxSWidth = svgNewWidth;
+  let widthOfEachSEction;
+  if (svgNewWidth <= 200) {
+    bottomBoxSHeight = 15;
+  } else if (svgNewWidth < 400) {
+    bottomBoxSHeight = 20;
+  } else {
+    bottomBoxSHeight = 25;
+  }
+  let yHeight = bottomBoxSHeight * 0.99;
+  let y0 = bottomBoxSHeight - yHeight;
+  let yMedium = bottomBoxSHeight / 2;
+  bottomBoxSviewBox = `0 0 ${bottomBoxSWidth} ${bottomBoxSHeight}`;
 
-    let arrowhead = `<defs>
+  let arrowhead = `<defs>
                     <marker id="arrowhead"
                     viewBox="0 0 10 10"
                     refX="5" refY="5"
@@ -1114,112 +974,98 @@ function createBottomBox (selectedMotif) {
                     orient="auto-start-reverse">
                     <path d="M 0 0 L 10 5 L 0 10 z" fill="#000" />
                     </marker>
-                    </defs>`
+                    </defs>`;
 
-    let initialSVG = `<svg 
+  let initialSVG = `<svg 
             id= "bottomBoxS_svg" class= bottomBoxS_svg
             width="${svgNewWidth}" 
             height="${bottomBoxSHeight}" 
             viewbox="${bottomBoxSviewBox}"
-            style="background-color:#ffffff"> `
+            style="background-color:#ffffff"> `;
 
-    switch (selectedMotif) {
-        case "motifDQ_CowlHat":
-             /* BOTTOM:  */ 
-            widthOfEachSEction = bottomBoxSWidth / 8;
-            firstX = widthOfEachSEction * 4;
-            secondX = bottomBoxSWidth;
-            bottomBoxP_innerHTML = "additional repeats of this section lengthen the circumference of the cowl/hat";
-            motifDQ_CowlHat_bottomBoxS_innerHTML = `
+  switch (selectedMotif) {
+          /* BOTTOM:  */
+    case "motifDQ_CowlHat":
+      widthOfEachSEction = bottomBoxSWidth / 8;
+      firstX = widthOfEachSEction * 4;
+      secondX = bottomBoxSWidth;
+      bottomBoxP_innerHTML =
+        "additional repeats of this section lengthen the circumference of the cowl/hat";
+      motifDQ_CowlHat_bottomBoxS_innerHTML = `
                 <line x1="${firstX}" y1="${y0}" x2="${firstX}" y2="${yHeight}" stroke="black" stroke-width="2" />
                 <line x1="${secondX}" y1="${y0}" x2="${secondX}" y2="${yHeight}" stroke="black" stroke-width="2" />
-                <line x1="${firstX+5}" y1="${yMedium}" x2="${secondX-5}" y2="${yMedium}" stroke="black" stroke-width="2" marker-start="url(#arrowhead)" marker-end="url(#arrowhead)" id="arrowLine"/>
-               `
-            bottomBoxS_innerHTML = motifDQ_CowlHat_bottomBoxS_innerHTML;
-            bottomBoxS.innerHTML = 
-            `${initialSVG}
+                <line x1="${firstX + 5}" y1="${yMedium}" x2="${secondX - 5}" y2="${yMedium}" stroke="black" stroke-width="2" marker-start="url(#arrowhead)" marker-end="url(#arrowhead)" id="arrowLine"/>
+               `;
+      bottomBoxS_innerHTML = motifDQ_CowlHat_bottomBoxS_innerHTML;
+      bottomBoxS.innerHTML = `${initialSVG}
                 ${arrowhead}
                 ${bottomBoxS_innerHTML}
             </svg>`;
-            break;
-        case "motifDQ_MittsA_SizeS":
-             /* BOTTOM:  */ 
-            widthOfEachSEction = bottomBoxSWidth / 10;
-            firstX = widthOfEachSEction * 2;
-            secondX = widthOfEachSEction * 6;
-            bottomBoxP_innerHTML = "For Size L, work this section once more.";
-            motifDQ_MittsA_SizeS_bottomBoxS_innerHTML = `
+      break;
+    case "motifDQ_MittsA_SizeS":
+      widthOfEachSEction = bottomBoxSWidth / 10;
+      firstX = widthOfEachSEction * 2;
+      secondX = widthOfEachSEction * 6;
+      bottomBoxP_innerHTML = "For Size L, work this section once more.";
+      motifDQ_MittsA_SizeS_bottomBoxS_innerHTML = `
                 <line x1="${firstX}" y1="${y0}" x2="${firstX}" y2="${yHeight}" stroke="black" stroke-width="2" />
                 <line x1="${secondX}" y1="${y0}" x2="${secondX}" y2="${yHeight}" stroke="black" stroke-width="2" />
-                <line x1="${firstX+5}" y1="${yMedium}" x2="${secondX-5}" y2="${yMedium}" stroke="black" stroke-width="2" marker-start="url(#arrowhead)" marker-end="url(#arrowhead)" id="arrowLine"/>
-               `
-            bottomBoxS_innerHTML = motifDQ_MittsA_SizeS_bottomBoxS_innerHTML;
-            bottomBoxS.innerHTML = 
-            `${initialSVG}
+                <line x1="${firstX + 5}" y1="${yMedium}" x2="${secondX - 5}" y2="${yMedium}" stroke="black" stroke-width="2" marker-start="url(#arrowhead)" marker-end="url(#arrowhead)" id="arrowLine"/>
+               `;
+      bottomBoxS_innerHTML = motifDQ_MittsA_SizeS_bottomBoxS_innerHTML;
+      bottomBoxS.innerHTML = `${initialSVG}
                 ${arrowhead}
                 ${bottomBoxS_innerHTML}
             </svg>`;
-            break;
-        case "motifDQ_MittsB_SizeS":
-             /* BOTTOM:  */ 
-            widthOfEachSEction = bottomBoxSWidth / 10;
-            firstX = widthOfEachSEction * 2;
-            secondX = widthOfEachSEction * 6;
-            bottomBoxP_innerHTML = "For Size L, work this section once more.";
-            motifDQ_MittsB_SizeS_bottomBoxS_innerHTML = `
+      break;
+    case "motifDQ_MittsB_SizeS":
+      widthOfEachSEction = bottomBoxSWidth / 10;
+      firstX = widthOfEachSEction * 2;
+      secondX = widthOfEachSEction * 6;
+      bottomBoxP_innerHTML = "For Size L, work this section once more.";
+      motifDQ_MittsB_SizeS_bottomBoxS_innerHTML = `
                 <line x1="${firstX}" y1="${y0}" x2="${firstX}" y2="${yHeight}" stroke="black" stroke-width="2" />
                 <line x1="${secondX}" y1="${y0}" x2="${secondX}" y2="${yHeight}" stroke="black" stroke-width="2" />
-                <line x1="${firstX+5}" y1="${yMedium}" x2="${secondX-5}" y2="${yMedium}" stroke="black" stroke-width="2" marker-start="url(#arrowhead)" marker-end="url(#arrowhead)" id="arrowLine"/>
-               `
-            bottomBoxS_innerHTML = motifDQ_MittsB_SizeS_bottomBoxS_innerHTML;
-            bottomBoxS.innerHTML = 
-            `${initialSVG}
+                <line x1="${firstX + 5}" y1="${yMedium}" x2="${secondX - 5}" y2="${yMedium}" stroke="black" stroke-width="2" marker-start="url(#arrowhead)" marker-end="url(#arrowhead)" id="arrowLine"/>
+               `;
+      bottomBoxS_innerHTML = motifDQ_MittsB_SizeS_bottomBoxS_innerHTML;
+      bottomBoxS.innerHTML = `${initialSVG}
                 ${arrowhead}
                 ${bottomBoxS_innerHTML}
             </svg>`;
-            break;
-        case "motifDQ_MittsA_SizeM":
-             /* BOTTOM:  */ 
-            bottomBoxS_innerHTML = motifDQ_MittsA_SizeM_bottomBoxS_innerHTML;
-            bottomBoxP_innerHTML = "";
-            break;
-        case "motifDQ_MittsB_SizeM":
-             /* BOTTOM:  */ 
-            bottomBoxS_innerHTML = motifDQ_MittsB_SizeM_bottomBoxS_innerHTML;
-            bottomBoxP_innerHTML = "";
-            break;
-        default: 
-            /* BOTTOM: */ 
-            break;
-    }
-    motifDQ_CowlHat_bottomBoxS_innerHTML = 
-
-    bottomBoxP.innerHTML = `
+      break;
+    case "motifDQ_MittsA_SizeM":
+      bottomBoxS_innerHTML = motifDQ_MittsA_SizeM_bottomBoxS_innerHTML;
+      bottomBoxP_innerHTML = "";
+      break;
+    case "motifDQ_MittsB_SizeM":
+      bottomBoxS_innerHTML = motifDQ_MittsB_SizeM_bottomBoxS_innerHTML;
+      bottomBoxP_innerHTML = "";
+      break;
+    default:
+      break;
+  }
+  motifDQ_CowlHat_bottomBoxS_innerHTML = bottomBoxP.innerHTML = `
     <p id= "${bottomBoxP.id}_p" class="boxes_p"> ${bottomBoxP_innerHTML}  </p> <hr>
     `;
-    if (leftBoxWidth == 0 ) {
-        bottomBoxS.style.margin = `0 0 0 22px`;
-    } else {
-        bottomBoxS.style.margin = `auto`;
-    }
+  if (leftBoxWidth == 0) {
+    bottomBoxS.style.margin = `0 0 0 22px`;
+  } else {
+    bottomBoxS.style.margin = `auto`;
+  }
 }
 
-function createSVG () {
-    console.log('-- function createSVG executed');
-    /* console.log(`viewportWidth: ${viewportWidth}
-        svgWidth: ${svgWidth} -> svgNewWidth: ${svgNewWidth}`); */
-    SVGinDiv.innerHTML = 
-    `<svg id= "${selectedMotif}_svg" width="${svgNewWidth}" height="${svgNewHeight}" viewbox="${viewBox}"
+function createSVG() {
+  SVGinDiv.innerHTML = `<svg id= "${selectedMotif}_svg" width="${svgNewWidth}" height="${svgNewHeight}" viewbox="${viewBox}"
     style="border:1px solid var(--color4); background-color:#ffffff"> 
     ${selectedMotif_innerHTML}
     </svg>`;
-    WovenMotifSVG.appendChild(SVGinDiv)
-    SVGDiv.classList.add('grid');
+  WovenMotifSVG.appendChild(SVGinDiv);
+  SVGDiv.classList.add("grid");
 }
 
-function updateSVG_innerHTML () {
-    console.log('function updateSVG_innerHTML executed');
-    motifDQ_CowlHat_innerHTML = `
+function updateSVG_innerHTML() {
+  motifDQ_CowlHat_innerHTML = `
     <polygon points="0,0 0,800 800,800 800,0 " fill= "white" stroke="black" />
     <polygon points="800,790 790,800 750,800 750,760 760,750 800,750 "  fill="${pickedMC1}" stroke="none" /> /13  <line x1="800" y1="790" x2="790" y2="800" stroke="black" />  /13  <line x1="760" y1="750" x2="750" y2="760" stroke="black" /> /13 <polygon points="800,750 800,790 799,791 759,751 760,750"  fill="${pickedMC1}" stroke="none" /> /13 <polygon points="800,750 800,710 799,709 759,749 760,750"  fill="${pickedCC2}" stroke="none" /> /13 
     /13  /13 <polygon points="691,701 749,759 709,799 651,741"  fill="${pickedMC2}" stroke="none" /> /13  <line x1="690" y1="700" x2="750" y2="760" stroke="black" /> /13  <line x1="650" y1="740" x2="710" y2="800" stroke="black" /> /13 <polygon points="749,741 691,799 651,759 709,701"  fill="${pickedMC1}" stroke="none" /> /13  <line x1="650" y1="760" x2="710" y2="700" stroke="black" /> /13  <line x1="690" y1="800" x2="750" y2="740" stroke="black" /> /13 <polygon points="650,800 650,760 651,759 691,799 690,800 "  fill="${pickedMC1}" stroke="none" /> /13 <polygon points="750,800 750,760 749,759 709,799 710,800 "  fill="${pickedMC2}" stroke="none" />
@@ -1357,7 +1203,7 @@ function updateSVG_innerHTML () {
     /13  /13 <polygon points="91,1 149,59 109,99 51,41"  fill="${pickedCC2}" stroke="none" /> /13  <line x1="90" y1="0" x2="150" y2="60" stroke="black" /> /13  <line x1="50" y1="40" x2="110" y2="100" stroke="black" /> /13 <polygon points="149,41 91,99 51,59 109,1"  fill="${pickedCC1}" stroke="none" /> /13  <line x1="50" y1="60" x2="110" y2="0" stroke="black" /> /13  <line x1="90" y1="100" x2="150" y2="40" stroke="black" /> /13 <polygon points="50,0  50,40 51,41 91, 1  90,0 "  fill="${pickedCC2}" stroke="none" /> /13 <polygon points="150,0 150,40 149,41 109,1 110,0 "  fill="${pickedCC1}" stroke="none" />
     <polygon points="0,10 10,0 50,0 50,40 40,50 0,50"  fill="${pickedCC1}" stroke="none" /> /13  <line x1="0" y1="10" x2="10" y2="0" stroke="black" />  /13  <line x1="40" y1="50" x2="50" y2="40" stroke="black" /> /13 <polygon points="0,50 0,10 1,9 41,49 40,50"  fill="${pickedCC1}" stroke="none" /> /13 <polygon points="0,50 0,90 1,91 41,51 40,50"  fill="${pickedMC2}" stroke="none" /> /13 
 `;
-    motifDQ_MittsA_SizeS_innerHTML = `
+  motifDQ_MittsA_SizeS_innerHTML = `
     <polygon points="0,0 0,800 1000,800 1000,0 " fill= "white" stroke="black" />
     <polygon points="1000,790 990,800 950,800 950,760 960,750 1000,750 "  fill="${pickedMC1}" stroke="none" /> /13  <line x1="1000" y1="790" x2="990" y2="800" stroke="black" />  /13  <line x1="960" y1="750" x2="950" y2="760" stroke="black" /> /13 <polygon points="1000,750 1000,790 999,791 959,751 960,750"  fill="${pickedMC1}" stroke="none" /> /13 <polygon points="1000,750 1000,710 999,709 959,749 960,750"  fill="${pickedCC2}" stroke="none" /> /13 
     /13  /13 <polygon points="891,701 949,759 909,799 851,741"  fill="${pickedMC2}" stroke="none" /> /13  <line x1="890" y1="700" x2="950" y2="760" stroke="black" /> /13  <line x1="850" y1="740" x2="910" y2="800" stroke="black" /> /13 <polygon points="949,741 891,799 851,759 909,701"  fill="${pickedMC1}" stroke="none" /> /13  <line x1="850" y1="760" x2="910" y2="700" stroke="black" /> /13  <line x1="890" y1="800" x2="950" y2="740" stroke="black" /> /13 <polygon points="850,800 850,760 851,759 891,799 890,800 "  fill="${pickedMC1}" stroke="none" /> /13 <polygon points="950,800 950,760 949,759 909,799 910,800 "  fill="${pickedMC2}" stroke="none" />
@@ -1525,7 +1371,7 @@ function updateSVG_innerHTML () {
     /13  /13 <polygon points="91,1 149,59 109,99 51,41"  fill="${pickedMC2}" stroke="none" /> /13  <line x1="90" y1="0" x2="150" y2="60" stroke="black" /> /13  <line x1="50" y1="40" x2="110" y2="100" stroke="black" /> /13 <polygon points="149,41 91,99 51,59 109,1"  fill="${pickedMC1}" stroke="none" /> /13  <line x1="50" y1="60" x2="110" y2="0" stroke="black" /> /13  <line x1="90" y1="100" x2="150" y2="40" stroke="black" /> /13 <polygon points="50,0  50,40 51,41 91, 1  90,0 "  fill="${pickedMC2}" stroke="none" /> /13 <polygon points="150,0 150,40 149,41 109,1 110,0 "  fill="${pickedMC1}" stroke="none" />
     <polygon points="0,10 10,0 50,0 50,40 40,50 0,50"  fill="${pickedMC1}" stroke="none" /> /13  <line x1="0" y1="10" x2="10" y2="0" stroke="black" />  /13  <line x1="40" y1="50" x2="50" y2="40" stroke="black" /> /13 <polygon points="0,50 0,10 1,9 41,49 40,50"  fill="${pickedMC1}" stroke="none" /> /13 <polygon points="0,50 0,90 1,91 41,51 40,50"  fill="${pickedCC2}" stroke="none" /> /13 
     `;
-    motifDQ_MittsB_SizeS_innerHTML = `
+  motifDQ_MittsB_SizeS_innerHTML = `
     <polygon points="0,0 0,800 1200,800 1200,0 " fill= "white" stroke="black" />
     <polygon points="1200,790 1190,800 1150,800 1150,760 1160,750 1200,750 "  fill="${pickedCC2}" stroke="none" /> /13  <line x1="1200" y1="790" x2="1190" y2="800" stroke="black" />  /13  <line x1="1160" y1="750" x2="1150" y2="760" stroke="black" /> /13 <polygon points="1200,750 1200,790 1199,791 1159,751 1160,750"  fill="${pickedCC2}" stroke="none" /> /13 <polygon points="1200,750 1200,710 1199,709 1159,749 1160,750"  fill="${pickedMC1}" stroke="none" /> /13 
     /13  /13 <polygon points="1149,741 1091,799 1051,759 1109,701"  fill="${pickedCC2}" stroke="none" /> /13  <line x1="1050" y1="760" x2="1110" y2="700" stroke="black" /> /13  <line x1="1090" y1="800" x2="1150" y2="740" stroke="black" /> /13 <polygon points="1091,701 1149,759 1109,799 1051,741"  fill="${pickedCC1}" stroke="none" /> /13  <line x1="1090" y1="700" x2="1150" y2="760" stroke="black" /> /13  <line x1="1050" y1="740" x2="1110" y2="800" stroke="black" /> /13 <polygon points="1050,800 1050,760 1051,759 1091,799 1090,800 "  fill="${pickedCC2}" stroke="none" /> /13 <polygon points="1150,800 1150,760 1149,759 1109,799 1110,800 "  fill="${pickedCC1}" stroke="none" />
@@ -1723,7 +1569,7 @@ function updateSVG_innerHTML () {
     /13  /13 <polygon points="149,41 91,99 51,59 109,1"  fill="${pickedMC2}" stroke="none" /> /13  <line x1="50" y1="60" x2="110" y2="0" stroke="black" /> /13  <line x1="90" y1="100" x2="150" y2="40" stroke="black" /> /13 <polygon points="91,1 149,59 109,99 51,41"  fill="${pickedMC1}" stroke="none" /> /13  <line x1="90" y1="0" x2="150" y2="60" stroke="black" /> /13  <line x1="50" y1="40" x2="110" y2="100" stroke="black" /> /13 <polygon points="50,0  50,40 51,41 91, 1  90,0 "  fill="${pickedMC1}" stroke="none" /> /13 <polygon points="150,0 150,40 149,41 109,1 110,0 "  fill="${pickedMC2}" stroke="none" />
     <polygon points="0,10 10,0 50,0 50,40 40,50 0,50"  fill="${pickedMC2}" stroke="none" /> /13  <line x1="0" y1="10" x2="10" y2="0" stroke="black" />  /13  <line x1="40" y1="50" x2="50" y2="40" stroke="black" /> /13 <polygon points="0,50 0,10 1,9 41,49 40,50"  fill="${pickedMC2}" stroke="none" /> /13 <polygon points="0,50 0,90 1,91 41,51 40,50"  fill="${pickedCC1}" stroke="none" /> /13 
     `;
-    motifDQ_MittsA_SizeM_innerHTML = `
+  motifDQ_MittsA_SizeM_innerHTML = `
         <polygon points="0,0 0,800 1200,800 1200,0 " fill= "white" stroke="black" />
         <polygon points="1200,790 1190,800 1150,800 1150,760 1160,750 1200,750 "  fill="${pickedMC1}" stroke="none" /> /13  <line x1="1200" y1="790" x2="1190" y2="800" stroke="black" />  /13  <line x1="1160" y1="750" x2="1150" y2="760" stroke="black" /> /13 <polygon points="1200,750 1200,790 1199,791 1159,751 1160,750"  fill="${pickedMC1}" stroke="none" /> /13 <polygon points="1200,750 1200,710 1199,709 1159,749 1160,750"  fill="${pickedCC2}" stroke="none" /> /13 
         /13  /13 <polygon points="1091,701 1149,759 1109,799 1051,741"  fill="${pickedMC2}" stroke="none" /> /13  <line x1="1090" y1="700" x2="1150" y2="760" stroke="black" /> /13  <line x1="1050" y1="740" x2="1110" y2="800" stroke="black" /> /13 <polygon points="1149,741 1091,799 1051,759 1109,701"  fill="${pickedMC1}" stroke="none" /> /13  <line x1="1050" y1="760" x2="1110" y2="700" stroke="black" /> /13  <line x1="1090" y1="800" x2="1150" y2="740" stroke="black" /> /13 <polygon points="1050,800 1050,760 1051,759 1091,799 1090,800 "  fill="${pickedMC1}" stroke="none" /> /13 <polygon points="1150,800 1150,760 1149,759 1109,799 1110,800 "  fill="${pickedMC2}" stroke="none" />
@@ -1921,7 +1767,7 @@ function updateSVG_innerHTML () {
         /13  /13 <polygon points="91,1 149,59 109,99 51,41"  fill="${pickedCC2}" stroke="none" /> /13  <line x1="90" y1="0" x2="150" y2="60" stroke="black" /> /13  <line x1="50" y1="40" x2="110" y2="100" stroke="black" /> /13 <polygon points="149,41 91,99 51,59 109,1"  fill="${pickedCC1}" stroke="none" /> /13  <line x1="50" y1="60" x2="110" y2="0" stroke="black" /> /13  <line x1="90" y1="100" x2="150" y2="40" stroke="black" /> /13 <polygon points="50,0  50,40 51,41 91, 1  90,0 "  fill="${pickedCC2}" stroke="none" /> /13 <polygon points="150,0 150,40 149,41 109,1 110,0 "  fill="${pickedCC1}" stroke="none" />
         <polygon points="0,10 10,0 50,0 50,40 40,50 0,50"  fill="${pickedCC1}" stroke="none" /> /13  <line x1="0" y1="10" x2="10" y2="0" stroke="black" />  /13  <line x1="40" y1="50" x2="50" y2="40" stroke="black" /> /13 <polygon points="0,50 0,10 1,9 41,49 40,50"  fill="${pickedCC1}" stroke="none" /> /13 <polygon points="0,50 0,90 1,91 41,51 40,50"  fill="${pickedMC2}" stroke="none" /> /13 
         `;
-    motifDQ_MittsB_SizeM_innerHTML = `
+  motifDQ_MittsB_SizeM_innerHTML = `
     <polygon points="0,0 0,800 1200,800 1200,0 " fill= "white" stroke="black" />
     <polygon points="1200,790 1190,800 1150,800 1150,760 1160,750 1200,750 "  fill="${pickedCC2}" stroke="none" /> /13  <line x1="1200" y1="790" x2="1190" y2="800" stroke="black" />  /13  <line x1="1160" y1="750" x2="1150" y2="760" stroke="black" /> /13 <polygon points="1200,750 1200,790 1199,791 1159,751 1160,750"  fill="${pickedCC2}" stroke="none" /> /13 <polygon points="1200,750 1200,710 1199,709 1159,749 1160,750"  fill="${pickedMC1}" stroke="none" /> /13 
     /13  /13 <polygon points="1149,741 1091,799 1051,759 1109,701"  fill="${pickedCC2}" stroke="none" /> /13  <line x1="1050" y1="760" x2="1110" y2="700" stroke="black" /> /13  <line x1="1090" y1="800" x2="1150" y2="740" stroke="black" /> /13 <polygon points="1091,701 1149,759 1109,799 1051,741"  fill="${pickedCC1}" stroke="none" /> /13  <line x1="1090" y1="700" x2="1150" y2="760" stroke="black" /> /13  <line x1="1050" y1="740" x2="1110" y2="800" stroke="black" /> /13 <polygon points="1050,800 1050,760 1051,759 1091,799 1090,800 "  fill="${pickedCC2}" stroke="none" /> /13 <polygon points="1150,800 1150,760 1149,759 1109,799 1110,800 "  fill="${pickedCC1}" stroke="none" />
@@ -2118,37 +1964,21 @@ function updateSVG_innerHTML () {
     /13  /13 <polygon points="191,1 249,59 209,99 151,41"  fill="${pickedMC1}" stroke="none" /> /13  <line x1="190" y1="0" x2="250" y2="60" stroke="black" /> /13  <line x1="150" y1="40" x2="210" y2="100" stroke="black" /> /13 <polygon points="249,41 191,99 151,59 209,1"  fill="${pickedCC2}" stroke="none" /> /13  <line x1="150" y1="60" x2="210" y2="0" stroke="black" /> /13  <line x1="190" y1="100" x2="250" y2="40" stroke="black" /> /13 <polygon points="150,0  150,40 151,41 191, 1  190,0 "  fill="${pickedMC1}" stroke="none" /> /13 <polygon points="250,0 250,40 249,41 209,1 210,0 "  fill="${pickedCC2}" stroke="none" />
     /13  /13 <polygon points="149,41 91,99 51,59 109,1"  fill="${pickedMC2}" stroke="none" /> /13  <line x1="50" y1="60" x2="110" y2="0" stroke="black" /> /13  <line x1="90" y1="100" x2="150" y2="40" stroke="black" /> /13 <polygon points="91,1 149,59 109,99 51,41"  fill="${pickedMC1}" stroke="none" /> /13  <line x1="90" y1="0" x2="150" y2="60" stroke="black" /> /13  <line x1="50" y1="40" x2="110" y2="100" stroke="black" /> /13 <polygon points="50,0  50,40 51,41 91, 1  90,0 "  fill="${pickedMC1}" stroke="none" /> /13 <polygon points="150,0 150,40 149,41 109,1 110,0 "  fill="${pickedMC2}" stroke="none" />
     <polygon points="0,10 10,0 50,0 50,40 40,50 0,50"  fill="${pickedMC2}" stroke="none" /> /13  <line x1="0" y1="10" x2="10" y2="0" stroke="black" />  /13  <line x1="40" y1="50" x2="50" y2="40" stroke="black" /> /13 <polygon points="0,50 0,10 1,9 41,49 40,50"  fill="${pickedMC2}" stroke="none" /> /13 <polygon points="0,50 0,90 1,91 41,51 40,50"  fill="${pickedCC1}" stroke="none" /> /13     
-    `;   
+    `;
 }
 
-function localStorage_MC1 () {
-        //console.log(`Stored MC1: ${localStorage.MC1}`);
-        localStorage.MC1 = MC1pickerBtn.value;
-        //console.log(`Stored (new) MC1: ${localStorage.MC1} `);  
+function localStorage_MC1() {
+  localStorage.MC1 = MC1pickerBtn.value;
 }
 
-function localStorage_MC2 () {
-        //console.log(`Stored MC2: ${localStorage.MC2}`);
-        localStorage.MC2 = MC2pickerBtn.value;
-        //console.log(`Stored (new) MC2: ${localStorage.MC2} `);  
+function localStorage_MC2() {
+  localStorage.MC2 = MC2pickerBtn.value;
 }
 
-function localStorage_CC1 () {
-        //console.log(`Stored CC1: ${localStorage.CC1}`);
-        localStorage.CC1 = CC1pickerBtn.value;
-        //console.log(`Stored (new) CC1: ${localStorage.CC1} `);  
+function localStorage_CC1() {
+  localStorage.CC1 = CC1pickerBtn.value;
 }
 
-function localStorage_CC2 () {
-        //console.log(`Stored CC2: ${localStorage.CC2}`);
-        localStorage.CC2 = CC2pickerBtn.value;
-        //console.log(`Stored (new) CC2: ${localStorage.CC2} `);  
+function localStorage_CC2() {
+  localStorage.CC2 = CC2pickerBtn.value;
 }
-
-// custom color picker:
-
-
-
-
-
-
