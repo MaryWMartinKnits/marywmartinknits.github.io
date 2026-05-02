@@ -1,6 +1,8 @@
 .whiteBackground {
   background-color: white;
-}
+  background-color: light-dark(var(--white), var(--white));
+/*   background-color: light-dark(var(--white), var(--color6-dark));
+ */}
 
 #SVGinDiv {
   display: flex;
@@ -124,14 +126,14 @@
 }
 
 #motifPickerDropDown {
-  color: var(--color6);
-  background-color: var(--color4);
+  color: light-dark(var(--color6-light), var(--color6-dark));
+  background-color: light-dark(var(--color3-light), var(--color3-dark));
   font-size: large;
 }
 
 #motifPickerDropDown:hover {
-  color: var(--color4);
-  background-color: var(--color5);
+  color: light-dark(var(--color4-light), var(--color4-dark));
+  background-color: light-dark(var(--color5-light), var(--color5-dark));
 }
 
 #motifPickerDiv {
