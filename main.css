@@ -206,9 +206,15 @@ h2,
 h3,
 .h3 {
   font-size: 1.2rem;
-  color: light-dark(var(--color3-light), var(--color3-dark));
   text-align: center;
   margin: 1rem 0.5rem;
+}
+
+.whiteBackground h2, .whiteBackground h3, .whiteBackground .h3 {
+  color: var(--color5-dark);
+}
+.whiteBackground p {
+  color: var(--color7-dark);
 }
 
 .samplePicture {
