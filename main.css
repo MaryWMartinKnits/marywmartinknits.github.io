@@ -210,7 +210,9 @@ h3,
   margin: 1rem 0.5rem;
 }
 
-.whiteBackground h2, .whiteBackground h3, .whiteBackground .h3 {
+.whiteBackground h2,
+.whiteBackground h3,
+.whiteBackground .h3 {
   color: var(--color5-dark);
 }
 .whiteBackground p {
@@ -265,6 +267,10 @@ button:hover {
 
 .container {
   max-width: 45vw;
+  margin: 5px;
+  border: 2px solid light-dark(var(--color6-light), var(--color6-dark));
+  border-radius: 10px;
+  /*   padding: 15px; */
 }
 /* LINKS */
 
@@ -330,7 +336,8 @@ a:hover::before {
     height: 5%;
     left: 0;
     bottom: 0;
-    background-color: #ab4ccd;
+    /* background-color: #ab4ccd; */
+    background-color: light-dark(var(--color3-light), var(--color3-dark));
     transition: all ease 0.3s;
   }
 
@@ -341,8 +348,6 @@ a:hover::before {
     }
   }
 }
-
-
 
 /* ACCORDION */
 
@@ -487,7 +492,7 @@ a:hover::before {
 
 .smallPic {
   width: 40vw;
-  max-width: 500px;
+  max-width: 300px;
   margin-bottom: 1.5em;
 }
 
@@ -516,14 +521,24 @@ a:hover::before {
   }
 }
 
-@media screen and (min-width: 1029px) and (max-width: 1800px) {
-  /* Big screen */
+@media screen and (min-width: 977px) {
+  /* Desktop & Big Screen */
   .container {
     max-width: 33vw;
+    margin: 15px;
   }
-  .smallPic {
+    .smallPic {
     width: 20vw;
     max-width: 500px;
     margin-bottom: 1.5em;
   }
 }
+
+/* @media screen and (min-width: 1029px) and (max-width: 1800px) {
+  /* Big screen 
+  .smallPic {
+    width: 20vw;
+    max-width: 500px;
+    margin-bottom: 1.5em;
+  }
+} */
