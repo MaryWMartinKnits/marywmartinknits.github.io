@@ -545,12 +545,3 @@ a:hover::before {
     margin-bottom: 1.5em;
   }
 }
-
-/* @media screen and (min-width: 1029px) and (max-width: 1800px) {
-  /* Big screen 
-  .smallPic {
-    width: 20vw;
-    max-width: 500px;
-    margin-bottom: 1.5em;
-  }
-} */
