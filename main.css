@@ -206,7 +206,7 @@ h2,
 h3,
 .h3 {
   font-size: 1.2rem;
-  color: light-dark(var(--color4-light), var(--color4-dark));
+  color: light-dark(var(--color3-light), var(--color3-dark));
   text-align: center;
   margin: 1rem 0.5rem;
 }
@@ -239,11 +239,18 @@ button:hover {
   box-shadow: 0 0 5px 1px light-dark(var(--color4-light), var(--color4-dark));
 }
 
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.container {
+  max-width: 45vw;
+}
 /* LINKS */
 
 a {
   position: relative;
-  /*   color: light-dark(var(--color2-light), var(--color2-dark)); */
 }
 
 a:link {
@@ -256,8 +263,9 @@ a:visited {
 
 a:hover {
   text-decoration: none;
-  /* color: #383eb0; */
-  background-color: light-dark(var(--color2-light), var(--color5-dark));
+  background-color: light-dark(var(--color6-light), var(--color6-dark));
+  color: light-dark(var(--color2-light), var(--color2-dark));
+  border-radius: 5px;
 }
 
 a::before {
@@ -314,6 +322,8 @@ a:hover::before {
     }
   }
 }
+
+
 
 /* ACCORDION */
 
@@ -400,11 +410,11 @@ a:hover::before {
 
 #socials a,
 #note1 a {
-  color: light-dark(var(--color2-light), var(--color2-dark));
+  color: light-dark(var(--color3-light), var(--color2-dark));
 }
 
 #socials {
-  color: light-dark(var(--color3-light), var(--color3-dark));
+  /* color: light-dark(var(--color3-light), var(--color3-dark)); */
   margin-bottom: 0.5rem;
   margin: 1rem auto;
   font-size: 1.15rem;
@@ -484,5 +494,17 @@ a:hover::before {
 
   .panel {
     flex-wrap: nowrap;
+  }
+}
+
+@media screen and (min-width: 1029px) and (max-width: 1800px) {
+  /* Big screen */
+  .container {
+    max-width: 33vw;
+  }
+  .smallPic {
+    width: 20vw;
+    max-width: 500px;
+    margin-bottom: 1.5em;
   }
 }
