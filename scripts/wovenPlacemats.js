@@ -173,7 +173,7 @@ function createInputSection() {
     userInputDiv.appendChild(wholeSection);
     let sectionSection = document.createElement("div");
     sectionSection.classList.add("sectionTitle");
-    sectionSection.innerHTML = `<div> <h3> Section ${i + 1} </h3> </div>`;
+    sectionSection.innerHTML = `<div> <p class="h3"> Section ${i + 1} </p> </div>`;
     wholeSection.appendChild(sectionSection);
     betweenMarkersDiv = document.createElement("div");
     betweenMarkersDiv.innerHTML = "";
@@ -947,7 +947,7 @@ function createNewInputSection() {
     userInputDiv.appendChild(wholeSection);
     let sectionSection = document.createElement("div");
     sectionSection.classList.add("sectionTitle");
-    sectionSection.innerHTML = `<div> <h3> Section ${i + 1} </h3> </div>`;
+    sectionSection.innerHTML = `<div> <p class="h3"> Section ${i + 1} </p> </div>`;
     wholeSection.appendChild(sectionSection);
     betweenMarkersDiv = document.createElement("div");
     betweenMarkersDiv.innerHTML = "";
