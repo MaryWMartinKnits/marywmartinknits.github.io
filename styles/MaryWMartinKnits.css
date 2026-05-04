@@ -101,7 +101,7 @@ iframe {
   aspect-ratio: 9/16;
 }
 
-.videoPanel {
+.videoPanel, .video-wrapper {
   display: flex;
   justify-content: center;
 }
