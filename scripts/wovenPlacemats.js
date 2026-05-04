@@ -187,11 +187,11 @@ function createInputSection() {
       sectionClass = `section${sectionNumber}`;
       let fieldset = document.createElement("fieldset");
       fieldset.innerHTML = `
-                <div class="pairNumber"><h4> Pair ${pairNumber} </h4></div>
+                <div class="pairNumber"><p class="h3"> Pair ${pairNumber} <p></div>
                 <div class="leftANDright">
 
                 <div class="pairRight"> <div class="pairTitle"> 
-                    <h5> Right </h5>  
+                    <p class="h3"> Right </p>  
                     </div><div class="switchBtnDiv">  
                         <p class="YCselection ${sectionClass} ${pairClass} right MC"> MC </p> 
                         <label class="switch">   
@@ -202,7 +202,7 @@ function createInputSection() {
                     </div>                    </div>
 
                 <div class="pairLeft">  <div class="pairTitle">
-                <h5> Left   </h5> 
+                <p class="h3"> Left   </p> 
                 </div> <div class="switchBtnDiv"> 
                     <p class="YCselection ${sectionClass} ${pairClass} left MC"> MC </p>  
                     <label class="switch">   
@@ -961,12 +961,12 @@ function createNewInputSection() {
       sectionClass = `section${sectionNumber}`;
       let fieldset = document.createElement("fieldset");
       fieldset.innerHTML = `
-                <div class="pairNumber"><h4> Pair ${pairNumber} </h4></div>
+                <div class="pairNumber"><p class="h3"> Pair ${pairNumber} <p></div>
                     <div class="leftANDright">
 
                         <div class="pairRight"> 
                             <div class="pairTitle"> 
-                                <h5> Right </h5>  
+                                <p class="h3"> Right </p>  
                             </div>
                             <div class="switchBtnDiv">  
                                 <p class="YCselection ${sectionClass} ${pairClass} right MC"> MC </p> 
@@ -980,7 +980,7 @@ function createNewInputSection() {
                     
                         <div class="pairLeft">  
                             <div class="pairTitle"> 
-                            <h5> Left   </h5> 
+                            <p class="h3"> Left   </p> 
                         </div> 
                         <div class="switchBtnDiv"> 
                             <p class="YCselection ${sectionClass} ${pairClass} left MC"> MC </p>  
