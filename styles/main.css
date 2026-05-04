@@ -499,6 +499,7 @@ a:hover::before {
   width: 1px;
   height: 1px;
   overflow: hidden;
+  color: light-dark(#000, #fff) !important; 
 }
 
 .skip:focus {

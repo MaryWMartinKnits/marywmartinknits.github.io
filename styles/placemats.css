@@ -108,60 +108,74 @@
 
 .colorCoding0 h3,
 .colorCoding7 h3 {
-  background-color: #ff006e; /* pink */
+  background-color: #a8064c; /* pink */
+  color: #fff;
 }
 .colorCoding1 h3,
 .colorCoding8 h3 {
   background-color: #0000ff; /* blue */
+  color: #fff;
 }
 .colorCoding2 h3,
 .colorCoding9 h3 {
-  background-color: #ee9b00; /* orange*/
+  background-color: #e09407; /* orange*/
+  color: #000;
 }
 .colorCoding3 h3,
 .colorCoding10 h3 {
   background-color: #800080; /* purple */
+  color: #fff;
 }
 .colorCoding4 h3,
 .colorCoding11 h3 {
-  background-color: #0a9396; /* turquesa */
+  background-color: #0d6769; /* turquesa */
+  color: #fff;
 }
 .colorCoding5 h3,
 .colorCoding12 h3 {
   background-color: #ce0000; /* red */
+  color: #fff;
 }
 .colorCoding6 h3,
 .colorCoding13 h3 {
-  background-color: #6c757d; /* gray */
+  background-color: #494f54; /* gray */
+  color: #fff;
 }
 
 .colorCoding0,
 .colorCoding7 {
   background-color: #ff006e30; /* pink */
+  color: #fff;
 }
 .colorCoding1,
 .colorCoding8 {
   background-color: #0000ff30; /* blue */
+  color: #fff;
 }
 .colorCoding2,
 .colorCoding9 {
   background-color: #ee9b0030; /* orange*/
+  color: #fff;
 }
 .colorCoding3,
 .colorCoding10 {
   background-color: #80008030; /* purple */
+  color: #fff;
 }
 .colorCoding4,
 .colorCoding11 {
   background-color: #0a939630; /* turquesa */
+  color: #fff;
 }
 .colorCoding5,
 .colorCoding12 {
   background-color: #ce000030; /* red */
+  color: #fff;
 }
 .colorCoding6,
 .colorCoding13 {
   background-color: #6c757d30; /* gray */
+  color: #fff;
 }
 
 .individualPlacemats {
