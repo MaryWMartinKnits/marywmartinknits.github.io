@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css" type="text/css">
-    <link rel="stylesheet" href="colorSwatches.css" type="text/css">
-    <link rel="stylesheet" href="wovenSVG.css" type="text/css">
-    <link rel="stylesheet" href="MaryWMartinKnits.css" type="text/css">
+    <link rel="stylesheet" href="styles/main.css" type="text/css">
+    <link rel="stylesheet" href="styles/colorSwatches.css" type="text/css">
+    <link rel="stylesheet" href="styles/wovenSVG.css" type="text/css">
+    <link rel="stylesheet" href="styles/MaryWMartinKnits.css" type="text/css">
+    <link rel="stylesheet" href="styles/lazy-load-video.css">
     <!-- Google fonts: Raleway -->
     <link        rel="stylesheet"      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"      media="print"      onload="this.media = 'all'"    />
     <!-- Fallback for users with JavaScript disabled -->
@@ -31,6 +32,7 @@
     <meta property="og:image:height" content="2298">
     <meta property="og:image:alt" content="MaryWMartin's logo">
     <meta property="og:locale" content="en_US">
+
     <title>Diamond Quartet Colouring Tool</title>
 </head>
 <body>
@@ -87,12 +89,25 @@
                     - or use the eyedropper feature to choose a colour from a photo (take a picture of the yarn in your stash or pull up a webpage of yarn you might purchase)  <br>
                     </p>
                     <h3>Watch the Diamond Quartet Colouring Tool Tutorial</h3>
-                    <div class="videoPanel">
+<!--                     <div class="videoPanel">
                         <iframe width="560" height="315" 
-                        src="https://www.youtube-nocookie.com/embed/Rycq1L10d7A?si=r_MctSJMlPfX45dt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen 
+                        src="https://www.youtube-nocookie.com/embed/Rycq1L10d7A?si=DTWAieDAFzIXbiuN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen 
                         loading="lazy">
-                    </iframe>
+                        </iframe>
+                    </div> -->
+
+                    <div class="video-wrapper" data-video-id="Rycq1L10d7A">
+                        <div class="thumbnail-container">
+                            <img 
+                                src="https://img.youtube.com/vi/Rycq1L10d7A/hqdefault.jpg" 
+                                alt="Video Thumbnail"
+                                class="video-thumbnail"
+                            >
+                            <div class="play-button"></div>
+                        </div>
                     </div>
+
+
                     <p>
                     For any four colours, changing the order of the colours as MC1/MC2/CC1/CC2 will change the motif significantly. <br>
                     <br>
@@ -262,7 +277,8 @@
             </div>
         </div>
     </footer> 
-<script src="diamondQuartet.js"></script>
+<script src="scripts/diamondQuartet.js"></script>
+<script src="scripts/lazy-load-video.js"></script>
 
 </body>
 </html>
