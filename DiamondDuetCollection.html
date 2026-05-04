@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/main.css" type="text/css" />
+    <link rel="stylesheet" href="styles/lazy-load-video.css" type="text/css" />
     <link rel="stylesheet" href="styles/colorSwatches.css" type="text/css" />
     <link rel="stylesheet" href="styles/wovenSVG.css" type="text/css" />
     <link rel="stylesheet" href="styles/MaryWMartinKnits.css" type="text/css" />
@@ -139,26 +140,22 @@
             yarn you might purchase) <br />
           </p>
           <h3>Watch the Diamond Duet Colouring Tool Tutorial</h3>
-          <div class="videoPanel">
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube-nocookie.com/embed/K1rvhtirZ9I?si=-Vw1AWhzaYdYMd6u"
-              title="YouTube video player"
-              frameborder="0"
-              allow="
-                accelerometer;
-                autoplay;
-                clipboard-write;
-                encrypted-media;
-                gyroscope;
-                picture-in-picture;
-                web-share;
-              "referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen
-              loading="lazy"
-            ></iframe>
-          </div>
+          <!-- <div class="videoPanel">
+            <iframe              width="560"              height="315"              
+            src="https://www.youtube-nocookie.com/embed/K1rvhtirZ9I?si=-Vw1AWhzaYdYMd6u"              title="YouTube video player"              frameborder="0"              allow="                accelerometer;                autoplay;                clipboard-write;                encrypted-media;                gyroscope;                picture-in-picture;                web-share;              "referrerpolicy="strict-origin-when-cross-origin"              allowfullscreen              loading="lazy"            ></iframe>
+          </div> -->
+
+                    <div class="video-wrapper" data-video-id="K1rvhtirZ9I">
+                        <div class="thumbnail-container">
+                            <img 
+                                src="https://img.youtube.com/vi/K1rvhtirZ9I/hqdefault.jpg" 
+                                alt="Video Thumbnail"
+                                class="video-thumbnail"
+                            >
+                            <div class="play-button"></div>
+                        </div>
+                    </div>
+
           <p>
             When you are happy with your colour selection, choose your project
             in the bottom menu for helpful knitting information. <br />
