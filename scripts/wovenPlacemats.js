@@ -195,7 +195,7 @@ function createInputSection() {
                     </div><div class="switchBtnDiv">  
                         <p class="YCselection ${sectionClass} ${pairClass} right MC"> MC </p> 
                         <label class="switch">   
-                        <input type="checkbox" class="YCcheckbox ${sectionClass} ${pairClass} right" id="checkbox${pairNumber}right" value='noneSelected' aria-label="${sectionClass} section ${pairClass} pair ${pairNumber} number right checkbox"> 
+                        <input type="checkbox" class="YCcheckbox ${sectionClass} ${pairClass} right" id="checkbox${pairNumber}right" value='noneSelected' aria-label="${sectionClass} ${pairClass} right checkbox"> 
                         <span class="slider round"> </span>
                         </label> 
                         <p class="YCselection ${sectionClass} ${pairClass} right CC"> CC </p>
@@ -206,7 +206,7 @@ function createInputSection() {
                 </div> <div class="switchBtnDiv"> 
                     <p class="YCselection ${sectionClass} ${pairClass} left MC"> MC </p>  
                     <label class="switch">   
-                    <input type="checkbox" class="YCcheckbox ${sectionClass} ${pairClass} left" id="checkbox${pairNumber}left" aria-label="${sectionClass} section ${pairClass} pair ${pairNumber} number left checkbox">
+                    <input type="checkbox" class="YCcheckbox ${sectionClass} ${pairClass} left" id="checkbox${pairNumber}left" aria-label="${sectionClass} ${pairClass} left checkbox">
                     <span class="slider round"> </span>
                     </label> 
                     <p class="YCselection ${sectionClass} ${pairClass} left CC"> CC </p>  
