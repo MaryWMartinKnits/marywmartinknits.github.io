@@ -5,23 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="main.css" type="text/css" />
-    <!--     <link rel="stylesheet" href="MaryWMartinKnits.css" type="text/css" />
- -->
+    <!--     <link rel="stylesheet" href="MaryWMartinKnits.css" type="text/css" /> -->
     <!-- Google fonts: Raleway -->
+    <!-- Preconnect to the font domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Asynchronously load the stylesheet -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      media="print"
+      onload="this.media = 'all'"
     />
+    <!-- Fallback for users with JavaScript disabled -->
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      />
+    </noscript>
+
     <!-- Google fonts: DM Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
     />
-    <meta name="description" content="A collection of Mary W Martin's online tools to design and select colors for her woven knitting patterns.">
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      />
+    </noscript>
+    <meta
+      name="description"
+      content="A collection of Mary W Martin's online tools to design and select colors for her woven knitting patterns."
+    />
     <meta property="og:type" content="website" />
     <meta
       property="og:title"
@@ -92,7 +114,8 @@
             <a href="https://www.wovenknitting.com/DiamondDuetCollection">
               <h3>Diamond Duet Colouring Tool</h3>
               <img
-                class="smallPic" loading="lazy"
+                class="smallPic"
+                loading="lazy"
                 src=" https://www.wovenknitting.com/img-compressed/DD-collection_1_500x500.jpg"
                 alt="Diamond Duet Collection"
               />
@@ -103,7 +126,8 @@
             <a href="https://www.wovenknitting.com/DiamondQuartetCollection">
               <h3>Diamond Quartet Colouring Tool</h3>
               <img
-                class="smallPic" loading="lazy"
+                class="smallPic"
+                loading="lazy"
                 src=" https://www.wovenknitting.com/img-compressed/DQ-collection_500x500.jpg"
                 alt="Diamond Quartet Collection"
               />
