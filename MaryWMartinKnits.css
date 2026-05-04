@@ -7,7 +7,7 @@
 
 .section {
   display: flex;
-  border-color: light-dark(var(--color4-light), var(--color4-dark));
+  border-color: light-dark(var(--color3), var(--color3));
   border-width: 0.15rem;
   border-style: solid;
   margin: 0.15rem;
@@ -51,15 +51,15 @@ input[type="number"]:disabled {
 }
 
 #specials a:link {
-  color: light-dark(var(--color2-light), var(--color2-dark));
+  color: light-dark(var(--color1), var(--color5));
   font-weight: 600;
-  text-decoration: underline light-dark(var(--color4-light), var(--color4-dark)) solid 0.05rem;
+  text-decoration: underline light-dark(var(--color3), var(--color3)) solid 0.05rem;
 }
 
 #specials a:visited {
-  color: light-dark(var(--color4-light), var(--color4-dark));
+  color: light-dark(var(--color3), var(--color3));
   font-weight: 500;
-  text-decoration: underline light-dark(var(--color3-light), var(--color3-dark)) solid 0.05rem;
+  text-decoration: underline light-dark(var(--color2), var(--color4)) solid 0.05rem;
 }
 
 .biggerFont {
@@ -67,7 +67,7 @@ input[type="number"]:disabled {
 }
 
 #inputs {
-  border: 1px dashed light-dark(var(--color4-light), var(--color4-dark));
+  border: 1px dashed light-dark(var(--color3), var(--color3));
   border-radius: 1rem;
   padding: 1rem;
 }

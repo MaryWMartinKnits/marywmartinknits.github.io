@@ -24,7 +24,7 @@
 }
 
 .bigSwatch {
-  border: 2px solid light-dark(var(--color5-light), var(--color5-dark));
+  border: 2px solid light-dark(var(--color4), var(--color2));
   border-radius: 0.5rem;
   box-shadow: 1em 1em 1em rgba(0, 0, 0, 0.1);
   display: flex;
@@ -37,7 +37,7 @@
 .bigSwatch h3,
 .bitSwatch .h3 {
   margin: 0.5rem 0;
-  columns: light-dark(var(--color2-light), var(--color2-dark));
+  columns: light-dark(var(--color1), var(--color5));
 }
 
 .swatch .swatchInfo {
@@ -45,7 +45,7 @@
 }
 
 .hexCodes {
-  color: light-dark(var(--color3-light), var(--color3-light));
+  color: light-dark(var(--color2), var(--color2));
   margin: 0.5rem;
 }
 
@@ -77,7 +77,7 @@ input[type="color"] {
   height: 5em;
   padding: 0;
   width: 5em;
-  border: 1.5px solid light-dark(var(--color6-light), var(--black) );
+  border: 1.5px solid light-dark(var(--color6), #000 );
 }
 
 /* MEDIA QUERIES */

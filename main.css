@@ -134,41 +134,21 @@ table {
 }
 
 :root {
-  /*   
-  --color1: #000000;
-  --color2: #13203d;
-  --color3: #3a3354;
-  --color4: #5f5fa5;
-  --color5: #c4c4e1;
-  --color6: #e6e6f3;
-  --color7: #f7f7fb; */
   /* Step 1: Tell the browser you support both themes */
   color-scheme: light dark;
 
   /* Step 2: Define colors for both modes */
 
-  --color1-light: #000000;
-  --color2-light: #13203d;
-  --color3-light: #3a3354;
-  --color4-light: #5f5fa5;
-  --color5-light: #c4c4e1;
-  --color6-light: #e6e6f3;
-  --color7-light: #f7f7fb;
-
-  --white: #fff;
-  --black: #000;
-
-  --color7-dark: #000000;
-  --color6-dark: #13203d;
-  --color5-dark: #3a3354;
-  --color4-dark: #5f5fa5;
-  --color3-dark: #c4c4e1;
-  --color2-dark: #e6e6f3;
-  --color1-dark: #f7f7fb;
+  --color1: #13203d;
+  --color2: #3a3354;
+  --color3: #5f5fa5;
+  --color4: #c4c4e1;
+  --color5: #d6d6ea;
+  --color6: #f7f7fb;
 }
 
 body {
-  background-color: light-dark(var(--color5-light), var(--color5-dark));
+  background-color: light-dark(var(--color4), var(--color2));
 }
 
 main {
@@ -186,6 +166,10 @@ label {
   padding-right: 0.25em;
 }
 
+p {
+  color: light-dark(#000, #fff);
+}
+
 h1,
 h2,
 h3,
@@ -194,13 +178,13 @@ button,
 .h3 {
   font-family: "DM Sans", Helvetica, Arial, sans-serif;
   margin: 0;
-  color: light-dark(var(--color3-light), var(--color3-dark));
+  color: light-dark(var(--color2), var(--color4));
 }
 
 h1 {
   font-size: 1.5rem;
   text-align: center;
-  color: light-dark(var(--color3-light), var(--color3-dark));
+  color: light-dark(var(--color2), var(--color4));
 }
 
 h2,
@@ -214,10 +198,10 @@ h3,
 .whiteBackground h2,
 .whiteBackground h3,
 .whiteBackground .h3 {
-  color: var(--color5-dark);
+  color: var(--color2);
 }
 .whiteBackground p {
-  color: var(--color7-dark);
+  color: #000;
 }
 
 .samplePicture {
@@ -238,9 +222,9 @@ hr {
   height: 2px;
     background-image: linear-gradient(
     to right,
-    light-dark(var(--color5-light), var(--color5-dark)),
-    light-dark(var(--color4-light), var(--color4-dark)),
-    light-dark(var(--color5-light), var(--color5-dark))
+    light-dark(var(--color4), var(--color2)),
+    light-dark(var(--color3), var(--color3)),
+    light-dark(var(--color4), var(--color2))
   );
 }
 
@@ -260,16 +244,16 @@ footer {
 
 button {
   width: fit-content;
-  background-color: light-dark(var(--color6-light), var(--color6-dark));
-  color: light-dark(var(--color3-light), var(--color3-dark));
-  border-color: light-dark(var(--color4-light), var(--color4-dark));
+  background-color: light-dark(var(--color6), var(--color1));
+  color: light-dark(var(--color2), var(--color4));
+  border-color: light-dark(var(--color3), var(--color3));
   border-radius: 0.375rem;
   font-size: 1.2rem;
   margin: 0.2rem;
 }
 
 button:hover {
-  box-shadow: 0 0 5px 1px light-dark(var(--color4-light), var(--color4-dark));
+  box-shadow: 0 0 5px 1px light-dark(var(--color3), var(--color3));
 }
 
 .flex {
@@ -280,9 +264,8 @@ button:hover {
 .container {
   max-width: 45vw;
   margin: 5px;
-  border: 2px solid light-dark(var(--color6-light), var(--color6-dark));
+  border: 2px solid light-dark(var(--color6), var(--color1));
   border-radius: 10px;
-  /*   padding: 15px; */
 }
 /* LINKS */
 
@@ -291,17 +274,17 @@ a {
 }
 
 a:link {
-  color: light-dark(var(--color4-light), var(--color3-dark));
+  color: light-dark(var(--color1), var(--color5));
 }
 
 a:visited {
-  color: light-dark(var(--color3-light), var(--color4-dark));
+  color: light-dark(var(--color2), var(--color3));
 }
 
 a:hover {
   text-decoration: none;
-  background-color: light-dark(var(--color6-light), var(--color6-dark));
-  color: light-dark(var(--color2-light), var(--color2-dark));
+  background-color: light-dark(var(--color6), var(--color1));
+  color: light-dark(var(--color1), var(--color5));
   border-radius: 5px;
 }
 
@@ -336,7 +319,7 @@ a:hover::before {
   /* text-decoration: none; */
   position: relative;
   display: inline-block;
-  color: light-dark(var(--white), var(--black));
+  color: light-dark(#fff, #000);
   padding: 0 1px;
   transition: color ease 0.3s;
 
@@ -349,12 +332,12 @@ a:hover::before {
     left: 0;
     bottom: 0;
     /* background-color: #ab4ccd; */
-    background-color: light-dark(var(--color3-light), var(--color3-dark));
+    background-color: light-dark(var(--color2), var(--color4));
     transition: all ease 0.3s;
   }
 
   &:hover {
-    color: light-dark(var(--white), var(--color4-light));
+    color: light-dark(#fff, var(--color3));
     &::after {
       height: 100%;
     }
@@ -364,8 +347,8 @@ a:hover::before {
 /* ACCORDION */
 
 .accordion {
-  background-color: light-dark(var(--color6-light), var(--color6-dark));
-  color: light-dark(var(--color3-light), var(--color3-dark));
+  background-color: light-dark(var(--color6), var(--color1));
+  color: light-dark(var(--color2), var(--color4));
   cursor: pointer;
   padding: 18px;
   width: 100%;
@@ -378,14 +361,14 @@ a:hover::before {
 }
 
 .accordion:hover {
-  box-shadow: 0 0 5px 5px light-dark(var(--color4-light), var(--color4-dark));
+  box-shadow: 0 0 5px 5px light-dark(var(--color3), var(--color3));
   font-weight: bold;
 }
 
 /* add a plus sign before and a minus sign after expansion */
 .accordion:after {
   content: "\002B";
-  color: light-dark(var(--color4-light), var(--color4-dark));
+  color: light-dark(var(--color3), var(--color3));
   font-weight: bold;
   float: right;
   margin-left: 5px;
@@ -393,7 +376,7 @@ a:hover::before {
 
 .active:after {
   content: "\2212";
-  color: light-dark(var(--color4-light), var(--color4-dark));
+  color: light-dark(var(--color3), var(--color3));
 }
 
 /* PANELS */
@@ -401,7 +384,7 @@ a:hover::before {
 .panel {
   margin: 0.5rem auto;
   padding: 0 0.25rem;
-  background-color: light-dark(var(--color5-light), var(--color5-dark));
+  background-color: light-dark(var(--color4), var(--color2));
   max-height: 0;
   overflow: auto;
   transition: max-height 0.2s ease-out;
@@ -441,22 +424,21 @@ a:hover::before {
 
 ::selection {
   background-color: #5f5fa588;
-  color: light-dark(var(--color2-light), var(--color2-dark));
+  color: light-dark(var(--color1), var(--color5));
 }
 
 #socials a,
 #note1 a {
-  color: light-dark(var(--color3-light), var(--color2-dark));
+  color: light-dark(var(--color2), var(--color5));
 }
 
 #socials {
-  /* color: light-dark(var(--color3-light), var(--color3-dark)); */
   margin-bottom: 0.5rem;
   margin: 1rem auto;
   font-size: 1.15rem;
   text-align: center;
   border-radius: 0.5rem;
-  background-color: light-dark(var(--color6-light), var(--color6-dark));
+  background-color: light-dark(var(--color6), var(--color1));
   padding: 0 18px;
   max-height: 0;
   transition: max-height 0.2s ease-out;
@@ -472,7 +454,7 @@ a:hover::before {
 
 #logo {
   width: auto;
-  color: light-dark(var(--color3-light), var(--color3-dark));
+  color: light-dark(var(--color2), var(--color4));
 }
 
 #pageTitle {
@@ -488,12 +470,12 @@ a:hover::before {
 }
 
 .social-icons {
-  fill: light-dark(var(--color4-light), var(--color4-dark));
+  fill: light-dark(var(--color3), var(--color3));
   display: inline;
 }
 
 .cls-1 {
-  fill: light-dark(var(--color3-light), var(--color3-dark));
+  fill: light-dark(var(--color2), var(--color4));
 }
 .cls-2 {
   opacity: 0.5;
