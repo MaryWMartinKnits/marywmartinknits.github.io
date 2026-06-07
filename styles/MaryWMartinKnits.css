@@ -26,7 +26,6 @@ input[type="number"]:disabled {
 
 /* others */
 
-
 .text {
   padding: 1rem;
 }
@@ -53,13 +52,15 @@ input[type="number"]:disabled {
 #specials a:link {
   color: light-dark(var(--color1), var(--color5));
   font-weight: 600;
-  text-decoration: underline light-dark(var(--color3), var(--color3)) solid 0.05rem;
+  text-decoration: underline light-dark(var(--color3), var(--color3)) solid
+    0.05rem;
 }
 
 #specials a:visited {
   color: light-dark(var(--color3), var(--color3));
   font-weight: 500;
-  text-decoration: underline light-dark(var(--color2), var(--color4)) solid 0.05rem;
+  text-decoration: underline light-dark(var(--color2), var(--color4)) solid
+    0.05rem;
 }
 
 .biggerFont {
@@ -101,7 +102,8 @@ iframe {
   aspect-ratio: 9/16;
 }
 
-.videoPanel, .video-wrapper {
+.videoPanel,
+.video-wrapper {
   display: flex;
   justify-content: center;
 }
@@ -110,7 +112,6 @@ iframe {
 
 @media screen and (max-width: 500px) {
   /* Smartphone */
-
 }
 
 @media screen and (min-width: 776px) and (max-width: 976px) {
