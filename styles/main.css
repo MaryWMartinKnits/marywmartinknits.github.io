@@ -220,7 +220,7 @@ h3,
 hr {
   border: 0;
   height: 2px;
-    background-image: linear-gradient(
+  background-image: linear-gradient(
     to right,
     light-dark(var(--color4), var(--color2)),
     light-dark(var(--color3), var(--color3)),
@@ -499,7 +499,7 @@ a:hover::before {
   width: 1px;
   height: 1px;
   overflow: hidden;
-  color: light-dark(#000, #fff) !important; 
+  color: light-dark(#000, #fff) !important;
 }
 
 .skip:focus {
