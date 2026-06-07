@@ -167,7 +167,6 @@
   min-height: 100px;
 }
 
-
 /* MEDIA QUERIES */
 @media screen and (max-width: 500px) {
   /* Smartphone */
@@ -233,5 +232,3 @@
     max-height: 15px;
   }
 }
-
-

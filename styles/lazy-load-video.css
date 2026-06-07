@@ -3,16 +3,13 @@
   overflow: hidden;
   object-fit: cover;
 }
-.video-wrapper iframe {
-
-}
 
 .thumbnail-container {
-    position: relative;
-    margin-top: -45px;
-    margin-bottom: -45px;
-    padding-top: 45px;
-    padding-bottom: 45px;
+  position: relative;
+  margin-top: -45px;
+  margin-bottom: -45px;
+  padding-top: 45px;
+  padding-bottom: 45px;
 }
 
 .video-thumbnail {
