@@ -112,7 +112,7 @@
                       <h3>MC</h3>
                     </div>
                     <label for="colorPickerMC1">
-                      <input type="color" id="colorPickerMC1" title="Pick the main color (MC)" value="navy" />
+                      <input type="color" id="colorPickerMC1" title="Pick the main color (MC)" value="#D3D3D3" />
                     </label>
                     <p id="MC1hexCode" class="hexCodes"></p>
                   </div>
@@ -124,7 +124,7 @@
                       <h3>CC</h3>
                     </div>
                     <label for="colorPickerCC1">
-                      <input type="color" id="colorPickerCC1" title="Pick the contrasting color (CC)" value="#6f4d23" />
+                      <input type="color" id="colorPickerCC1" title="Pick the contrasting color (CC)" value="#ffffff" />
                     </label>
                     <p id="CC1hexCode" class="hexCodes"></p>
                   </div>
@@ -134,7 +134,7 @@
 
               <div class="groupedSwatches">
 
-                <div id="letterColor_swatch">
+                <!-- <div id="letterColor_swatch">
                   <div class="bigSwatch whiteBackground">
                     <div class="swatchInfo" id="CC1_swatchTitle">
                       <h3>Text</h3>
@@ -145,7 +145,8 @@
                     <p id="letterColorHexCode" class="hexCodes"></p>
 
                   </div>
-                </div>
+                </div> -->
+
 
               </div>
             </div>
@@ -173,7 +174,7 @@
     </div>
 
     <div id="motifsDiv" class="swatch centerContent">
-      <div id="motifPickerDiv">
+      <div id="motifPickerDiv" class="motifPickerDivs">
         <label for="motifPickerDropDown">See the colours with the: </label>
         <select id="motifPickerDropDown" name="chosenMotif">
           <option value="" disabled selected hidden>
@@ -192,6 +193,51 @@
     </div>
     </div>
     <!-- end of designDiv (white background) -->
+
+    <div id="designDiv" class="whiteBackground">
+      <div>
+        <div>
+          <h2 id="Title_chooseColors">Choose your contrasting letter colours</h2>
+        </div>
+        <div class="centerContent">
+          <div id="colorPickerDiv" class="centerContent">
+            <div id="colorSwatches">
+              <div class="groupedSwatches">
+
+                <div id="contrastMC1_swatch">
+                  <div class="bigSwatch whiteBackground">
+                    <div class="swatchInfo" id="contrastMC1_swatchTitle">
+                      <h3>Text</h3>
+                    </div>
+                    <label for="colorPickerText">
+                      <input type="color" id="colorPickerContrastMC1" title="Pick the text color for MC letters"
+                        value="#000000" />
+                    </label>
+                    <!--  <p id="letterColorHexCode" class="hexCodes"></p> -->
+
+                  </div>
+                </div>
+
+                <div id="contrastCC1_swatch">
+                  <div class="bigSwatch whiteBackground">
+                    <div class="swatchInfo" id="contrastCC1_swatchTitle">
+                      <h3>Text</h3>
+                    </div>
+                    <label for="colorPickerText">
+                      <input type="color" id="colorPickerContrastCC1" title="Pick the text color for CC letters"
+                        value="#000000" />
+                    </label>
+                    <!-- <p id="letterColorHexCode" class="hexCodes"></p> -->
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <hr />
   </main>

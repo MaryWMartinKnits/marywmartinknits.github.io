@@ -80,6 +80,11 @@ input[type="color"] {
   border: 1.5px solid light-dark(var(--color5), #000);
 }
 
+.motifPickerDivs {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  }
+
 /* MEDIA QUERIES */
 @media screen and (max-width: 500px) {
   /* Smartphone */

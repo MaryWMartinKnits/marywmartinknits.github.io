@@ -134,7 +134,7 @@
   background-color: light-dark(var(--color4), var(--color2));
 }
 
-#motifPickerDiv {
+# {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
