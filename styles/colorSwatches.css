@@ -80,6 +80,14 @@ input[type="color"] {
   border: 1.5px solid light-dark(var(--color5), #000);
 }
 
+.inputColor {
+  margin: 0.5em;
+}
+
+.inputColor label {
+  padding-right: 0;
+}
+
 .motifPickerDivs {
   margin-top: 1em;
   margin-bottom: 1em;
