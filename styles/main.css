@@ -409,9 +409,18 @@ a:hover::before {
   flex-wrap: wrap;
 }
 
+.break { /*force wrap*/
+  flex-basis: 100%;
+  height: 0;
+}
+
 .verticallyCenterContent {
   display: flex;
   flex-direction: column;
+}
+
+.size1Text {
+  font-size: 1rem;
 }
 
 /* others */
