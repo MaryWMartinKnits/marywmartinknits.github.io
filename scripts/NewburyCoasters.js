@@ -171,7 +171,7 @@ function resetColours() {
   updatePickedColors(pickedMC1, pickedCC1, pickedContrastMC1, pickedContrastCC1);
 }
 
-function giveColorValueToSwatches() {
+/* function giveColorValueToSwatches() {
   if (localStorage_MC1 !== null) {
     pickedMC1 = localStorage.MC1;
     MC1pickerBtn.value = pickedMC1;
@@ -198,6 +198,24 @@ function giveColorValueToSwatches() {
   } else {
     contrastCC1PickerBtn.value = pickedContrastCC1;
   }
+} */
+
+function giveColorValueToSwatches() {
+  const storedMC1 = localStorage.getItem("MC1");
+  if (storedMC1 !== null) pickedMC1 = storedMC1;
+  MC1pickerBtn.value = pickedMC1;
+
+  const storedCC1 = localStorage.getItem("CC1");
+  if (storedCC1 !== null) pickedCC1 = storedCC1;
+  CC1pickerBtn.value = pickedCC1;
+
+  const storedContrastMC1 = localStorage.getItem("contrastMC1");
+  if (storedContrastMC1 !== null) pickedContrastMC1 = storedContrastMC1;
+  contrastMC1PickerBtn.value = pickedContrastMC1;
+
+  const storedContrastCC1 = localStorage.getItem("contrastCC1");
+  if (storedContrastCC1 !== null) pickedContrastCC1 = storedContrastCC1;
+  contrastCC1PickerBtn.value = pickedContrastCC1;
 }
 
 // accordions:
