@@ -309,6 +309,10 @@ function updatePickedColors(pickedMC1, pickedCC1, pickedContrastMC1, pickedContr
 function pickSVG() {
   /* console.log('function pickSVG()') */
   selectedMotif = motifPickerDropDown.value;
+  if (!selectedMotif) {
+    SVGinDiv.innerHTML = "";
+    return;
+  }
   determinarSVGcharacteristics(selectedMotif);
   viewBox = `0 0 ${svgOldWidth} ${svgOldHeight}`;
   calculateSVGWidth(svgWidth);
@@ -381,8 +385,12 @@ function calculateSVGWidth(svgWidth) {
 }
 
 function drawSVG(selectedMotif) {
+  if (!selectedMotif) {
+    SVGinDiv.innerHTML = "";
+    return;
+  }
   updateSVG_innerHTML();
-  SVGinDiv.innerHTML = `<svg id= "${selectedMotif}_svg" width="${svgNewWidth}" height="${svgNewHeight}" viewbox="${viewBox}"
+  SVGinDiv.innerHTML = `<svg id= "${selectedMotif}_svg" width="${svgNewWidth}" height="${svgNewHeight}" viewBox="${viewBox}"
     style="border:1px solid var(--color4); background-color:#ffffff"> 
     ${selectedMotif_innerHTML}
     </svg>`;
@@ -391,12 +399,16 @@ function drawSVG(selectedMotif) {
 }
 
 function createSVGwithBoxes() {
-  hideBtn(resetColorsDiv);
-  resetColorsDiv.remove();
   selectedMotif = motifPickerDropDown.value;
+  if (!selectedMotif) {
+    SVGinDiv.innerHTML = "";
+    return;
+  }
+  /* hideBtn(resetColorsDiv); */
+   /* resetColorsDiv.remove();  */
   cleanSVGandBoxes();
   drawSVGwithBoxes();
-  resetColorsDiv.remove();
+   /* resetColorsDiv.remove();  */
 }
 
 function drawSVGwithBoxes() {
@@ -406,6 +418,10 @@ function drawSVGwithBoxes() {
 }
 
 function createSVG() {
+  if (!selectedMotif) {
+    SVGinDiv.innerHTML = "";
+    return;
+  }
   SVGinDiv.innerHTML = `<svg id= "${selectedMotif}_svg" width="${svgNewWidth}" height="${svgNewHeight}" viewBox="${viewBox}"
     style="border:1px solid var(--color4); background-color:#ffffff"> 
     ${selectedMotif_innerHTML}
