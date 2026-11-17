@@ -322,33 +322,33 @@ function determinarSVGcharacteristics() {
   switch (selectedMotif) {
     /* SVG: */
     case "chevron":
-      svgHeight = 600;
       svgWidth = 900;
+      svgHeight = 600;
       selectedMotif_innerHTML = chevron_innerHTML;
       break;
     case "inANDout":
-      svgHeight = 600;
       svgWidth = 900;
+      svgHeight = 600;
       selectedMotif_innerHTML = inANDout_innerHTML;
       break;
     case "zigzag":
-      svgHeight = 600;
       svgWidth = 900;
+      svgHeight = 600;
       selectedMotif_innerHTML = zigzag_innerHTML;
       break;
     case "bullseye":
-      svgHeight = 600;
       svgWidth = 900;
+      svgHeight = 600;
       selectedMotif_innerHTML = bullseye_innerHTML;
       break;
     case "spiral":
-      svgHeight = 600;
       svgWidth = 900;
+      svgHeight = 600;
       selectedMotif_innerHTML = spiral_innerHTML;
       break;
     case "diamonds":
-      svgHeight = 600;
       svgWidth = 900;
+      svgHeight = 600;
       selectedMotif_innerHTML = diamonds_innerHTML;
       break;
   }
