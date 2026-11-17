@@ -147,13 +147,13 @@ function addEventListeners() {
 }
 
 function defaultSVG() {
-/*   console.log("function defaultSVG executed"); */
+  /*   console.log("function defaultSVG executed"); */
   updateSVG_innerHTML();
   cleanSVGandBoxes();
 }
 
 function cleanSVGandBoxes() {
-/*   console.log("function cleanSVGandBoxes executed"); */
+  /*   console.log("function cleanSVGandBoxes executed"); */
   pickSVG();
 }
 
@@ -167,7 +167,6 @@ function resetColours() {
   localStorage.CC1 = pickedCC1;
   localStorage.contrastMC1 = pickedContrastMC1;
   localStorage.contrastCC1 = pickedContrastCC1;
-  /* localStorage.letterColor = pickedLetterColor; */
   giveColorValueToSwatches();
   updatePickedColors(pickedMC1, pickedCC1, pickedContrastMC1, pickedContrastCC1);
 }
@@ -187,12 +186,6 @@ function giveColorValueToSwatches() {
     CC1pickerBtn.value = pickedCC1;
   }
 
-  /*   if (localStorage_letterColor !== null) {
-      pickedLetterColor = localStorage.letterColor;
-      letterColorPickerBtn.value = pickedLetterColor;
-    } else {
-      letterColorPickerBtn.value = pickedLetterColor;
-    } */
   if (localStorage_contrastMC1 !== null) {
     pickedContrastMC1 = localStorage.contrastMC1;
     contrastMC1PickerBtn.value = pickedContrastMC1;
@@ -280,6 +273,8 @@ function changeletterColor() {
   pickedContrastMC1 = contrastMC1PickerBtn.value
   pickedContrastCC1 = contrastCC1PickerBtn.value
   updatePickedColors(pickedMC1, pickedCC1, pickedContrastMC1, pickedContrastCC1);
+  localStorage_contrastMC1()
+  localStorage_contrastCC1()
 }
 
 function updatePickedColors(pickedMC1, pickedCC1, pickedContrastMC1, pickedContrastCC1) {
@@ -304,8 +299,8 @@ function pickSVG() {
 }
 
 function determinarSVGcharacteristics() {
-/*   console.log("🚀 ~ determinarSVGcharacteristics ~ selectedMotif:", selectedMotif)
-  console.log(selectedMotif) */
+  /*   console.log("🚀 ~ determinarSVGcharacteristics ~ selectedMotif:", selectedMotif)
+    console.log(selectedMotif) */
   switch (selectedMotif) {
     /* SVG: */
     case "chevron":
@@ -1505,10 +1500,6 @@ function localStorage_MC1() {
 function localStorage_CC1() {
   localStorage.CC1 = CC1pickerBtn.value;
 }
-
-/* function localStorage_letterColor() {
-  localStorage.letterColor = letterColorPickerBtn.value;
-} */
 
 function localStorage_contrastMC1() {
   localStorage.contrastMC1 = contrastMC1PickerBtn.value;
