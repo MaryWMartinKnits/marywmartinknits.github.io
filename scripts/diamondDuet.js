@@ -466,6 +466,7 @@ function createBoxes() {
 }
 
 function give_innerHTMLtoBoxes() {
+  console.log('function give_innerHTMLtoBoxes()')
   /* Hat - Cowl */
   motifDiamondDuet_CowlHat_topBox_innerHTML = "";
   motifDiamondDuet_CowlHat_leftBox_innerHTML = "";
